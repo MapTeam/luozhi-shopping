@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="wjResources"/>
 	<classpathentry kind="src" path="hhResources"/>
 	<classpathentry kind="src" path="sjhResources"/>
-	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_211">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>

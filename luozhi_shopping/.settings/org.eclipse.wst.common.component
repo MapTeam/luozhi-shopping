@@ -6,7 +6,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/wjResources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/hhResources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/sjhResources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <property name="context-root" value="luozhi_shopping"/>
         <property name="java-output-path" value="/luozhi_shopping/build/classes"/>
     </wb-module>
