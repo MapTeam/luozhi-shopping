@@ -27,7 +27,8 @@ public class User implements java.io.Serializable {
     /** 购物车id */
     private Integer gcid;
 
-
+    private Integer credits;
+    
     /**
      * 获取用户id
      * 
@@ -160,6 +161,22 @@ public class User implements java.io.Serializable {
     public void setGcid(Integer gcid) {
         this.gcid = gcid;
     }
+    
+    
+    /**
+     * 获取用户积分
+     * @return
+     */
+	public Integer getCredits() {
+		return credits;
+	}
+	/**
+	 * 设置用户积分
+	 * @param credits
+	 */
+	public void setCredits(Integer credits) {
+		this.credits = credits;
+	}
 
 	@Override
 	public String toString() {
