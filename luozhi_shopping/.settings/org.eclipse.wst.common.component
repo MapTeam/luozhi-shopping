@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="luozhi_shopping">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/zydResources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/wjResources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/hhResources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/sjhResources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <property name="context-root" value="luozhi_shopping"/>
+        <property name="java-output-path" value="/luozhi_shopping/build/classes"/>
+    </wb-module>
+</project-modules>
