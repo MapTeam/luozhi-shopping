@@ -7,10 +7,10 @@ public class Goods implements java.io.Serializable {
     /** 商品id */
     private Integer gid;
 
-    /** 商品类型id */
-    private Integer typeid;
+    /** 商品主图 */
+    private String typeid;
 
-    /** 商品主图片 */
+    /** 商品图片 */
     private String gpicture;
 
     /** 商品名字 */
@@ -67,21 +67,21 @@ public class Goods implements java.io.Serializable {
     }
 
     /**
-     * 获取商品类型id
+     * 获取商品主图 
      * 
-     * @return 商品类型id
+     * @return 商品主图 
      */
-    public Integer getTypeid() {
+    public String getTypeid() {
         return this.typeid;
     }
 
     /**
-     * 设置商品类型id
+     * 设置商品主图 
      * 
      * @param typeid
-     *          商品类型id
+     *          商品主图 
      */
-    public void setTypeid(Integer typeid) {
+    public void setTypeid(String typeid) {
         this.typeid = typeid;
     }
 
