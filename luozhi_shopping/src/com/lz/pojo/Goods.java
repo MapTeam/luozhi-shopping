@@ -8,7 +8,7 @@ public class Goods implements java.io.Serializable {
     private Integer gid;
 
     /** 商品主图 */
-    private String typeid;
+    private String zpicture;
 
     /** 商品图片 */
     private String gpicture;
@@ -71,8 +71,8 @@ public class Goods implements java.io.Serializable {
      * 
      * @return 商品主图 
      */
-    public String getTypeid() {
-        return this.typeid;
+    public String getZpicture() {
+        return this.zpicture;
     }
 
     /**
@@ -81,8 +81,8 @@ public class Goods implements java.io.Serializable {
      * @param typeid
      *          商品主图 
      */
-    public void setTypeid(String typeid) {
-        this.typeid = typeid;
+    public void setZpicture(String zpicture) {
+        this.zpicture = zpicture;
     }
 
     /**
@@ -315,7 +315,7 @@ public class Goods implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Goods [gid=" + gid + ", typeid=" + typeid + ", gpicture=" + gpicture + ", gname=" + gname
+		return "Goods [gid=" + gid + ", zpicture=" + zpicture + ", gpicture=" + gpicture + ", gname=" + gname
 				+ ", gintroduce=" + gintroduce + ", gcolorid=" + gcolorid + ", category1=" + category1 + ", category2="
 				+ category2 + ", gbrand=" + gbrand + ", gprice=" + gprice + ", ggrade=" + ggrade + ", gcount=" + gcount
 				+ ", gmaterial=" + gmaterial + ", hot=" + hot + "]";
