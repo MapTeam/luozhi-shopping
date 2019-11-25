@@ -16,9 +16,9 @@
    <!--配置连接池mysql-->
     <named-config name="mysql">  
         <property name="driverClass">com.mysql.jdbc.Driver</property>  
-        <property name="jdbcUrl">jdbc:mysql://localhost:3306/luozhi-shopping</property>  
+        <property name="jdbcUrl">jdbc:mysql://139.155.2.182:3306/luozhi-shopping</property>  
         <property name="user">root</property>  
-        <property name="password">123</property>  
+        <property name="password">qwe123</property>  
         <property name="initialPoolSize">10</property>  
         <property name="maxIdleTime">30</property>  
         <property name="maxPoolSize">100</property>  
