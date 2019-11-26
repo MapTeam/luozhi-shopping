@@ -21,7 +21,7 @@ public class test {
 		u.setUname("111");
 		u.setRegistdate(new Date());
 		u.setEmail("123.com");
-		u.setGcid(11);
+//		u.setGcid(11);
 		Connection conn =  DBConnection1.getConnection();
 		System.out.println(dao.insertObject(conn, u)); 
 		DBConnection1.close(conn);
@@ -50,7 +50,7 @@ public class test {
 		u.setUname("胡辉");
 		u.setRegistdate(new Date());
 		u.setEmail("456789.com");
-		u.setGcid(11);
+//		u.setGcid(11);
 		Connection conn =  DBConnection1.getConnection();
 		System.out.println(dao.updateObjectById(conn, u)); 
 		DBConnection1.close(conn);

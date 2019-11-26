@@ -25,7 +25,6 @@ public class User implements java.io.Serializable {
     private Date registdate;
 
     /** 购物车id */
-    private Integer gcid;
 
     private Integer credits;
     
@@ -143,24 +142,6 @@ public class User implements java.io.Serializable {
         this.registdate = registdate;
     }
 
-    /**
-     * 获取购物车id
-     * 
-     * @return 购物车id
-     */
-    public Integer getGcid() {
-        return this.gcid;
-    }
-
-    /**
-     * 设置购物车id
-     * 
-     * @param gcid
-     *          购物车id
-     */
-    public void setGcid(Integer gcid) {
-        this.gcid = gcid;
-    }
     
     
     /**
@@ -181,7 +162,7 @@ public class User implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", upicture=" + upicture + ", uname=" + uname + ", upwd=" + upwd + ", email="
-				+ email + ", registdate=" + registdate + ", gcid=" + gcid + "]";
+				+ email + ", registdate=" + registdate +  "]";
 	}
 
 }
