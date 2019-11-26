@@ -15,7 +15,7 @@ public class GoodsColorDaoImpl implements GoodsColorDao {
 	@Override
 	public List<GoodsColor> selectColor(Connection conn,int gid) {
 		List<GoodsColor> gcolors = new ArrayList<GoodsColor>();
-		String sql = "select * from goods_color where gid = ? ";
+		String sql = "select * from goodscolor where gid = ? ";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);

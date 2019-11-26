@@ -15,7 +15,7 @@ public class IntroduceDaoImpl implements IntroduceDao {
 	@Override
 	public GoodsIntroduceImg selectGoodsIntroduce(Connection conn, int gid) {
 		GoodsIntroduceImg gii = new GoodsIntroduceImg();
-		String sql = "select * from goods_introduce_img where gid = ?";
+		String sql = "select * from goodsintroduceimg where gid = ?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, gid);
@@ -23,7 +23,7 @@ public class IntroduceDaoImpl implements IntroduceDao {
 			if(rs.next()){
 				gii.setGiid(rs.getInt("giid"));
 				gii.setGid(rs.getInt("gid"));
-				gii.setIntroduceImgs(rs.getString("introduce_imgs"));
+				gii.setIntroduceImgs(rs.getString("introduceimgs"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
