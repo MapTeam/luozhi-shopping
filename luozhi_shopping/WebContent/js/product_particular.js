@@ -7,7 +7,7 @@ function getUrlVal(property){
   return result[2];
 };
 //定义全局，目的是传数据。
-    //商品颜色；
+//    //商品颜色；
 	var choosecolor=null;
     //商品数量
 	var goodnum=1;
@@ -15,46 +15,47 @@ function getUrlVal(property){
 	var goodname=null;
 		//商品价格
 	var goodprice=null;
-(function(){
-var goodsId = getUrlVal('goods_id');
-//发起请求
-$.get('http://www.wjian.top/shop/api_goods.php', {
-    goods_id : goodsId,
-}, function(result){
-    var obj = JSON.parse(result);
-    var goods = obj.data[0];
-    goodname=goods.goods_name;
-    goodprice=goods.price;
-   var product_content_title=`
-   		<li><h3>${goods.goods_name}</h3></li>
-		<li><p id="product_content_slogan">${goods.goods_desc}</p></li>
-		<li><h3 id="price">￥${goods.price}</h3></li>
-   `;
-   $('.product_content_title').html(product_content_title);
-   var top_title=`
-   <span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${goods.goods_name}</span>
-   `;
-   $('.top_title').html(top_title);
-   var shopping_nav_information=`
-   	<img src="${goods.goods_thumb}"/ class="logo">
-	<span style="float: left;">
-		<p>${goods.goods_name}</p>
-		<p style="color: #C9302C;">￥${goods.price}</p>
-	</span>
-   `;
-   $('.shopping_nav_information').html(shopping_nav_information);
-   var product_little_picture=`
-   <span class="current"><img src="${goods.goods_thumb}"/></span>
-   `;
-   $('#product_little_picture').html(product_little_picture);
-   var type_button=`
-   <li><button class="btn btn-default" id="type_button" type="button">白色</button></li>
-   <li><button class="btn btn-default" id="type_button" type="button">红色</button><li>
-   `;
-   $('#product_content_type_btn>ul').html(type_button);
-   init();
-});
-})();
+//(function(){
+//var goodsId = getUrlVal('goods_id');
+////发起请求
+//$.get('http://www.wjian.top/shop/api_goods.php', {
+//    goods_id : goodsId,
+//}, function(result){
+//    var obj = JSON.parse(result);
+//    var goods = obj.data[0];
+//    goodname=goods.goods_name;
+//    goodprice=goods.price;
+//   var product_content_title=`
+//   		<li><h3>${goods.goods_name}</h3></li>
+//		<li><p id="product_content_slogan">${goods.goods_desc}</p></li>
+//		<li><h3 id="price">￥${goods.price}</h3></li>
+//   `;
+//   $('.product_content_title').html(product_content_title);
+//   var top_title=`
+//   <span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${goods.goods_name}</span>
+//   `;
+//   $('.top_title').html(top_title);
+//   var shopping_nav_information=`
+//   	<img src="${goods.zpicture}"/ class="logo">
+//	<span style="float: left;">
+//		<p>${goods.gname}</p>
+//		<p style="color: #C9302C;">￥${goods.gprice}</p>
+//	</span>
+//   `;
+//   $('.shopping_nav_information').html(shopping_nav_information);
+//   var product_little_picture=`
+//   <span class="current"><img src="${goods.goods_thumb}"/></span>
+//   `;
+//   $('#product_little_picture').html(product_little_picture);
+//   var type_button=`
+//   <li><button class="btn btn-default" id="type_button" type="button">白色</button></li>
+//   <li><button class="btn btn-default" id="type_button" type="button">红色</button><li>
+//   `;
+//   $('#product_content_type_btn>ul').html(type_button);
+//   init();
+//});
+//})();
+	init();
 function init(){
 (function(){
 	//左边轮播图
@@ -86,7 +87,7 @@ function init(){
  		aSpan.eq(n).addClass('current').siblings().removeClass('current');
 		var img=aSpan.eq(n).children().attr('src');
 		$('#product_big_picture>img').attr('src',img);
-		console.log(img);
+		//console.log(img);
 		$('#margnify_show').css({
         'background-image':'url('+ img +')'
         });
@@ -202,6 +203,11 @@ function init(){
  			border: '#C9302C solid 3px',
 			color: '#C9302C',
  		});
+ 		$('#product_little_picture').empty().html('<span class="current"><img src="http://'+$(this).val()+'"/></span>');
+ 		$('#product_big_picture>img').attr('src','http://'+$(this).val());
+ 		$('#margnify_show').css({
+ 	        'background-image':'url(http://'+ $(this).val() +')'
+ 	        });
 //		alert(choosecolor);
 //		if(choose==0){
 //			$('#type_button').css('background','#F35518');
