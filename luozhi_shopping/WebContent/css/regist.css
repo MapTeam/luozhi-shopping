@@ -1,0 +1,424 @@
+/*注册*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+body{
+	position: relative;
+}
+header{
+	margin-bottom: 40px;
+}
+
+ul {
+	padding: 0px;
+	margin: 0px;
+}
+
+.container {
+	padding-top: 1px;
+}
+
+.form_main>div{
+	position: relative;
+}
+.breadcrumbs {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+.breadcrumbs ul li {
+	font-size: 14px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.breadcrumbs ul li a {
+	font-size: 25px;
+	color: #000;
+}
+
+.breadcrumbs ul li a:hover {
+	color: #333;
+	text-decoration: none;
+}
+
+.breadcrumbs ul li span {
+	margin-left: 5px;
+	color: #8C8C8C;
+	font-size: 18px;
+}
+
+.account_creat header.creat {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 0px 20px 0px;
+	margin: 0px;
+}
+
+.account_creat header.creat .title {
+	font-size: 28px;
+	color: #000000;
+	margin: 0px;
+	padding: 0px;
+}
+.col-main .form{
+	padding: 20px 0 10px;
+}
+.input-group{
+	width: 513px;
+	margin: 0px auto;
+	margin-bottom: 20px;
+}
+span#img{
+	width: 15px;
+	height: 15px;
+	margin-right: 12px;
+	float: left;
+}
+span#text{
+	font-size: 12px;
+	color: red;
+}
+.name_hidden{
+	top: 0px;
+	left: 75%;
+	position: absolute;
+	color: #666666;
+	font-size: 12px;
+	display: block;
+}
+.name_hidden>p{
+	margin-bottom: 0px;
+}
+.name_hidden2{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.name_hidden2>#img{
+	background: url(../img/reg_icons.png) -80px -24px;
+}
+.name_hidden2>#text{
+	float: left;
+}
+.name_hidden3{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.name_hidden3>#img{
+	background: url(../img/reg_icons.png) -80px -24px;
+}
+.name_hidden3>#text{
+	float: left;
+}
+.name_hidden4{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.name_hidden4>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px 0px;
+}
+.name_hidden5{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.name_hidden5>#img{
+	background: url(../img/reg_icons.png) -80px -24px;
+}
+.name_hidden5>#text{
+	float: left;
+}
+.name_hidden6{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.name_hidden6>#img{
+	background: url(../img/reg_icons.png) -80px -24px;
+}
+.name_hidden6>#text{
+	float: left;
+}
+.phone_hidden{
+	top: 6px;
+	left: 75%;
+	position: absolute;
+	color: #666666;
+	font-size: 12px;
+	display: none;
+}
+.phone_hidden2{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.phone_hidden2>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.phone_hidden2>#text{
+	float: left;
+}
+.phone_hidden3{
+	top: 6px;
+	left: 75%;
+	position: absolute;
+	display: none;
+}
+.phone_hidden3>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px 0px;
+}
+.phone_hidden4{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.phone_hidden4>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.phone_hidden4>#text{
+	float: left;
+}
+.email_hidden{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.email_hidden>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.email_hidden>#text{
+	float: left;
+}
+.email_hidden2{
+	top: 6px;
+	left: 75%;
+	position: absolute;
+	display: none;
+}
+.email_hidden2>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px 0px;
+}
+.email_hidden3{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.email_hidden3>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.email_hidden3>#text{
+	float: left;
+}
+.dropdown>ul>li{
+	height: 20px;
+	line-height: 20px;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+.dropdown>ul>li:hover{
+	background-color: whitesmoke;
+}
+.dropdown>ul>li.active{
+	background-color:whitesmoke ;
+}
+
+.pass_hidden{
+	top: 6px;
+	left: 75%;
+	position: absolute;
+	display: none;
+}
+.pass_hidden>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px 0px;
+}
+.pass_hidden2{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.pass_hidden2>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.pass_hidden2>#text{
+	float: left;
+}
+
+.pass_hidden3{
+	top: 6px;
+	left: 75%;
+	position: absolute;
+	color: #666666;
+	display: none;
+	font-size: 12px;
+}
+.pass_hidden4{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.pass_hidden4>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.pass_hidden4>#text{
+	float: left;
+}
+.surepass_hidden{
+	top: 6px;
+	left: 75%;
+	position: absolute;
+	display: none;
+}
+.surepass_hidden>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px 0px;
+}
+.surepass_hidden2{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.surepass_hidden2>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.surepass_hidden2>#text{
+	float: left;
+}
+.surepass_hidden3{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.surepass_hidden3>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.surepass_hidden3>#text{
+	float: left;
+}
+.surepass_hidden4{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.surepass_hidden4>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.surepass_hidden4>#text{
+	float: left;
+}
+.agreement{
+	width: 370px;
+	margin: 0px auto;
+	height: 32px;
+	font-size: 16px;
+}
+.agreement .agree{
+	margin: 0px;
+	margin-top: 6px;
+	width: 20px;
+	height: 20px;
+	float: left;
+}
+.agreement i{
+	margin-left: 15px;
+	height: 32px;
+	line-height: 32px;
+	float: left;
+}
+.register{
+	margin-top: 15px;
+	text-align: center;
+}
+.register #register{
+	width: 180px;
+	background: whitesmoke;
+	color: #333333;
+	padding: 0 15px 0 20px;
+	display: inline-block;
+	border-radius: 10px;
+	white-space: nowrap;
+	border: 1px solid #999888;
+	height: 31px;
+    line-height: 31px;
+    overflow: hidden;
+    vertical-align: top;
+    text-align: center;
+}
+.register #register:hover{
+	background: white;
+	border: 1px solid #white;
+}
+.register button{
+	margin-right: 20px;
+}
+.register button.btn-danger{
+	width: 180px;
+	padding: 0 15px 0 20px;
+	height: 31px;
+    line-height: 31px;
+     overflow: hidden;
+    vertical-align: top;
+    text-align: center;
+    border-radius: 10px;
+}

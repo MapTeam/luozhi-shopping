@@ -1,0 +1,168 @@
+/*购物车*/
+.head{
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 30px;
+
+}
+tr{
+    border: 1px solid #d5d5d5;
+}
+hr{
+    width: 100%;
+}
+input[type="checkbox"]{
+  width: 20px;
+    height: 20px;
+
+}
+.allchecked-span{
+  margin-left: 20px;
+
+
+}
+.tr-h{
+    border: none;
+    width: 100%;
+    height: 65px;
+}
+.shangpin>div{
+	width: 50px;
+	height: 100px;
+	float: left;	
+}
+.shangpin>div>input{
+	margin-left: 15px;
+	margin-top: 40px;
+}
+.img{
+	margin-top: 10px;
+    width: 80px;height: 80px;
+    border-radius: 10px;
+}
+.tr-h td{
+    font-size: 14px;
+    color: #999999;
+}
+.tr-h>td:nth-child(1){
+    width: 160px;
+    color:#333333;
+}
+.tr-h>td:nth-child(2){
+    width: 410px;
+}
+.tr-h>td:nth-child(3){
+    width: 115px;
+}
+.tr-h>td:nth-child(4){
+    width: 220px;
+}
+.tr-h>td:nth-child(5){
+    width: 110px;
+
+}
+.tr-h>td:nth-child(6){
+    width: 100px;
+}
+.tongji{
+    height: 40px;
+    background: #eeeeee;
+}
+.allgoods{
+
+}
+.yh-img{
+    display: block;
+    margin-right: 20px;
+    width: 44px;
+    height: 20px;
+    background: url("../img/cart.png") 0 -36px;
+    float: left;
+}
+.free{
+    color: rgb(211,58,49);
+}
+.sum{
+    font-size:  14px;
+    color: rgb(211,58,49);
+}
+.sum-count{
+
+}
+
+.jiesuan-count{
+  font-size: 20px;
+}
+
+.jiesuan{
+	width: 100%;
+	cursor: pointer;
+	border: 1px solid #d5d5d5;
+}
+.jiesuan:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.jiesuan span{
+    color: rgb(211,58,49);
+    line-height: 50px;
+    float: right;
+}
+.jiesuan div{
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    background: #aaaaaa;
+    float: right;
+}
+.jiesuan div>a{
+    color: white;
+    text-decoration: none;
+}
+.shoping{
+    height: 100px;
+}
+    /*数量加减*/
+#product_num_decbtn{
+    width: 34px;
+    height: 30px;
+    border: #ADADAD solid 1px;
+    color: #C0C0C0;
+    text-align: center;
+    float: left;
+    font-size: 15px;
+    line-height: 30px;
+    cursor: pointer;
+
+}
+#product_num_text{
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+    border-top: #ADADAD solid 1px;
+    border-bottom: #ADADAD solid 1px;
+    float: left;
+}
+#product_num_addbtn{
+    width: 34px;
+    height: 30px;
+    border: #ADADAD solid 1px;
+    text-align: center;
+    float: left;
+    font-size: 15px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.add,.reduce{
+	margin-top:-1px;
+}
+.desc>p{
+	margin-right: 10px;
+}

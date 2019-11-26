@@ -1,0 +1,138 @@
+/*登录*/
+.modal-dialog{
+	width: 530px;
+	/*height: 313px;*/
+	margin-top: 130px;
+}
+.modal-content{
+	width: 530px;
+	/*height: 313px;*/
+	border-radius: 4px;
+    box-shadow: 0 5px 16px rgba(0,0,0,0.8);
+    border: none;
+}
+.modal-header{
+	margin: 0px;
+	padding: 0px;
+	width: 530px;
+	height: 39px;	
+    position: relative;
+    border-bottom: 1px solid #191919;
+    border-radius: 4px 4px 0 0;
+    background: #2d2d2d;
+    line-height: 30px;
+}
+.modal-title{
+	padding-right: 45px;
+    margin: 0;
+    height: 38px;
+    line-height: 38px;
+    padding-left: 18px;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    background-position: 50% 0;
+}
+.close{
+	position: absolute;
+    top: 16px;
+    right: 20px;
+    background: url(../img/close.jpg) no-repeat;
+    width: 10px;
+    height: 10px;
+    overflow: hidden;
+    text-indent: -9999px;
+    cursor: pointer;
+    background-position: -15px -15px;
+    line-height: 20px;
+}
+
+.modal-body{
+	padding: 0px;
+}
+.modal-body>.row1{
+	padding: 40px 0 43px;
+    width: 245px;
+    /*height: 224px;*/
+    margin: 0 auto;
+}
+.user{
+	/*position: relative;*/
+    height: 30px;
+    margin: 0;
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+    float: right;
+}
+.password{
+	margin-top: 15px;
+	height: 30px;
+}
+.form-inline{
+	height: 30px;
+	line-height: 30px;
+}
+.loginpass{
+	/*position: relative;*/
+    height: 30px;
+    margin: 0;
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+    float: right;
+}
+.auto{
+	width: 100%;
+	height: 16px;
+	line-height: 16px;
+	margin-top: 18px;
+	color: #666;
+	font-size: 12px;
+}
+#autologin{
+	height: 16px;
+	margin-top: 0px;
+}
+.lab{
+	margin: 0px;
+	height: 14px;
+	font-weight: normal;
+	
+}
+.lab span{
+    color: #333;
+	margin: 0 12px 0 0;
+	vertical-align: top;
+	
+}
+.forget{
+	float: right;
+ 	vertical-align: top;
+}
+.login_btn{
+	margin-top: 20px;
+}
+.login_btn button{
+	width:220px ;
+	height: 31px;
+}
+.modal-footer{
+	margin: 0px;
+	padding: 0px;
+	height: 50px;
+	line-height: 50px;
+}
+.modal-footer button{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+	width: 80px;
+	height: 30px;
+	padding: 0 15px 0 20px;
+	background: whitesmoke;
+	color: #333333;
+	border-radius: 10px;
+	white-space: nowrap;
+	border: 1px solid #999888;
+	
+}

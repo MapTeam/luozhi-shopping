@@ -1,0 +1,231 @@
+/*主页*/
+
+/*banner*/
+.banner{
+	width: 100%;
+	height: 450px;
+	position: relative;
+}
+.banner>ul{
+	width: 100%;
+	height: 100%;
+}
+.banner>ul>li{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 3;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.banner>ul>li.active{
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+.banner>ul>li>a>img{
+	width: 100%;
+	height: 100%;
+}
+.banner>a{
+	opacity: 0.5;
+	position: absolute;
+	top: 50%;
+	margin-top: -40px;
+	z-index: 5;
+}
+.banner>a:hover{
+	opacity: 0.8;
+}
+.next{
+	right: 0px;
+}
+.prev{
+	left: 0px;
+}
+.banner>.number{
+	position: absolute;
+	right: 50%;
+	margin-right: -21px;
+	bottom: 20px;
+	z-index: 5;
+}
+.banner>.number>span{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 2px;
+	background: white;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.banner>.number>span.active{
+	background: deepskyblue;
+}
+@media screen and (max-width:768px){
+	.banner{
+		height: 300px;
+	}
+}
+
+/*tab*/
+.tab{
+	border-bottom: 1px solid #DDDDDD;
+}
+.tab-content{
+	height: 80px;
+}
+.tab-content>ul{
+	text-align: center;
+}
+.tab-content>ul>li>a{
+	text-decoration: none;
+}
+.tab-content>ul>li>a>img{
+	padding-bottom: 16px;
+}
+.tab-content>ul>li>a>span{
+	display: inline-block;
+    max-width: 190px;
+    height: 80px;
+    padding-left: 12px;
+    line-height: 80px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+}
+.line{
+	display: inline-block;
+    height: 48px;
+    width: 1px;
+    margin: 16px 0 16px 0;
+    background-color: #000000;
+    opacity: 0.1;
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+	float: right;
+}
+.fadein-right{
+	height: 80px;
+	display: inline-block;
+}
+.fadein-right>p{
+	padding-top: 20px;
+    max-width: 190px;
+    padding-left: 12px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333333;
+}
+.count,.jifen{
+	display: inline-block;
+    font-size: 14px;
+    color: #d33a31;
+}
+
+/*右边的浮动竖条*/
+.zTi{
+	margin-top: 50px;
+	position: relative;
+}
+.zTi-rigth{
+	width: 62px;
+	height: 335px;
+	border: 1px solid #000000;
+	position: absolute;
+	right: 8%;top: 0;
+	overflow: hidden;
+	text-align: center;
+	z-index: 20;
+	background: white;
+}
+.zTi-rigth>ul>li{
+	height: 45px;
+	font-size: 12px;
+	border-bottom: 1px solid #DDDDDD;
+	margin-top: 15px;
+	color: #888888;
+}
+.zTi-rigth>ul>li>a{
+	text-decoration: none;
+	color: #888888;
+}
+.ding-cat{
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: url(../img/totop.png) 0 -72px;
+}
+.kefu{
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: url(../img/totop.png) 0 -96px;
+}
+.totop{
+	height: 30px;
+	background: url(../img/totop.png) -70px 0px;
+	transition: all 0.5s; 
+}
+.totop:hover{
+	background: url(../img/totop.png) -130px 0px;
+}
+.totop-span{
+	display: block;
+	height: 30px;
+}
+
+
+
+
+.thumbnail{
+	text-align: center;
+	border: none;
+}
+.thumbnail>a{
+	text-decoration: none;
+	color: black;
+}
+.thumbnail:hover{
+	background: #EEEEEE;
+}
+.goods-name{
+    overflow: hidden;
+    width:100%; height: 20px; line-height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.goods-desc{
+    width:100%; height: 40px; line-height: 20px;
+    font-size: 13px;
+} 
+.goods-price{
+	color: red;
+}
+.loading{
+	cursor: pointer;
+    /*display: none;*/
+}
+.hot,.recommend{
+	margin-top: 50px;
+}
+.hot .hot-f{
+	font-size: 24px;
+	font-weight: bold;
+}
+.recommend .recommend-f{
+	font-size: 24px;
+	font-weight: bold;
+}
+#hot-goodsList{
+	margin-top: 30px;
+}
+#recommend-goodsList{
+	margin-top: 30px;
+}

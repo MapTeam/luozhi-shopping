@@ -1,0 +1,176 @@
+/*后台*/
+body{
+	font-family: "微软雅黑";
+}
+.back_left>ul{
+	cursor: pointer;
+}
+.back_left>ul>li{
+	line-height: 80px;
+	font-size: 20px;
+	padding-left: 40px;
+}
+.back_left>ul>li:hover{
+	border-radius: 10px;
+	background: #FFFFCC;
+}
+.back_right>div{
+	display: none;
+}
+.back_right .nowclick{
+	display: block;
+}
+/*订单管理*/
+/*头部显示*/
+#dingdan_title>li{
+	float: left;
+	cursor: pointer;
+	font-size: 20px;
+	margin: 20px;
+}
+#dingdan_control>div{
+	display: none;
+}
+#dingdan_control .dingdan_show{
+	display: block;
+}
+/*未发货块*/
+#dingdan_noput>li{
+	height: 80px;
+	border-bottom: #F0F0F0 solid 1px;
+}
+#dingdan_noput>li>span{
+	float: left;
+}
+#dingdan_noput>li>span>img{
+	margin: 10px;
+	width: 60px;
+	height: 60px;
+}
+#dingdan_noput_name{
+	width: 190px;
+	margin-top: 20px;
+	text-align: center;
+}
+#dingdan_noput_addr{
+	width: 190px;
+	margin-top: 20px;
+}
+#dingdan_noput_num{
+	width: 80px;
+	margin-top: 20px;
+}
+#dingdan_noput_color{
+	width: 80px;
+	margin-top: 20px;
+}
+#dingdan_noput_btn{
+	width: 100px;
+	margin-top: 15px;
+	padding-left: 30px;
+}
+/*已发货块*/
+#dingdan_put>li{
+	height: 80px;
+	border-bottom: #F0F0F0 solid 1px;
+}
+#dingdan_put>li>span{
+	float: left;
+}
+#dingdan_put>li>span>img{
+	margin: 10px;
+	width: 60px;
+	height: 60px;
+}
+#dingdan_put_name{
+	width: 190px;
+	margin-top: 20px;
+	text-align: center;
+}
+#dingdan_put_addr{
+	width: 190px;
+	margin-top: 20px;
+}
+#dingdan_put_num{
+	width: 80px;
+	margin-top: 20px;
+}
+#dingdan_put_color{
+	width: 80px;
+	margin-top: 20px;
+}
+#dingdan_put_condition{
+	text-align: center;
+	width: 100px;
+	margin-top: 20px;
+	
+}
+/*申请退货*/
+#dingdan_waitback>li{
+	height: 80px;
+	border-bottom: #F0F0F0 solid 1px;
+}
+#dingdan_waitback>li>span{
+	float: left;
+}
+#dingdan_waitback>li>span>img{
+	margin: 10px;
+	width: 60px;
+	height: 60px;
+}
+#dingdan_waitback_name{
+	width: 190px;
+	margin-top: 20px;
+	text-align: center;
+}
+#dingdan_waitback_result{
+	width: 190px;
+	margin-top: 20px;
+}
+#dingdan_waitback_yes{
+	margin-left: 10px;
+	margin-top: 10px;
+	float: left;
+	/*width: 80px;*/		
+}
+#dingdan_waitback_no{
+	margin-left: 10px;
+	/*width: 80px;*/
+	margin-top: 10px;
+}
+#dingdan_waitback_no_result{
+	margin-left: 10px;
+	width: 150px;	
+}
+#dingdan_waitback_no_result>textarea{
+	width: 150px;
+	height: 60px;
+}
+/*退款成功*/
+#dingdan_back>li{
+	height: 80px;
+	border-bottom: #F0F0F0 solid 1px;
+}
+#dingdan_back>li>span{
+	float: left;
+}
+#dingdan_back>li>span>img{
+	margin: 10px;
+	width: 60px;
+	height: 60px;
+}
+#dingdan_back_name{
+	width: 190px;
+	margin-top: 20px;
+	text-align: center;
+}
+#dingdan_back_result{
+	width: 190px;
+	margin-top: 20px;
+}
+#dingdan_back_yes{
+	margin-left: 10px;
+	margin-top: 20px;
+	padding-left: 140px;
+	width: 200px;		
+}

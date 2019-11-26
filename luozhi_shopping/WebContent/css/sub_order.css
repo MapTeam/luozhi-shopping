@@ -1,0 +1,441 @@
+/*提交订单*/
+a {
+    text-decoration: none;
+    color: #333;
+}
+.sub_banner {
+	min-height: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+.sub_banner .sub_block{
+	padding: 30px 0 19px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.g-bd .ma {
+    width: 100%;
+    margin: 0;
+}
+.m-address {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+.f-pr {
+    position: relative;
+    zoom: 1;
+}
+.m-address .bggray {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F5F5F5;
+}
+.m-address .bggray span {
+    margin-left: 20px;
+    color: #999;
+     line-height: 40px;
+}
+.m-address .head {
+    height: 26px;
+    line-height: 26px;
+    margin: 30px 0 25px 20px;
+}
+.f-ib {
+    display: inline-block;
+}
+.m-address .head i {
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    margin-right: 6px;
+    width: 18px;
+    height: 20px;
+}
+.m-address em, i {
+    font-style: normal;
+    text-align: left;
+    font-size: inherit;
+    color: #999;
+}
+.m-address i {
+   font-size: 20px;
+}  
+.m-address em{
+	line-height: 30px;
+} 
+.m-address .btn {
+	padding: 0px;
+    width: 66px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+}
+.m-address .btn-b {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.m-address a {
+    text-decoration: none;
+}
+.f-fs12 {
+    font-size: 12px;
+    /*color: #333333;*/
+}
+.f-mgl20 {
+    margin-left: 20px;
+}
+.m-address .msg {
+    height: 26px;
+    margin-left: 20px;
+}
+.f-thide {
+    word-wrap: normal;
+}
+.f-ib {
+    display: inline-block;
+}
+.m-address .msg .phone {
+    margin-left: 60px;
+}
+.m-address .myaddress {
+    height: 26px;
+    margin: 0 0 20px 20px;
+} 
+.m-address .myaddress p {
+    width: 850px;
+}
+.m-address .line {
+    bottom: 25px;
+    right: 214px;
+    width: 1px;
+    height: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.f-pa {
+    position: absolute;
+}
+.m-address .modify {
+    top: 100px;
+    right: 80px;
+}
+.f-blk {
+    display: block;
+    /*color: #333333;*/
+}
+.m-address .modify a {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.m-address .s-fcff {
+    color: #0c73c2;
+}
+.m-address .btn-b {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.f-mgt5 {
+    margin-top: 5px;
+}
+a.f-mgt5:hover{
+	color: #333333;
+}
+.m-msg .head {
+    margin: 50px 0 18px 0;
+    font-size: 16px;
+}
+.m-msg .body {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+.m-msg .bggray {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+    background-color: #F5F5F5;
+   color: #999;
+}
+.m-msg .bggray span {
+    height: 40px;
+    line-height: 40px;
+}
+.m-msg .intro {
+    width: 566px;
+    margin-left: 20px;
+}
+.f-fl {
+    float: left;
+}
+.m-msg .money {
+    width: 195px;
+    margin-left: 40px;
+}
+.m-msg .number {
+    width: 50px;
+    margin: 0 80px 0 0;
+}
+.m-msg .all {
+    width: 80px;
+    margin-left: 40px;
+}
+.m-msg li {
+    min-height: 117px;
+}
+.m-msg .pic {
+    width: 100px;
+    height: 117px;
+}
+.m-msg .pic img {
+    width: 80px;
+    height: 80px;
+    margin: 18px 0 0 20px;
+    background-color: #f9f9f9;
+}
+.m-msg .msg {
+    width: 466px;
+    height: 100%;
+    margin-left: 20px;
+}
+.m-msg .msg .name {
+    margin-top: 37px;
+}
+.m-msg .msg p {
+    width: 379px;
+}
+.m-msg .msg .attr {
+    margin-top: 5px;
+    color: #999;
+}
+.m-msg .price {
+    width: 195px;
+    line-height: 117px;
+    margin-left: 40px;
+}
+.m-msg .num {
+    width: 50px;
+    line-height: 117px;
+    margin: 0 80px 0 10px;
+}
+.m-msg .total {
+    width: 80px;
+    line-height: 117px;
+    margin-left: 34px;
+}
+.m-msg .line-bt {
+    margin-left: 20px;
+    width: 1058px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.f-mgt30 {
+    margin-top: 50px;
+}
+.u-price .line .pr {
+    min-width: 125px;
+}
+.u-price .line span {
+    height: 26px;
+    line-height: 26px;
+    font-size: 14px;
+    text-align: right;
+}
+.body-r {
+	height: 200px;
+    float: right;
+    text-align: right;
+    margin-top: -220px;
+    margin-right: 70px;
+}
+.u-price .tot {
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+.u-price .tot em {
+    font-size: 18px;
+    color: #d33a31;
+}
+.f-fs20 {
+    font-size: 20px;
+}
+.f-all span.pr.f-fr{
+	margin-left: 90px;
+}
+.send span.pr.f-fr{
+	margin-left: 97px;
+}
+.tot span.pr.f-fr{
+	margin-left: 90px;
+}
+
+.u-price .line .cp {
+    position: absolute;
+    top: 30px;
+}
+.no-used {
+    width: 200px;
+    height: 60px;
+    background-color: #f5f5f5;
+    text-align: center;
+    line-height: 60px;
+    border-color: #e5e5e5;
+    margin-top: 10px;
+    cursor: pointer;
+}
+}
+.m-coupon {
+	font-size: 14px;
+    position: absolute;
+    z-index: 99;
+    top: 30px;
+    border: 1px solid #f8e2e0;
+    cursor: pointer;
+}
+.protocol {
+	margin-top: 20px;
+    width: 250px;
+    height: 80px;
+}
+.protocol .checkbox {
+    display: inline-block;
+    width: 20px;
+    height: 20px !important;
+    border: 1px solid #ccc;
+}
+.protocol .de {
+    color: #ccc;
+    position: relative;
+    top: -5px;
+}
+.m-btmlay .paybtn {
+	position: relative;
+    width: 174px;
+    height: 50px;
+    margin: 5px 0 10px 0;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #d33a31;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+.inner {
+    margin-bottom: 24px;
+    line-height: 26px;
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+}
+
+
+/*右边的浮动竖条*/
+
+.zTi-rigth {
+	width: 62px;
+	height: 300px;
+	border: 1px solid #000000;
+	position: fixed;
+	right: 3%;
+	top: 34%;
+	overflow: hidden;
+	text-align: center;
+	z-index: 20;
+	background: white;
+}
+
+.zTi-rigth>ul>li {
+	height: 45px;
+	font-size: 12px;
+	border-bottom: 1px solid #DDDDDD;
+	margin-top: 15px;
+	color: #888888;
+}
+
+.zTi-rigth>ul>li>a {
+	text-decoration: none;
+	color: #888888;
+}
+
+.ding-cat {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: url(../img/totop.png) 0 -72px;
+}
+
+.kefu {
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: url(../img/totop.png) 0 -96px;
+}
+
+.totop {
+	display: none;
+	height: 30px;
+	background: url(../img/totop.png) -70px 0px;
+	transition: all 0.5s;
+}
+
+.totop:hover {
+	background: url(../img/totop.png) -130px 0px;
+}
+
+.totop-span {
+	display: block;
+	height: 30px;
+}
+/*点击提交订单*/
+.buy_order_sure{
+	display: none;
+	width: 500px;
+	height: 380px;
+	border-radius: 30px;
+	background: #E1E2E3;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+}
+.buy_order_sure>h1{
+	font-size: 30px;
+	text-align: center;
+	margin-top: 40px;
+	color: #3C7A38;
+}
+.buy_order_sure>div{
+	text-align: center;
+	font-weight: bold;
+}
+.buy_order_sure>div>h2{
+	font-size: 20px;
+}
+.buy_order_sure>div>h3{
+	color: #C7254E;
+}
+.buy_order_sure>div>h4{
+	font-weight: bold;
+}
+.buy_order_sure>div>a{
+	cursor: pointer;
+}
+.buy_order_sure>span{
+	margin-left: 130px;
+}
+.buy_order_sure>span .buyit{
+	margin-top: 20px;
+	width: 150px;
+	margin-left: 10px;
+	margin-right:10px;
+}
+.buy_order_sure>span .cancelbuy{
+	margin-top: 20px;
+	width: 50px;
+	margin-left: 10px;
+	margin-right:10px;
+	opacity: 0.8;
+}

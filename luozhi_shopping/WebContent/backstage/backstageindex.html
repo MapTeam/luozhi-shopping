@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>后台管理</title>	
+		<link rel="stylesheet" href="../css/bootstrap.css" />
+		<link rel="stylesheet" href="../css/base.css" />
+		<link rel="stylesheet" href="../css/backstageindex.css" />
+	</head>
+	<body>
+		<!--头部-->
+		<header>
+			<nav class="navbar navbar-default">
+				<div class="container">
+					<div class="navbar-head navbar-left">
+						<a href="../home.html" class="navbar-brand">
+							<img src="../img/logo.png" class="logo"/>
+							<!--<span id="logo-font">
+								洛枳商城
+							</span>-->
+						</a>					
+					</div>					
+				</div>
+			</nav>
+		</header>
+		<!--顶部-->		
+		<section>
+			<div class="container">
+				<div class="row" id="top">
+					<h4>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="../home.html" class="col-md-1">首页</a>
+					<span class="top_title">
+						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;后台管理</span>
+					</span>
+				    </h4>
+				</div>
+				 <hr  class="row"/>
+			</div>
+		</section>
+	</body>
+	
+	
+	
+	<!--左边选择块：-->
+	<section>
+		<div class="container">
+		<div class="col-lg-4 back_left">
+			<ul>
+				<li style="border-radius: 10px;background: #FFFFCC;">订单管理</li>
+				<li>客户中心</li>
+				<li>产品管理</li>
+				<li>财务管理</li>
+				<li>统计分析</li>
+			</ul>
+		</div>
+		<div class="col-lg-8 back_right" >
+			<!--这是订单管理块-->
+			<div class="nowclick" id="dingdan_control">
+				<ul id="dingdan_title" class="row">
+					<li style="font-weight: bold;">未发货</li>
+					<li>已发货</li>
+					<li>申请退货</li>
+					<li>已退货</li>
+				</ul>
+				<hr class="row" />
+				<div class="dingdan_show">
+				<!--未发货块-->
+				<ul id="dingdan_noput" class="row">
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_noput_name">
+							这是一个商品
+						</span>
+						<span  id="dingdan_noput_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
+						<span id="dingdan_noput_num">数量：<span>2</span></span>
+						<span id="dingdan_noput_color">颜色：<span>白色</span></span>
+						<span id="dingdan_noput_btn">
+							<button class="btn btn-default">发货</button>
+						</span>
+					</li>
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_noput_name">
+							这是一个商品
+						</span>
+						<span  id="dingdan_noput_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
+						<span id="dingdan_noput_num">数量：<span>2</span></span>
+						<span id="dingdan_noput_color">颜色：<span>白色</span></span>
+						<span id="dingdan_noput_btn">
+							<button class="btn btn-default">发货</button>
+						</span>
+					</li>
+				  </ul>
+				</div>
+				<!--已发货块-->
+				<div>
+				  <ul id="dingdan_put" class="row">
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_put_name">
+							这是另一个商品
+						</span>
+						<span  id="dingdan_put_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
+						<span id="dingdan_put_num">数量：<span>1</span></span>
+						<span id="dingdan_put_color">颜色：<span>红色</span></span>
+						<span id="dingdan_put_condition">
+						    状态：<sapn>已发货</span>
+						</span>
+					</li>
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_put_name">
+							这是另一个商品
+						</span>
+						<span  id="dingdan_put_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
+						<span id="dingdan_put_num">数量：<span>1</span></span>
+						<span id="dingdan_put_color">颜色：<span>红色</span></span>
+						<span id="dingdan_put_condition">
+						    状态：<sapn>已发货</span>
+						</span>
+					</li>
+				  </ul>
+				</div>
+				<!--申请退款块-->
+				<div>
+				  <ul id="dingdan_waitback" class="row">
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_waitback_name">
+							商品
+						</span>
+						<span  id="dingdan_waitback_result">原因：<span>不想买了</span></span>
+						<span id="dingdan_waitback_yes"><button class="btn btn-success">同意</button></span>
+						<span id="dingdan_waitback_no"><button class="btn btn-danger">拒绝</button></span>
+						<span id="dingdan_waitback_no_result">
+						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
+						</span>
+					</li>
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_waitback_name">
+							商品
+						</span>
+						<span  id="dingdan_waitback_result">原因：<span>不想买了</span></span>
+						<span id="dingdan_waitback_yes"><button class="btn btn-success">同意</button></span>
+						<span id="dingdan_waitback_no"><button class="btn btn-danger">拒绝</button></span>
+						<span id="dingdan_waitback_no_result">
+						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
+						</span>
+					</li>
+				  </ul>
+				</div>
+				<!--已退款快-->
+				<div>
+			 	  <ul id="dingdan_back" class="row">
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_back_name">
+							商品
+						</span>
+						<span  id="dingdan_back_result">原因：<span>不想买了</span></span>
+						<span id="dingdan_back_yes">退款成功</span>
+						<!--<span id="dingdan_back_no"><button class="btn btn-danger">拒绝</button></span>
+						<span id="dingdan_back_no_result">
+						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
+						</span>-->
+					</li>
+					<li>
+						<span><img src="../img/shuma.png"/></span>
+						<span id="dingdan_back_name">
+							商品
+						</span>
+						<span  id="dingdan_back_result">原因：<span>不想买了</span></span>
+						<span id="dingdan_back_yes">退款成功</span>
+						<!--<span id="dingdan_back_no"><button class="btn btn-danger">拒绝</button></span>
+						<span id="dingdan_back_no_result">
+						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
+						</span>-->
+					</li>
+				  </ul>
+				</div>
+			</div>
+			<!--这是客户中心块-->
+			<div>
+				<p>这是客户中心块</p>
+			</div>
+			<!--这是产品管理块-->
+			<div>
+				<p>这是产品管理块</p>
+			</div>
+			<!--这是财务管理块-->
+			<div>
+				<p>这是财务管理块</p>
+			</div>
+			<!--这是统计分析块-->
+			<div>
+				<p>这是统计分析块</p>
+			</div>
+		</div>
+		</div>
+	</section>
+	
+</html>
+<script type="text/javascript" src="../js/jquery.min.js" ></script>
+<script type="text/javascript" src="../js/bootstrap.js" ></script>
+<script type="text/javascript" src="../js/base.js" ></script>
+<script type="text/javascript" src="../js/backstageindex.js" ></script>

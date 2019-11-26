@@ -1,0 +1,262 @@
+/*默认样式*/
+*{
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+img{
+	border: none;
+	vertical-align: bottom;
+}
+
+/*头部css*/
+.navbar{
+	background: white;
+	margin-bottom: 0;
+}
+.logo{
+	width: 120px;height: 40px;
+	margin-top: -10px;
+	float: left;
+}
+#logo-font{
+	margin-left: 20px;
+	float: left;
+	font-family: "仿宋";
+	font-size: 25px;
+	color: black;
+	font-weight: 700;
+}
+.searchbox{
+	padding: 0px 0px;
+	margin-top: 10px;
+	height: 30px;
+	border-radius: 15px;
+	border:solid 1px #CCCCCC;
+	outline: none;
+    font-size: 12px;
+	color: #333;
+	float: left;
+}
+.search-tubiao{
+	background: #ffffff;
+    display: block;
+    color: #999;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    line-height: 20px;
+    float: left;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+.search{
+	width: 80%;
+	outline: none;
+	border: 0px;
+	margin-top: 5px;
+}
+.shoppingCat{
+	background: #ffffff;
+    display: block;
+    color: #999;
+    width: 90px;
+    height: 50px;
+    line-height: 20px;
+    float: left;
+    font-size: 25px;
+}
+.cat{
+	float: left;
+}
+.badge{
+	float: left;
+	background: red;
+}
+@media screen and (max-width:768px){
+	.collapse{
+		z-index: 20;
+	}
+	.collapse>ul>li{
+		display: block;
+		height: 40px;
+	}
+}
+.username-li{
+	line-height: 50px;
+}
+.login-a{
+	cursor: pointer;
+}
+
+
+
+
+.div-from{
+	position: absolute;
+}
+.form-heid{
+	display: none;
+	width: 100%;
+	background: white;
+	position: absolute;
+	left: 0;top: 35px;
+	z-index: 15;
+	box-shadow: 0px 0px 10px #999999;
+}
+.form-heid>ul>li>a{
+	text-decoration: none;
+	font-size: 16px;
+	line-height: 32px;
+	font-weight: 550;
+	color: #999999;
+	padding-left: 20px;
+}
+.form-heid>ul>li:hover{
+	background: #EEEEEE;
+}
+.title1{
+	background: #EEEEEE;
+	border-bottom: 1px solid #DDDDDD;
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: 550;
+	padding-left: 20px;
+}
+
+
+
+/*底部*/
+footer{
+	font-size: 12px;
+	height: 120px;
+	background: #EEEEEE;
+	margin-top: 100px;
+}
+.footer-left{
+	height: 120px;
+}
+.footer-right{
+	height: 120px;
+}
+.footer-left-p1{
+	margin-top: 40px;
+}
+.footer-left-p1 a{
+	color: #999999;
+}
+.footer-right>ul{
+	height: 70px;
+	margin-top: 30px;
+}
+.footer-right>ul>li{
+	float: right;
+    width: 60px;
+    height: 70px;
+    margin-left: 30px;
+  
+}
+.footer-right>ul>li>a.a1{
+	display: block;
+	height: 100%;
+	background: url(../img/foot_enter.png) no-repeat -60px -80px;
+}
+.footer-right>ul>li>a.a2{
+	display: block;
+	height: 100%;
+	background: url(../img/foot_enter.png) no-repeat 0px -80px;
+}
+.footer-right>ul>li>a.a3{
+	display: block;
+	height: 100%;
+	background: url(../img/foot_enter.png) no-repeat;
+}
+.footer-right>ul>li>a.a4{
+	display: block;
+	height: 100%;
+	background: url(../img/foot_enter.png) no-repeat -60px 0px;
+}
+
+
+
+/*登录成功*/
+#myNav>.person{
+	float: left;
+}
+#myNav>ul>li{
+	z-index: 99;
+    width: 80px;
+    height: 56px;
+}
+.person{
+	display: none;
+	 width: 100px;
+     height: 56px;
+     padding-top: 10px;
+	 line-height: 0px;
+}
+.person>img{
+	margin-left: 20px;
+	width: 40px;
+    height: 40px;
+	border-radius: 50%;
+	float: left;
+}
+.person .downchild{
+	line-height: 35px;
+	margin-left: 15px;	
+}
+.list{
+	display: none;
+	width: 160px;
+	height: 200px;
+	background: white;
+	position: absolute;
+	left: 225px;
+	top: 50px;
+	z-index: 99;
+	box-shadow: 0px 0px 10px #999999;
+	
+	
+}
+.list>ul>li{
+	height: 40px;
+	font-size: 12px;
+	padding-left: 24px;
+	line-height: 40px;
+	background-color: #fff;
+	cursor: pointer;
+}
+.list>ul>li>a{
+	text-decoration: none;
+	font-family: "宋体";
+	height: 40px;
+	line-height: 40px;
+	padding-left: 1px;
+	color: #333;
+}
+/*.glyphicon{
+	float: left;
+}*/
+
+.list>ul>li:hover{
+	background: whitesmoke;
+	
+}
+
+.myorder,.address,.logout,.mainside,.coupon{
+    font-size: 20px;
+    line-height: 40px;
+    margin-right: 10px;
+    float: left;
+}
+.hr{
+	margin: 0px;
+	padding: 0px;
+}
