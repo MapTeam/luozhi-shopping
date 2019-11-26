@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
 <link rel="stylesheet" type="text/css" href="css/home.css"/>
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
-<title>Home</title> 
+<title>Home</title>  
 </head>
 <body>
 	<!--头部-->
