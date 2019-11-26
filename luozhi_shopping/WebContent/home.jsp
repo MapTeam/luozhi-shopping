@@ -224,18 +224,17 @@
 				<!--商品-->
 				<div class="row" id="recommend-goodsList">
 					<c:forEach items="${list1 }" var="p">
-					<div class="col-md-3">
-					     <div class="thumbnail">
-					        	<a href="">
-							        <img src="${p.zpicture}"/>
-							        <caption>
-							          <p class="goods-name">${p.gname}</p>
-							          <p class="goods-price">¥${p.gprice}</p>
-							        </caption>
-						        </a>
-						         <button class="btn btn-info">加入购物车</button>
-					      </div>
-				    </div>
+						<div class="col-md-3">
+						     <div class="thumbnail">
+						        	<a href="IntroudceServlet?gid=${p.gid }">
+								        <img src="${p.zpicture}"/>
+								        <caption>
+								          <p class="goods-name">${p.gname}</p>
+								          <p class="goods-price">¥${p.gprice}</p>
+								        </caption>
+							        </a>
+						      </div>
+					    </div>
 					</c:forEach>
 					 <!--<div class="col-md-3">
 					     <div class="thumbnail">
