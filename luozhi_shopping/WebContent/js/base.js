@@ -1,7 +1,10 @@
 $('.search').focus(function() {
 	$('.form-heid').show();
+	$('.search').mousemove(function(){
+		$('.form-heid').show();
+	});
 });
-$('.search').blur(function() {
+$('.form-heid').mouseleave(function() {
 	$('.form-heid').hide();
 });
 
@@ -45,7 +48,13 @@ checkLogin();
 		var code=event.keyCode;
 		var val=$('.search').val();
 //		console.log(val);
-		if(code==13&&val!=""){
+		if(code==13&&val!=null){
+			window.location.href="LikeSelectServlet?val="+val;
+		}		
+	});
+	$('.title1').siblings('li').click(function(){
+		var val=$(this).text()
+		if (val!="") {
 			window.location.href="LikeSelectServlet?val="+val;
 		}
 	});
