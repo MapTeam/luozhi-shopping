@@ -33,6 +33,23 @@ function checkLogin() {
 	};
 };
 checkLogin();
+//模糊查询
+(function() {
+	$('.search-tubiao').click(function() {
+		var val=$('.search').val();
+		if (val!="") {
+			window.location.href="LikeSelectServlet?val="+val;
+		}
+	});
+	$('.search').keyup(function(){
+		var code=event.keyCode;
+		var val=$('.search').val();
+//		console.log(val);
+		if(code==13&&val!=""){
+			window.location.href="LikeSelectServlet?val="+val;
+		}
+	});
+})();
 
 //登录
 (function() {
