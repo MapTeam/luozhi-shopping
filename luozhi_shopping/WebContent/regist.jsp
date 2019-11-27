@@ -48,7 +48,8 @@
 							</ul>
 						</div>
 					</div>
-					
+					<!--隐藏登录后被挤的信息-->	
+					<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
