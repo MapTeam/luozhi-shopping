@@ -19,7 +19,7 @@ public class GoodsOrder implements java.io.Serializable {
     private Integer uid;
 
     /** 出货单id */
-    private int outgoodid;
+    private Integer outgoodid;
 
     /** 商品数量 */
     private Integer goodsnum;
