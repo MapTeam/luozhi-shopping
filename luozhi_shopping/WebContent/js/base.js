@@ -1,9 +1,13 @@
 $('.search').focus(function() {
 	$('.form-heid').show();
+	$('.search').mousemove(function(){
+		$('.form-heid').show();
+	});
 });
-$('.search').blur(function() {
+$('.form-heid').mouseleave(function() {
 	$('.form-heid').hide();
 });
+
 
 ////检查是否登录
 //function checkLogin() {
@@ -34,6 +38,32 @@ $('.search').blur(function() {
 //};
 //checkLogin();
 
+
+//模糊查询
+(function() {
+	$('.search-tubiao').click(function() {
+		var val=$('.search').val();
+		if (val!="") {
+			window.location.href="LikeSelectServlet?val="+val;
+		}
+	});
+	$('.search').keyup(function(){
+		var code=event.keyCode;
+		var val=$('.search').val();
+//		console.log(val);
+		if(code==13&&val!=null){
+			window.location.href="LikeSelectServlet?val="+val;
+		}		
+	});
+	$('.title1').siblings('li').click(function(){
+		var val=$(this).text()
+		if (val!="") {
+			window.location.href="LikeSelectServlet?val="+val;
+		}
+	});
+})();
+
+
 //登录
 (function() {
 	$('#login-btn').click(function() {
@@ -51,7 +81,6 @@ $('.search').blur(function() {
 			password: pwd,
 		}, function(re) {
 			var obj = JSON.parse(re);
-			console.log(re);
 			//分两种情况  1001失败  1000成功
 			if(obj.code == 1001) {
 				$('.loginmsg').html("账号或密码错误！");

@@ -89,8 +89,8 @@ $(document).scroll(function(){
 	});
 	$('#price_ok').click(function(){
 		if (''!=$('#low_price').val()&&''!=$('#big_price').val()) {
-			console.log(big);
-			console.log(low);
+//			console.log(big);
+//			console.log(low);
  	     	if (parseInt(big)<parseInt(low)){
  	     		$('#big_price').val(low);
  	     		$('#low_price').val(big);

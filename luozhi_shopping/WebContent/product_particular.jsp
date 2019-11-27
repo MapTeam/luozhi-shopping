@@ -34,7 +34,7 @@
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form action="#" method="" class="">
+						<form action="LikeSelectServlet?val="+$('.search').val(); method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
@@ -131,8 +131,8 @@
 		                 </button>
 					</div>
 					<div class="navbar-collapse collapse navbar-right" id="myShopping">
-						<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;" id="shop_current_little" data-toggle="modal" data-target="#buy_order">立即购买</button>
-				    	<button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;" id="add_shopping_car_little"><span  class="glyphicon glyphicon-shopping-cart">加入购物车</span></button>
+						<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#buy_order">立即购买</button>
+				    	<button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car_little"><span  class="glyphicon glyphicon-shopping-cart">加入购物车</span></button>
 					</div>
 				</div>
 			</nav>
@@ -252,9 +252,9 @@
 				    			<div class="row">
 				    			   <p  id="product_content_number">数量 :</p>
 				    		       <div id="product_content_number_btn">
-				    			      <i id="product_num_decbtn"><span class="glyphicon glyphicon-minus"></span></i>
+				    			      <i id="product_num_decbtn"><span style="line-height: 25px" class="glyphicon glyphicon-minus"></span></i>
 				    			      <input id="product_num_text" type="text" value="1"/>
-				    			      <i id="product_num_addbtn"><span class="glyphicon glyphicon-plus"></span></i>
+				    			      <i id="product_num_addbtn"><span style="line-height: 25px" class="glyphicon glyphicon-plus"></span></i>
 				    		        </div>
 				    		    </div>
 				    		</span>
@@ -274,8 +274,8 @@
 				    	<li style="margin-top: 20px;">
 				    		<span>
 				    			<div class="row">
-				    				<button  style="width: 172px; height: 50px;font-size: 20px;" id="shop_current" data-toggle="modal" data-target="#buy_order">立即购买</button>
-				    		        <button style="width: 172px; height: 50px;background: #C9302C;border: none;color: white;font-size: 20px;" id="add_shopping_car"><span  class="glyphicon glyphicon-shopping-cart">加入购物车</span></button>
+				    				<button  style="width: 172px; height: 50px;font-size: 20px;float: left;" id="shop_current" data-toggle="modal" data-target="#buy_order">立即购买</button>
+				    		        <button style="width: 172px; height: 50px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car"><span  class="glyphicon glyphicon-shopping-cart" >加入购物车</span></button>
 				    			</div>
 				    		</span>
 				    		
