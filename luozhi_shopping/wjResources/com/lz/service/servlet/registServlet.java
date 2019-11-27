@@ -19,6 +19,7 @@ import com.lz.dao.impl.registDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.GoodsCar;
 import com.lz.pojo.User;
+import com.lz.util.Md5;
 
 import net.sf.json.JSONObject;
 
@@ -46,35 +47,36 @@ public class registServlet extends HttpServlet {
 		String reg_user ="^[a-z0-9_]{3,20}$";
 		String reg_email="^[a-zA-Z0-9_-]+(@qq.com|@163.com|@sina.com|@139.com|@126.com)$";
 		String reg_pass= "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";
-//		if(uname==""||uname==null) {
-//			System.out.println("aa");
-//		}
-		if (uname.matches(reg_user)&& mail.matches(reg_email)&&pass.matches(reg_pass)) {
-			User u = new User();
-			u.setEmail(mail);
-			u.setUname(uname);
-			u.setCredits(0);
-			u.setRegistdate(new Date());
-			u.setUpicture("11");
-			u.setUpwd(pass);
-			Connection conn = DBConnection1.getConnection();
-			boolean flag2 = bdao.insertObject(conn, u);
-			GoodsCar gcar = new GoodsCar(); 
-			u = rdao.registSelectByEmail(mail);
-			gcar.setUid(u.getUid());
-			boolean flag1 = bdao.insertObject(conn, gcar);
-			if(flag1&&flag2) {
-				jo.put("code", 0);
-				out.write(jo.toString());
-				out.flush();
-				out.close();
-			}else {
-				jo.put("code", 1);
-				out.write(jo.toString());
-				out.flush();
-				out.close();
+
+		if(uname!=null||pass!=null||mail!=null) {
+			if (uname.matches(reg_user)&& mail.matches(reg_email)&&pass.matches(reg_pass)) {
+				String password=Md5.md5(pass);
+				User u = new User();
+				u.setEmail(mail);
+				u.setUname(uname);
+				u.setCredits(0);
+				u.setRegistdate(new Date());
+				u.setUpicture("11");
+				u.setUpwd(password);
+				Connection conn = DBConnection1.getConnection();
+				boolean flag2 = bdao.insertObject(conn, u);
+				GoodsCar gcar = new GoodsCar(); 
+				u = rdao.registSelectByEmail(mail);
+				gcar.setUid(u.getUid());
+				boolean flag1 = bdao.insertObject(conn, gcar);
+				if(flag1&&flag2) {
+					jo.put("code", 0);
+					out.write(jo.toString());
+					out.flush();
+					out.close();
+				}else {
+					jo.put("code", 1);
+					out.write(jo.toString());
+					out.flush();
+					out.close();
+				}
+				DBConnection1.close(conn);
 			}
-			DBConnection1.close(conn);
 		}
 		
 		
