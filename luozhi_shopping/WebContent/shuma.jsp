@@ -1,14 +1,15 @@
 <%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>数码</title>
-<link rel="stylesheet" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
-<link rel="stylesheet" href="css/ip_around.css" />
+<link rel="stylesheet" type="text/css" href="css/shuma.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
 </head>
 <%
@@ -31,7 +32,7 @@ if(cookie!=null){
 	pageContext.setAttribute("upwd", upwd);
 	pageContext.setAttribute("check", check);
 %>
-	<body>
+<body>
 		<!--头部-->
 		<header>
 			<nav class="navbar navbar-default">
@@ -126,9 +127,13 @@ if(cookie!=null){
 								</c:if>
 						</div>
 					</div>
+					
 				</div>
 			</nav>
 		</header>
+		<!--隐藏登录后被挤的信息-->	
+		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
+		
 		<!--顶部-->		
 		<section>
 			<div class="container">
@@ -144,81 +149,43 @@ if(cookie!=null){
 			</div>
 		</section>
 		<section>
-	      <div class="container">
-            <div class="row col-md-12" id="table">
-						<span id="table_left">品牌</span>
+		<div class="container">
+			<div class="row col-md-12" id="table">
+						<span id="table_left">品牌:</span>
 					    <ul class="table_center" id="table_type">
-					    	<!--<li><a>牛奶咖啡官方周边</a></li>
-					    	<li><a>网易</a></li>
-					    	<li><a>经典五大唱片</a></li>
-					    	<li><a>magicbus</a></li>
-					    	<li><a>MAGICBUS</a></li>
-					    	<li><a>CD专辑</a></li>
-					    	<li><a>网易云音乐</a></li>
-					    	<li><a>代鑫</a></li>
-					    	<li><a>幸运石</a></li>
-					    	<li><a>BBOM</a></li>
-					    	<li><a>Fools Garden</a></li>
-					    	<li><a>多多西西</a></li>
-					    	<li><a>我们的少年时代</a></li>
-					    	<li><a>洛斐/Lofree</a></li>
-					    	<li><a>艾漫</a></li>
-					    	<li><a>陈楚生</a></li>
-					    	<li><a>果麦图书</a></li>
-					    	<li><a>孩之宝</a></li>
-					    	<li><a>沐铭雅韵</a></li>
-					    	<li><a>Fate</a></li>
-					    	<li><a>银魂</a></li>
-					    	<li><a>DUBO独播</a></li>
-					    	<li><a>漫踪</a></li>
-					    	<li><a>星尘</a></li>
-					    	<li><a>迪士尼</a></li>
-					    	<li><a>Fate</a></li>
-					    	<li><a>惊奇队长</a></li>
-					    	<li><a>刘瑞琦</a></li>
-					    	<li><a>雷霆沙赞</a></li>
-					    	<li><a>新裤子</a></li>
-					    	<li><a>彭磊</a></li>
-					    	<li><a>星球大战</a></li>
-					    	<li><a>上海彩虹合唱团</a></li>
-					    	<li><a>群星</a></li>
-					    	<li><a>善禧MRJ</a></li>
-					    	<li><a>加拿大Beeping Music Company</a></li>
-					    	<li><a>大黄蜂</a></li>
-					    	<li><a>沈嘉豪</a></li>
-					    	<li><a>胡辉</a></li>
-					    	<li><a>吴洁</a></li>
-					    	
+					    	<c:forEach items="${brands }" var="brand">
+					    		<li><a>${brand }</a></li>
+					    	</c:forEach>
 					    </ul>
 					    <span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>						
 				</div>
+				
 				<div class="row col-md-12" id="table" style="border-top: none;">
-						<span id="table_left">分类</span>
-					    <ul id="table_center">
-					    	<li><a>音乐人周边</a></li>
-					    	<li><a>图书音像</a></li>
-					    	<li><a>大热IP周边</a></li>
-					    	<li><a>云村吉祥物</a></li>					    	
+						<span id="table_left">分类:</span>
+					    <ul class="table_center">
+					    	<c:forEach items="${types }" var="type">
+					    		<li><a>${type }</a></li>
+					    	</c:forEach>
+					    </ul>
+				</div>
+				<div class="row col-md-12" id="table" style="border-top: none;">
+						<span id="table_left">价格:</span>
+					    <ul class="table_center">
+					    	<li><a>0~2999</a></li>
+					    	<li><a>3000~5998</a></li>
+					    	<li><a>5999~8999</a></li>
+					    	<li>
+					    		<a>自定义</a>
+					    		<input type="text" id="low_price" placeholder="¥"  />
+					    		<input type="text" id="big_price" placeholder="¥"  />
+					    		<input type="button" id="price_ok" value="确定"/>
+					    	</li>
+					    		
 					    </ul>
 					    <!--<span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>-->						
-            </div>	
-			<div class="row col-md-12" id="table" style="border-top: none;">
-					<span id="table_left">价格:</span>
-				    <ul class="table_center">
-				    	<li><a >0~2999</a></li>
-				    	<li><a>3000~5998</a></li>
-				    	<li><a>5999~8999</a></li>
-				    	<li>
-				    		<a>自定义</a>
-				    		<input type="text" id="low_price" value placeholder="¥"/>
-				    		<input type="text" id="big_price" value placeholder="¥"/>
-				    		<input type="button" id="price_ok" value="确定"/>
-				    	</li>
-				    		
-				    </ul>
-				    <!--<span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>-->						
+				</div>	
 			</div>	
-        </section>
+		</section>
 		<section  style="margin-top: 30px;">
 			<div class="container">
 			 	<div class="row" id="another_title">
@@ -229,6 +196,20 @@ if(cookie!=null){
 					</p>				
 				</div>
 				<div class="row" id="product">
+					<c:forEach items="${goods}" var="p">
+						<div class="col-md-3">
+						     <div class="thumbnail">
+						        	<a href="IntroudceServlet?gid=${p.gid }">
+								        <img src="${p.zpicture}"/>
+								        <caption>
+								          <p class="goods-name">${p.gname}</p>
+								          <p class="goods-price">¥${p.gprice}</p>
+								        </caption>
+							        </a>
+						      </div>
+					    </div>
+					</c:forEach>
+					
 					<!--<div class="col-md-3">
 						<img src="img/1.jpg"/>
 							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
@@ -391,18 +372,18 @@ if(cookie!=null){
 		                    <div class="form-inline">
 				                <div class="form-group">
 					                <label>用户：</label>
-					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
+					                <input type="text" class="form-control user" id="username" placeholder="请输入账号" value="${pageScope.uname }"/>
 				            	</div>
 				          	</div>
 			                <div class="form-inline password">
 					            <div class="form-group">
 					                <label>密码：</label>
-					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
+					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
 					            </div>
 						    </div>
 						    <div class="auto">
 						    	<label class="lab">
-					        		<input type="checkbox" id="autologin"/>
+					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
 					        		<span>自动登录</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
@@ -426,4 +407,4 @@ if(cookie!=null){
 <script  src="js/jquery.min.js" ></script>
 <script  src="js/bootstrap.js" ></script>
 <script src="js/base.js"></script>
-<script src="js/ip_around.js"></script>
+<script src="js/shuma.js"></script>

@@ -169,14 +169,14 @@ if(cookie!=null){
 							<em class="line"></em>
 						</li>
 						<li class="col-md-3">
-							<a href="ip_around.html">
+							<a href="ClassifyServlet?category1=1008002">
 								<img src="img/gou.png" />
 								<span class="">IP周边</span>
 							</a>
 							<em class="line"></em>
 						</li>
 						<li class="col-md-3">
-							<a href="shuma.html">
+							<a href="ClassifyServlet?category1=101000">
 								<img src="img/shuma.png" />
 								<span class="">数码影音</span>
 							</a>
@@ -367,7 +367,7 @@ if(cookie!=null){
 					         <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
-					        		<input type="checkbox" id="savepassword" checked="${pageScope.check }"/>
+					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
 					        		<span>保存密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>

@@ -308,7 +308,7 @@ if(cookie!=null){
 						    </div>
 						    <div class="auto">
 						    	<label class="lab">
-					        		<input type="checkbox" id="savepassword" checked="${pageScope.check }"/>
+					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
 					        		<span>保存密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>

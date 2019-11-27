@@ -63,6 +63,13 @@ public class LoginServlet extends HttpServlet {
 					upwdcookie.setMaxAge(7*24*60);
 					response.addCookie(unamecookie);
 					response.addCookie(upwdcookie);
+				}else{
+					Cookie unamecookie = new Cookie("uname", URLEncoder.encode(uname,"UTF-8"));
+					unamecookie.setMaxAge(0);
+					Cookie upwdcookie = new Cookie("upwd", URLEncoder.encode(upwd,"UTF-8"));
+					upwdcookie.setMaxAge(0);
+					response.addCookie(unamecookie);
+					response.addCookie(upwdcookie);
 				}
 				
 				//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
