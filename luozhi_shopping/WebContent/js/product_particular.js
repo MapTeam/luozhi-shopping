@@ -208,6 +208,8 @@ function init(){
  		$('#margnify_show').css({
  	        'background-image':'url(http://'+ $(this).val() +')'
  	        });
+ 		$('#prev').css("display","none");
+ 		$('#next').css("display","none");
 //		alert(choosecolor);
 //		if(choose==0){
 //			$('#type_button').css('background','#F35518');

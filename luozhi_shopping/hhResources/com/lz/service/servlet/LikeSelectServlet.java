@@ -48,13 +48,14 @@ public class LikeSelectServlet extends HttpServlet {
 			no = "1";//表示从首页跳转过来
 		}
 		pageNo = Integer.parseInt(no);
-		if(pageNo > maxPageNo){
+		if(pageNo > maxPageNo&&maxPageNo!=0){
 			pageNo = maxPageNo;
 		}
 		//存我们的当前页的页码
 		request.setAttribute("pageNo", pageNo);
 		//存我们的页面显示条数
-		request.setAttribute("pageSize", pageSize);		
+		request.setAttribute("pageSize", pageSize);	
+		
 		List<Goods> list=dao.selectGoodsByKey(key, pageNo, pageSize);
 		if(list.size()==0) {
 			request.setAttribute("msg", 0);
