@@ -46,6 +46,7 @@ img{
 .search-tubiao{
 	background: #ffffff;
     display: block;
+    cursor:point;
     color: #999;
     width: 20px;
     height: 20px;

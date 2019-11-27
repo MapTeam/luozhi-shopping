@@ -1,7 +1,10 @@
 $('.search').focus(function() {
 	$('.form-heid').show();
+	$('.search').mousemove(function(){
+		$('.form-heid').show();
+	});
 });
-$('.search').blur(function() {
+$('.form-heid').mouseleave(function() {
 	$('.form-heid').hide();
 });
 
@@ -33,6 +36,29 @@ function checkLogin() {
 	};
 };
 checkLogin();
+//模糊查询
+(function() {
+	$('.search-tubiao').click(function() {
+		var val=$('.search').val();
+		if (val!="") {
+			window.location.href="LikeSelectServlet?val="+val;
+		}
+	});
+	$('.search').keyup(function(){
+		var code=event.keyCode;
+		var val=$('.search').val();
+//		console.log(val);
+		if(code==13&&val!=null){
+			window.location.href="LikeSelectServlet?val="+val;
+		}		
+	});
+	$('.title1').siblings('li').click(function(){
+		var val=$(this).text()
+		if (val!="") {
+			window.location.href="LikeSelectServlet?val="+val;
+		}
+	});
+})();
 
 //登录
 (function() {
