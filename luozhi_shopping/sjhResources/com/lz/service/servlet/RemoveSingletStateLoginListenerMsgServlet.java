@@ -21,7 +21,9 @@ public class RemoveSingletStateLoginListenerMsgServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String str = request.getParameter("value");
-		request.getSession().removeAttribute(str);
+		if(str!=null&&!"".equals(str)){
+			request.getSession().removeAttribute(str);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

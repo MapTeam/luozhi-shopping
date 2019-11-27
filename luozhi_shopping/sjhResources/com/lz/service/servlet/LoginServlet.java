@@ -38,45 +38,47 @@ public class LoginServlet extends HttpServlet {
 		String upwd = request.getParameter("password");
 		//是否保存密码
 		String savepassword = request.getParameter("savepassword");
-		//new 一个登录的dao
-		LoginDaoImpl ldao = new LoginDaoImpl();
-		Connection conn = DBConnection1.getConnection();
-		User u = ldao.login(conn, uname, upwd);
-		DBConnection1.close(conn);
-		
-		PrintWriter out = response.getWriter();
-		if(u==null){
-			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1001,"loginmsg":"账号或密码错误"}
-			JSONObject jsonobj = new JSONObject();
-			jsonobj.put("code", 1001);
-			jsonobj.put("loginmsg", "账号或密码错误");
-			out.write(jsonobj.toString());
-			out.flush();
-			out.close();
-		}else{
-			//将密码与用户名存到cookie
-			if("true".equals(savepassword)){
-				Cookie unamecookie = new Cookie("uname", URLEncoder.encode(uname,"UTF-8"));
-				unamecookie.setMaxAge(7*24*60);
-				Cookie upwdcookie = new Cookie("upwd", URLEncoder.encode(upwd,"UTF-8"));
-				upwdcookie.setMaxAge(7*24*60);
-				response.addCookie(unamecookie);
-				response.addCookie(upwdcookie);
-			}
+		if(uname!=null&&!"".equals(uname)&&upwd!=null&&!"".equals(upwd)&&savepassword!=null&&!"".equals(savepassword)){
+			//new 一个登录的dao
+			LoginDaoImpl ldao = new LoginDaoImpl();
+			Connection conn = DBConnection1.getConnection();
+			User u = ldao.login(conn, uname, upwd);
+			DBConnection1.close(conn);
 			
-			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
-			UserInfo uinfo = new UserInfo();
-			uinfo.setUname(u.getUname());
-			uinfo.setUser(u);
-			uinfo.setIp(request.getRemoteAddr());
-			uinfo.setDate(new Date());
-			request.getSession().setAttribute("userinfo", uinfo);
-			JSONObject jsonobj = new JSONObject();
-			jsonobj.put("code", 1000);
-			jsonobj.put("loginmsg", "成功");
-			out.write(jsonobj.toString());
-			out.flush();
-			out.close();
+			PrintWriter out = response.getWriter();
+			if(u==null){
+				//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1001,"loginmsg":"账号或密码错误"}
+				JSONObject jsonobj = new JSONObject();
+				jsonobj.put("code", 1001);
+				jsonobj.put("loginmsg", "账号或密码错误");
+				out.write(jsonobj.toString());
+				out.flush();
+				out.close();
+			}else{
+				//将密码与用户名存到cookie
+				if("true".equals(savepassword)){
+					Cookie unamecookie = new Cookie("uname", URLEncoder.encode(uname,"UTF-8"));
+					unamecookie.setMaxAge(7*24*60);
+					Cookie upwdcookie = new Cookie("upwd", URLEncoder.encode(upwd,"UTF-8"));
+					upwdcookie.setMaxAge(7*24*60);
+					response.addCookie(unamecookie);
+					response.addCookie(upwdcookie);
+				}
+				
+				//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
+				UserInfo uinfo = new UserInfo();
+				uinfo.setUname(u.getUname());
+				uinfo.setUser(u);
+				uinfo.setIp(request.getRemoteAddr());
+				uinfo.setDate(new Date());
+				request.getSession().setAttribute("userinfo", uinfo);
+				JSONObject jsonobj = new JSONObject();
+				jsonobj.put("code", 1000);
+				jsonobj.put("loginmsg", "成功");
+				out.write(jsonobj.toString());
+				out.flush();
+				out.close();
+			}
 		}
 	}
 
