@@ -19,7 +19,7 @@
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="home.html" class="navbar-brand">
+						<a href="HomeServlet" class="navbar-brand">
 							<img src="img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
@@ -142,7 +142,7 @@
 			<div class="container">
 				<div class="row" id="top">
 					<h4>
-					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="home.html" class="col-md-1">首页</a>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
 					<span class="top_title">
 						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${goods.gname }</span>
 					</span>

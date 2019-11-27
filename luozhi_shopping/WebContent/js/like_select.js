@@ -26,11 +26,11 @@ $(document).scroll(function(){
 		var code=/[^\d.]/g;
 		if(code.test($(this).val())==true){
 			$('#tiaozhuaninput').val(num);
-		}else{
-			var max=$('#maxpage').text();
+		}else{	
 			num=$('#tiaozhuaninput').val();		
-//			alert(max);
-			if (num>max) {
+//			alert(num);
+			var max=$('#maxpage').text();
+			if (parseInt(num)>parseInt(max)) {
 				$('#tiaozhuaninput').val(max);
 				num=max;
 			}	

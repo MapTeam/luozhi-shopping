@@ -56,11 +56,9 @@ $('.form-heid').mouseleave(function() {
 			window.location.href="LikeSelectServlet?val="+val;
 		}		
 	});
-	$('.title1').siblings('li').click(function(){
-		var val=$(this).text()
-		if (val!="") {
-			window.location.href="LikeSelectServlet?val="+val;
-		}
+	$('.title1').siblings('li').click(function(){	
+		var val=$(this).text();
+		window.location.href="LikeSelectServlet?val="+val;
 	});
 })();
 

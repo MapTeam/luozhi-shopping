@@ -34,7 +34,7 @@
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
 						<form action="LikeSelectServlet?val="+$('.search').val(); method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="${title}">
+							<input type="txt" class="search" autocomplete="off" placeholder="${title}" value="${title}">
 						</form>
 						<div class="form-heid">
 							<ul>
@@ -126,7 +126,7 @@
 		</section>
 		<section  style="margin-top: 30px;">
 			<div class="container">
-					<c:if test="${msg eq 0}">
+					<c:if test="${likemsg eq 0}">
 					<div style="height: 300px; width: 100%">
 						<img style="margin-left: 500px" src="https://s2.music.126.net/store/web/img/nofind.png?4bcb36ed1265fe7b408c5bfbb850cbc8">
 					</div>					  

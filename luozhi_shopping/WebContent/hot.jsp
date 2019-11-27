@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="css/base.css"/>
-<link rel="stylesheet" type="text/css" href="css/home.css"/>
-<link rel="stylesheet" type="text/css" href="css/login.css"/>
-<title>Home</title>  
-</head>
-<body>
-	<!--头部-->
+	<head>
+		<meta charset="UTF-8">
+		<title>热销爆品</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/base.css"/>
+		<link rel="stylesheet" href="css/hot.css" />
+		<link rel="stylesheet" type="text/css" href="css/login.css"/>
+	</head>
+	<body>
+		<!--头部-->
 		<header>
 			<nav class="navbar navbar-default">
 				<div class="container">
@@ -89,7 +88,7 @@
 												</li>
 		
 												<li>
-													<a href="home.html">
+													<a href="HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
@@ -111,181 +110,71 @@
 				</div>
 			</nav>
 		</header>
+		<!--顶部-->		
+		<section>
+			<div class="container">
+				<div class="row" id="top">
+					<h4>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
+					<span class="top_title">
+						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;热销爆品</span>
+					</span>
+				    </h4>
+				</div>
+				 <hr  class="row"/>
+			</div>
+		</section>
+		<section>
+			<div class="container">
+				<div class="row col-lg-12">
+					<img src="img/hottitle.jpg" />
+				</div>
+			</div>	
+		</section>
+		<!--商品-->
+		<section  style="margin-top: 30px;">
+			<div class="container">
+				<c:forEach items="${list}" var="h">
+					<a style="color: black" href="IntroudceServlet?gid=${h.gid }">
+						<div class="col-md-3" style="height: 400px">
+						<div id="product">								
+							<img style="width: 100%;height: 260px;" src="${h.zpicture}"/>
+								<p style="font-size: 18px;font-weight: bold;text-align: center;">${h.gname}</p>
+								<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">¥${h.gprice}</p>
+						</div>	
+						</div>
+					</a>
+				</c:forEach>
+					
+			</div>
+		</section>
 		
-		<!--轮播-->
-		<div class="banner">
+		
+		
+		<!--回到顶部块-->
+		<div class="zTi-rigth">
 			<ul>
-				<li class="active">
-					<a href=""><img src="img/1.jpg"/></a>
+				<li><a href="#">查看<br/>营业执照</a></li>
+				<li>100%<br/>正品</li>
+				<li>七天无理由退货</li>
+				<li>
+					<a href="#">
+						<span class="ding-cat"></span>
+						<span class="">购物车</span>
+					</a>
 				</li>
 				<li>
-					<a href=""><img src="img/2.jpg"/></a>
+					<a href="#">
+						<span class="kefu"></span>
+						<span class="">客服</span>
+					</a>
 				</li>
-				<li>
-					<a href=""><img src="img/3.jpg"/></a>
+				<li class="totop" style="margin-top: 0px;">
+							<!--<a href="javascript:;" class="totop-a">
+								<span class="totop-span"></span>
+							</a>-->
 				</li>
 			</ul>
-			<a href="javascipt:;" class="next" id="next"><img src="img/next.png"/></a>
-			<a href="javascipt:;" class="prev" id="prev"><img src="img/prev.png"/></a>
-			<div class="number">
-				<span class="active"></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	
-		<!--tab-->
-		<div class="tab">
-			<div class="container tab-content">
-					<ul class="row">
-						<li class="col-md-3">
-							<a href="HotServlet">
-								<img src="img/host.png" />
-								<span class="">热销爆品</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ip_around.html">
-								<img src="img/gou.png" />
-								<span class="">IP周边</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="shuma.html">
-								<img src="img/shuma.png" />
-								<span class="">数码影音</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="">
-								<img src="img/jifen.png" />
-								<div class="fadein-right">
-									<p>积分商城</p>
-									<span class="count">0</span>
-									<span class="jifen">积分</span>
-								</div>
-							</a>
-						</li>
-					</ul>
-			</div>
-		</div>
-		
-		<!--右边浮动竖条-->
-		<div class="zTi">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/有音乐.jpg"/>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/晚安.jpg" />
-						</a>
-					</div>
-				</div>
-				
-			</div>
-			<div class="zTi-rigth">
-					<ul>
-						<li><a href="#">查看<br/>营业执照</a></li>
-						<li>100%<br/>正品</li>
-						<li>七天无理由退货</li>
-						<li>
-							<a href="#">
-								<span class="ding-cat"></span>
-								<span class="">购物车</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="kefu"></span>
-								<span class="">客服</span>
-							</a>
-						</li>
-						<li class="totop" style="margin-top: 0px;">
-							<a href="javascript:;" class="totop-a">
-								<span class="totop-span"></span>
-							</a>
-						</li>
-					</ul>
-			</div>
-		</div>
-		
-		<!--推荐-->
-		<div class="recommend">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="recommend-f">
-							推荐商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="recommend-goodsList">
-					<c:forEach items="${RecommandGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-					 <!--<div class="col-md-3">
-					     <div class="thumbnail">
-					        	<img src="${obj.data[i].goods_thumb}"/>
-						        <caption>
-						          <p class="goods-name">${obj.data[i].goods_name}</p>
-						          <p class="goods-desc">${obj.data[i].goods_desc}</p>
-						          <p>${obj.data[i].price}</p>
-						          <p><span class="glyphicon  glyphicon-star"></span>${obj.data[i].star_number}</p>
-						          <button class="btn btn-info">加入购物车</button>
-						        </caption>
-					      </div>
-				    </div>-->
-				</div>
-			</div>
-		</div>
-		
-		<!--热门商品-->
-		<div class="hot">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="hot-f">
-							热门商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="hot-goodsList">
-					<c:forEach items="${HotGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-				</div>
-				<!--加载   无更多商品-->
-      			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>
-			</div>
 		</div>
 		
 		<!--底部-->
@@ -304,7 +193,7 @@
 						<a href="#">意见反馈</a>
 					</p>
 					<p>
-						<span>网易公司版权所有©1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
+						<span>网易公司版权所有?1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
 					</p>
 				</div>
 				
@@ -341,7 +230,6 @@
 					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
 					            </div>
 						    </div>
-					         <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="autologin"/>
@@ -363,11 +251,9 @@
 		    	</div>
 	   		</div>
 	    </div>
-		
 	</body>
 </html>
-<script src="js/jquery.min.js"></script>
+<script  src="js/jquery.min.js" ></script>
+<script  src="js/bootstrap.js" ></script>
 <script src="js/base.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/home.js"></script>
-<script src="js/banner.js"></script>
+<script src="js/hot.js"></script>

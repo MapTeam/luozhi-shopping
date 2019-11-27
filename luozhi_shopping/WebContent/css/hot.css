@@ -1,0 +1,58 @@
+/*热销爆品*/
+*{margin: 0px; padding: 0px;}
+a{text-decoration: none;}
+li{list-style: none;}
+img{border: none; vertical-align: bottom;}
+body{
+	font-family: "微软雅黑";
+}
+/*旁边回到顶部*/
+.zTi-rigth{
+	width: 62px;
+	height: 300px;
+	border: 1px solid #000000;
+	position: fixed;
+	right: 5%;top: 34%;
+	overflow: hidden;
+	text-align: center;
+	z-index: 20;
+	background: white;
+}
+.zTi-rigth>ul>li{
+	height: 45px;
+	font-size: 12px;
+	border-bottom: 1px solid #DDDDDD;
+	margin-top: 15px;
+	color: #888888;
+}
+.zTi-rigth>ul>li>a{
+	text-decoration: none;
+	color: #888888;
+}
+.ding-cat{
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: url(../img/totop.png) 0 -72px;
+}
+.kefu{
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	background: url(../img/totop.png) 0 -96px;
+}
+.totop{
+	display:none;
+	height: 30px;
+	background: url(../img/totop.png) -70px 0px;
+	transition: all 0.5s;
+}
+.totop:hover{
+	background: url(../img/totop.png) -130px 0px;
+}
+.totop-span{
+	display: block;
+	height: 30px;
+}
