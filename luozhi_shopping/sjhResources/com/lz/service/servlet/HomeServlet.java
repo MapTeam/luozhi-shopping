@@ -15,7 +15,9 @@ import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
 
 /**
- * Servlet implementation class HomeServlet
+ * 首页请求
+ * @author sjh
+ *
  */
 @WebServlet("/HomeServlet")
 public class HomeServlet extends HttpServlet {
