@@ -51,7 +51,7 @@
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<c:if test="${user==null }">
+								<c:if test="${userinfo==null }">
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.html">注册</a></li>
 								</c:if>
@@ -59,7 +59,7 @@
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
-							<c:if test="${user!=null }">
+							<c:if test="${userinfo!=null }">
 									<div class="person">
 										<img class="avatar" src="http://p3.music.126.net/RLeBJe4D1ZzUtltxfoKDMg==/109951163250239066.jpg?param=36y36">
 										<span class="glyphicon glyphicon-triangle-bottom downchild"></span>

@@ -15,12 +15,12 @@ public class HomeDaoImpl implements HomeDao {
 
 
 	@Override
-	public List<Goods> getHomeGoods() {
+	public List<Goods> getHomeGoods(Connection conn) {
 		List<Goods> gs = new ArrayList<Goods>();
-		Connection conn=DBConnection1.getConnection();
 		String sql = "SELECT * FROM goods ORDER BY hot DESC LIMIT 0,20";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
@@ -42,19 +42,25 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return gs;
 	}
 
 	@Override
-	public List<Goods> getHotGoods() {
-		// TODO Auto-generated method stub
+	public List<Goods> getHotGoods(Connection conn) {
 		List<Goods> hs= new ArrayList<Goods>();	
-		Connection conn=DBConnection1.getConnection();
-		
 		String sql = "SELECT * FROM goods ORDER BY hot DESC LIMIT 50,16";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
@@ -76,19 +82,26 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return hs;
 		
 	}
 
 	@Override
-	public List<Goods> getRecommandGoods() {
-		// TODO Auto-generated method stub
+	public List<Goods> getRecommandGoods(Connection conn) {
 		List<Goods> res = new ArrayList<Goods>();
-		Connection conn=DBConnection1.getConnection();
-	String sql = "SELECT * FROM goods ORDER BY  RAND() LIMIT 20;";
+		String sql = "SELECT * FROM goods ORDER BY  RAND() LIMIT 20;";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
@@ -110,19 +123,26 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return res;
 
 	}
 
 	@Override
-	public List<Goods> getIpGoods() {
-		// TODO Auto-generated method stub
+	public List<Goods> getIpGoods(Connection conn) {
 		List<Goods> Is = new ArrayList<Goods>();
-		Connection conn=DBConnection1.getConnection();
 		String sql = "SELECT * FROM goods where category1=1008002";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
@@ -144,18 +164,25 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return Is;
 	}
 
 	@Override
-	public List<Goods> getShuMaGoods() {
-		// TODO Auto-generated method stub
+	public List<Goods> getShuMaGoods(Connection conn) {
 		List<Goods> sms = new ArrayList<Goods>();
-		Connection conn=DBConnection1.getConnection();
 		String sql = "SELECT * FROM goods where category1=101000";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
@@ -177,6 +204,14 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return sms;
 	}

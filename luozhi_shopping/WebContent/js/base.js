@@ -113,13 +113,9 @@ $('.form-heid').mouseleave(function() {
 
 //点击退出
 (function() {
-	$('.exitlogin-li').click(function() {
-//		//清空本地存储
-//		localStorage.removeItem('username');
-//		localStorage.removeItem('token');
-//		//调用交互方法
-//		checkLogin();
-		
+	$('#exitlogin').click(function() {
+		$.post('ExitLoginServlet');
+		location.reload(true);
 	});
 })();
 
