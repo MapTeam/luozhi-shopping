@@ -134,16 +134,6 @@ body{
 	font-weight: bold;
 }
 
-/*商品*/
-/*#product>div>img{
-	width: 100%;
-	height: 260px;
-}*/
-#product{
-	margin-top: 20px;
-	cursor: pointer;
-}
-
 
 .thumbnail{
 	text-align: center;
@@ -194,4 +184,58 @@ body{
 
 #active-li>a{
 	font-size: 20px;
+}
+/*�¶˷�ҳ*/
+center>a{
+	height: 50px;
+	color: black;
+	font-size: 15px;
+	cursor: pointer;
+	margin-left: 20px;
+}
+center .pagefirst{
+	padding: 5px;
+	border: #CDCDCD solid 1px;
+	border-radius: 3px;
+}
+center .pagefirst:hover{
+	border: #D3C294 solid 1px;
+	border-radius: 3px;
+}
+center .pageprev{
+	padding: 5px;
+	border: #CDCDCD solid 1px;
+	border-radius: 3px;
+}
+center .pageprev:hover{
+	border: #D3C294 solid 1px;
+	border-radius: 3px;
+}
+center .pagenext{
+	padding: 5px;
+	border: #CDCDCD solid 1px;
+	border-radius: 3px;
+}
+center .pagenext:hover{
+	border: #D3C294 solid 1px;
+	border-radius: 3px;
+}
+center .pagelast{
+	padding: 5px;
+	border: #CDCDCD solid 1px;
+	border-radius: 3px;
+}
+center .pagelast:hover{
+	border: #D3C294 solid 1px;
+	border-radius: 3px;
+}
+center>a:hover{
+	text-decoration: none;
+	
+}
+center>a>input{
+	width: 50px;
+	height: 23px;
+	border: #CDCDCD solid 1px;
+	border-radius: 5px;
 }

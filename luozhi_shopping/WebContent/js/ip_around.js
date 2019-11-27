@@ -110,89 +110,89 @@ $(document).scroll(function(){
 )();
 
 //商品分类
-(function(){
-  //发起请求
-  $.get('http://www.wjian.top/shop/api_cat.php',{}, function(result){
-    var obj = JSON.parse(result);
-    console.log(obj);
-    //验证
-    if(obj.code != 0){
-      console.log(obj.message);
-      return;
-    };
-    //遍历数据
-    var str = '';
-    for(var i = 0; i < obj.data.length; i++){
-    	if(i==0){
-    		str += `<li id="active-li"><a target="_blank" onclick="getGoodsList(${obj.data[i].cat_id},'${obj.data[i].cat_name}')">${obj.data[i].cat_name}</a></li>`;
-    	}else{
-    		str += `<li><a target="_blank" onclick="getGoodsList(${obj.data[i].cat_id},'${obj.data[i].cat_name}')">${obj.data[i].cat_name}</a></li>`;
-    	};
-      
-    };
-    getGoodsList(obj.data[0].cat_id,obj.data[0].cat_name);
-    $('#table_type').append(str);
-  });
-})();
-
-
-////获得地址栏参数值?  cat_id=55&name=xiaoming
-//function getUrlVal(property){
-////地址栏
-//var urlStr = window.location.search.substring(1);
-//var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
-//var result = urlStr.match(re);
-//if(result == null){return null};
-//return result[2];
+//(function(){
+//  //发起请求
+//  $.get('http://www.wjian.top/shop/api_cat.php',{}, function(result){
+//    var obj = JSON.parse(result);
+//    console.log(obj);
+//    //验证
+//    if(obj.code != 0){
+//      console.log(obj.message);
+//      return;
+//    };
+//    //遍历数据
+//    var str = '';
+//    for(var i = 0; i < obj.data.length; i++){
+//    	if(i==0){
+//    		str += `<li id="active-li"><a target="_blank" onclick="getGoodsList(${obj.data[i].cat_id},'${obj.data[i].cat_name}')">${obj.data[i].cat_name}</a></li>`;
+//    	}else{
+//    		str += `<li><a target="_blank" onclick="getGoodsList(${obj.data[i].cat_id},'${obj.data[i].cat_name}')">${obj.data[i].cat_name}</a></li>`;
+//    	};
+//      
+//    };
+//    getGoodsList(obj.data[0].cat_id,obj.data[0].cat_name);
+//    $('#table_type').append(str);
+//  });
+//})();
+//
+//
+//////获得地址栏参数值?  cat_id=55&name=xiaoming
+////function getUrlVal(property){
+//////地址栏
+////var urlStr = window.location.search.substring(1);
+////var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+////var result = urlStr.match(re);
+////if(result == null){return null};
+////return result[2];
+////};
+//
+////分类商品
+//function getGoodsList(catId,type){
+//  //分类ID
+//  $("#table_type>li").each(function(i){
+//  	if($(this).children().html() == type){
+//  		$(this).attr('id','active-li');
+//  	}else{
+//  		$(this).attr('id','');
+//  	};
+//  	
+//  });
+//  $('#product').empty();
+//  $.get('http://www.wjian.top/shop/api_goods.php',{
+//    cat_id : catId,
+//    page : 1,
+//    pagesize : 20
+//  },function(result){
+//      var obj = JSON.parse(result);
+//      console.log(obj);
+//      //验证
+//      if(obj.code != 0){
+//        console.log(obj.message);
+//        alert('商品稍后上架...');
+//        return;
+//      };
+//      //渲染
+//      for(var i = 0; i < obj.data.length; i++){
+//        var str = `
+//        <div class="col-md-3">
+//          <div class="thumbnail">
+//          <a href="product_particular.html?goods_id=${obj.data[i].goods_id}">
+//            <img src="${obj.data[i].goods_thumb}"/>
+//            <caption>
+//              <p class="goods-name">${obj.data[i].goods_name}</p>
+//              <p class="goods-desc">${obj.data[i].goods_desc}</p>
+//              <p class="goods-price">${obj.data[i].price}</p>
+//            </caption>
+//            </a>
+//          </div>
+//        </div>
+//        `;
+//        //每遍历一次就要去添加一次
+//        $('#product').append(str); 
+//      };
+//  });
+//  
 //};
-
-//分类商品
-function getGoodsList(catId,type){
-  //分类ID
-  $("#table_type>li").each(function(i){
-  	if($(this).children().html() == type){
-  		$(this).attr('id','active-li');
-  	}else{
-  		$(this).attr('id','');
-  	};
-  	
-  });
-  $('#product').empty();
-  $.get('http://www.wjian.top/shop/api_goods.php',{
-    cat_id : catId,
-    page : 1,
-    pagesize : 20
-  },function(result){
-      var obj = JSON.parse(result);
-      console.log(obj);
-      //验证
-      if(obj.code != 0){
-        console.log(obj.message);
-        alert('商品稍后上架...');
-        return;
-      };
-      //渲染
-      for(var i = 0; i < obj.data.length; i++){
-        var str = `
-        <div class="col-md-3">
-          <div class="thumbnail">
-          <a href="product_particular.html?goods_id=${obj.data[i].goods_id}">
-            <img src="${obj.data[i].goods_thumb}"/>
-            <caption>
-              <p class="goods-name">${obj.data[i].goods_name}</p>
-              <p class="goods-desc">${obj.data[i].goods_desc}</p>
-              <p class="goods-price">${obj.data[i].price}</p>
-            </caption>
-            </a>
-          </div>
-        </div>
-        `;
-        //每遍历一次就要去添加一次
-        $('#product').append(str); 
-      };
-  });
-  
-};
 
 //function getUrlVal(property){
 ////地址栏
@@ -208,3 +208,16 @@ function getGoodsList(catId,type){
 //	console.log(title);
 //	$('title').html(title);
 //})();
+
+function getPage(val){
+	console.log(val);
+	$.ajax({
+		type:"POST",
+		url:"IpAroundServlet",
+		data:"pageNo="+val,
+		success:function(result){
+			var re = JSON.parse(result);
+			alert(re);
+		}
+	});
+}
