@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
 			UserInfo uinfo = new UserInfo();
-			uinfo.setName(u.getUname());
+			uinfo.setUname(u.getUname());
 			uinfo.setUser(u);
 			uinfo.setIp(request.getRemoteAddr());
 			uinfo.setDate(new Date());

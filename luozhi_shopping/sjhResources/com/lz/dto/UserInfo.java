@@ -13,12 +13,6 @@ public class UserInfo implements Serializable{
 	private String ip;
 	private Date date;
 	
-	public String getName() {
-		return uname;
-	}
-	public void setName(String uname) {
-		this.uname = uname;
-	}
 	public String getIp() {
 		return ip;
 	}
