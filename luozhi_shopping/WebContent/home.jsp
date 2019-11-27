@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,6 +13,26 @@
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
 <title>Home</title>  
 </head>
+<%
+Cookie[] cookie = request.getCookies();
+String uname = null;
+String upwd = null;
+boolean check = false;
+if(cookie!=null){
+	for(Cookie c:cookie){
+		if("uname".equals(c.getName())){
+			uname = URLDecoder.decode(c.getValue(),"UTF-8");
+			check = true;
+		}
+		if("upwd".equals(c.getName())){
+			upwd = URLDecoder.decode(c.getValue(),"UTF-8");
+		}
+	}
+}
+	pageContext.setAttribute("uname", uname);
+	pageContext.setAttribute("upwd", upwd);
+	pageContext.setAttribute("check", check);
+%>
 <body>
 	<!--头部-->
 		<header>
@@ -334,20 +355,20 @@
 		                    <div class="form-inline">
 				                <div class="form-group">
 					                <label>用户：</label>
-					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
+					                <input type="text" class="form-control user" id="username" placeholder="请输入账号" value="${pageScope.uname }"/>
 				            	</div>
 				          	</div>
 			                <div class="form-inline password">
 					            <div class="form-group">
 					                <label>密码：</label>
-					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
+					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
 					            </div>
 						    </div>
 					         <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
-					        		<input type="checkbox" id="autologin"/>
-					        		<span>自动登录</span>
+					        		<input type="checkbox" id="savepassword" checked="${pageScope.check }"/>
+					        		<span>保存密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>

@@ -2,11 +2,13 @@ package com.lz.service.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +36,8 @@ public class LoginServlet extends HttpServlet {
 		//获取登录名与密码
 		String uname = request.getParameter("username");
 		String upwd = request.getParameter("password");
+		//是否保存密码
+		String savepassword = request.getParameter("savepassword");
 		//new 一个登录的dao
 		LoginDaoImpl ldao = new LoginDaoImpl();
 		Connection conn = DBConnection1.getConnection();
@@ -50,6 +54,16 @@ public class LoginServlet extends HttpServlet {
 			out.flush();
 			out.close();
 		}else{
+			//将密码与用户名存到cookie
+			if("true".equals(savepassword)){
+				Cookie unamecookie = new Cookie("uname", URLEncoder.encode(uname,"UTF-8"));
+				unamecookie.setMaxAge(7*24*60);
+				Cookie upwdcookie = new Cookie("upwd", URLEncoder.encode(upwd,"UTF-8"));
+				upwdcookie.setMaxAge(7*24*60);
+				response.addCookie(unamecookie);
+				response.addCookie(upwdcookie);
+			}
+			
 			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
 			UserInfo uinfo = new UserInfo();
 			uinfo.setUname(u.getUname());
