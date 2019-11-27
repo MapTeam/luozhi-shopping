@@ -113,6 +113,7 @@ img{
 }
 .form-heid>ul>li>a{
 	text-decoration: none;
+	cursor:point;
 	font-size: 16px;
 	line-height: 32px;
 	font-weight: 550;

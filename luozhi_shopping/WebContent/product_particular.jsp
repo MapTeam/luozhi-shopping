@@ -41,10 +41,10 @@
 						<div class="form-heid">
 							<ul>
 								<li class="title1">热门搜索</li>
-								<li><a href="">真无线</a></li>
-								<li><a href="">潮流系列</a></li>
-								<li><a href="">乐器</a></li>
-								<li><a href="">蓝牙</a></li>
+								<li><a style="cursor: pointer;">真无线</a></li>
+								<li><a style="cursor: pointer;">潮流系列</a></li>
+								<li><a style="cursor: pointer;">乐器</a></li>
+								<li><a style="cursor: pointer;">蓝牙</a></li>
 							</ul>
 						</div>
 					</div>
