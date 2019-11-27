@@ -17,8 +17,7 @@
     <filter-name>CharEncode</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
   <listener>
-  	<listener-class>com.lz.service.listener.SingletStateLoginListener</listener-class>
+    <listener-class>com.lz.service.listener.SingletStateLoginListener</listener-class>
   </listener>
 </web-app>

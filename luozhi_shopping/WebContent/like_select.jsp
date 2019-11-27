@@ -110,6 +110,9 @@
 				</div>
 			</nav>
 		</header>
+		
+		<!--隐藏登录后被挤的信息-->	
+		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
 		<!--顶部-->		
 		<section>
 			<div class="container">

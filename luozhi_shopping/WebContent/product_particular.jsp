@@ -112,6 +112,9 @@
 				</div>
 			</nav>
 		</header>
+		
+		<!--隐藏登录后被挤的信息-->	
+		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
 		<!--商品导航栏-->
 		<div class="shopping_nav">
 			<nav class="nav navbar-default navbar-fixed-top" id="shopping_nav" data-spy="affix" data-offset-top="700">
