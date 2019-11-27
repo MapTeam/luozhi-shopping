@@ -46,6 +46,8 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			DBConnection1.close(conn);
 		}
 		return list;
 	}

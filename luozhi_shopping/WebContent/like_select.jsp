@@ -34,7 +34,7 @@
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
 						<form action="LikeSelectServlet?val="+$('.search').val(); method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="${title}">
+							<input type="txt" class="search" autocomplete="off" placeholder="${title}" value="${title}">
 						</form>
 						<div class="form-heid">
 							<ul>
