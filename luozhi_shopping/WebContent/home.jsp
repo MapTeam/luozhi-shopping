@@ -52,54 +52,59 @@
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-								<li class="regist-li"><a href="regist.html">注册</a></li>
+								<c:if test="${user==null }">
+									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
+									<li class="regist-li"><a href="regist.html">注册</a></li>
+								</c:if>
+								
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
-							<div class="person">
-								<img class="avatar" src="http://p3.music.126.net/RLeBJe4D1ZzUtltxfoKDMg==/109951163250239066.jpg?param=36y36">
-								<span class="glyphicon glyphicon-triangle-bottom downchild"></span>
-								<div class="list">
-									<ul>
-										<!--Regular list-->
-										<li>
-											<a href="personal_order.html">
-												<span class="glyphicon glyphicon-list-alt myorder"></span>
-												<span class="list-text">我的订单</span>
-											</a>
-										</li>
-
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-yen coupon"></span>
-												<span class="list-text">我的优惠券</span>
-											</a>
-										</li>
-
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-map-marker address"></span>
-												<span class="list-text">我的收货地址</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="home.html">
-												<span class="glyphicon glyphicon-music mainside"></span>
-												<span class="list-text">洛枳商城首页</span>
-											</a>
-										</li>
-										<hr class="hr"/>
-										<li class="exitlogin-li hidd">
-											<a href="#">
-												<span class="glyphicon glyphicon-off logout"></span>
-												<span class="list-text">退出</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+							<c:if test="${user!=null }">
+									<div class="person">
+										<img class="avatar" src="http://p3.music.126.net/RLeBJe4D1ZzUtltxfoKDMg==/109951163250239066.jpg?param=36y36">
+										<span class="glyphicon glyphicon-triangle-bottom downchild"></span>
+										<div class="list">
+											<ul>
+												<!--Regular list-->
+												<li>
+													<a href="personal_order.html">
+														<span class="glyphicon glyphicon-list-alt myorder"></span>
+														<span class="list-text">我的订单</span>
+													</a>
+												</li>
+		
+												<li>
+													<a>
+														<span class="glyphicon glyphicon-yen coupon"></span>
+														<span class="list-text">我的优惠券</span>
+													</a>
+												</li>
+		
+												<li>
+													<a>
+														<span class="glyphicon glyphicon-map-marker address"></span>
+														<span class="list-text">我的收货地址</span>
+													</a>
+												</li>
+		
+												<li>
+													<a href="home.html">
+														<span class="glyphicon glyphicon-music mainside"></span>
+														<span class="list-text">洛枳商城首页</span>
+													</a>
+												</li>
+												<hr class="hr"/>
+												<li class="exitlogin-li hidd">
+													<a href="#">
+														<span class="glyphicon glyphicon-off logout"></span>
+														<span class="list-text">退出</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</c:if>
 						</div>
 					</div>
 					

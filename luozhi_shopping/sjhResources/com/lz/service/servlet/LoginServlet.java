@@ -15,7 +15,11 @@ import com.lz.db.DBConnection1;
 import com.lz.pojo.User;
 
 import net.sf.json.JSONObject;
-
+/**
+ * 登录的sevlet
+ * @author sjh
+ *
+ */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,13 +29,18 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//获取登录名与密码
 		String uname = request.getParameter("username");
 		String upwd = request.getParameter("password");
+		//new 一个登录的dao
 		LoginDaoImpl ldao = new LoginDaoImpl();
 		Connection conn = DBConnection1.getConnection();
 		User u = ldao.login(conn, uname, upwd);
+		DBConnection1.close(conn);
+		
 		PrintWriter out = response.getWriter();
 		if(u==null){
+			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1001,"loginmsg":"账号或密码错误"}
 			JSONObject jsonobj = new JSONObject();
 			jsonobj.put("code", 1001);
 			jsonobj.put("loginmsg", "账号或密码错误");
@@ -39,6 +48,7 @@ public class LoginServlet extends HttpServlet {
 			out.flush();
 			out.close();
 		}else{
+			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
 			request.getSession().setAttribute("user", u);
 			JSONObject jsonobj = new JSONObject();
 			jsonobj.put("code", 1000);

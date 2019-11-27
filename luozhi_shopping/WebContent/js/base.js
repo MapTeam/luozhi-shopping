@@ -5,34 +5,34 @@ $('.search').blur(function() {
 	$('.form-heid').hide();
 });
 
-//检查是否登录
-function checkLogin() {
-	//获取localStorage  username  token
-	var userName = localStorage.getItem('username');
-	var token = localStorage.getItem('token');
-	//验证
-	if(token) {
-		$('.login-li, .regist-li').hide();
-		//  $('.username-li, .exitlogin-li').show();
-		//  $('.username-li').html('欢迎：'+userName);
-		$('.person').css('display', 'block');
-		//登陆成功
-		$('.person').mouseenter(function() {
-			$('.list').css('display', 'block');
-			$('.downchild').css('transform', 'rotate(180deg)')
-		});
-
-		$('.person').mouseleave(function() {
-			$('.list').css('display', 'none');
-			$('.downchild').css('transform', 'rotate(360deg)')
-		});
-	} else {
-		$('.login-li, .regist-li').show();
-		//  $('.username-li, .exitlogin-li').hide();
-		$('.username-li').html('');
-	};
-};
-checkLogin();
+////检查是否登录
+//function checkLogin() {
+//	//获取localStorage  username  token
+//	var userName = localStorage.getItem('username');
+//	var token = localStorage.getItem('token');
+//	//验证
+//	if(token) {
+//		$('.login-li, .regist-li').hide();
+//		//  $('.username-li, .exitlogin-li').show();
+//		//  $('.username-li').html('欢迎：'+userName);
+//		$('.person').css('display', 'block');
+//		//登陆成功
+//		$('.person').mouseenter(function() {
+//			$('.list').css('display', 'block');
+//			$('.downchild').css('transform', 'rotate(180deg)')
+//		});
+//
+//		$('.person').mouseleave(function() {
+//			$('.list').css('display', 'none');
+//			$('.downchild').css('transform', 'rotate(360deg)')
+//		});
+//	} else {
+//		$('.login-li, .regist-li').show();
+//		//  $('.username-li, .exitlogin-li').hide();
+//		$('.username-li').html('');
+//	};
+//};
+//checkLogin();
 
 //登录
 (function() {
@@ -74,6 +74,7 @@ checkLogin();
 			setTimeout(function() {
 				clearInterval(interval);
 				$('#login, .modal-backdrop').modal('hide');
+//				$('.person').css('display', 'block');
 				location.reload(true);
 			}, 3000);
 			
@@ -84,12 +85,22 @@ checkLogin();
 //点击退出
 (function() {
 	$('.exitlogin-li').click(function() {
-		//清空本地存储
-		localStorage.removeItem('username');
-		localStorage.removeItem('token');
-		//调用交互方法
-		checkLogin();
-		$('.person').css('display', 'none');
+//		//清空本地存储
+//		localStorage.removeItem('username');
+//		localStorage.removeItem('token');
+//		//调用交互方法
+//		checkLogin();
+		
 	});
 })();
 
+//person进入与移除
+$('.person').mouseenter(function(){
+	$('.list').css('display','block');
+	$('.downchild').css('transform','rotate(180deg)')
+});
+
+$('.person').mouseleave(function(){
+	$('.list').css('display','none');
+	$('.downchild').css('transform','rotate(360deg)')
+});
