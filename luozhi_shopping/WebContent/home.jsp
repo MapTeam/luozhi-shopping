@@ -223,7 +223,7 @@
 				</div>
 				<!--商品-->
 				<div class="row" id="recommend-goodsList">
-					<c:forEach items="${list1 }" var="p">
+					<c:forEach items="${RecommandGoodsList}" var="p">
 						<div class="col-md-3">
 						     <div class="thumbnail">
 						        	<a href="IntroudceServlet?gid=${p.gid }">
@@ -264,9 +264,19 @@
 				</div>
 				<!--商品-->
 				<div class="row" id="hot-goodsList">
-					<!--<div class="col-md-3" id="">
-						
-					</div>-->
+					<c:forEach items="${HotGoodsList}" var="p">
+						<div class="col-md-3">
+						     <div class="thumbnail">
+						        	<a href="IntroudceServlet?gid=${p.gid }">
+								        <img src="${p.zpicture}"/>
+								        <caption>
+								          <p class="goods-name">${p.gname}</p>
+								          <p class="goods-price">¥${p.gprice}</p>
+								        </caption>
+							        </a>
+						      </div>
+					    </div>
+					</c:forEach>
 				</div>
 				<!--加载   无更多商品-->
       			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>
