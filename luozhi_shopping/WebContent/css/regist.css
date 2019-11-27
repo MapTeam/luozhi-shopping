@@ -1,4 +1,5 @@
-/*æ³¨å†Œ*/
+/*×¢²á*/
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -73,6 +74,7 @@ ul {
 	margin: 0px auto;
 	margin-bottom: 20px;
 }
+
 span#img{
 	width: 15px;
 	height: 15px;
@@ -210,6 +212,50 @@ span#text{
 .phone_hidden4>#text{
 	float: left;
 }
+.code_hidden{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.code_hidden>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px 0px;
+}
+.code_hidden2{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.code_hidden2>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.code_hidden2>#text{
+	float: left;
+}
+
+.code_hidden3{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.code_hidden3>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.code_hidden3>#text{
+	float: left;
+}
+
 .email_hidden{
 	top: 6px;
 	left: 75%;
@@ -250,6 +296,23 @@ span#text{
 .email_hidden3>#text{
 	float: left;
 }
+
+.email_hidden4{
+	top: 6px;
+	left: 75%;
+	height: 18px;
+	line-height:18px ;
+	position: absolute;
+	display: none;
+}
+.email_hidden4>#img{
+	background: url(../img/reg_icons.png);
+	background-position: -80px -24px;
+}
+.email_hidden4>#text{
+	float: left;
+}
+
 .dropdown>ul>li{
 	height: 20px;
 	line-height: 20px;

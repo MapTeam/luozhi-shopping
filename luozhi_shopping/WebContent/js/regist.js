@@ -4,9 +4,9 @@
 	var userName=null;
 	var telphone=null;
 	var email=null;
-	var sureEmail=null;
 	var password=null;
 	var surePassword=null;
+	var code=null;
 	var reg_user =/^[a-z0-9_]{3,20}$/;
 	var reg_phone=/^1[3456789]\d{9}$/; 
 	var reg_email=/^[a-zA-Z0-9_-]+$/;
@@ -17,7 +17,7 @@
     var pwdlock = false;
     var surepwdlock=false;
     var sellock=false;
-    
+    var codelock=false;
 	//禁用注册按钮
 	$('#register').prop('disabled', true);
 	$('#name').focus();
@@ -43,6 +43,9 @@
 	$('#phone').blur(function(){
 		tel();
 		
+	});
+	$('.code').blur(function(){
+		code=$('input.code').val();
 	});
 	$('.email .mail').focus(function(){
 		this.select();
@@ -99,11 +102,83 @@
 		user();
 		tel();
 		mail();
-//		suremail();
 		pass();
 		surepass();
 	});
+//用户名是否注册
+	$('#name').blur(function() {
+		if (reg_user.test(userName)) {
+			$.ajax({
+			type:"POST",
+			url:"RegistUnameIsUse",
+			data:"name="+userName,
+			success:function(result){
+				if(result){
+					$('.name_hidden6').css('display','block');
+					userlock=false;
+				}else{
+					$('.name_hidden4').css('display','block');
+					userlock=true;
+				}
+			}
+		});
+		}
+	});
+
+
+	//email是否被注册
+	$('#mail').blur(function() {
+		if (email.match(reg_email)) {
+		$.ajax({
+			type:"POST",
+			url:"EmailIsUsed",
+			data:"mail="+email+$('.email-end>li.active').text(),
+			success:function(re){
+		        var obj = JSON.parse(re)
+				if(obj.registed){
+					$('.email_hidden4').css('display','block');
+					emaillock=false;
+				}else{
+					$('.email_hidden2').css('display','block');
+					emaillock=true;
+				}
+			}
+		});
+		}
+	});
 	
+	
+	
+	$('#mail').focus(function(event) {
+		$('.email_hidden').css('display','none');
+		$('.email_hidden2').css('display','none');
+		$('.email_hidden3').css('display','none');
+		$('.email_hidden4').css('display','none');
+	});
+	//验证码
+	
+	$('.code').blur(function() {
+		$.ajax({
+			type:"POST",
+			url:"RegistCode",
+			data:"code="+code,
+			success:function(result){
+				if(result=='msg'){
+					$('.code_hidden').css('display','block');
+					codelock=true;
+					return;
+				}else if(result=='ms'){
+					$('.code_hidden2').css('display','block');
+					codelock=false;
+					return;
+				}else{
+					$('.code_hidden').css('display','none');
+					$('.code_hidden2').css('display','none');
+					codelock=false;
+				}
+			}
+		});
+	});
 	
 	//点击注册  用户名和密码都要ok
 $('#register').click(function(){
@@ -122,21 +197,21 @@ $('#register').click(function(){
 		if(''==surePassword){
 			$('.surepass_hidden4').css('display','block');
 		}
+		if(''==code){
+			$('.code_hidden3').css('display','block');
+		}
 	
-	if(userlock && tellock  && emaillock && pwdlock && surepwdlock && sellock){
-			$.post('http://www.wjian.top/shop/api_user.php',{
-		    status : 'register',
-		    username : userName,
-		    password : password,
+	if(userlock && tellock  && emaillock && pwdlock && surepwdlock && sellock && codelock){
+			$.post('registServlet',{
+				name : userName,
+				pass : password,
+				mail : email+$('.email-end>li.active').text()
 		    }, function(re){
 		        var obj = JSON.parse(re)
-		        console.log(obj);      
+//		        console.log(obj);      
 		      //用户名已注册
 		        if(obj.code != 0){
-		        	$('.name_hidden4').css('display','none');
-		        	$('.name_hidden6').css('display','block');
-		        //聚集
-		        alert('注册失败')
+		        	alert("注册失败");
 		        return;
 		        };
 		         //注册成功跳转到登录页面
@@ -145,6 +220,8 @@ $('#register').click(function(){
 			      window.location.href = 'home.html';
 
 			    });
+	}else{
+		alert("注册失败，请重新注册");
 	}
 });
 	
@@ -305,5 +382,7 @@ function surepass(){
 	};
   	return i;
   }
- 
+ function flushCode(obj) {
+		obj.src = "ImageServlet?id="+new Date().getTime();
+	}
 
