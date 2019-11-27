@@ -20,16 +20,24 @@ public class HomeServlet extends HttpServlet {
     public HomeServlet() {
         super();
     }
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HomeDaoImpl hdao = new HomeDaoImpl();
 		List<Goods> gs = hdao.getHomeGoods();
-		request.setAttribute("list1", gs);
+		List<Goods> res=hdao.getRecommandGoods();
+		List<Goods> hs=hdao.getHotGoods();	
+		System.out.println(gs.size());
+		request.setAttribute("HomeGoods", gs);
+		request.setAttribute("HotGoodsList", hs);
+		request.setAttribute("RecommandGoodsList", res);
+	       
+		
 		request.getRequestDispatcher("home.jsp").forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
+
 
 }
