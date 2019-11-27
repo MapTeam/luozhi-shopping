@@ -58,7 +58,7 @@ public class LikeSelectServlet extends HttpServlet {
 		
 		List<Goods> list=dao.selectGoodsByKey(key, pageNo, pageSize);
 		if(list.size()==0) {
-			request.setAttribute("msg", 0);
+			request.setAttribute("likemsg", 0);
 		}
 		request.setAttribute("title", key);
 		request.setAttribute("list", list);

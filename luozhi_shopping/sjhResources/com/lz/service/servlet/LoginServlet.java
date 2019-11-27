@@ -3,6 +3,7 @@ package com.lz.service.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lz.dao.impl.LoginDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.dto.UserInfo;
 import com.lz.pojo.User;
 
 import net.sf.json.JSONObject;
@@ -49,7 +51,12 @@ public class LoginServlet extends HttpServlet {
 			out.close();
 		}else{
 			//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1000,"loginmsg":"成功"}
-			request.getSession().setAttribute("user", u);
+			UserInfo uinfo = new UserInfo();
+			uinfo.setName(u.getUname());
+			uinfo.setUser(u);
+			uinfo.setIp(request.getRemoteAddr());
+			uinfo.setDate(new Date());
+			request.getSession().setAttribute("userinfo", uinfo);
 			JSONObject jsonobj = new JSONObject();
 			jsonobj.put("code", 1000);
 			jsonobj.put("loginmsg", "成功");

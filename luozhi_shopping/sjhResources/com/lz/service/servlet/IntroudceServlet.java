@@ -19,7 +19,11 @@ import com.lz.pojo.Goods;
 import com.lz.pojo.GoodsColor;
 import com.lz.pojo.GoodsIntroduceImg;
 
-
+/**
+ * 商品详情
+ * @author sjh
+ *
+ */
 @WebServlet("/IntroudceServlet")
 public class IntroudceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

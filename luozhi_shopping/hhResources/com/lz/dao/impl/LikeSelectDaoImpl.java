@@ -19,8 +19,9 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 		List<Goods> list=new ArrayList<Goods>();
 		Connection conn=DBConnection1.getConnection();
 		String sql="select * from goods where gname like ? LIMIT ?,?";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+key+"%");
 			ps.setInt(2, (pageNo-1)*pageSize);
 			ps.setInt(3, pageSize);
@@ -44,10 +45,16 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 				list.add(goods);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		}finally{
 			DBConnection1.close(conn);
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return list;
 	}
@@ -58,9 +65,10 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 	public int selectMaxPageNo(String key,int pageSize) {
 		Connection conn = DBConnection1.getConnection();
 		int count = 0;//总记录数
+		PreparedStatement ps = null;
 		try {
 			String sql = "select count(*) from goods where gname like ?";
-			PreparedStatement ps =conn.prepareStatement(sql);
+			ps =conn.prepareStatement(sql);
 			ps.setString(1, "%"+key+"%");
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()){
@@ -70,6 +78,13 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 			e.printStackTrace();
 		}finally{
 			DBConnection1.close(conn);
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
