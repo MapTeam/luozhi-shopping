@@ -72,34 +72,37 @@ checkLogin();
 			return;
 		};
 		//请求登录
-		$.post('http://www.wjian.top/shop/api_user.php', {
-			status: 'login',
+		$.post('LoginServlet', {
 			username: userName,
 			password: pwd,
 		}, function(re) {
 			var obj = JSON.parse(re);
-			//分三种情况 2002 1000 1001  0
-			if(obj.code == 2002) {
-				alert('用户名不存在');
-				return;
-			};
+			console.log(re);
+			//分两种情况  1001失败  1000成功
 			if(obj.code == 1001) {
-				alert('密码错误');
+				$('.loginmsg').html("账号或密码错误！");
 				return;
 			};
-			if(obj.code == 1000) {
-				alert('用户名不合法，请填写3-20位的英文数字下划线');
-				return;
-			}
+			
 			//成功  分两种，如果从详情来的就要又跳回详情
 			//成功  第二种 正常首页登录
-			alert('登录成功');
+//			alert('登录成功');
 			//怎么样才能知道是登录状态   localStorage  cookie
-			localStorage.setItem('username', obj.data.username);
-			localStorage.setItem('token', obj.data.token);
-			checkLogin();
+//			localStorage.setItem('username', obj.data.username);
+//			localStorage.setItem('token', obj.data.token);
+//			checkLogin();
+			var text = "登录中";
+			var interval = setInterval(function() {
+				text = text + ".";
+				$('.loginmsg').html(text);
+			}, 1000);
 			//让模态框隐藏
-			$('#login, .modal-backdrop').modal('hide');
+			setTimeout(function() {
+				clearInterval(interval);
+				$('#login, .modal-backdrop').modal('hide');
+				location.reload(true);
+			}, 3000);
+			
 		});
 	});
 })();
