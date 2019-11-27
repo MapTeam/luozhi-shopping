@@ -330,34 +330,15 @@ if(cookie!=null){
 					<div class="col-md-4" style="margin-top: 6px;">
 							<h5 style="font-size: 25px;font-weight: bold;">热门商品</h5>
 							<hr />
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
+							<c:forEach items="${hotgoods }" var="good">
+								<div class="row" id="hot_commodity">
+									<span>									
+									  <img src="${good.zpicture }"/>
+									  <p><a href="IntroudceServlet?gid=${good.gid }"> ${good.gname }</a></p>
+									  <p>￥89</p>
+									</span>			
+								</div>
+							</c:forEach>
 					</div>
 				</div>
 			</div>

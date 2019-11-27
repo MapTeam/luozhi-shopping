@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.dao.impl.GoodsColorDaoImpl;
+import com.lz.dao.impl.HomeDaoImpl;
 import com.lz.dao.impl.IntroduceDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
@@ -34,6 +35,7 @@ public class IntroudceServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String gid = request.getParameter("gid");
 		if(gid!=null&&!"".equals(gid)){
+			HomeDaoImpl hdao = new HomeDaoImpl(); 
 			BaseDaoImpl dao = new BaseDaoImpl();
 			IntroduceDaoImpl idao = new IntroduceDaoImpl();
 			GoodsColorDaoImpl gcolordao = new GoodsColorDaoImpl();
@@ -42,10 +44,15 @@ public class IntroudceServlet extends HttpServlet {
 			Connection conn = DBConnection1.getConnection();
 			//查询相应的商品
 			goods = (Goods) dao.selectObjectById(conn, goods);
+			//热度加一
+			goods.setHot(goods.getHot()+1);
+			dao.updateObjectById(conn, goods);
 			//查询相应的介绍
 			GoodsIntroduceImg gii = idao.selectGoodsIntroduce(conn, Integer.parseInt(gid));
 			//查询相应的颜色
 			List<GoodsColor> gcolors = (List<GoodsColor>) gcolordao.selectColor(conn, Integer.parseInt(gid));
+			//热门商品
+			List<Goods> hotgoods = hdao.getHomeGoods(conn, 0, 4);
 			DBConnection1.close(conn);
 			String str = gii.getIntroduceImgs();
 			String[] s = str.split(",");
@@ -62,8 +69,9 @@ public class IntroudceServlet extends HttpServlet {
 				}
 				lpimg.add(s1[i]);
 			}
-
+			
 			request.setAttribute("goods", goods);
+			request.setAttribute("hotgoods", hotgoods);
 			request.setAttribute("lpimg", lpimg);
 			request.setAttribute("inimg", inimg);
 			request.setAttribute("gcolors", gcolors);

@@ -15,12 +15,17 @@ public class HomeDaoImpl implements HomeDao {
 
 
 	@Override
-	public List<Goods> getHomeGoods(Connection conn) {
+	public List<Goods> getHomeGoods(Connection conn,int start,int num) {
+		if(num==0){
+			num = 20;
+		}
 		List<Goods> gs = new ArrayList<Goods>();
-		String sql = "SELECT * FROM goods ORDER BY hot DESC LIMIT 0,20";
+		String sql = "SELECT * FROM goods ORDER BY hot DESC LIMIT ?,?";
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, num);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
