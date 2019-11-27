@@ -1,3 +1,9 @@
+if($('#SingletStateLoginListenerMsg').val()!=''){
+	alert($('#SingletStateLoginListenerMsg').val());
+	$.post('RemoveSingletStateLoginListenerMsgServlet', {
+		value:'SingletStateLoginListenerMsg',
+	});
+}
 
 $('.search').focus(function() {
 	$('.form-heid').show();

@@ -96,7 +96,7 @@
 												</li>
 												<hr class="hr"/>
 												<li class="exitlogin-li hidd">
-													<a href="#">
+													<a href="javascript:;">
 														<span class="glyphicon glyphicon-off logout"></span>
 														<span class="list-text" id="exitlogin">退出</span>
 													</a>
@@ -112,6 +112,8 @@
 			</nav>
 		</header>
 		
+		<!--隐藏登录后被挤的信息-->	
+		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
 		<!--轮播-->
 		<div class="banner">
 			<ul>

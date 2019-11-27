@@ -149,6 +149,8 @@
 			</div>
 		</section>
 		
+		<!--隐藏登录后被挤的信息-->	
+		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
 		
 		
 		<!--回到顶部块-->
@@ -230,6 +232,7 @@
 					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
 					            </div>
 						    </div>
+						    <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="autologin"/>
