@@ -78,43 +78,44 @@ public class registDaoImpl implements registDao{
 	}
 
 
-
+//未发货
 	@Override
-	public List<GoodsOrderDto> selectAllOrderByOrSta() {
+	public List<GoodsOrderDto> selectAllOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		Connection conn=DBConnection1.getConnection();
 		String sql="SELECT * from goodsorder a,address b,goodscolor c,goods d,`user` e where gostate = ? and a.gcolorid = c.gcolorid and a.addressid = b.addressid and c.gid = d.gid and a.uid = e.uid";
 		GoodsOrderDto goodsorder=null;
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, FinalType.NOSHIPPED);
+			ps.setInt(1, status);
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
 				goodsorder=new GoodsOrderDto();
-				goodsorder.setGoid(rs.getInt("goid"));
-				goodsorder.setGoname(rs.getString("goname"));
+				goodsorder.setGoodsnum(rs.getInt("goodsnum"));//
+				goodsorder.setAddressid(rs.getInt("addressid"));//
+				goodsorder.setGostate(rs.getInt("gostate"));//
+				goodsorder.setColortype(rs.getString("colortype"));//
+				goodsorder.setGname(rs.getString("gname"));//
+				goodsorder.setGoid(rs.getInt("goid"));//
+				goodsorder.setGoodspicture(rs.getString("goodspicture"));//
+				goodsorder.setUname(rs.getString("uname"));//
+				goodsorder.setGid(rs.getInt("gid"));//
 				goodsorder.setGcolorid(rs.getInt("gcolorid"));
-				goodsorder.setUid(rs.getInt("uid"));
-				goodsorder.setOutgoodid(rs.getInt("outgoodid"));
-				goodsorder.setGoodsnum(rs.getInt("goodsnum"));
-				goodsorder.setAddressid(rs.getInt("addressid"));
-				goodsorder.setGostate(rs.getInt("gostate"));
-				goodsorder.setGodate(rs.getDate("godate"));
-				goodsorder.setCity(rs.getString("city"));
-				goodsorder.setColortype(rs.getString("colortype"));
-				goodsorder.setCredits(rs.getInt("credits"));
-				goodsorder.setDetail(rs.getString("detail"));
-				goodsorder.setEmail(rs.getString("email"));
-				goodsorder.setGcolorid(rs.getInt("gcolorid"));
-				goodsorder.setGid(rs.getInt("gid"));
-				goodsorder.setGintroduce(rs.getString("gintroduce"));
-				goodsorder.setGname(rs.getString("gname"));
-				goodsorder.setGoid(rs.getInt("goid"));
-				goodsorder.setGoodscount(rs.getInt("goodscount"));
-				goodsorder.setGoodspicture(rs.getString("goodspicture"));
-				goodsorder.setUname(rs.getString("uname"));
-				goodsorder.setName(rs.getString("name"));
-				goodsorder.setGoodscount(rs.getInt("goodscount"));
+				goodsorder.setOutgoodid(rs.getInt("outgoodid"));//
+				goodsorder.setGoname(rs.getString("goname"));//
+				goodsorder.setUid(rs.getInt("uid"));//
+				goodsorder.setGodate(rs.getDate("godate").toString());//
+				goodsorder.setCity(rs.getString("city"));//
+				goodsorder.setCredits(rs.getInt("credits"));//
+				goodsorder.setDetail(rs.getString("detail"));//
+				goodsorder.setEmail(rs.getString("email"));//
+				goodsorder.setGintroduce(rs.getString("gintroduce"));//
+				goodsorder.setGoodscount(rs.getInt("goodscount"));//
+				goodsorder.setName(rs.getString("name"));//
+				goodsorder.setTel(rs.getString("tel"));//
+				goodsorder.setProvince(rs.getString("province"));//
+				goodsorder.setVillage(rs.getString("village"));//
+				goodsorder.setGbrand(rs.getString("gbrand"));
 				list.add(goodsorder);
 			}
 		} catch (SQLException e) {
@@ -131,4 +132,34 @@ public class registDaoImpl implements registDao{
 		}
 		return list;
 	}
+
+
+
+	@Override
+	public boolean selectBySoid(int id) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="update goodsorder set gostate =? where goid=? ";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, FinalType.SHIPPED);
+			ps.setInt(2, id);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+
 }

@@ -156,83 +156,57 @@
 				<hr class="row" />
 				<div class="dingdan_show">
 				<!--未发货块-->
-				<ul id="dingdan_noput" class="row">
-					<c:forEach var="orderlist" items="${list }">
-						<li>
-							<span><img src="http://${orderlist.goodspicture}"/></span>
-							<span id="dingdan_noput_name">${orderlist.gname }</span>
-							<span  id="dingdan_noput_addr">用户：<span>${orderlist.uname }</span></span>
-							<span id="dingdan_noput_num">数量：<span>${orderlist.goodsnum }</span></span>
-							<span id="dingdan_noput_color">颜色：<span>${orderlist.colortype }</span></span>
-							<span id="dingdan_noput_btn">
-								<button class="btn btn-default">发货</button>
-							</span>
-						</li>
-					</c:forEach>
-				</ul>
-			<%--
 					<ul id="dingdan_noput" class="row">
-					<li>
-						<span><img src="../img/shuma.png"/></span>
-						<span id="dingdan_noput_name">
-							这是一个商品
-						</span>
-						<span  id="dingdan_noput_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
-						<span id="dingdan_noput_num">数量：<span>2</span></span>
-						<span id="dingdan_noput_color">颜色：<span>白色</span></span>
-						<span id="dingdan_noput_btn">
-							<button class="btn btn-default">发货</button>
-						</span>
-					</li>
-					<li>
-						<span><img src="../img/shuma.png"/></span>
-						<span id="dingdan_noput_name">
-							这是一个商品
-						</span>
-						<span  id="dingdan_noput_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
-						<span id="dingdan_noput_num">数量：<span>2</span></span>
-						<span id="dingdan_noput_color">颜色：<span>白色</span></span>
-						<span id="dingdan_noput_btn">
-							<button class="btn btn-default">发货</button>
-						</span>
-					</li>
-				  </ul>
-			 --%>
+						<c:forEach var="orderlist" items="${list }">
+							<li>
+								<div class="liheadmsg" onclick="clickdb(this)">
+									<span><img src="http://${orderlist.goodspicture}"/></span>
+									<span id="dingdan_noput_name">${orderlist.gname }</span>
+									<span  id="dingdan_noput_addr">用户：<span>${orderlist.uname }</span></span>
+									<span id="dingdan_noput_num">数量：<span>${orderlist.goodsnum }</span></span>
+									<span id="dingdan_noput_color">颜色：<span>${orderlist.colortype }</span></span>
+								</div>
+								<div class="goodsdescri">
+									<p>商品编号：<span>${orderlist.gid }</span></p>
+									<p>商品品牌：<span>${orderlist.gbrand }</span></p>
+									<p>商品详情：<span>${orderlist.gintroduce }</span></p>
+									<p>商品库存：<span>${orderlist.goodscount }</span></p>
+									<p>订单提交时间：<span>${orderlist.godate }</span></p>
+									<p>
+										<span>收货人：<span>${orderlist.name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span>电话号码：<span>${orderlist.tel }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<span>收货地址：<span>${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }</span></span>
+									</p>
+								</div>
+								<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}')">
+										<button class="btn btn-default">发货</button>
+								</span>
+							</li>
+						</c:forEach>
+					</ul>
 				</div>
+				
 				<!--已发货块-->
 				<div>
 				  <ul id="dingdan_put" class="row">
-					<li>
-						<span><img src="../img/shuma.png"/></span>
-						<span id="dingdan_put_name">
-							这是另一个商品
-						</span>
-						<span  id="dingdan_put_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
-						<span id="dingdan_put_num">数量：<span>1</span></span>
-						<span id="dingdan_put_color">颜色：<span>红色</span></span>
-						<span id="dingdan_put_condition">
-						    状态：<sapn>已发货</span>
-						</span>
-					</li>
-					<li>
-						<span><img src="../img/shuma.png"/></span>
-						<span id="dingdan_put_name">
-							这是另一个商品
-						</span>
-						<span  id="dingdan_put_addr">地址：<span>XX省XX市XX县XX村XXX号</span></span>
-						<span id="dingdan_put_num">数量：<span>1</span></span>
-						<span id="dingdan_put_color">颜色：<span>红色</span></span>
-						<span id="dingdan_put_condition">
-						    状态：<sapn>已发货</span>
-						</span>
-					</li>
+				  
 				  </ul>
 				</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+						
 				<!--申请退款块-->
 				<div>
 				  <ul id="dingdan_waitback" class="row">
 					<li>
-						<span><img src="../img/shuma.png"/></span>
+						<span><img src=""/></span>
 						<span id="dingdan_waitback_name">
 							商品
 						</span>
@@ -244,7 +218,7 @@
 						</span>
 					</li>
 					<li>
-						<span><img src="../img/shuma.png"/></span>
+						<span><img src=""/></span>
 						<span id="dingdan_waitback_name">
 							商品
 						</span>
@@ -261,7 +235,7 @@
 				<div>
 			 	  <ul id="dingdan_back" class="row">
 					<li>
-						<span><img src="../img/shuma.png"/></span>
+						<span><img src=""/></span>
 						<span id="dingdan_back_name">
 							商品
 						</span>
@@ -273,7 +247,7 @@
 						</span>-->
 					</li>
 					<li>
-						<span><img src="../img/shuma.png"/></span>
+						<span><img src=""/></span>
 						<span id="dingdan_back_name">
 							商品
 						</span>

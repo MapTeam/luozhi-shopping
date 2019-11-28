@@ -8,5 +8,6 @@ import com.lz.pojo.User;
 public interface registDao {
 	public boolean registSelectByName(String name);
 	public User registSelectByEmail(String email);
-	public List<GoodsOrderDto> selectAllOrderByOrSta();
+	public List<GoodsOrderDto> selectAllOrderByOrSta(int status);
+	public boolean selectBySoid(int soid);
 }
