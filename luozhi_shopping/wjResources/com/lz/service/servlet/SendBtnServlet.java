@@ -2,7 +2,6 @@ package com.lz.service.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,19 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lz.dao.registDao;
 import com.lz.dao.impl.registDaoImpl;
-import com.lz.dto.GoodsOrderDto;
-import com.lz.pojo.GoodsOrder;
-import com.lz.util.FinalType;
 
-import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
-@WebServlet("/OrderServlet")
-public class OrderServlet extends HttpServlet {
+@WebServlet("/SendBtnServlet")
+public class SendBtnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public OrderServlet() {
-        super();
-    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -32,10 +25,14 @@ public class OrderServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		registDao dao=new registDaoImpl();
-		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(FinalType.NOSHIPPED);
-//		System.out.println(list);
-		request.setAttribute("list",list);
-		request.getRequestDispatcher("backstage/backstageindex.jsp").forward(request, response);
+		String id=request.getParameter("id");
+		int soid=Integer.parseInt(id);
+		boolean flag=dao.selectBySoid(soid);
+		JSONObject jo=new JSONObject().fromObject(flag);
+		PrintWriter pw=response.getWriter();
+		pw.write(jo.toString());
+		pw.flush();
+		pw.close();
 	}
 
 }

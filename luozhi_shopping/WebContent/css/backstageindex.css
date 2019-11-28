@@ -36,13 +36,16 @@ body{
 }
 /*鏈彂璐у潡*/
 #dingdan_noput>li{
+	border-bottom: #F0F0F0 solid 1px;
+}
+#dingdan_noput>li>.liheadmsg{
 	height: 80px;
 	border-bottom: #F0F0F0 solid 1px;
 }
-#dingdan_noput>li>span{
+#dingdan_noput>li>.liheadmsg>span{
 	float: left;
 }
-#dingdan_noput>li>span>img{
+#dingdan_noput>li>.liheadmsg>span>img{
 	margin: 10px;
 	width: 60px;
 	height: 60px;
@@ -50,6 +53,7 @@ body{
 #dingdan_noput_name{
 	width: 240px;
 	margin-top: 20px;
+	line-height:20px;
 	text-align: center;
 }
 #dingdan_noput_addr{
@@ -68,31 +72,46 @@ body{
 	margin-top: 20px;
 	text-align: center;
 }
+
 #dingdan_noput_btn{
 	width: 100px;
-	margin-top: 15px;
+	margin-top: -62px;
 	padding-left: 30px;
+	float:right;
 }
+/*详细信息*/
+.goodsdescri{
+	width:780px;
+	background-color:#fdfdff;
+	padding:0 20px;
+}
+
+
+
 /*宸插彂璐у潡*/
 #dingdan_put>li{
+	border-bottom: #F0F0F0 solid 1px;
+}
+#dingdan_put>li>.liheadmsg{
 	height: 80px;
 	border-bottom: #F0F0F0 solid 1px;
 }
-#dingdan_put>li>span{
+#dingdan_put>li>.liheadmsg>span{
 	float: left;
 }
-#dingdan_put>li>span>img{
+#dingdan_put>li>.liheadmsg>span>img{
 	margin: 10px;
 	width: 60px;
 	height: 60px;
 }
 #dingdan_put_name{
-	width: 190px;
+	width: 240px;
+	margin-right:20px;
 	margin-top: 20px;
 	text-align: center;
 }
 #dingdan_put_addr{
-	width: 190px;
+	width: 100px;
 	margin-top: 20px;
 }
 #dingdan_put_num{
@@ -100,7 +119,7 @@ body{
 	margin-top: 20px;
 }
 #dingdan_put_color{
-	width: 80px;
+	width: 120px;
 	margin-top: 20px;
 }
 #dingdan_put_condition{
@@ -178,3 +197,7 @@ body{
 	padding-left: 140px;
 	width: 200px;		
 }
+
+
+
+
