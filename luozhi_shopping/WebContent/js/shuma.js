@@ -49,14 +49,16 @@ $(document).scroll(function(){
 })();
 var low=0;
 var big=0;
-//判断是否点击
+//判断是否点击确认自定义价格按钮
 var flag=false;
 //自定义价格按钮
 (function(){
 	$('#low_price').focus(function() {
+		$('.table_center3').children('li').removeClass();
 		flag=false;
 	});
 	$('#big_price').focus(function() {
+		$('.table_center3').children('li').removeClass();
 		flag=false;
 	});
 	$('#low_price').keyup(function(){
@@ -112,16 +114,46 @@ var flag=false;
 
 //小标题点击样式改变
 (function() {
+	var count=0;
+	var count1=0;
+	var count2=0;
+	var text=null;
+	var text1=null;
+	var text2=null;
 	$('.table_center1>li').click(function() {
-		$(this).addClass('brand').siblings().removeClass();
+		if($(this).attr('class')=='brand'){
+			$(this).removeClass('brand');
+		}else{
+			$(this).addClass('brand').siblings().removeClass();
+		}
 		select(1);
+//		if (count==0) {
+//			$(this).addClass('brand').siblings().removeClass();
+//			count=1;
+//			text=$(this).text();			
+//		}else if(count==1&&$(this).text()!=text) {
+//			$(this).addClass('brand').siblings().removeClass();
+//			text=$(this).text();
+//		}else{
+//			$(this).removeClass();
+//			count=0;
+//		};
+		
 	});
 	$('.table_center2>li').click(function() {
-		$(this).addClass('type').siblings().removeClass();
+		if($(this).attr('class')=='type'){
+			$(this).removeClass('type');
+		}else{
+			$(this).addClass('type').siblings().removeClass();
+		}
 		select(1);
 	});
 	$('.table_center3>li').click(function() {
-		$(this).addClass('scope').siblings().removeClass();
+		if($(this).attr('class')=='scope'){
+			$(this).removeClass('scope');
+		}else{
+			$(this).addClass('scope').siblings().removeClass();
+		}
 		flag=false;
 		select(1);
 	});
@@ -188,7 +220,7 @@ function select(pageNo) {
 		var goods = obj.goods;
 		var str =``;
 		var string = ``;
-		if (obj.pageNo==1) {
+		if (obj.pageNo==1&&obj.pageCount!=1) {
 			string = `<a onclick="select(1)" class="pagefirst">首页</a>
 	    		 <a style="color: #CDCDCD;border: #CDCDCD solid 1px;border-radius: 3px;" class="pageprev">上一页</a>
 	    		  <a  onclick="select(${obj.pageNo+1})" class="pagenext">下一页</a>
@@ -197,10 +229,19 @@ function select(pageNo) {
 				  <a>共<span id="maxpage">${obj.pageCount}</span>页</a>
 				  <a>跳转<input id="tiaozhuaninput" type="text"/>页</a>
 	    			`;
-		}else if(obj.pageNo==obj.pageCount){
+		}else if(obj.pageNo==obj.pageCount&&obj.pageCount!=1){
 			string = `<a onclick="select(1)" class="pagefirst">首页</a>
 	    		  <a onclick="select(${obj.pageNo-1})" class="pageprev">上一页</a>
 	    		 <a style="color: #CDCDCD;border: #CDCDCD solid 1px;border-radius: 3px;" class="pageprev">下一页</a>
+	    		  <a onclick="select(${obj.pageCount})" class="pagelast">尾页</a>
+	    		  <a>当前页：${obj.pageNo}</a>
+				  <a>共<span id="maxpage">${obj.pageCount}</span>页</a>
+				  <a>跳转<input id="tiaozhuaninput" type="text"/>页</a>
+	    			`;
+		}else if(obj.pageCount==1&&obj.pageNo==1){
+			string = `<a onclick="select(1)" class="pagefirst">首页</a>
+	    		    <a style="color: #CDCDCD;border: #CDCDCD solid 1px;border-radius: 3px;" class="pageprev">上一页</a>
+	    		    <a style="color: #CDCDCD;border: #CDCDCD solid 1px;border-radius: 3px;" class="pageprev">下一页</a>
 	    		  <a onclick="select(${obj.pageCount})" class="pagelast">尾页</a>
 	    		  <a>当前页：${obj.pageNo}</a>
 				  <a>共<span id="maxpage">${obj.pageCount}</span>页</a>

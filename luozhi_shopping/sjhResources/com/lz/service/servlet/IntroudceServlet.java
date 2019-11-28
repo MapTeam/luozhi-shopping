@@ -35,7 +35,6 @@ public class IntroudceServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String gid = request.getParameter("gid");
 		String category1=request.getParameter("category1");
-		System.out.println(category1);
 		if(gid!=null&&!"".equals(gid)){
 			HomeDaoImpl hdao = new HomeDaoImpl(); 
 			BaseDaoImpl dao = new BaseDaoImpl();
