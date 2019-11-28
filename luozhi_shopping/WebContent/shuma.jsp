@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>数码</title>
+<title>${classifytitle}</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
 <link rel="stylesheet" type="text/css" href="css/shuma.css" />
@@ -28,9 +28,9 @@ if(cookie!=null){
 		}
 	}
 }
-	pageContext.setAttribute("uname", uname);
-	pageContext.setAttribute("upwd", upwd);
-	pageContext.setAttribute("check", check);
+pageContext.setAttribute("uname", uname);
+pageContext.setAttribute("upwd", upwd);
+pageContext.setAttribute("check", check);
 %>
 <body>
 		<!--头部-->
@@ -38,7 +38,7 @@ if(cookie!=null){
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="home.html" class="navbar-brand">
+						<a href="HomeServlet" class="navbar-brand">
 							<img src="img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
@@ -53,17 +53,17 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form action="#" method="" class="">
+						<form method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
 						<div class="form-heid">
 							<ul>
 								<li class="title1">热门搜索</li>
-								<li><a href="">真无线</a></li>
-								<li><a href="">潮流系列</a></li>
-								<li><a href="">乐器</a></li>
-								<li><a href="">蓝牙</a></li>
+								<li><a style="cursor: pointer;">真无线</a></li>
+								<li><a style="cursor: pointer;">潮流系列</a></li>
+								<li><a style="cursor: pointer;">乐器</a></li>
+								<li><a style="cursor: pointer;">蓝牙</a></li>
 							</ul>
 						</div>
 					</div>
@@ -71,12 +71,14 @@ if(cookie!=null){
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<c:if test="${userinfo==null }">
-									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
+								<c:if test="${userinfo!=null}">
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
 								</c:if>
-								
+								<c:if test="${userinfo==null }">
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
+									<li class="regist-li"><a href="regist.jsp">注册</a></li>
+								</c:if>
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
@@ -109,7 +111,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a href="home.html">
+													<a href="HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
@@ -139,9 +141,9 @@ if(cookie!=null){
 			<div class="container">
 				<div class="row" id="top">
 					<h4>
-					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="home.html" class="col-md-1">首页</a>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
 					<span class="top_title">
-						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;数码</span>
+						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${classifytitle}</span>
 					</span>
 				    </h4>
 				</div>
@@ -152,7 +154,7 @@ if(cookie!=null){
 		<div class="container">
 			<div class="row col-md-12" id="table">
 						<span id="table_left">品牌:</span>
-					    <ul class="table_center" id="table_type">
+					    <ul class="table_center table_center1"  id="table_center">
 					    	<c:forEach items="${brands }" var="brand">
 					    		<li><a>${brand }</a></li>
 					    	</c:forEach>
@@ -160,26 +162,27 @@ if(cookie!=null){
 					    <span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>						
 				</div>
 				
+				<input type="hidden" id="category1" value="${types.get(0).category1 }"/>
 				<div class="row col-md-12" id="table" style="border-top: none;">
 						<span id="table_left">分类:</span>
-					    <ul class="table_center">
+					    <ul class="table_center table_center2">
 					    	<c:forEach items="${types }" var="type">
-					    		<li><a>${type }</a></li>
+					    		<li><a>${type.tname }<input type="hidden" value="${type.category2 }"/> </a></li>
 					    	</c:forEach>
 					    </ul>
 				</div>
 				<div class="row col-md-12" id="table" style="border-top: none;">
 						<span id="table_left">价格:</span>
-					    <ul class="table_center">
-					    	<li><a>0~2999</a></li>
-					    	<li><a>3000~5998</a></li>
-					    	<li><a>5999~8999</a></li>
-					    	<li>
-					    		<a>自定义</a>
+					    <ul class="table_center table_center3">
+					    	<li><a>0~2999<input type="hidden" value="nomal"/></a></li>
+					    	<li><a>3000~5998<input type="hidden" value="nomal"/></a></li>
+					    	<li><a>5999~8999<input type="hidden" value="nomal"/></a></li>
+					    	<span style="margin-left: 20px; line-height: 45px">
+					    		<a style="color: black;">自定义</a>
 					    		<input type="text" id="low_price" placeholder="¥"  />
 					    		<input type="text" id="big_price" placeholder="¥"  />
 					    		<input type="button" id="price_ok" value="确定"/>
-					    	</li>
+					    	</span>
 					    		
 					    </ul>
 					    <!--<span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>-->						
@@ -196,7 +199,8 @@ if(cookie!=null){
 					</p>				
 				</div>
 				<div class="row" id="product">
-					<c:forEach items="${goods}" var="p">
+					<!-- 商品区 -->
+					<!--<c:forEach items="${goods}" var="p">
 						<div class="col-md-3">
 						     <div class="thumbnail">
 						        	<a href="IntroudceServlet?gid=${p.gid }">
@@ -208,100 +212,34 @@ if(cookie!=null){
 							        </a>
 						      </div>
 					    </div>
-					</c:forEach>
-					
-					<!--<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>	
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-				</div>
-				<div class="row" id="product">
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>	
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-				</div>
-				<div class="row" id="product">
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>	
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-				</div>
-				<div class="row" id="product">
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>	
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>
-					<div class="col-md-3">
-						<img src="img/1.jpg"/>
-							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
-							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
-					</div>-->
+					</c:forEach>-->
 				</div>
 			</div>
 		</section>
-		
-		
-		
+		<!--分页-->
+		<section style="margin-top: 80px">
+				<div class="row">
+					<center id="fy">
+					
+					<!--<c:if test="${pageNo lt 2}">
+						<a style="color: #CDCDCD;border: #CDCDCD solid 1px;border-radius: 3px;" class="pageprev">上一页</a>
+					</c:if>
+					<c:if test="${pageNo gt 1}">
+						<a onclick="getPage(${pageNo-1})" class="pageprev">上一页</a>
+					</c:if>
+					<c:if test="${pageNo gt maxPageNo-1}">
+						<a style="color: #CDCDCD;border: #CDCDCD solid 1px;border-radius: 3px;" class="pageprev">下一页</a>
+					</c:if>
+					<c:if test="${pageNo lt maxPageNo}">
+						<a  onclick="getPage(${pageNo+1})" class="pagenext">下一页</a>
+					</c:if>								
+					<a onclick="getPage(${maxPageNo})" class="pagelast">尾页</a>
+					<a>当前页：${pageNo}</a>
+					<a>共<span id="maxpage">${maxPageNo}</span>页</a>
+					<a>跳转<input id="tiaozhuaninput" type="text"/>页</a>-->
+					</center>
+				</div>
+			</section>
 		<!--回到顶部块-->
 		<div class="zTi-rigth">
 			<ul>

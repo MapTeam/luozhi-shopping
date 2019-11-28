@@ -54,7 +54,7 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form action="#" method="" class="">
+						<form method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
@@ -72,12 +72,14 @@ if(cookie!=null){
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<c:if test="${userinfo==null }">
-									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
+								<c:if test="${userinfo!=null}">
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
 								</c:if>
-								
+								<c:if test="${userinfo==null }">
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
+									<li class="regist-li"><a href="regist.jsp">注册</a></li>
+								</c:if>
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
@@ -110,7 +112,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a href="home.html">
+													<a href="HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
@@ -258,7 +260,7 @@ if(cookie!=null){
 								        <img src="${p.zpicture}"/>
 								        <caption>
 								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
+								          <p style="font-weight:bold;font-size: 17px;color: #A94442; " class="goods-price">¥${p.gprice}</p>
 								        </caption>
 							        </a>
 						      </div>
@@ -380,7 +382,7 @@ if(cookie!=null){
 		        
 			        <div class="modal-footer">
 				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
+				        <a target="_blank" href="regist.jsp">没有帐号？免费注册  ></a>
 			        </div>
 	        
 		    	</div>

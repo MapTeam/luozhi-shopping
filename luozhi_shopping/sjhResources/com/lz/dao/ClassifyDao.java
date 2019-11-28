@@ -11,7 +11,7 @@ public interface ClassifyDao {
 	 * 通过category1查询type
 	 * @return
 	 */
-	public List<String> selectTypeByCategory1(Connection conn,int category1);
+	public List<Type> selectTypeByCategory1(Connection conn,int category1);
 	/**
 	 * 通过category1查询Goods
 	 * @return
@@ -22,5 +22,15 @@ public interface ClassifyDao {
 	 * @return
 	 */
 	public List<String> selectGbrandByCategory1(Connection conn,int category1);
+	/**
+	 * 根据页面显示的条数获得最大的页数
+	 * @param conn
+	 * @param pageSize
+	 * @return
+	 */
+	public int selectMaxPageNo(Connection conn,int category1,int pageSize);
 
+	public List<Goods> selectGoods(Connection conn,String gbrand,String type,String sort,String category1,String min,String max,String pageNo);
+
+	public int selectGoodsCount(Connection conn,String gbrand,String type,String category1,String min,String max);
 }

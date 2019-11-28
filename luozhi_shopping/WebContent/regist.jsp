@@ -39,7 +39,7 @@ if(cookie!=null){
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="home.html" class="navbar-brand">
+						<a href="HomeServlet" class="navbar-brand">
 							<img src="img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
@@ -54,7 +54,7 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form action="#" method="" class="">
+						<form method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
@@ -90,7 +90,7 @@ if(cookie!=null){
 				<div class="breadcrumbs">
 					<ul>
 						<li class="home">
-							<a href="home.html" title="Home">首页</a>
+							<a href="HomeServlet" title="Home">首页</a>
 						</li>
 						<li class="creat_account">
 							<span>>创建新用户</span>
@@ -321,7 +321,7 @@ if(cookie!=null){
 		        
 			        <div class="modal-footer">
 				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
+				        <a target="_blank" href="regist.jsp">没有帐号？免费注册  ></a>
 			        </div>
 	        
 		    	</div>

@@ -34,6 +34,7 @@ public class IntroudceServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String gid = request.getParameter("gid");
+		String category1=request.getParameter("category1");
 		if(gid!=null&&!"".equals(gid)){
 			HomeDaoImpl hdao = new HomeDaoImpl(); 
 			BaseDaoImpl dao = new BaseDaoImpl();
@@ -69,7 +70,17 @@ public class IntroudceServlet extends HttpServlet {
 				}
 				lpimg.add(s1[i]);
 			}
-			
+			if (category1!=null&&!"".equals(category1)) {
+//				System.out.println("大分类参数已经传输"+category1);
+				int category = Integer.parseInt(category1);
+				if (category==1008002) {
+					request.setAttribute("classifytitle", "IP周边");
+				}
+				if (category==101000) {
+					request.setAttribute("classifytitle", "数码影音");
+				}
+				request.setAttribute("hhcategory1", category1);
+			}
 			request.setAttribute("goods", goods);
 			request.setAttribute("hotgoods", hotgoods);
 			request.setAttribute("lpimg", lpimg);
@@ -77,6 +88,7 @@ public class IntroudceServlet extends HttpServlet {
 			request.setAttribute("gcolors", gcolors);
 			request.getRequestDispatcher("product_particular.jsp").forward(request, response);
 		}
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
