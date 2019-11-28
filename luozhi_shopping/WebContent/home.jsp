@@ -78,7 +78,7 @@ if(cookie!=null){
 								<c:if test="${userinfo==null }">
 									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
+									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
@@ -112,7 +112,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a href="home.html">
+													<a href="HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
@@ -260,7 +260,7 @@ if(cookie!=null){
 								        <img src="${p.zpicture}"/>
 								        <caption>
 								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
+								          <p style="font-weight:bold;font-size: 17px;color: #A94442; " class="goods-price">¥${p.gprice}</p>
 								        </caption>
 							        </a>
 						      </div>
@@ -382,7 +382,7 @@ if(cookie!=null){
 		        
 			        <div class="modal-footer">
 				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
+				        <a target="_blank" href="regist.jsp">没有帐号？免费注册  ></a>
 			        </div>
 	        
 		    	</div>

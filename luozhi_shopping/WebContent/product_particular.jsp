@@ -34,7 +34,7 @@ if(cookie!=null){
 	pageContext.setAttribute("check", check);
 %>
 <body data-spy="scroll" data-offset="100">
-				<!--头部-->
+	<!--头部-->
 		<header>
 			<nav class="navbar navbar-default">
 				<div class="container">
@@ -54,7 +54,7 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form action="LikeSelectServlet?val="+$('.search').val(); method="" class="">
+						<form action="#" method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
@@ -72,12 +72,14 @@ if(cookie!=null){
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<c:if test="${userinfo==null }">
-									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
+								<c:if test="${userinfo!=null}">
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
 								</c:if>
-								
+								<c:if test="${userinfo==null }">
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
+									<li class="regist-li"><a href="regist.jsp">注册</a></li>
+								</c:if>
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
@@ -110,16 +112,16 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a href="home.html">
+													<a href="HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
 												</li>
 												<hr class="hr"/>
 												<li class="exitlogin-li hidd">
-													<a href="#">
+													<a href="javascript:;">
 														<span class="glyphicon glyphicon-off logout"></span>
-														<span class="list-text">退出</span>
+														<span class="list-text" id="exitlogin">退出</span>
 													</a>
 												</li>
 											</ul>
@@ -167,7 +169,12 @@ if(cookie!=null){
 					<h4>
 					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
 					<span class="top_title">
+						<c:if test="${hhcategory1 != null }">
+						<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="ClassifyServlet?category1=${hhcategory1}">${classifytitle}</a>&gt;${goods.gname }</span>
+						</c:if>
+						<c:if test="${hhcategory1 == null }">
 						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${goods.gname }</span>
+						</c:if>
 					</span>
 					
 					<span class="glyphicon glyphicon-new-window right" style="font-size: 20px;float: right;color: #333333;top: 16px;" class="col-md-2"><a style="color: #333333;font-weight: bold;" href="#">分享</a></span>
@@ -335,7 +342,7 @@ if(cookie!=null){
 									<span>									
 									  <img src="${good.zpicture }"/>
 									  <p><a href="IntroudceServlet?gid=${good.gid }"> ${good.gname }</a></p>
-									  <p>￥89</p>
+									  <p>￥${good.gprice }</p>
 									</span>			
 								</div>
 							</c:forEach>

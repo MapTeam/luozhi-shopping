@@ -230,11 +230,11 @@ function select(pageNo) {
 			for(var i = 0; i < goods.length; i++){
 		    	str = str +`<div class="col-md-3">
 						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${goods[i].gid}">
+						        	<a href="IntroudceServlet?gid=${goods[i].gid}&category1=${goods[i].category1}">
 								        <img src="${goods[i].zpicture}"/>
 								        <caption>
 								          <p class="goods-name">${goods[i].gname}</p>
-								          <p class="goods-price">¥${goods[i].gprice}</p>
+								          <p style="font-weight:bold;font-size: 17px;color: #A94442;" class="goods-price">¥${goods[i].gprice}</p>
 								        </caption>
 							        </a>
 						      </div>

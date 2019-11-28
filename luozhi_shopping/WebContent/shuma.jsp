@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>数码</title>
+<title>${classifytitle}</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
 <link rel="stylesheet" type="text/css" href="css/shuma.css" />
@@ -38,7 +38,7 @@ pageContext.setAttribute("check", check);
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="home.html" class="navbar-brand">
+						<a href="HomeServlet" class="navbar-brand">
 							<img src="img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
@@ -60,10 +60,10 @@ pageContext.setAttribute("check", check);
 						<div class="form-heid">
 							<ul>
 								<li class="title1">热门搜索</li>
-								<li><a href="">真无线</a></li>
-								<li><a href="">潮流系列</a></li>
-								<li><a href="">乐器</a></li>
-								<li><a href="">蓝牙</a></li>
+								<li><a style="cursor: pointer;">真无线</a></li>
+								<li><a style="cursor: pointer;">潮流系列</a></li>
+								<li><a style="cursor: pointer;">乐器</a></li>
+								<li><a style="cursor: pointer;">蓝牙</a></li>
 							</ul>
 						</div>
 					</div>
@@ -71,12 +71,14 @@ pageContext.setAttribute("check", check);
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<c:if test="${userinfo==null }">
-									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
+								<c:if test="${userinfo!=null}">
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
 								</c:if>
-								
+								<c:if test="${userinfo==null }">
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
+									<li class="regist-li"><a href="regist.jsp">注册</a></li>
+								</c:if>
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
@@ -109,7 +111,7 @@ pageContext.setAttribute("check", check);
 												</li>
 		
 												<li>
-													<a href="home.html">
+													<a href="HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
@@ -139,9 +141,9 @@ pageContext.setAttribute("check", check);
 			<div class="container">
 				<div class="row" id="top">
 					<h4>
-					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="home.html" class="col-md-1">首页</a>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
 					<span class="top_title">
-						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;数码</span>
+						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${classifytitle}</span>
 					</span>
 				    </h4>
 				</div>

@@ -37,6 +37,12 @@ public class ClassifyServlet extends HttpServlet {
 			List<String> brands = dao.selectGbrandByCategory1(conn, category);
 			List<Type> types = dao.selectTypeByCategory1(conn, category);
 			DBConnection1.close(conn);
+			if (category==1008002) {
+				request.setAttribute("classifytitle", "IP周边");
+			}
+			if (category==101000) {
+				request.setAttribute("classifytitle", "数码影音");
+			}
 			request.setAttribute("brands", brands);
 			request.setAttribute("types", types);
 			request.getRequestDispatcher("shuma.jsp").forward(request, response);
