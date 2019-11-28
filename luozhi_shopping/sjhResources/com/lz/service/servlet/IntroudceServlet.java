@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.dao.impl.GoodsColorDaoImpl;
+import com.lz.dao.impl.HomeDaoImpl;
 import com.lz.dao.impl.IntroduceDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
@@ -33,40 +34,49 @@ public class IntroudceServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String gid = request.getParameter("gid");
-		BaseDaoImpl dao = new BaseDaoImpl();
-		IntroduceDaoImpl idao = new IntroduceDaoImpl();
-		GoodsColorDaoImpl gcolordao = new GoodsColorDaoImpl();
-		Goods goods = new Goods();
-		goods.setGid(Integer.parseInt(gid));
-		Connection conn = DBConnection1.getConnection();
-		//查询相应的商品
-		goods = (Goods) dao.selectObjectById(conn, goods);
-		//查询相应的介绍
-		GoodsIntroduceImg gii = idao.selectGoodsIntroduce(conn, Integer.parseInt(gid));
-		//查询相应的颜色
-		List<GoodsColor> gcolors = (List<GoodsColor>) gcolordao.selectColor(conn, Integer.parseInt(gid));
-		DBConnection1.close(conn);
-		String str = gii.getIntroduceImgs();
-		String[] s = str.split(",");
-		List<String> inimg = new ArrayList<String>();
-		for (String string : s) {
-			inimg.add(string);
-		}
-		String str1 = goods.getGpicture();
-		String[] s1 = str1.split(",");
-		List<String> lpimg = new ArrayList<String>();
-		for (int i = 0; i < s1.length; i++) {
-			if(i>3){
-				break;
+		if(gid!=null&&!"".equals(gid)){
+			HomeDaoImpl hdao = new HomeDaoImpl(); 
+			BaseDaoImpl dao = new BaseDaoImpl();
+			IntroduceDaoImpl idao = new IntroduceDaoImpl();
+			GoodsColorDaoImpl gcolordao = new GoodsColorDaoImpl();
+			Goods goods = new Goods();
+			goods.setGid(Integer.parseInt(gid));
+			Connection conn = DBConnection1.getConnection();
+			//查询相应的商品
+			goods = (Goods) dao.selectObjectById(conn, goods);
+			//热度加一
+			goods.setHot(goods.getHot()+1);
+			dao.updateObjectById(conn, goods);
+			//查询相应的介绍
+			GoodsIntroduceImg gii = idao.selectGoodsIntroduce(conn, Integer.parseInt(gid));
+			//查询相应的颜色
+			List<GoodsColor> gcolors = (List<GoodsColor>) gcolordao.selectColor(conn, Integer.parseInt(gid));
+			//热门商品
+			List<Goods> hotgoods = hdao.getHomeGoods(conn, 0, 4);
+			DBConnection1.close(conn);
+			String str = gii.getIntroduceImgs();
+			String[] s = str.split(",");
+			List<String> inimg = new ArrayList<String>();
+			for (String string : s) {
+				inimg.add(string);
 			}
-			lpimg.add(s1[i]);
+			String str1 = goods.getGpicture();
+			String[] s1 = str1.split(",");
+			List<String> lpimg = new ArrayList<String>();
+			for (int i = 0; i < s1.length; i++) {
+				if(i>3){
+					break;
+				}
+				lpimg.add(s1[i]);
+			}
+			
+			request.setAttribute("goods", goods);
+			request.setAttribute("hotgoods", hotgoods);
+			request.setAttribute("lpimg", lpimg);
+			request.setAttribute("inimg", inimg);
+			request.setAttribute("gcolors", gcolors);
+			request.getRequestDispatcher("product_particular.jsp").forward(request, response);
 		}
-
-		request.setAttribute("goods", goods);
-		request.setAttribute("lpimg", lpimg);
-		request.setAttribute("inimg", inimg);
-		request.setAttribute("gcolors", gcolors);
-		request.getRequestDispatcher("product_particular.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

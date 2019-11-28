@@ -1,6 +1,6 @@
-/*后台*/
+/*鍚庡彴*/
 body{
-	font-family: "微软雅黑";
+	font-family: "寰蒋闆呴粦";
 }
 .back_left>ul{
 	cursor: pointer;
@@ -20,8 +20,8 @@ body{
 .back_right .nowclick{
 	display: block;
 }
-/*订单管理*/
-/*头部显示*/
+/*璁㈠崟绠＄悊*/
+/*澶撮儴鏄剧ず*/
 #dingdan_title>li{
 	float: left;
 	cursor: pointer;
@@ -34,7 +34,7 @@ body{
 #dingdan_control .dingdan_show{
 	display: block;
 }
-/*未发货块*/
+/*鏈彂璐у潡*/
 #dingdan_noput>li{
 	height: 80px;
 	border-bottom: #F0F0F0 solid 1px;
@@ -48,28 +48,32 @@ body{
 	height: 60px;
 }
 #dingdan_noput_name{
-	width: 190px;
+	width: 240px;
 	margin-top: 20px;
 	text-align: center;
 }
 #dingdan_noput_addr{
-	width: 190px;
+	width: 100px;
 	margin-top: 20px;
+	text-align: center;
+	
 }
 #dingdan_noput_num{
 	width: 80px;
 	margin-top: 20px;
+	text-align: center;
 }
 #dingdan_noput_color{
-	width: 80px;
+	width: 120px;
 	margin-top: 20px;
+	text-align: center;
 }
 #dingdan_noput_btn{
 	width: 100px;
 	margin-top: 15px;
 	padding-left: 30px;
 }
-/*已发货块*/
+/*宸插彂璐у潡*/
 #dingdan_put>li{
 	height: 80px;
 	border-bottom: #F0F0F0 solid 1px;
@@ -105,7 +109,7 @@ body{
 	margin-top: 20px;
 	
 }
-/*申请退货*/
+/*鐢宠閫�璐�*/
 #dingdan_waitback>li{
 	height: 80px;
 	border-bottom: #F0F0F0 solid 1px;
@@ -146,7 +150,7 @@ body{
 	width: 150px;
 	height: 60px;
 }
-/*退款成功*/
+/*閫�娆炬垚鍔�*/
 #dingdan_back>li{
 	height: 80px;
 	border-bottom: #F0F0F0 solid 1px;

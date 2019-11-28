@@ -27,9 +27,9 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HomeDaoImpl hdao = new HomeDaoImpl();
 		Connection conn = DBConnection1.getConnection();
-		List<Goods> gs = hdao.getHomeGoods(conn);
-		List<Goods> res=hdao.getRecommandGoods(conn);
-		List<Goods> hs=hdao.getHotGoods(conn);	
+		List<Goods> gs = hdao.getHomeGoods(conn,0,20);
+		List<Goods> res = hdao.getRecommandGoods(conn);
+		List<Goods> hs = hdao.getHotGoods(conn);	
 		DBConnection1.close(conn);
 		request.setAttribute("HomeGoods", gs);
 		request.setAttribute("HotGoodsList", hs);

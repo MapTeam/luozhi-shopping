@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="com.lz.pojo.Goods"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,7 +13,26 @@
 <link rel="stylesheet" href="css/product_particular.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
 </head>
-
+<%
+Cookie[] cookie = request.getCookies();
+String uname = null;
+String upwd = null;
+boolean check = false;
+if(cookie!=null){
+	for(Cookie c:cookie){
+		if("uname".equals(c.getName())){
+			uname = URLDecoder.decode(c.getValue(),"UTF-8");
+			check = true;
+		}
+		if("upwd".equals(c.getName())){
+			upwd = URLDecoder.decode(c.getValue(),"UTF-8");
+		}
+	}
+}
+	pageContext.setAttribute("uname", uname);
+	pageContext.setAttribute("upwd", upwd);
+	pageContext.setAttribute("check", check);
+%>
 <body data-spy="scroll" data-offset="100">
 				<!--头部-->
 		<header>
@@ -310,34 +330,15 @@
 					<div class="col-md-4" style="margin-top: 6px;">
 							<h5 style="font-size: 25px;font-weight: bold;">热门商品</h5>
 							<hr />
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
-							<div class="row" id="hot_commodity">
-								<span>									
-								  <img src="img/1.jpg"/>
-								  <p><a href="#"> 伯朗 i9S蓝牙5.0真无线耳机双耳通话苹果安卓通用</a></p>
-								  <p>￥89</p>
-								</span>			
-							</div>
+							<c:forEach items="${hotgoods }" var="good">
+								<div class="row" id="hot_commodity">
+									<span>									
+									  <img src="${good.zpicture }"/>
+									  <p><a href="IntroudceServlet?gid=${good.gid }"> ${good.gname }</a></p>
+									  <p>￥89</p>
+									</span>			
+								</div>
+							</c:forEach>
 					</div>
 				</div>
 			</div>
@@ -411,20 +412,20 @@
 		                    <div class="form-inline">
 				                <div class="form-group">
 					                <label>用户：</label>
-					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
+					                <input type="text" class="form-control user" id="username" placeholder="请输入账号" value="${pageScope.uname }"/>
 				            	</div>
 				          	</div>
 			                <div class="form-inline password">
 					            <div class="form-group">
 					                <label>密码：</label>
-					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
+					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
 					            </div>
 						    </div>
 						    <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
-					        		<input type="checkbox" id="autologin"/>
-					        		<span>自动登录</span>
+					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
+					        		<span>保存密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>

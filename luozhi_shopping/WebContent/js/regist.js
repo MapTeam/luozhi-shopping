@@ -217,7 +217,7 @@ $('#register').click(function(){
 		         //注册成功跳转到登录页面
 			      alert('注册成功，点击跳转首页登录页面');
 			      //JS设置页面跳转
-			      window.location.href = 'home.html';
+			      window.location.href = 'home.jsp';
 
 			    });
 	}else{

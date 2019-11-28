@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<title>数码</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
-<link rel="stylesheet" type="text/css" href="css/home.css"/>
+<link rel="stylesheet" type="text/css" href="css/shuma.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
-<title>Home</title>  
 </head>
 <%
 Cookie[] cookie = request.getCookies();
@@ -34,12 +33,12 @@ if(cookie!=null){
 	pageContext.setAttribute("check", check);
 %>
 <body>
-	<!--头部-->
+		<!--头部-->
 		<header>
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="HomeServlet" class="navbar-brand">
+						<a href="home.html" class="navbar-brand">
 							<img src="img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
@@ -61,10 +60,10 @@ if(cookie!=null){
 						<div class="form-heid">
 							<ul>
 								<li class="title1">热门搜索</li>
-								<li><a style="cursor: pointer;">真无线</a></li>
-								<li><a style="cursor: pointer;">潮流系列</a></li>
-								<li><a style="cursor: pointer;">乐器</a></li>
-								<li><a style="cursor: pointer;">蓝牙</a></li>
+								<li><a href="">真无线</a></li>
+								<li><a href="">潮流系列</a></li>
+								<li><a href="">乐器</a></li>
+								<li><a href="">蓝牙</a></li>
 							</ul>
 						</div>
 					</div>
@@ -132,183 +131,201 @@ if(cookie!=null){
 				</div>
 			</nav>
 		</header>
-		
 		<!--隐藏登录后被挤的信息-->	
 		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
-		<!--轮播-->
-		<div class="banner">
-			<ul>
-				<li class="active">
-					<a href=""><img src="img/1.jpg"/></a>
-				</li>
-				<li>
-					<a href=""><img src="img/2.jpg"/></a>
-				</li>
-				<li>
-					<a href=""><img src="img/3.jpg"/></a>
-				</li>
-			</ul>
-			<a href="javascipt:;" class="next" id="next"><img src="img/next.png"/></a>
-			<a href="javascipt:;" class="prev" id="prev"><img src="img/prev.png"/></a>
-			<div class="number">
-				<span class="active"></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	
-		<!--tab-->
-		<div class="tab">
-			<div class="container tab-content">
-					<ul class="row">
-						<li class="col-md-3">
-							<a href="HotServlet">
-								<img src="img/host.png" />
-								<span class="">热销爆品</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ClassifyServlet?category1=1008002">
-								<img src="img/gou.png" />
-								<span class="">IP周边</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ClassifyServlet?category1=101000">
-								<img src="img/shuma.png" />
-								<span class="">数码影音</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="">
-								<img src="img/jifen.png" />
-								<div class="fadein-right">
-									<p>积分商城</p>
-									<span class="count">0</span>
-									<span class="jifen">积分</span>
-								</div>
-							</a>
-						</li>
-					</ul>
-			</div>
-		</div>
 		
-		<!--右边浮动竖条-->
-		<div class="zTi">
+		<!--顶部-->		
+		<section>
 			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/有音乐.jpg"/>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/晚安.jpg" />
-						</a>
-					</div>
+				<div class="row" id="top">
+					<h4>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="home.html" class="col-md-1">首页</a>
+					<span class="top_title">
+						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;数码</span>
+					</span>
+				    </h4>
+				</div>
+				 <hr  class="row"/>
+			</div>
+		</section>
+		<section>
+		<div class="container">
+			<div class="row col-md-12" id="table">
+						<span id="table_left">品牌:</span>
+					    <ul class="table_center" id="table_type">
+					    	<c:forEach items="${brands }" var="brand">
+					    		<li><a>${brand }</a></li>
+					    	</c:forEach>
+					    </ul>
+					    <span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>						
 				</div>
 				
+				<div class="row col-md-12" id="table" style="border-top: none;">
+						<span id="table_left">分类:</span>
+					    <ul class="table_center">
+					    	<c:forEach items="${types }" var="type">
+					    		<li><a>${type }</a></li>
+					    	</c:forEach>
+					    </ul>
+				</div>
+				<div class="row col-md-12" id="table" style="border-top: none;">
+						<span id="table_left">价格:</span>
+					    <ul class="table_center">
+					    	<li><a>0~2999</a></li>
+					    	<li><a>3000~5998</a></li>
+					    	<li><a>5999~8999</a></li>
+					    	<li>
+					    		<a>自定义</a>
+					    		<input type="text" id="low_price" placeholder="¥"  />
+					    		<input type="text" id="big_price" placeholder="¥"  />
+					    		<input type="button" id="price_ok" value="确定"/>
+					    	</li>
+					    		
+					    </ul>
+					    <!--<span id="table_right"><a>更多</a><span class="glyphicon glyphicon-chevron-down"></span></span>-->						
+				</div>	
+			</div>	
+		</section>
+		<section  style="margin-top: 30px;">
+			<div class="container">
+			 	<div class="row" id="another_title">
+					<p>
+						<span class="clilck"><a>综合</a></span>
+						<span><a>价格低到高</a></span>
+						<span><a>价格高到低</a></span>
+					</p>				
+				</div>
+				<div class="row" id="product">
+					<c:forEach items="${goods}" var="p">
+						<div class="col-md-3">
+						     <div class="thumbnail">
+						        	<a href="IntroudceServlet?gid=${p.gid }">
+								        <img src="${p.zpicture}"/>
+								        <caption>
+								          <p class="goods-name">${p.gname}</p>
+								          <p class="goods-price">¥${p.gprice}</p>
+								        </caption>
+							        </a>
+						      </div>
+					    </div>
+					</c:forEach>
+					
+					<!--<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>	
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+				</div>
+				<div class="row" id="product">
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>	
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+				</div>
+				<div class="row" id="product">
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>	
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+				</div>
+				<div class="row" id="product">
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>	
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>
+					<div class="col-md-3">
+						<img src="img/1.jpg"/>
+							<p style="font-size: 18px;font-weight: bold;text-align: center;">hahaha</p>
+							<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">￥100</p>
+					</div>-->
+				</div>
 			</div>
-			<div class="zTi-rigth">
-					<ul>
-						<li><a href="#">查看<br/>营业执照</a></li>
-						<li>100%<br/>正品</li>
-						<li>七天无理由退货</li>
-						<li>
-							<a href="#">
-								<span class="ding-cat"></span>
-								<span class="">购物车</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="kefu"></span>
-								<span class="">客服</span>
-							</a>
-						</li>
-						<li class="totop" style="margin-top: 0px;">
-							<a href="javascript:;" class="totop-a">
+		</section>
+		
+		
+		
+		<!--回到顶部块-->
+		<div class="zTi-rigth">
+			<ul>
+				<li><a href="#">查看<br/>营业执照</a></li>
+				<li>100%<br/>正品</li>
+				<li>七天无理由退货</li>
+				<li>
+					<a href="#">
+						<span class="ding-cat"></span>
+						<span class="">购物车</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="kefu"></span>
+						<span class="">客服</span>
+					</a>
+				</li>
+				<li class="totop" style="margin-top: 0px;">
+							<!--<a href="javascript:;" class="totop-a">
 								<span class="totop-span"></span>
-							</a>
-						</li>
-					</ul>
-			</div>
-		</div>
-		
-		<!--推荐-->
-		<div class="recommend">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="recommend-f">
-							推荐商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="recommend-goodsList">
-					<c:forEach items="${RecommandGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-					 <!--<div class="col-md-3">
-					     <div class="thumbnail">
-					        	<img src="${obj.data[i].goods_thumb}"/>
-						        <caption>
-						          <p class="goods-name">${obj.data[i].goods_name}</p>
-						          <p class="goods-desc">${obj.data[i].goods_desc}</p>
-						          <p>${obj.data[i].price}</p>
-						          <p><span class="glyphicon  glyphicon-star"></span>${obj.data[i].star_number}</p>
-						          <button class="btn btn-info">加入购物车</button>
-						        </caption>
-					      </div>
-				    </div>-->
-				</div>
-			</div>
-		</div>
-		
-		<!--热门商品-->
-		<div class="hot">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="hot-f">
-							热门商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="hot-goodsList">
-					<c:forEach items="${HotGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-				</div>
-				<!--加载   无更多商品-->
-      			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>
-			</div>
+							</a>-->
+				</li>
+			</ul>
 		</div>
 		
 		<!--底部-->
@@ -327,7 +344,7 @@ if(cookie!=null){
 						<a href="#">意见反馈</a>
 					</p>
 					<p>
-						<span>网易公司版权所有©1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
+						<span>网易公司版权所有?1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
 					</p>
 				</div>
 				
@@ -364,11 +381,10 @@ if(cookie!=null){
 					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
 					            </div>
 						    </div>
-					         <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
-					        		<span>保存密码</span>
+					        		<span>自动登录</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>
@@ -386,11 +402,9 @@ if(cookie!=null){
 		    	</div>
 	   		</div>
 	    </div>
-		
 	</body>
 </html>
-<script src="js/jquery.min.js"></script>
+<script  src="js/jquery.min.js" ></script>
+<script  src="js/bootstrap.js" ></script>
 <script src="js/base.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/home.js"></script>
-<script src="js/banner.js"></script>
+<script src="js/shuma.js"></script>

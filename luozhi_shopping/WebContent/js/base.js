@@ -73,6 +73,7 @@ $('.form-heid').mouseleave(function() {
 (function() {
 	$('#login-btn').click(function() {
 		//拿到账号和密码
+		var savepassword = $('#savepassword').get(0).checked;
 		var userName = $('#username').val();
 		var pwd = $('#pwd').val();
 		//验证
@@ -84,6 +85,7 @@ $('.form-heid').mouseleave(function() {
 		$.post('LoginServlet', {
 			username: userName,
 			password: pwd,
+			savepassword:savepassword,
 		}, function(re) {
 			var obj = JSON.parse(re);
 			//分两种情况  1001失败  1000成功
@@ -134,4 +136,6 @@ $('.person').mouseleave(function(){
 	$('.list').css('display','none');
 	$('.downchild').css('transform','rotate(360deg)')
 });
+
+
 
