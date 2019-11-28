@@ -72,12 +72,14 @@ if(cookie!=null){
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
+								<c:if test="${userinfo!=null}">
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+								</c:if>
 								<c:if test="${userinfo==null }">
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.html">注册</a></li>
 								</c:if>
-								
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
