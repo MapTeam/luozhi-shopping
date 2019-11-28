@@ -27,19 +27,18 @@ public class GoodsCarServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	           
-		
-	       GoodsCarDaoImpl gcdi=new GoodsCarDaoImpl();
+	       GoodsCarDaoImpl gcdi = new GoodsCarDaoImpl();
  		   Connection conn = DBConnection1.getConnection();
-           HttpSession s=  request.getSession();   
-           UserInfo userinfo=(UserInfo)s.getAttribute("userinfo");
-           User user=(User)userinfo.getUser();
-           if(user!=null){
-        	   
-           List<GoodsCarDTO> goodscardto=gcdi.getGoodsCarDTO(conn, user);
-           DBConnection1.close(conn);
-           s.setAttribute("goodscardto", goodscardto);
-             request.getRequestDispatcher("shopCar.jsp").forward(request,response);         
+           HttpSession s =  request.getSession();   
+           UserInfo userinfo = (UserInfo)s.getAttribute("userinfo");
+           if(userinfo!=null){
+        	   User user = (User)userinfo.getUser();
+	           List<GoodsCarDTO> goodscardto = gcdi.getGoodsCarDTO(conn, user);
+	           DBConnection1.close(conn);
+	           s.setAttribute("goodscardto", goodscardto);
+               request.getRequestDispatcher("shopCar.jsp").forward(request,response);         
+           }else{
+        	   response.sendRedirect("HomeServlet");
            }
 	}
 
