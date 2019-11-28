@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lz.dao.impl.ClassifyDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
+import com.lz.pojo.Type;
 
 /**
  * 从主页跳到ip周边或数码
@@ -34,11 +35,10 @@ public class ClassifyServlet extends HttpServlet {
 			ClassifyDaoImpl dao = new ClassifyDaoImpl();
 			Connection conn = DBConnection1.getConnection();
 			List<String> brands = dao.selectGbrandByCategory1(conn, category);
-			List<String> types = dao.selectTypeByCategory1(conn, category);
-			List<Goods> goods = dao.selectGoodsByCategory1(conn, category, 0, 40);
+			List<Type> types = dao.selectTypeByCategory1(conn, category);
+			DBConnection1.close(conn);
 			request.setAttribute("brands", brands);
 			request.setAttribute("types", types);
-			request.setAttribute("goods", goods);
 			request.getRequestDispatcher("shuma.jsp").forward(request, response);
 		}
 	}
