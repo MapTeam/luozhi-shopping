@@ -133,9 +133,9 @@
 					<div class="row col-md-12" id="table">
 						<span id="table_left">品牌</span>
 					    <ul class="table_center" id="table_type">
-					    <c:forEach items="${typelist}" var="s">
+					    	<c:forEach items="${littletypelist}" var="s">
 					    	<li><a onclick="getGoodsList(${s.category2})">${s.tname}</a></li>
-					    </c:forEach>
+					    	</c:forEach>
 					    	<!--<li><a>牛奶咖啡官方周边</a></li>
 					    	<li><a>网易</a></li>
 					    	<li><a>经典五大唱片</a></li>
