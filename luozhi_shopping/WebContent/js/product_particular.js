@@ -397,6 +397,7 @@ $(document).scroll(function(){
 			var obj=JSON.parse(rs);
 			if (obj.addgoodscatflag) {
 				alert("购物车添加成功");
+				
 			}
 		});
 	};
