@@ -18,7 +18,7 @@ import com.lz.dto.GoodsCarDTO;
 	public List<GoodsCarDTO> getGoodsCarDTO(Connection conn,User user) {
 		List<GoodsCarDTO>  goodsCarDTO= new ArrayList<GoodsCarDTO>();
 		 int uid=user.getUid();
-		String sql = "SELECT d.*,e.* FROM `user` a,goodscar b,goodscargoods c,goodscolor d,goods e WHERE a.`uid` = b.`uid` AND c.`gcid`=b.`gcid` AND d.`gcolorid` = c.`gcolorid` AND d.`gid` = e.`gid` AND a.`uid` = ?;";
+		String sql = "SELECT d.*,e.*,c.goodsnum FROM `user` a,goodscar b,goodscargoods c,goodscolor d,goods e WHERE a.`uid` = b.`uid` AND c.`gcid`=b.`gcid` AND d.`gcolorid` = c.`gcolorid` AND d.`gid` = e.`gid` AND a.`uid` = ?";
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);
@@ -34,6 +34,7 @@ import com.lz.dto.GoodsCarDTO;
                g.setGpicture(rs.getString("gpicture"));
                g.setGprice(rs.getFloat("gprice"));
                g.setZpicture(rs.getString("zpicture"));
+               g.setGoodsnum(rs.getInt("goodsnum"));
 			   goodsCarDTO.add(g);
 			}
 		} catch (SQLException e) {

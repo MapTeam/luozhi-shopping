@@ -16,6 +16,7 @@ import com.lz.dao.impl.GoodsColorDaoImpl;
 import com.lz.dao.impl.HomeDaoImpl;
 import com.lz.dao.impl.IntroduceDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.dto.UserInfo;
 import com.lz.pojo.Goods;
 import com.lz.pojo.GoodsColor;
 import com.lz.pojo.GoodsIntroduceImg;
@@ -78,6 +79,9 @@ public class IntroudceServlet extends HttpServlet {
 				}
 				if (category==101000) {
 					request.setAttribute("classifytitle", "数码影音");
+				}
+				if (category==101001) {
+					request.setAttribute("classifytitle", "热销爆品");
 				}
 				request.setAttribute("hhcategory1", category1);
 			}

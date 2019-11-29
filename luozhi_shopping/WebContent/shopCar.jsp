@@ -52,10 +52,10 @@
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<c:if test="${userinfo!=null}">
-								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
 								</c:if>
 								<c:if test="${userinfo==null }">
-									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
@@ -162,10 +162,10 @@
           <td class="money">${a.gprice}</td>
           <td>
             <span class="add glyphicon glyphicon-plus" id="product_num_addbtn" ></span>
-            <input id="product_num_text" type="button" value="1" class="count"/>
+            <input id="product_num_text" type="button" value="${a.goodsnum}" class="count"/>
             <span class="reduce glyphicon glyphicon-minus" id="product_num_decbtn"></span>
           </td>
-          <td class="subtotal">${a.gprice}</td>
+          <td class="subtotal">${a.gprice * a.goodsnum}</td>
            <td class="delete"><a href="javascript:;"><img class="del" src="img/ca.png"></a></td>
         </tr>
           </c:forEach>

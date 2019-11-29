@@ -5,12 +5,8 @@ import java.io.Serializable;
 import com.lz.pojo.Goods;
 
 public class GoodsCarDTO implements Serializable{
-    @Override
-	public String toString() {
-		return "GoodsCarDTO [zpicture=" + zpicture + ", gpicture=" + gpicture + ", gname=" + gname + ", gintroduce="
-				+ gintroduce + ", category2=" + category2 + ", gbrand=" + gbrand + ", gprice=" + gprice + ", colortype="
-				+ colortype + "]";
-	}
+    
+	
 	/** 商品主图 */
     private String zpicture;
 
@@ -24,7 +20,22 @@ public class GoodsCarDTO implements Serializable{
     private String gintroduce;
     /** 类别 */
     private Integer category2;
-    public String getZpicture() {
+    /** 品牌 */
+    private String gbrand;
+    /** 商品价格 */
+    private Float gprice;
+    /** 颜色名 */
+    private String colortype;
+    /** 选择的商品数 */
+    private int goodsnum;
+    
+    public int getGoodsnum() {
+		return goodsnum;
+	}
+	public void setGoodsnum(int goodsnum) {
+		this.goodsnum = goodsnum;
+	}
+	public String getZpicture() {
 		return zpicture;
 	}
 	public void setZpicture(String zpicture) {
@@ -72,12 +83,13 @@ public class GoodsCarDTO implements Serializable{
 	public void setColortype(String colortype) {
 		this.colortype = colortype;
 	}
-	/** 品牌 */
-    private String gbrand;
-    /** 商品价格 */
-    private Float gprice;
-    /** 颜色名 */
-    private String colortype;
+	@Override
+	public String toString() {
+		return "GoodsCarDTO [zpicture=" + zpicture + ", gpicture=" + gpicture + ", gname=" + gname + ", gintroduce="
+				+ gintroduce + ", category2=" + category2 + ", gbrand=" + gbrand + ", gprice=" + gprice + ", colortype="
+				+ colortype + ", goodsnum=" + goodsnum + "]";
+	}
+	
 
 
 

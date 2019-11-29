@@ -19,6 +19,7 @@ public class ShopCurrentServlet extends HttpServlet {
 			String gcolorid=request.getParameter("gcolorid");
 			String userid=request.getParameter("userid");
 			String goodscount=request.getParameter("goodscount");
+			
 //			System.out.println("颜色id"+gcolorid+"用户id"+userid+"选择的数量"+goodscount);
 //			
 			

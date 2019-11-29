@@ -9,10 +9,17 @@ public class UserInfo implements Serializable{
 	private static final long serialVersionUID = 9060613495172250585L;
 	
 	private String uname;
+	private int shopcargoodsnum;
 	private User user;
 	private String ip;
 	private Date date;
 	
+	public int getShopcargoodsnum() {
+		return shopcargoodsnum;
+	}
+	public void setShopcargoodsnum(int shopcargoodsnum) {
+		this.shopcargoodsnum = shopcargoodsnum;
+	}
 	public String getIp() {
 		return ip;
 	}
