@@ -122,7 +122,16 @@
         <div class="head">
             <p >购物车</p>
         </div>
+        <c:if test="${goodscarIsNotNull==null}">
         <hr style="border-top:1px solid black">
+         <div style="position:absolute;top:50%;left:50%;">
+         <div>
+         <img src="img/cart1.png">
+         </div>
+         <span style="font-size:18px;color:#666666;">购物车还是空的,</span><span><a href="HomeServlet" style="font-size:18px;color:#328AD4;">去逛逛></a></span>
+         </div>
+        </c:if>
+       <c:if test="${goodscarIsNotNull=='yes'}">
         <table class="tb" >
         <!--标题栏-->
             <tr class="tr-h" style="height: 50px ">
@@ -169,6 +178,8 @@
                 <span style="font-size: 20px;">¥</span>
                 <span style="color:#333333">合计 &nbsp;:&nbsp;&nbsp;</span>
         </div>
+        </c:if>
+       
 </div>
 
 <!--login-->
@@ -213,6 +224,7 @@
 	        
 		    	</div>
 	   		</div>
+	   		
 	    </div>
 </body>
 </html>
