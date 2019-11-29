@@ -17,6 +17,7 @@ function getUrlVal(property){
 	var goodprice=null;
 	   //选择颜色的id
 	var gcolorid=null;
+	
 //(function(){
 //var goodsId = getUrlVal('goods_id');
 ////发起请求
@@ -397,6 +398,7 @@ $(document).scroll(function(){
 			var obj=JSON.parse(rs);
 			if (obj.addgoodscatflag) {
 				alert("购物车添加成功");
+				$('.catfont').html(parseInt($('.catfont').text())+1);
 			}
 		});
 	};

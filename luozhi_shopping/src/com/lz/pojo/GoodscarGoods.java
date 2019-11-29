@@ -5,7 +5,7 @@ public class GoodscarGoods implements java.io.Serializable {
 
 
     /** 购物车与商品的连接表id */
-    private Integer gcGid;
+    private Integer gcgid;
 
     /** 用户id */
     private Integer uid;
@@ -25,8 +25,8 @@ public class GoodscarGoods implements java.io.Serializable {
      * 
      * @return 购物车与商品的连接表id
      */
-    public Integer getGcGid() {
-        return this.gcGid;
+    public Integer getGcgid() {
+        return this.gcgid;
     }
 
     /**
@@ -35,8 +35,8 @@ public class GoodscarGoods implements java.io.Serializable {
      * @param gcGid
      *          购物车与商品的连接表id
      */
-    public void setGcGid(Integer gcGid) {
-        this.gcGid = gcGid;
+    public void setGcgid(Integer gcgid) {
+        this.gcgid = gcgid;
     }
 
     /**
@@ -117,7 +117,7 @@ public class GoodscarGoods implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "GoodscarGoods [gcGid=" + gcGid + ", uid=" + uid + ", gcid=" + gcid + ", gcolorid=" + gcolorid
+		return "GoodscarGoods [gcgid=" + gcgid + ", uid=" + uid + ", gcid=" + gcid + ", gcolorid=" + gcolorid
 				+ ", goodsnum=" + goodsnum + "]";
 	}
 

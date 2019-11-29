@@ -15,6 +15,7 @@ import com.lz.dao.GoodsParticularDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.dao.impl.GoodsParticularDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.dto.UserInfo;
 import com.lz.pojo.GoodsCar;
 import com.lz.pojo.GoodscarGoods;
 
@@ -47,6 +48,11 @@ public class AddGoodcardByGoodsParticularServlet extends HttpServlet {
 			gcg.setUid(Integer.parseInt(userid));
 			BaseDao dao =new BaseDaoImpl();
 			boolean flag=dao.insertObject(conn, gcg);
+			if(flag){
+				//修改session里的购物车数量
+				UserInfo userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
+				userinfo.setShopcargoodsnum(userinfo.getShopcargoodsnum()+1);
+			}
 			DBConnection1.close(conn);
 			JSONObject jo=new JSONObject();
 			jo.put("addgoodscatflag",flag);

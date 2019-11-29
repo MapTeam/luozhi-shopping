@@ -74,7 +74,7 @@ if(cookie!=null){
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<c:if test="${userinfo!=null}">
-								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span>${userinfo.shopcargoodsnum}<span class="badge catfont">2</span></a></li>							
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span><span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
 								</c:if>
 								<c:if test="${userinfo==null }">
 									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							

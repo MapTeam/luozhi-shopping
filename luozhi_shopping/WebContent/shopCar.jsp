@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -132,6 +133,7 @@
          </div>
         </c:if>
        <c:if test="${goodscarIsNotNull=='yes'}">
+        <hr style="border-top:1px solid black">
         <table class="tb" >
         <!--标题栏-->
             <tr class="tr-h" style="height: 50px ">
@@ -157,16 +159,17 @@
             <img class="img" src="${a.zpicture}"/>
           </td>
           <td class="desc">
-          	<p> ${a.gintroduce}</p>
+          	<p> ${a.gname}</p>
+          	<p style="color:#c0c0c0; "> ${a.colortype}</p>
           </td>
-          <td class="money">${a.gprice}</td>
+          <td class="money"><fmt:formatNumber type="number" value="${a.gprice}" pattern="0.00" maxFractionDigits="2"/></td>
           <td>
             <span class="add glyphicon glyphicon-plus" id="product_num_addbtn" ></span>
             <input id="product_num_text" type="button" value="${a.goodsnum}" class="count"/>
             <span class="reduce glyphicon glyphicon-minus" id="product_num_decbtn"></span>
           </td>
-          <td class="subtotal">${a.gprice * a.goodsnum}</td>
-           <td class="delete"><a href="javascript:;"><img class="del" src="img/ca.png"></a></td>
+          <td class="subtotal"><fmt:formatNumber type="number" value="${a.gprice*a.goodsnum}" pattern="0.00" maxFractionDigits="2"/></td>
+           <td class="delete"><input type="hidden" class="gcgid" value="${a.gcgid}"/><a href="javascript:;"><img class="del" src="img/ca.png"></a></td>
         </tr>
           </c:forEach>
         </table>
@@ -174,7 +177,7 @@
                 <div class="jiesuan-font">
                     <a>结算</a>
                 </div>
-                <span class="jiesuan-count">0</span>
+                <span class="jiesuan-count">0.00</span>
                 <span style="font-size: 20px;">¥</span>
                 <span style="color:#333333">合计 &nbsp;:&nbsp;&nbsp;</span>
         </div>
@@ -234,25 +237,18 @@
 <script src="js/base.js"></script>
 
 <script>
-
-  
-  
-  
   //点击加减数量变   小计变  总价变
   //点击全选        总价变
   //点击单选        总价变
   //点击删除        当前元素tr删除 
   //点击整个表格
   $('table').click(function(event){
-  	console.log($(event.target)[0].className);
     if($(event.target)[0].className == 'check'){
     	sumAll();
     }
     //全选
     if($(event.target)[0].className == 'allchecked'){
-    	console.log(1111)
     	if($(event.target).is(':checked')){
-    		console.log(222)
     		$('.check').each(function (i){
     			$(this).prop("checked", true);
     		});
@@ -273,7 +269,8 @@
 	    if (spanDomVal>1) {
 	    	$(event.target).siblings('#product_num_decbtn').css('color','#333333');
 	    }
-	    $(event.target).parent().siblings('.subtotal').html(parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal +".00");
+	    var num = parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal;
+	    $(event.target).parent().siblings('.subtotal').html(name(num));
 	    spanDom.val(spanDomVal);
 	    sumAll();
     };
@@ -288,14 +285,28 @@
 	    if(spanDomVal<1){
 	    	spanDomVal = 1;
 	    };
-	    $(event.target).parent().siblings('.subtotal').html(parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal +".00");
+	    var num = parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal;
+	    $(event.target).parent().siblings('.subtotal').html(name(num));
 	    spanDom.val(spanDomVal);
 	    sumAll();
     };
     //删除
     if($(event.target)[0].className == 'del'){
-		$(event.target).parent().parent().parent().remove();
-		sumAll();
+    	if(confirm("您真的要删除吗？")){
+    		$(event.target).parent().parent().parent().remove();
+    		sumAll();
+    		$.post('CarGoodsRemoveServlet', {
+    			gcgid : $(event.target).parent().siblings('.gcgid').val(),
+    		},function (rs){
+    			var obj = JSON.parse(rs);
+    			if(obj.CarGoodsRemove){
+    				$('.catfont').html(parseInt($('.catfont').text())-1);
+    				if (parseInt($('.catfont').text())==0) {
+    					location.reload(true);
+					}
+    			}
+    		});
+    	}
     };
     
   });
@@ -308,7 +319,7 @@
   		};
   	});
   	
-  	$('.jiesuan-count').html(sum);
+  	$('.jiesuan-count').html(name(sum));
   };
   
   $('.jiesuan-font').mouseover(function(){
@@ -322,5 +333,19 @@
   		$('.jiesuan-font').css('background','#aaaaaa');
   	}
   });
+  
+  //取两位小数
+  function name(num) {
+	  if(num.toString().match(/\d+\.\d+/g)){
+		  if(num.toString().match(/^\d+\.\d{1}$/)){
+			  return (num+'0');
+		  }else{
+			  return Number(num.toString().match(/^\d+(?:\.\d{0,2})?/));
+		  }
+	  }else {
+		  return (num+'.00');
+	  }
+  }
+  
   
 </script>

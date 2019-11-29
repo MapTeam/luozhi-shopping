@@ -28,8 +28,19 @@ public class GoodsCarDTO implements Serializable{
     private String colortype;
     /** 选择的商品数 */
     private int goodsnum;
+    /**
+     * 购物车与商品的连接表id
+     */
+    private int gcgid;
     
-    public int getGoodsnum() {
+    
+    public int getGcgid() {
+		return gcgid;
+	}
+	public void setGcgid(int gcgid) {
+		this.gcgid = gcgid;
+	}
+	public int getGoodsnum() {
 		return goodsnum;
 	}
 	public void setGoodsnum(int goodsnum) {
