@@ -35,9 +35,9 @@ public class GoodsCarServlet extends HttpServlet {
         	   User user = (User)userinfo.getUser();
 	           List<GoodsCarDTO> goodscardto = gcdi.getGoodsCarDTO(conn, user);
 	           DBConnection1.close(conn);
-	           s.setAttribute("goodscardto", goodscardto);
+	           request.setAttribute("goodscardto", goodscardto);
 	           if (goodscardto.size()!=0) {
-	        	   s.setAttribute("goodscarIsNotNull","yes");
+	        	   request.setAttribute("goodscarIsNotNull","yes");
 	           }
                request.getRequestDispatcher("shopCar.jsp").forward(request,response);         
            }else{

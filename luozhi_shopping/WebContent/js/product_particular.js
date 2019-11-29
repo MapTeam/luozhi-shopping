@@ -17,6 +17,7 @@ function getUrlVal(property){
 	var goodprice=null;
 	   //选择颜色的id
 	var gcolorid=null;
+	
 //(function(){
 //var goodsId = getUrlVal('goods_id');
 ////发起请求
@@ -374,17 +375,33 @@ $(document).scroll(function(){
 		if (choosecolor==null) {
  			alert('请选择颜色');
  	}else{
-		alert("选择的商品颜色："+choosecolor+"   选择的商品数量："+goodnum);
+//		alert("选择的商品颜色："+choosecolor+"   选择的商品数量："+goodnum);
+		addGoodsCard();
  	 }
 	});
 	$('#add_shopping_car_little').click(function(){
 		if (choosecolor==null) {
  			alert('请选择颜色');
  	}else{
-		alert("选择的商品颜色："+choosecolor+"   选择的商品数量："+goodnum);
+//		alert("选择的商品颜色："+choosecolor+"   选择的商品数量："+goodnum);
+		addGoodsCard();
  	 }
 		
 	});
+	
+	function addGoodsCard(){
+		$.post("AddGoodcardByGoodsParticularServlet",{
+			'gcolorid':gcolorid,
+			'userid':$('#uid').val(),
+			'goodnum':goodnum,
+		},function(rs){
+			var obj=JSON.parse(rs);
+			if (obj.addgoodscatflag) {
+				alert("购物车添加成功");
+				$('.catfont').html(parseInt($('.catfont').text())+1);
+			}
+		});
+	};
 	
 }
 

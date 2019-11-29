@@ -73,10 +73,10 @@ if(cookie!=null){
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<c:if test="${userinfo!=null}">
-								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
 								</c:if>
 								<c:if test="${userinfo==null }">
-									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
@@ -156,8 +156,15 @@ if(cookie!=null){
 		                 </button>
 					</div>
 					<div class="navbar-collapse collapse navbar-right" id="myShopping">
-						<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#buy_order">立即购买</button>
-				    	<button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car_little"><span  class="glyphicon glyphicon-shopping-cart">加入购物车</span></button>
+						<c:if test="${userinfo==null }">
+				    			<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#login">立即购买</button>
+				    		    <button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" data-toggle="modal" data-target="#login"><span  class="glyphicon glyphicon-shopping-cart" >加入购物车</span></button>
+				    	</c:if>
+				    	<c:if test="${userinfo!=null }">
+				    			<input type="hidden" value="${userinfo.user.uid }" id="uid"/>
+				    			<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#buy_order">立即购买</button>
+				    		    <button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car_little"><span  class="glyphicon glyphicon-shopping-cart" >加入购物车</span></button>
+				    	</c:if>
 					</div>
 				</div>
 			</nav>
@@ -170,7 +177,12 @@ if(cookie!=null){
 					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
 					<span class="top_title">
 						<c:if test="${hhcategory1 != null }">
-						<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="ClassifyServlet?category1=${hhcategory1}">${classifytitle}</a>&gt;${goods.gname }</span>
+							<c:if test="${hhcategory1==101001 }">
+								<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="HotServlet">${classifytitle}</a>&gt;${goods.gname }</span>
+							</c:if>
+							<c:if test="${hhcategory1!=101001 }">
+								<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="ClassifyServlet?category1=${hhcategory1}">${classifytitle}</a>&gt;${goods.gname }</span>
+							</c:if>
 						</c:if>
 						<c:if test="${hhcategory1 == null }">
 						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${goods.gname }</span>
