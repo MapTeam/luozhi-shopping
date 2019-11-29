@@ -33,361 +33,161 @@ public class GoodsOrderDto implements Serializable{
 	private int goodscount;//库存
 	private String godate;//订单提交时间
 	private String gbrand;//商品品牌
-	
-	
-	
-
-	public String getGodate() {
-		return godate;
-	}
-
-
-
-
-	public void setGodate(String godate) {
-		this.godate = godate;
-	}
-
-
-
-
 	public int getGoid() {
 		return goid;
 	}
-
-
-
-
 	public void setGoid(int goid) {
 		this.goid = goid;
 	}
-
-
-
-
 	public int getGoodsnum() {
 		return goodsnum;
 	}
-
-
-
-
 	public void setGoodsnum(int goodsnum) {
 		this.goodsnum = goodsnum;
 	}
-
-
-
-
 	public int getAddressid() {
 		return addressid;
 	}
-
-
-
-
 	public void setAddressid(int addressid) {
 		this.addressid = addressid;
 	}
-
-
-
-
 	public int getGostate() {
 		return gostate;
 	}
-
-
-
-
 	public void setGostate(int gostate) {
 		this.gostate = gostate;
 	}
-
-
-
-
 	public String getUname() {
 		return uname;
 	}
-
-
-
-
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-
-
-
-
 	public String getGname() {
 		return gname;
 	}
-
-
-
-
 	public void setGname(String gname) {
 		this.gname = gname;
 	}
-
-
-
-
 	public String getGoodspicture() {
 		return goodspicture;
 	}
-
-
-
-
 	public void setGoodspicture(String goodspicture) {
 		this.goodspicture = goodspicture;
 	}
-
-
-
-
 	public String getColortype() {
 		return colortype;
 	}
-
-
-
-
 	public void setColortype(String colortype) {
 		this.colortype = colortype;
 	}
-
-
-
-
 	public int getOutgoodid() {
 		return outgoodid;
 	}
-
-
-
-
 	public void setOutgoodid(int outgoodid) {
 		this.outgoodid = outgoodid;
 	}
-
-
-
-
 	public int getGcolorid() {
 		return gcolorid;
 	}
-
-
-
-
 	public void setGcolorid(int gcolorid) {
 		this.gcolorid = gcolorid;
 	}
-
-
-
-
 	public int getGid() {
 		return gid;
 	}
-
-
-
-
 	public void setGid(int gid) {
 		this.gid = gid;
 	}
-
-
-
-
 	public int getUid() {
 		return uid;
 	}
-
-
-
-
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-
-
-
-
 	public String getGoname() {
 		return goname;
 	}
-
-
-
-
 	public void setGoname(String goname) {
 		this.goname = goname;
 	}
-
-
-
-
 	public String getEmail() {
 		return email;
 	}
-
-
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-
-
 	public int getCredits() {
 		return credits;
 	}
-
-
-
-
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
-
-
-
-
 	public String getGintroduce() {
 		return gintroduce;
 	}
-
-
-
-
 	public void setGintroduce(String gintroduce) {
 		this.gintroduce = gintroduce;
 	}
-
-
-
-
 	public String getName() {
 		return name;
 	}
-
-
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-
-
 	public String getTel() {
 		return tel;
 	}
-
-
-
-
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-
-
-
-
 	public String getProvince() {
 		return province;
 	}
-
-
-
-
 	public void setProvince(String province) {
 		this.province = province;
 	}
-
-
-
-
 	public String getCity() {
 		return city;
 	}
-
-
-
-
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-
-
-
 	public String getVillage() {
 		return village;
 	}
-
-
-
-
 	public void setVillage(String village) {
 		this.village = village;
 	}
-
-
-
-
 	public String getDetail() {
 		return detail;
 	}
-
-
-
-
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-
-
-
-
 	public int getGoodscount() {
 		return goodscount;
 	}
-
-
-
-
 	public void setGoodscount(int goodscount) {
 		this.goodscount = goodscount;
 	}
-
-
-
-
-
-
-
-
-
+	public String getGodate() {
+		return godate;
+	}
+	public void setGodate(String godate) {
+		this.godate = godate;
+	}
 	public String getGbrand() {
 		return gbrand;
 	}
-
-
-
-
 	public void setGbrand(String gbrand) {
 		this.gbrand = gbrand;
 	}
+	
+	
+	
+
+	
 
 
 

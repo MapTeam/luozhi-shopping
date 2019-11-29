@@ -24,6 +24,8 @@
 			oLi[e].onclick=function(){
 				$('#dingdan_noput').empty();
 				$('#dingdan_put').empty();
+				$('#dingdan_waitback').empty();
+				$('#dingdan_back').empty();
 //				alert(oLi.length+'===='+oDiv.length);
 				$(this).css('font-weight','bold').siblings('li').css('font-weight','normal');				
 				for (var k = 0; k < oLi.length; k++) {
@@ -31,9 +33,11 @@
 				};
 				oDiv[e].className='dingdan_show';
 				//未发货
-				if (oLi[e].className='nosendgoodsorder') {
+				if (oLi[e].className=='nosendgoodsorder') {
 //					alert("aaa");
-					$.post('OrderServlet',{},function(re){
+					$.post('OrderServlet',{
+						status : 0
+					},function(re){
 						var arr = jQuery.parseJSON(re);
 //						console.log(arr);
 						for(var i=0;i<arr.length;i++){
@@ -69,11 +73,14 @@
 						$('div.goodsdescri').hide();
 						
 					});
+					
 				}
 				//已发货
-				if (oLi[e].className='sendgoodsandok') {
+				if (oLi[e].className=='sendgoodsandok') {
 //					alert('aa');
-					$.post('OkOrderServlet',{},function(re){
+					$.post('OrderServlet',{
+						status : 1
+					},function(re){
 						var arr = jQuery.parseJSON(re);
 						for(var i=0;i<arr.length;i++){
 							var str=`
@@ -111,17 +118,76 @@
 						
 //					console.log(arr);
 					});
+					
 				}
+				//申请退货
+				if (oLi[e].className=='requesttoback') {
+					$.post('ReqBackServlet',{
+						status : 4
+					},function(re){
+						var arr = jQuery.parseJSON(re);
+						for(var i=0;i<arr.length;i++){
+							var str=`
+							<li>
+							<span><img src="http://${arr[i].goodspicture}"/></span>
+							<span id="dingdan_waitback_name">
+								${arr[i].gname}
+							</span>
+							<span id="dingdan_waitback_num">
+								✖&nbsp;${arr[i].goodsnum}
+							</span>
+							<span  id="dingdan_waitback_result">原因：
+								<span>${arr[i].reason}</span>
+							</span>                   
+							<span id="dingdan_waitback_yes" onclick="agree('${arr[i].goid}')"><button class="btn btn-success">同意</button></span>
+							<span id="dingdan_waitback_no" onclick="refuse('${arr[i].goid}')"><button class="btn btn-danger">拒绝</button></span>
+							<span id="dingdan_waitback_no_result">
+							    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
+							</span>
+						</li>
+							`;
+						$('#dingdan_waitback').append(str);
+						}
+					});
+					
+				};
+				
+				//已退货
+				if (oLi[e].className=='okback') {
+					$.post('ReqBackServlet',{
+						status : 5
+					},function(re){
+						var arr = jQuery.parseJSON(re);
+						for (var i = 0; i < arr.length; i++) {
+							var str=`
+							<li>
+								<span><img src="http://${arr[i].goodspicture}"/></span>
+								<span id="dingdan_back_name">
+									${arr[i].gname}
+								</span>
+								<span id="dingdan_back_num">
+										✖&nbsp;&nbsp;${arr[i].goodsnum}
+								</span>
+								<span  id="dingdan_back_result">原因：<span>${arr[i].reason}</span></span>
+								<span id="dingdan_back_yes">退款成功</span>
+							</li>
+							`;
+							$('#dingdan_back').append(str);
+						}
+					});
+				};
 			};
 		})(i);
 	}
 	
 })();
+
 //未发货块、
 function sendclick(orid) {
 	if (confirm("是否确定发货")) {
 		$.post('SendBtnServlet',{
-			id : orid
+			id : orid,
+			status : 1
 		},function(re){
 			var obj=JSON.parse(re);
 			if(obj){
@@ -135,47 +201,52 @@ function sendclick(orid) {
 	
 }
 
-
-//(function(){
-//	$('span#dingdan_noput_btn>button').click(function(){
-//		if (confirm("是否确定发货")) {
-//			alert("发货成功");
-//			$(this).parent('span').parent('li').remove();
-//		}
-//	});
-//})();
-//申请退货
-(function(){
-	$('#dingdan_waitback_yes>button').click(function(){
-		if (confirm("确定提交申请？")) {
-			alert("退款成功！");
-			var oLi=$(this).parent('span').parent('li');
-			var img=oLi.children('span').children('img');
-			var goodsname=oLi.children('#dingdan_waitback_name').text();
-			var result=oLi.children('#dingdan_waitback_result').children('span').text();			
-			oLi.remove();
+//申请退货同意
+	function agree(orid){
+		if (confirm("确定同意申请？")) {
+			$.post('SendBtnServlet',{
+				id : orid,
+				status : 5
+			},function(re){
+				var obj=JSON.parse(re);
+				if(obj){
+					alert("退款成功！");
+					$('#dingdan_waitback_yes').parent('li').remove();
+				}else{
+					alert("退款失败！");
+				}
+			})
 		}
-	});
-	$('#dingdan_waitback_no>button').click(function(){
+	};
+//  申请退货拒绝
+	function refuse(orid){
 //		alert($(this).parent('span').siblings('span').children('textarea').val());
-		if ($(this).parent('span').siblings().children('textarea').val()=="") {
+		if ($('#dingdan_waitback_no').siblings('span').children('textarea').val()=="") {
 			alert("请填写拒绝理由！");
-		}else if(confirm("确定提交申请？")) {
-			alert("已拒绝退款！");
-			$(this).parent('span').parent('li').remove();
-		};
-	});
-})();
+		}else {
+			var str=$('#dingdan_waitback_no').siblings('span').children('textarea').val();
+			if(confirm("确定拒绝申请？")) {
+				$.post('InsertRefuseServlet',{
+					id : orid,
+					msg : str
+				},function(re){
+					if (re) {
+						alert("已拒绝申请！");
+					}else{
+						alert("拒绝失败！")
+					}
+				});
+			}
+		}
+	};
+
 //手风琴
 $('div.goodsdescri').hide();
 function clickdb(that) {
 	$(that).next().slideToggle();
 	
 };
-//function clickdb(that) {
-//	$(that).next().slideToggle();
-//	
-//};
+
 
 
 

@@ -32,7 +32,9 @@ public class OrderServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		registDao dao=new registDaoImpl();
-		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(FinalType.NOSHIPPED);
+		String sta=request.getParameter("status");
+		int status=Integer.parseInt(sta);
+		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(status);
 //		System.out.println(list);
 //		request.setAttribute("list",list);
 		JSONArray jar=new JSONArray().fromObject(list);

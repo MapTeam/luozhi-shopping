@@ -9,7 +9,9 @@ import java.util.List;
 
 import com.lz.dao.registDao;
 import com.lz.db.DBConnection1;
+import com.lz.dto.GoodsBackDto;
 import com.lz.dto.GoodsOrderDto;
+import com.lz.pojo.GoodsOrder;
 import com.lz.pojo.User;
 import com.lz.util.FinalType;
 
@@ -30,7 +32,7 @@ public class registDaoImpl implements registDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				if (conn!=null && conn.isClosed()) {
+				if (conn!=null && !conn.isClosed()) {
 					DBConnection1.close(conn);
 				}
 			} catch (SQLException e) {
@@ -66,7 +68,7 @@ public class registDaoImpl implements registDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				if (conn!=null && conn.isClosed()) {
+				if (conn!=null && !conn.isClosed()) {
 					DBConnection1.close(conn);
 				}
 			} catch (SQLException e) {
@@ -122,7 +124,7 @@ public class registDaoImpl implements registDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				if (conn!=null && conn.isClosed()) {
+				if (conn!=null && !conn.isClosed()) {
 					DBConnection1.close(conn);
 				}
 			} catch (SQLException e) {
@@ -134,14 +136,14 @@ public class registDaoImpl implements registDao{
 	}
 
 
-
+//	更改状态码
 	@Override
-	public boolean selectBySoid(int id) {
+	public boolean selectBySoid(int id,int status) {
 		Connection conn=DBConnection1.getConnection();
 		String sql="update goodsorder set gostate =? where goid=? ";
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, FinalType.SHIPPED);
+			ps.setInt(1, status);
 			ps.setInt(2, id);
 			int i=ps.executeUpdate();
 			if (i>0) {
@@ -151,7 +153,71 @@ public class registDaoImpl implements registDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				if (conn!=null && conn.isClosed()) {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+
+
+//    通过状态码查询退款订单
+	@Override
+	public List<GoodsBackDto> selectOrderByOrsta(int status) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="SELECT * FROM goodsorder a,goodscolor c,goods g where gostate = ? and  a.gcolorid=c.gcolorid and c.gid=g.gid";
+		List<GoodsBackDto> backlist=new ArrayList<GoodsBackDto>();
+		GoodsBackDto go=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, status);
+			ResultSet rs=ps.executeQuery();
+			while (rs.next()) {
+				go=new GoodsBackDto();
+				go.setGoodspicture(rs.getString("goodspicture"));
+				go.setGname(rs.getString("gname"));
+				go.setGid(rs.getInt("gid"));
+				go.setGoodsnum(rs.getInt("goodsnum"));
+				go.setReason(rs.getString("reason"));
+				go.setGoid(rs.getInt("goid"));
+				backlist.add(go);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return backlist;
+	}
+
+
+//插入拒绝原因
+	@Override
+	public boolean insertRefuseReasonById(String msg,int id) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="UPDATE goodsorder SET refusereason = ? WHERE goid=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, msg);
+			ps.setInt(2, id);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
 					DBConnection1.close(conn);
 				}
 			} catch (SQLException e) {

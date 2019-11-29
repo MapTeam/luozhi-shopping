@@ -12,14 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lz.dao.registDao;
 import com.lz.dao.impl.registDaoImpl;
+import com.lz.dto.GoodsBackDto;
 import com.lz.dto.GoodsOrderDto;
 import com.lz.util.FinalType;
 
 import net.sf.json.JSONArray;
 
-@WebServlet("/OkOrderServlet")
-public class OkOrderServlet extends HttpServlet {
+@WebServlet("/ReqBackServlet")
+public class ReqBackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
@@ -27,15 +29,15 @@ public class OkOrderServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		registDao dao=new registDaoImpl();
-		List<GoodsOrderDto> oklist=dao.selectAllOrderByOrSta(FinalType.SHIPPED);
-//		System.out.println(oklist);
-		JSONArray jar=new JSONArray().fromObject(oklist);
-//		System.out.println(jar.toString());
+		String sta=request.getParameter("status");
+		int status=Integer.parseInt(sta);
+		List<GoodsBackDto> backlist=dao.selectOrderByOrsta(status);
+		System.out.println(backlist);
+		JSONArray jarr=new JSONArray().fromObject(backlist);
 		PrintWriter pw=response.getWriter();
-		pw.write(jar.toString());
+		pw.write(jarr.toString());
 		pw.flush();
 		pw.close();
-		
 	}
 
 }

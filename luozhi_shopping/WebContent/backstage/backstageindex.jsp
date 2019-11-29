@@ -150,8 +150,8 @@
 				<ul id="dingdan_title" class="row">
 					<li class="nosendgoodsorder" style="font-weight: bold;">未发货</li>
 					<li class="sendgoodsandok">已发货</li>
-					<li>申请退货</li>
-					<li>已退货</li>
+					<li class="requesttoback">申请退货</li>
+					<li class="okback">已退货</li>
 				</ul>
 				<hr class="row" />
 				<div class="dingdan_show">
@@ -193,59 +193,16 @@
 				  </ul>
 				</div>
 					
-					
-					
-					
-					
-					
-					
-					
-					
 						
 				<!--申请退款块-->
 				<div>
 				  <ul id="dingdan_waitback" class="row">
-					<li>
-						<span><img src=""/></span>
-						<span id="dingdan_waitback_name">
-							商品
-						</span>
-						<span  id="dingdan_waitback_result">原因：<span>不想买了</span></span>
-						<span id="dingdan_waitback_yes"><button class="btn btn-success">同意</button></span>
-						<span id="dingdan_waitback_no"><button class="btn btn-danger">拒绝</button></span>
-						<span id="dingdan_waitback_no_result">
-						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
-						</span>
-					</li>
-					<li>
-						<span><img src=""/></span>
-						<span id="dingdan_waitback_name">
-							商品
-						</span>
-						<span  id="dingdan_waitback_result">原因：<span>不想买了</span></span>
-						<span id="dingdan_waitback_yes"><button class="btn btn-success">同意</button></span>
-						<span id="dingdan_waitback_no"><button class="btn btn-danger">拒绝</button></span>
-						<span id="dingdan_waitback_no_result">
-						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
-						</span>
-					</li>
 				  </ul>
 				</div>
 				<!--已退款快-->
 				<div>
 			 	  <ul id="dingdan_back" class="row">
-					<li>
-						<span><img src=""/></span>
-						<span id="dingdan_back_name">
-							商品
-						</span>
-						<span  id="dingdan_back_result">原因：<span>不想买了</span></span>
-						<span id="dingdan_back_yes">退款成功</span>
-						<!--<span id="dingdan_back_no"><button class="btn btn-danger">拒绝</button></span>
-						<span id="dingdan_back_no_result">
-						    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
-						</span>-->
-					</li>
+					
 					<li>
 						<span><img src=""/></span>
 						<span id="dingdan_back_name">

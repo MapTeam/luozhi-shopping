@@ -134,36 +134,50 @@ body{
 	border-bottom: #F0F0F0 solid 1px;
 }
 #dingdan_waitback>li>span{
+	height:60px;
 	float: left;
 }
 #dingdan_waitback>li>span>img{
-	margin: 10px;
+	margin: 10px 10px;
 	width: 60px;
 	height: 60px;
+	
 }
 #dingdan_waitback_name{
-	width: 190px;
+	width: 150px;
 	margin-top: 20px;
 	text-align: center;
+	margin-right: 20px;
+}
+#dingdan_waitback_num{
+	width: 30px;
+	text-align: center;
+	margin-top: 20px;
+	line-height: 40px;
+	margin-right: 20px;
 }
 #dingdan_waitback_result{
-	width: 190px;
-	margin-top: 20px;
+	width: 150px;
+	line-height: 80px;
+	/*margin-top: 20px;*/
+	margin-right: 20px;
 }
 #dingdan_waitback_yes{
-	margin-left: 10px;
-	margin-top: 10px;
+	/*margin-top: 10px;*/
 	float: left;
+	line-height: 80px;
 	/*width: 80px;*/		
 }
 #dingdan_waitback_no{
 	margin-left: 10px;
 	/*width: 80px;*/
-	margin-top: 10px;
+	line-height: 80px;
+	/*margin-top: 10px;*/
 }
 #dingdan_waitback_no_result{
 	margin-left: 10px;
-	width: 150px;	
+	width: 150px;
+	padding: 10px 0;	
 }
 #dingdan_waitback_no_result>textarea{
 	width: 150px;
@@ -175,10 +189,11 @@ body{
 	border-bottom: #F0F0F0 solid 1px;
 }
 #dingdan_back>li>span{
+	height:60px;
 	float: left;
 }
 #dingdan_back>li>span>img{
-	margin: 10px;
+	margin: 10px 20px;
 	width: 60px;
 	height: 60px;
 }
@@ -186,16 +201,25 @@ body{
 	width: 190px;
 	margin-top: 20px;
 	text-align: center;
+	margin-right: 40px;
+}
+#dingdan_back_num{
+	width: 30px;
+	text-align: center;
+	margin-top: 20px;
+	line-height: 40px;
+	margin-right: 40px;
 }
 #dingdan_back_result{
-	width: 190px;
-	margin-top: 20px;
+	width: 150px;
+	line-height: 80px;
+	margin-right: 20px;
 }
 #dingdan_back_yes{
-	margin-left: 10px;
+	margin-left: 20px;
 	margin-top: 20px;
-	padding-left: 140px;
-	width: 200px;		
+	padding-top: 10px;
+	width: 100px;		
 }
 
 

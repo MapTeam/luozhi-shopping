@@ -11,26 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lz.dao.registDao;
 import com.lz.dao.impl.registDaoImpl;
-import com.lz.util.FinalType;
 
 import net.sf.json.JSONObject;
 
-@WebServlet("/SendBtnServlet")
-public class SendBtnServlet extends HttpServlet {
+@WebServlet("/InsertRefuseServlet")
+public class InsertRefuseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    public InsertRefuseServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		registDao dao=new registDaoImpl();
-		String id=request.getParameter("id");
-		String sta=request.getParameter("status");
-		int soid=Integer.parseInt(id);
-		int status=Integer.parseInt(sta);
-		boolean flag=dao.selectBySoid(soid,status);
+		registDao dao =new registDaoImpl();
+		String goid=request.getParameter("id");
+		int id=Integer.parseInt(goid);
+		String msg=request.getParameter("msg");
+		boolean flag=dao.insertRefuseReasonById(msg, id);
 		JSONObject jo=new JSONObject().fromObject(flag);
 		PrintWriter pw=response.getWriter();
 		pw.write(jo.toString());

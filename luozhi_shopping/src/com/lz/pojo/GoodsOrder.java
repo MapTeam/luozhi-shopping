@@ -32,9 +32,29 @@ public class GoodsOrder implements java.io.Serializable {
 
     /** godate */
     private Date godate;
+//不想买的原因
+    private String reason;
+//卖家拒绝申请的原因
+    private String refusereason;
+    public String getReason() {
+		return reason;
+	}
 
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 
-    /**
+	public String getRefusereason() {
+		return refusereason;
+	}
+
+	public void setRefusereason(String refusereason) {
+		this.refusereason = refusereason;
+	}
+
+	
+
+	/**
      * 获取订单id
      * 
      * @return 订单id
