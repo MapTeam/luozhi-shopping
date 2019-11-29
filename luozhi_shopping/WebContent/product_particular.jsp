@@ -73,10 +73,10 @@ if(cookie!=null){
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<c:if test="${userinfo!=null}">
-								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
 								</c:if>
 								<c:if test="${userinfo==null }">
-									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
@@ -177,7 +177,12 @@ if(cookie!=null){
 					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="HomeServlet" class="col-md-1">首页</a>
 					<span class="top_title">
 						<c:if test="${hhcategory1 != null }">
-						<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="ClassifyServlet?category1=${hhcategory1}">${classifytitle}</a>&gt;${goods.gname }</span>
+							<c:if test="${hhcategory1==101001 }">
+								<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="HotServlet">${classifytitle}</a>&gt;${goods.gname }</span>
+							</c:if>
+							<c:if test="${hhcategory1!=101001 }">
+								<span style="color: #8C8C8C;left: -20px;top: 20px; " class="col-md-8">&gt;<a style="color: black;font-size: 18px;font-weight: bold;" href="ClassifyServlet?category1=${hhcategory1}">${classifytitle}</a>&gt;${goods.gname }</span>
+							</c:if>
 						</c:if>
 						<c:if test="${hhcategory1 == null }">
 						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;${goods.gname }</span>

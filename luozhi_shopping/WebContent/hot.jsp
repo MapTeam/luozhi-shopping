@@ -72,10 +72,10 @@ if(cookie!=null){
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
 								<c:if test="${userinfo!=null}">
-								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
 								</c:if>
 								<c:if test="${userinfo==null }">
-									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>							
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
@@ -158,7 +158,7 @@ if(cookie!=null){
 		<section  style="margin-top: 30px;">
 			<div class="container">
 				<c:forEach items="${list}" var="h">
-					<a style="color: black" href="IntroudceServlet?gid=${h.gid }">
+					<a style="color: black" href="IntroudceServlet?gid=${h.gid }&category1=101001">
 						<div class="col-md-3" style="height: 400px">
 						<div id="product">								
 							<img style="width: 100%;height: 260px;" src="${h.zpicture}"/>
