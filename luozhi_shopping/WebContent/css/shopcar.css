@@ -1,4 +1,4 @@
-/*购物车*/
+/*璐墿杞�*/
 .head{
     font-weight: bold;
     font-size: 18px;
@@ -20,6 +20,9 @@ input[type="checkbox"]{
   margin-left: 20px;
 
 
+}
+.tb{
+	width: 100%;
 }
 .tr-h{
     border: none;
@@ -126,7 +129,7 @@ input[type="checkbox"]{
 .shoping{
     height: 100px;
 }
-    /*数量加减*/
+    /*鏁伴噺鍔犲噺*/
 #product_num_decbtn{
     width: 34px;
     height: 30px;

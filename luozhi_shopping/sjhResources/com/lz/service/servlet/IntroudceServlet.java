@@ -16,6 +16,7 @@ import com.lz.dao.impl.GoodsColorDaoImpl;
 import com.lz.dao.impl.HomeDaoImpl;
 import com.lz.dao.impl.IntroduceDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.dto.UserInfo;
 import com.lz.pojo.Goods;
 import com.lz.pojo.GoodsColor;
 import com.lz.pojo.GoodsIntroduceImg;

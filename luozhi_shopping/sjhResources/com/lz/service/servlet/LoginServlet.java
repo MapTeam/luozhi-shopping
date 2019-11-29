@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.lz.dao.ShopCarNumDao;
 import com.lz.dao.impl.LoginDaoImpl;
+import com.lz.dao.impl.ShopCarNumDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.dto.UserInfo;
 import com.lz.pojo.User;
@@ -41,10 +43,11 @@ public class LoginServlet extends HttpServlet {
 		if(uname!=null&&!"".equals(uname)&&upwd!=null&&!"".equals(upwd)&&savepassword!=null&&!"".equals(savepassword)){
 			//new 一个登录的dao
 			LoginDaoImpl ldao = new LoginDaoImpl();
+			ShopCarNumDao scndao=new ShopCarNumDaoImpl();
 			Connection conn = DBConnection1.getConnection();
 			User u = ldao.login(conn, uname, upwd);
-			DBConnection1.close(conn);
-			
+			int shopcarnum=scndao.selectShopCardNumDao(conn, u.getUid());
+			DBConnection1.close(conn);			
 			PrintWriter out = response.getWriter();
 			if(u==null){
 				//如果用户输入的密码或用户名不正确就向客户端响应一个json {"code":1001,"loginmsg":"账号或密码错误"}
@@ -78,6 +81,7 @@ public class LoginServlet extends HttpServlet {
 				uinfo.setUser(u);
 				uinfo.setIp(request.getRemoteAddr());
 				uinfo.setDate(new Date());
+				uinfo.setShopcargoodsnum(shopcarnum);
 				request.getSession().setAttribute("userinfo", uinfo);
 				JSONObject jsonobj = new JSONObject();
 				jsonobj.put("code", 1000);

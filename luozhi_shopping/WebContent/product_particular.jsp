@@ -156,8 +156,15 @@ if(cookie!=null){
 		                 </button>
 					</div>
 					<div class="navbar-collapse collapse navbar-right" id="myShopping">
-						<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#buy_order">立即购买</button>
-				    	<button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car_little"><span  class="glyphicon glyphicon-shopping-cart">加入购物车</span></button>
+						<c:if test="${userinfo==null }">
+				    			<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#login">立即购买</button>
+				    		    <button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" data-toggle="modal" data-target="#login"><span  class="glyphicon glyphicon-shopping-cart" >加入购物车</span></button>
+				    	</c:if>
+				    	<c:if test="${userinfo!=null }">
+				    			<input type="hidden" value="${userinfo.user.uid }" id="uid"/>
+				    			<button  style="margin-top:10px ; width: 150px; height: 36px; background: white;border: #C9302C solid 3px;color: #C9302C;font-size: 20px;float: left;" id="shop_current_little" data-toggle="modal" data-target="#buy_order">立即购买</button>
+				    		    <button style="margin-top:10px ; width: 150px; height: 36px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car_little"><span  class="glyphicon glyphicon-shopping-cart" >加入购物车</span></button>
+				    	</c:if>
 					</div>
 				</div>
 			</nav>
