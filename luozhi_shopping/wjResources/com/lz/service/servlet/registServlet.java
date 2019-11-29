@@ -32,23 +32,23 @@ public class registServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BaseDaoImpl bdao = new BaseDaoImpl();
-		registDaoImpl rdao = new registDaoImpl();
-		JSONObject jo=new JSONObject();
-		PrintWriter out = response.getWriter();
-
 		//注册
 		String uname = request.getParameter("name");
-		System.out.println(uname);
+//		System.out.println(uname);
 		String mail = request.getParameter("mail");
-		System.out.println(mail);
+//		System.out.println(mail);
 		String pass = request.getParameter("pass");
-		System.out.println(pass);
-		String reg_user ="^[a-z0-9_]{3,20}$";
-		String reg_email="^[a-zA-Z0-9_-]+(@qq.com|@163.com|@sina.com|@139.com|@126.com)$";
-		String reg_pass= "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";
+//		System.out.println(pass);
 
 		if(uname!=null||pass!=null||mail!=null) {
+			BaseDaoImpl bdao = new BaseDaoImpl();
+			registDaoImpl rdao = new registDaoImpl();
+			JSONObject jo = new JSONObject();
+			PrintWriter out = response.getWriter();
+			
+			String reg_user = "^[a-z0-9_]{3,20}$";
+			String reg_email = "^[a-zA-Z0-9_-]+(@qq.com|@163.com|@sina.com|@139.com|@126.com)$";
+			String reg_pass = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";
 			if (uname.matches(reg_user)&& mail.matches(reg_email)&&pass.matches(reg_pass)) {
 				String password=Md5.md5(pass);
 				User u = new User();
@@ -77,11 +77,9 @@ public class registServlet extends HttpServlet {
 				}
 				DBConnection1.close(conn);
 			}
+		}else{
+			response.sendRedirect("regist.jsp");
 		}
-		
-		
-		
-		
 	}
 
 }
