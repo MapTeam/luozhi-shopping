@@ -22,6 +22,7 @@
 	for (var i = 0; i < oLi.length; i++) {
 		(function(e){
 			oLi[e].onclick=function(){
+				$('#dingdan_noput').empty();
 				$('#dingdan_put').empty();
 //				alert(oLi.length+'===='+oDiv.length);
 				$(this).css('font-weight','bold').siblings('li').css('font-weight','normal');				
@@ -29,24 +30,23 @@
 					oDiv[k].className='';
 				};
 				oDiv[e].className='dingdan_show';
-				$.post('OkOrderServlet',{},function(re){
-					var arr = jQuery.parseJSON(re);
-					for(var i=0;i<arr.length;i++){
-						var str=`
-							<li>
+				//未发货
+				if (oLi[e].className='nosendgoodsorder') {
+//					alert("aaa");
+					$.post('OrderServlet',{},function(re){
+						var arr = jQuery.parseJSON(re);
+//						console.log(arr);
+						for(var i=0;i<arr.length;i++){
+							var str=`
+								<li>
 								<div class="liheadmsg" onclick="clickdb(this)">
 									<span><img src="http://${arr[i].goodspicture}"/></span>
-									<span id="dingdan_put_name">
-										${arr[i].gname }
-									</span>
-									<span  id="dingdan_put_addr">用户：<span>${arr[i].uname }</span></span>
-									<span id="dingdan_put_num">数量：<span>${arr[i].goodsnum }</span></span>
-									<span id="dingdan_put_color">颜色：<span>${arr[i].colortype }</span></span>
-									<span id="dingdan_put_condition">
-									    状态：<sapn>已发货</span>
-									</span>
+									<span id="dingdan_noput_name">${arr[i].gname }</span>
+									<span  id="dingdan_noput_addr">用户：<span>${arr[i].uname }</span></span>
+									<span id="dingdan_noput_num">数量：<span>${arr[i].goodsnum }</span></span>
+									<span id="dingdan_noput_color">颜色：<span>${arr[i].colortype }</span></span>
 								</div>
-								<div class="goodsdescrib">
+								<div class="goodsdescri">
 									<p>商品编号：<span>${arr[i].gid }</span></p>
 									<p>商品品牌：<span>${arr[i].gbrand }</span></p>
 									<p>商品详情：<span>${arr[i].gintroduce }</span></p>
@@ -58,15 +58,60 @@
 										<span>收货地址：<span>${arr[i].province }${arr[i].city }${arr[i].village }${arr[i].detail }</span></span>
 									</p>
 								</div>
-								</li>
-							`;
+								<span id="dingdan_noput_btn" onclick="sendclick('${arr[i].goid}')">
+										<button class="btn btn-default">发货</button>
+								</span>
+							</li>
+								`;
+							
+							$('#dingdan_noput').append(str);
+						}
+						$('div.goodsdescri').hide();
 						
-						$('#dingdan_put').append(str);
-					}
-					$('div.goodsdescrib').hide();
-					
+					});
+				}
+				//已发货
+				if (oLi[e].className='sendgoodsandok') {
+//					alert('aa');
+					$.post('OkOrderServlet',{},function(re){
+						var arr = jQuery.parseJSON(re);
+						for(var i=0;i<arr.length;i++){
+							var str=`
+								<li>
+								<div class="liheadmsg" onclick="clickdb(this)">
+								<span><img src="http://${arr[i].goodspicture}"/></span>
+								<span id="dingdan_put_name">
+								${arr[i].gname }
+								</span>
+								<span  id="dingdan_put_addr">用户：<span>${arr[i].uname }</span></span>
+								<span id="dingdan_put_num">数量：<span>${arr[i].goodsnum }</span></span>
+								<span id="dingdan_put_color">颜色：<span>${arr[i].colortype }</span></span>
+								<span id="dingdan_put_condition">
+								状态：<sapn>已发货</span>
+								</span>
+								</div>
+								<div class="goodsdescrib">
+								<p>商品编号：<span>${arr[i].gid }</span></p>
+								<p>商品品牌：<span>${arr[i].gbrand }</span></p>
+								<p>商品详情：<span>${arr[i].gintroduce }</span></p>
+								<p>商品库存：<span>${arr[i].goodscount }</span></p>
+								<p>订单提交时间：<span>${arr[i].godate }</span></p>
+								<p>
+								<span>收货人：<span>${arr[i].name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span>电话号码：<span>${arr[i].tel }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<span>收货地址：<span>${arr[i].province }${arr[i].city }${arr[i].village }${arr[i].detail }</span></span>
+								</p>
+								</div>
+								</li>
+								`;
+							
+							$('#dingdan_put').append(str);
+						}
+						$('div.goodsdescrib').hide();
+						
 //					console.log(arr);
-				});
+					});
+				}
 			};
 		})(i);
 	}

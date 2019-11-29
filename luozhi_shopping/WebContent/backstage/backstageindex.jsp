@@ -148,8 +148,8 @@
 			<!--这是订单管理块-->
 			<div class="nowclick" id="dingdan_control">
 				<ul id="dingdan_title" class="row">
-					<li style="font-weight: bold;">未发货</li>
-					<li>已发货</li>
+					<li class="nosendgoodsorder" style="font-weight: bold;">未发货</li>
+					<li class="sendgoodsandok">已发货</li>
 					<li>申请退货</li>
 					<li>已退货</li>
 				</ul>
@@ -182,7 +182,7 @@
 										<button class="btn btn-default">发货</button>
 								</span>
 							</li>
-						</c:forEach>
+					 	</c:forEach>
 					</ul>
 				</div>
 				
