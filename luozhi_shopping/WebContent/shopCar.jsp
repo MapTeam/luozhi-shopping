@@ -242,6 +242,7 @@
   //点击单选        总价变
   //点击删除        当前元素tr删除 
   //点击整个表格
+  var flag = false;
   $('table').click(function(event){
     if($(event.target)[0].className == 'check'){
     	sumAll();
@@ -260,46 +261,69 @@
     		sumAll();
     	};
     };
-    
+    //AddOrReduceCarGoodsServlet
     //加
-    if($(event.target)[0].className == 'add glyphicon glyphicon-plus'){
+    if($(event.target)[0].className == 'add glyphicon glyphicon-plus'&&flag==false){
+    	flag = true;
     	var spanDom = $(event.target).siblings('.count');
 	    var spanDomVal = parseInt(spanDom.val());
-	    spanDomVal++;
-	    if (spanDomVal>1) {
-	    	$(event.target).siblings('#product_num_decbtn').css('color','#333333');
-	    }
-	    var num = parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal;
-	    $(event.target).parent().siblings('.subtotal').html(name(num));
-	    spanDom.val(spanDomVal);
-	    sumAll();
+	    $.post('AddOrReduceCarGoodsServlet', {
+			gcgid : $(event.target).parent().next().next().children('.gcgid').val(),
+			type : 1,
+		},function (rs){
+			var obj = JSON.parse(rs);
+			if(obj.AddOrReduceMsg){
+				console.log(obj);
+				spanDomVal++;
+			    if (spanDomVal>1) {
+			    	$(event.target).siblings('#product_num_decbtn').css('color','#333333');
+			    }
+			    var num = parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal;
+			    $(event.target).parent().siblings('.subtotal').html(name(num));
+			    spanDom.val(spanDomVal);
+			    sumAll();
+			}
+			flag = false;
+		});
     };
     //减
-     if($(event.target)[0].className == 'reduce glyphicon glyphicon-minus'){
-     	var spanDom = $(event.target).siblings('.count');
+     if($(event.target)[0].className == 'reduce glyphicon glyphicon-minus'&&flag==false){
+    	 flag = true;
+    	 var spanDom = $(event.target).siblings('.count');
 	    var spanDomVal = parseInt(spanDom.val());
-	    spanDomVal--;
-	    if (spanDomVal==1) {
-	    	$(event.target).css('color','#C0C0C0');
-	    }
-	    if(spanDomVal<1){
-	    	spanDomVal = 1;
-	    };
-	    var num = parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal;
-	    $(event.target).parent().siblings('.subtotal').html(name(num));
-	    spanDom.val(spanDomVal);
-	    sumAll();
+	   // console.log($(event.target).parent().next().next().children('.gcgid').val());
+	    $.post('AddOrReduceCarGoodsServlet', {
+			gcgid : $(event.target).parent().next().next().children('.gcgid').val(),
+			type : 2,
+		},function (rs){
+			var obj = JSON.parse(rs);
+			if(obj.AddOrReduceMsg){
+				console.log(obj);
+				spanDomVal--;
+			    if (spanDomVal==1) {
+			    	$(event.target).css('color','#C0C0C0');
+			    }
+			    if(spanDomVal<1){
+			    	spanDomVal = 1;
+			    };
+			    var num = parseFloat($(event.target).parent().siblings('.money').html())*spanDomVal;
+			    $(event.target).parent().siblings('.subtotal').html(name(num));
+			    spanDom.val(spanDomVal);
+			    sumAll();
+			 }
+			flag = false;
+		});
     };
     //删除
     if($(event.target)[0].className == 'del'){
     	if(confirm("您真的要删除吗？")){
-    		$(event.target).parent().parent().parent().remove();
-    		sumAll();
     		$.post('CarGoodsRemoveServlet', {
     			gcgid : $(event.target).parent().siblings('.gcgid').val(),
     		},function (rs){
     			var obj = JSON.parse(rs);
     			if(obj.CarGoodsRemove){
+    				$(event.target).parent().parent().parent().remove();
+    	    		sumAll();
     				$('.catfont').html(parseInt($('.catfont').text())-1);
     				if (parseInt($('.catfont').text())==0) {
     					location.reload(true);
