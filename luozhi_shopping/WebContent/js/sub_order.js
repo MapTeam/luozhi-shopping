@@ -42,3 +42,35 @@ $(document).scroll(function(){
 		$('.buy_order_sure').css('display','block');
 	});
 })();
+//没有地址时点击提交
+(function() {
+	//电话号码判断正则
+	var phoneTrue=/^1(3|4|5|6|7|8|9)\d{9}$/;
+	$('.saving-button').click(function() {
+		
+		if (""!=$('#shouhuorenText').val()&&""!=$('#telText').val()&&""!=$('#addr-show').val&&""!=$('.detail').val) {
+			if (!phoneTrue.test($('#telText').val())) {
+				alert("电话号码格式填写错误!");
+				
+				
+			}else{
+				$.post("InsertAddressServlet",{
+					'uid':$('#uid').val(),
+					'name':$('#shouhuorenText').val(),
+					'tel':$('#telText').val(),
+					'addr1':$('#addr-show').val(),
+					'addr2':$('.detail').val(),
+				},function(val){
+					var obj=JSON.parse(val);
+					if (obj.ifInsertAddrSuccess==true) {
+						alert("添加成功，已经设为默认地址！")
+						location.reload(true);
+					}
+				});
+			}
+			
+		}else{
+			alert("请将信息填写完整");
+		}
+	});
+})();
