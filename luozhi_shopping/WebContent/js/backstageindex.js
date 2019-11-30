@@ -39,35 +39,38 @@
 						status : 0
 					},function(re){
 						var arr = jQuery.parseJSON(re);
-//						console.log(arr);
-						for(var i=0;i<arr.length;i++){
-							var str=`
-								<li>
-								<div class="liheadmsg" onclick="clickdb(this)">
-									<span><img src="http://${arr[i].goodspicture}"/></span>
-									<span id="dingdan_noput_name">${arr[i].gname }</span>
-									<span  id="dingdan_noput_addr">用户：<span>${arr[i].uname }</span></span>
-									<span id="dingdan_noput_num">数量：<span>${arr[i].goodsnum }</span></span>
-									<span id="dingdan_noput_color">颜色：<span>${arr[i].colortype }</span></span>
-								</div>
-								<div class="goodsdescri">
-									<p>商品编号：<span>${arr[i].gid }</span></p>
-									<p>商品品牌：<span>${arr[i].gbrand }</span></p>
-									<p>商品详情：<span>${arr[i].gintroduce }</span></p>
-									<p>商品库存：<span>${arr[i].goodscount }</span></p>
-									<p>订单提交时间：<span>${arr[i].godate }</span></p>
-									<p>
-										<span>收货人：<span>${arr[i].name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<span>电话号码：<span>${arr[i].tel }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<span>收货地址：<span>${arr[i].province }${arr[i].city }${arr[i].village }${arr[i].detail }</span></span>
-									</p>
-								</div>
-								<span id="dingdan_noput_btn" onclick="sendclick('${arr[i].goid}')">
-										<button class="btn btn-default">发货</button>
-								</span>
-							</li>
-								`;
-							
+						console.log(typeof arr[1]);
+						console.log(arr.length);
+						for(var i=0;i < arr.length;i++){
+							var str=`<li>`;
+							console.log(arr[i]);
+							for(var j=0;j<arr[i].gogoods.length;j++){
+								console.log("arr" + i +":" + arr[i]);
+								console.log(arr[i].gogoods,i,j,arr[i].gogoods[j].goodspicture);
+								str = str + `<div class="liheadmsg" onclick="clickdb(this)">
+												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
+												<span id="dingdan_noput_name">`+arr[i].gogoods[j].gname+`</span>
+												<span  id="dingdan_noput_addr">用户：<span>`+arr[i].uname+`</span></span>
+												<span id="dingdan_noput_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
+												<span id="dingdan_noput_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+											</div>
+											<div class="goodsdescri">
+												<p>商品编号：<span>`+arr[i].gogoods[j].gid+`</span></p>
+												<p>商品品牌：<span>`+arr[i].gogoods[j].gbrand+`</span></p>
+												<p>商品详情：<span>`+arr[i].gogoods[j].gintroduce+`</span></p>
+												<p>商品库存：<span>`+arr[i].gogoods[j].goodscount+`</span></p>
+												<p>订单提交时间：<span>`+arr[i].godate+`</span></p>
+												<p>
+													<span>收货人：<span>`+arr[i].name+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>电话号码：<span>`+arr[i].tel+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>收货地址：<span>`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`</span></span>
+												</p>
+											</div>`;
+							}
+							str = str + `<span id="dingdan_noput_btn" onclick="sendclick('`+arr[i].goid+`')">
+											<button class="btn btn-default">发货</button>
+										</span>
+										</li>`;
 							$('#dingdan_noput').append(str);
 						}
 						$('div.goodsdescri').hide();

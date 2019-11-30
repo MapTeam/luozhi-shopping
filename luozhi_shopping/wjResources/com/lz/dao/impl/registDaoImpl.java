@@ -11,6 +11,7 @@ import com.lz.dao.registDao;
 import com.lz.db.DBConnection1;
 import com.lz.dto.GoodsBackDto;
 import com.lz.dto.GoodsOrderDto;
+import com.lz.dto.GoodsOrdergoodDto;
 import com.lz.pojo.GoodsOrder;
 import com.lz.pojo.User;
 import com.lz.util.FinalType;
@@ -85,7 +86,7 @@ public class registDaoImpl implements registDao{
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * from goodsorder a,address b,goodscolor c,goods d,`user` e where gostate = ? and a.gcolorid = c.gcolorid and a.addressid = b.addressid and c.gid = d.gid and a.uid = e.uid";
+		String sql="SELECT * FROM goodsorder a,address b,`user` c WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid ";
 		GoodsOrderDto goodsorder=null;
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -93,17 +94,8 @@ public class registDaoImpl implements registDao{
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
 				goodsorder=new GoodsOrderDto();
-				goodsorder.setGoodsnum(rs.getInt("goodsnum"));//
 				goodsorder.setAddressid(rs.getInt("addressid"));//
 				goodsorder.setGostate(rs.getInt("gostate"));//
-				goodsorder.setColortype(rs.getString("colortype"));//
-				goodsorder.setGname(rs.getString("gname"));//
-				goodsorder.setGoid(rs.getInt("goid"));//
-				goodsorder.setGoodspicture(rs.getString("goodspicture"));//
-				goodsorder.setUname(rs.getString("uname"));//
-				goodsorder.setGid(rs.getInt("gid"));//
-				goodsorder.setGcolorid(rs.getInt("gcolorid"));
-				goodsorder.setOutgoodid(rs.getInt("outgoodid"));//
 				goodsorder.setGoname(rs.getString("goname"));//
 				goodsorder.setUid(rs.getInt("uid"));//
 				goodsorder.setGodate(rs.getDate("godate").toString());//
@@ -111,13 +103,47 @@ public class registDaoImpl implements registDao{
 				goodsorder.setCredits(rs.getInt("credits"));//
 				goodsorder.setDetail(rs.getString("detail"));//
 				goodsorder.setEmail(rs.getString("email"));//
-				goodsorder.setGintroduce(rs.getString("gintroduce"));//
-				goodsorder.setGoodscount(rs.getInt("goodscount"));//
-				goodsorder.setName(rs.getString("name"));//
 				goodsorder.setTel(rs.getString("tel"));//
 				goodsorder.setProvince(rs.getString("province"));//
 				goodsorder.setVillage(rs.getString("village"));//
+				goodsorder.setGoid(rs.getInt("goid"));
+				list.add(goodsorder);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
+	
+	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid) {
+		List<GoodsOrdergoodDto> list = new ArrayList<GoodsOrdergoodDto>();
+		Connection conn = DBConnection1.getConnection();
+		String sql = "SELECT * FROM goods a,goodscolor b,goodsordergcolor c WHERE c.`goid` = ? AND c.`gcolorid` = b.`gcolorid` AND b.`gid` = a.`gid`";
+		GoodsOrdergoodDto goodsorder = null;
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, goid);
+			ResultSet rs=ps.executeQuery();
+			while (rs.next()) {
+				goodsorder=new GoodsOrdergoodDto();
+				goodsorder.setColortype(rs.getString("colortype"));
 				goodsorder.setGbrand(rs.getString("gbrand"));
+				goodsorder.setGcolorid(rs.getInt("gcolorid"));
+				goodsorder.setGid(rs.getInt("gid"));
+				goodsorder.setGintroduce(rs.getString("gintroduce"));
+				goodsorder.setGname(rs.getString("gname"));
+				goodsorder.setGoodsnum(rs.getInt("goodsnum"));
+				goodsorder.setGoodspicture(rs.getString("goodspicture"));
+				goodsorder.setGoodscount(rs.getInt("goodscount"));//
 				list.add(goodsorder);
 			}
 		} catch (SQLException e) {
