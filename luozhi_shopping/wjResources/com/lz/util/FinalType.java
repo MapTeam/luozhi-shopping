@@ -13,4 +13,6 @@ public interface FinalType {
 	public final static int GOODBACK=4;
 	//已退货订单
 	public final static int OVERGOODBACK=5;
+	//拒绝退货订单
+	public final static int REFUSEGOODBACK=6;
 }
