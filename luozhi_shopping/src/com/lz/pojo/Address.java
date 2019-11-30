@@ -14,7 +14,7 @@ public class Address implements java.io.Serializable {
     private String name;
 
     /** 电话 */
-    private Integer tel;
+    private String tel;
 
     /** 是否为默认地址 */
     private Integer isdefault;
@@ -94,7 +94,7 @@ public class Address implements java.io.Serializable {
      * 
      * @return 电话
      */
-    public Integer getTel() {
+    public String getTel() {
         return this.tel;
     }
 
@@ -104,7 +104,7 @@ public class Address implements java.io.Serializable {
      * @param tel
      *          电话
      */
-    public void setTel(Integer tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 

@@ -145,13 +145,15 @@
 				</div>
 			</div>
 			<!-- 没有地址时 -->
+			<c:if test="${oi.addresslist.size()==0}">
+			<input type="hidden" value="false" id="judgeAddress"/>
 			<form class="address-form">
 				<div class="address-form-header "><span>收货地址</span></div>
 				<div class="address-form-content">
-					<div>收&nbsp;货&nbsp;人&nbsp;:<input type="text" style="width:272px;" placeholder="为了提高发货速度，请填写您的真实姓名" />&nbsp;&nbsp;&nbsp;手机号码:<input type="text" style="width:255px;"></div>
+					<div>收&nbsp;货&nbsp;人&nbsp;:<input id="shouhuorenText" type="text" style="width:272px;" placeholder="为了提高发货速度，请填写您的真实姓名" />&nbsp;&nbsp;&nbsp;手机号码:<input id="telText" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" type="text" style="width:255px;"></div>
 					<div class="address-selector">
 						<fieldset>
-							<form action="#">
+							<form>
 								<label for="addr-show"><span style="font-size:16px;font-weight:normal;margin-right:-10px;">收货地区:</span>
                 					<input type="text" value="" id="addr-show" style="width:272px;font-size:14px;">
            					 	</label>
@@ -178,21 +180,31 @@
 						</fieldset>
 					</div>
 					<div class="detail-div"> <span class="detail-span">详细地址:</span><textarea class="detail" placeholder="无需重复填写省市区，小于120字"></textarea>
-						<div class="setting"><input type="checkbox" class="setting-input"><span class="setting-span">设为默认地址</span></div>
-						<div class="saving"><button class="saving-button">保存新地址</button></div>
+						<div class="saving">
+							<input type="button" class="saving-button" value="保存新地址"/>
+							<input type="hidden" id="uid" value="${userinfo.user.uid}"/>
+						
+						</div>
+						
 					</div>
 
 				</div>
 			</form>
+			</c:if>
+			<c:if test="${oi.addresslist.size()!=0}">
 			<!-- 有地址时 -->
+			<input type="hidden" value="true" id="judgeAddress"/>
 			<div id="g-main" class="ma">
 				<div class="n-order" id="module-root">
 					<div class="m-address-box">
 						<div class="m-address-front">
+							<c:forEach items="${oi.addresslist }" var="addresslist">
+								<c:if test="${addresslist.isdefault==1 }">
 							<div class="m-address f-pr">
 								<div class="bggray">
 									<span>收货信息</span>
 								</div>
+								
 								<div class="head">
 									<span class="f-ib">
 										<i class="glyphicon glyphicon-map-marker"></i>
@@ -200,21 +212,22 @@
 									</span>
 									<a class="btn btn-b f-mgl20 f-ib f-fs12">修改</a>
 								</div>
+								
 								<div class="msg">
 									<span class="f-ib f-thide">
 										<em style="letter-spacing: 6px;">收货人:</em>
-										<em class="promes_username">吴洁</em>
+										<em class="promes_username">${addresslist.name }</em>
 									</span>
 									<span class="phone f-ib f-thide">
 										<em>联系方式&nbsp;:&nbsp;</em>
-										<em class="promes_usertel">13723812521</em>
+										<em class="promes_usertel">${addresslist.tel}</em>
 										
 									</span>
 								</div>
 								<div class="myaddress">
 									<p class="txt f-thide">
 										<em>收货地址&nbsp;:&nbsp;</em>
-										<em class="promes_useraddr">湖南省长沙市芙蓉区五一广场</em>
+										<em class="promes_useraddr">${addresslist.province }${addresslist.city }${addresslist.village }${addresslist.detail }</em>
 									</p>
 								</div>
 								<div class="line f-pa"></div>
@@ -227,9 +240,11 @@
 									</p>
 								</div>
 							</div>
+							</c:if>
+							</c:forEach>
 						</div>
 					</div>
-					
+					</c:if>
 					
 					
 					
@@ -248,17 +263,17 @@
 								</li>
 								<li class="f-cb">
 									<span class="pic f-fl">
-										<img src="http://p3.music.126.net/S9f1ac6cl7DXTcZfF2eZew==/109951164086529636.jpg?param=80y80" alt="商品图片">
+										<img src="http://${oi.orderinputgoods.goodscolor.goodspicture}" alt="商品图片">
 									</span>
 									<span class="msg f-fl">
 										<div class="promes">
-											<p class="name f-thide promes_goodsname">伯朗 i12触控真无线蓝牙耳机蓝牙5.0苹果安卓通用</p>
-											<p class="attr f-thide promes_goodscolor">黑色</p>
+											<p class="name f-thide promes_goodsname">${oi.orderinputgoods.goods.gname}</p>
+											<p class="attr f-thide promes_goodscolor">${oi.orderinputgoods.goodscolor.colortype}</p>
 										</div>
 									</span>
-									<span class="price f-fl">¥129</span>
-									<span class="num f-fl promes_goodsnum">1</span>
-									<span class="total f-fl">¥129</span>
+									<span class="price f-fl">¥${oi.orderinputgoods.goods.gprice}</span>
+									<span class="num f-fl promes_goodsnum">${oi.goodscount}</span>
+									<span class="total f-fl">¥${oi.orderinputgoods.goods.gprice * oi.goodscount}</span>
 								</li>
 							</ul>
 							<div class="line-bt"></div>
@@ -274,7 +289,7 @@
 								<div class="body-r">
 									<div class="line f-cb f-pr f-all">
 										<span class="f-fr">商品合计：</span>
-										<span class="pr f-fr">￥<em class="promes_goodsprice">69</em></span>
+										<span class="pr f-fr">${oi.goodscount}</span>
 									</div>
 									<div class="line f-cb f-pr send">
 										<span class="f-fr">运费：</span>
@@ -282,7 +297,8 @@
 									</div>
 									<div class="line tot f-cb">
 										<span class="f-fr">实付金额：</span>
-										<span class="pr f-fr"><em><i class="f-fs20" style="color: #d33a31;">¥</i>69</em></span>
+					
+										<span class="pr f-fr"><em><i class="f-fs20" style="color: #d33a31;">¥</i><em class="promes_goodsprice">${oi.orderinputgoods.goods.gprice * oi.goodscount}</em></em></span>
 									</div>
 									<div class="m-btmlay f-mgr60">
 										<div class="f-cb">

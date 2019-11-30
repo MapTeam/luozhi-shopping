@@ -135,7 +135,8 @@ font-size:14px;
 	
 }
 .saving{
-margin-top:25px;
+ margin-top:25px;
+ padding-left:85px;
 }
 .saving-button{
 	width:160px;
@@ -144,5 +145,5 @@ margin-top:25px;
 	color:white;
 	border:1px solid rgb(204,204,204);
 	cursor:pointer;
-	margin-left:85px;
+	
 }
