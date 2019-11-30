@@ -210,7 +210,7 @@
 										<i class="glyphicon glyphicon-map-marker"></i>
 										<em>默认地址</em>
 									</span>
-									<a class="btn btn-b f-mgl20 f-ib f-fs12">修改</a>
+									<a class="btn btn-b f-mgl20 f-ib f-fs12" data-toggle="modal" data-target="#myModal">修改</a>
 								</div>
 								
 								<div class="msg">
@@ -233,10 +233,10 @@
 								<div class="line f-pa"></div>
 								<div class="modify f-pa">
 									<p>
-										<a href="javascript:;" class="s-fcff f-blk">更换收货地址</a>
+										<a  class="s-fcff f-blk">更换收货地址</a>
 									</p>
 									<p>
-										<a href="javascript:;" class="btn-b f-mgt5 f-blk">新建地址</a>
+										<a  class="btn-b f-mgt5 f-blk" style="cursor: pointer;" data-toggle="modal" data-target="#myModal">新建地址</a>
 									</p>
 								</div>
 							</div>
@@ -283,7 +283,7 @@
 									<div class="m-coupon no-used"><span>无可用优惠券</span></div>
 									<div class="protocol">
 										<input type="checkbox" class="checkbox z-checked" />
-										<span class="de">我同意<a href="/market/m/protocol">《云音乐商城购买协议》</a></span>
+										<span class="de">我同意<a>《云音乐商城购买协议》</a></span>
 									</div>
 								</div>
 								<div class="body-r">
@@ -318,6 +318,79 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<!-- --------------------------------------------------修改地址分割线------------------------------------------------ -->
+		<!--点击地址添加-->
+		<div class="modal fade" id="myModal" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header md-header">
+						<div class="modal-title" style="font-size: 16px;font-weight: bold;color:#666666;">
+						填写收货地址
+						</div>
+					</div>
+					<div class="modal-body">
+						<form  id="address-form">
+							<div><span>　收货人：</span><input type="text" placeholder="　　为了提高发货速度，请填写您的真实姓名" size=40 style="height: 35px;"> </input>
+							</div>
+							<div><span>手机号码：</span><input type="text" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" size=40 style="height:35px;"></input>
+							</div>
+							<div><span>收货地区：</span></div>
+							<div>
+								<fieldset>
+									<form 　id="address-form-child"　action="#">
+										<label id="addr-show-title" for="addr-show">您选择的是：
+											<input type="text" value="" id="addr-show">
+										</label>
+										<br/>
+										<p id="choose-addr">
+										<!--省份选择-->
+										<select id="prov" class="prov" onchange="showCity(this)">
+											<option>=请选择省份=</option>
+
+										</select>
+
+										<!--城市选择-->
+										<select id="city" class="city" onchange="showCountry(this)">
+											<option>=请选择城市=</option>
+										</select>
+
+										<!--县区选择-->
+										<select id="country" class="country" onchange="selecCountry(this)">
+											<option>=请选择县区=</option>
+										</select>
+										</p>
+										<p id="address-form-child-p">
+											<button type="button" class="btn met1" onClick="showAddr()" id="button-show">确定</button>
+										</p>
+										
+									</form>
+								</fieldset>
+							</div>
+
+							<div style="margin-left: 20px;">
+								<span>详细地址：</span>
+							</div>
+							<div id="addr-sure">
+								<textarea style="height: 60px;width:470px;resize: none;max-height:120px; max-width:470px;border: none;" placeholder="无需重复填写省市区，小于120字"></textarea>
+							</div>
+							<div id="moren-addr"><input type="checkbox"></input><span>&nbsp;设为默认地址</span></div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<p id="modal-footer-btnp">
+							<button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
+						    <button type="button" class="btn btn-primary" data-dismiss="modal" style="width: 120px;">保存新地址</button>
+						</p>
+						
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+		<!-- --------------------------------------------------提交订单分割线------------------------------------------------ -->
 		<!--点击提交订单-->
 		<div class="modal" id="buy_order_sure" data-backdrop="static">
 			<div class="buy_order_sure">

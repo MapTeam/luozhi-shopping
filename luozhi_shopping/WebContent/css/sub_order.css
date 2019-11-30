@@ -391,6 +391,11 @@ a.f-mgt5:hover{
 	display: block;
 	height: 30px;
 }
+
+
+
+
+
 /*点击提交订单*/
 .buy_order_sure{
 	display: none;
@@ -440,3 +445,4 @@ a.f-mgt5:hover{
 	margin-right:10px;
 	opacity: 0.8;
 }
+

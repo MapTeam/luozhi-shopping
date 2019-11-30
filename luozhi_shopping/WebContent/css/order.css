@@ -147,3 +147,64 @@ font-size:14px;
 	cursor:pointer;
 	
 }
+/*点击增加地址*/
+input{
+	border-radius: 5px;
+	border: #CDCDCD solid 1px;
+}
+.md-header{
+	background:#F0F0F0;
+	height: 60px;
+	border-bottom: white solid 1px;
+	padding-top: 20px;
+}
+#address-form{
+	margin-top: 30px;
+	margin-left: 20px;
+	line-height: 50px;
+}
+#addr-show{
+	width: 200px;
+	height: 35px;
+}
+#addr-show-title{
+	margin-left: 80px;
+}
+#choose-addr{
+	text-align: center;
+}
+.prov{
+	height: 30px;
+}
+.city{
+	height: 30px;
+}
+.country{
+	height: 30px;
+}
+#address-form-child-p{
+	padding-top: 0px;
+	text-align: center;
+}
+#addr-sure{
+	margin-left: 30px;
+	width: 490px;
+	height: 80;
+	padding-left: 10px;
+	padding-top: 10px;
+	border: #EEE8D8 solid 1px;
+	border-radius:5px ;
+}
+#moren-addr{
+	height: 80px;
+	line-height: 50px;
+}
+#moren-addr>input{
+	width: 20px;
+	height: 40px;
+	margin-left: 200px;
+	float: left;
+}
+#modal-footer-btnp{
+	padding-left: 130px;
+}

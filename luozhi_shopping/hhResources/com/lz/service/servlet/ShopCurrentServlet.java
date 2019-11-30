@@ -1,5 +1,7 @@
 package com.lz.service.servlet;
-
+/**
+ * 点击立即购买
+ */
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
