@@ -35,9 +35,9 @@ public class OrderGoodServlet extends HttpServlet {
 		registDao dao=new registDaoImpl();
 		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(FinalType.NOSHIPPED);
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getGoid());
+//			System.out.println(list.get(i).getGoid());
 			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoid());
-			System.out.println(list1);
+//			System.out.println(list1);
 			list.get(i).setGogoods(list1);
 		}
 			
