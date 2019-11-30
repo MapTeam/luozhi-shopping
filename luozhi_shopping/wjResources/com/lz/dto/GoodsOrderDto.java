@@ -1,49 +1,34 @@
 package com.lz.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class GoodsOrderDto implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3105621744783710432L;
 	private int goid;//订单编号
-	private int goodsnum;//购买数量
 	private int addressid;//地址编号
 	private int gostate;//状态码
 	private String uname;//用户昵称
-	private String gname;//商品名称
-	private String goodspicture;//商品颜色图片
-	private String colortype;//颜色
 	private int outgoodid;//出货单号
-	private int gcolorid;//颜色编号
-	private int gid;//商品编号
 	private int uid;//用户编号
 	private String goname;//订单号
 	private String email;//用户邮箱
 	private int credits;//用户积分
-	private String gintroduce;//商品详情
 	private String name;//收货人
 	private String tel;//电话号码
 	private String province;//省
 	private String city;//市
 	private String village;//区
 	private String detail;//详细地址
-	private int goodscount;//库存
 	private String godate;//订单提交时间
-	private String gbrand;//商品品牌
+	List<GoodsOrdergoodDto>  gogoods = new ArrayList<GoodsOrdergoodDto>();
 	public int getGoid() {
 		return goid;
 	}
 	public void setGoid(int goid) {
 		this.goid = goid;
-	}
-	public int getGoodsnum() {
-		return goodsnum;
-	}
-	public void setGoodsnum(int goodsnum) {
-		this.goodsnum = goodsnum;
 	}
 	public int getAddressid() {
 		return addressid;
@@ -63,41 +48,11 @@ public class GoodsOrderDto implements Serializable{
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public String getGname() {
-		return gname;
-	}
-	public void setGname(String gname) {
-		this.gname = gname;
-	}
-	public String getGoodspicture() {
-		return goodspicture;
-	}
-	public void setGoodspicture(String goodspicture) {
-		this.goodspicture = goodspicture;
-	}
-	public String getColortype() {
-		return colortype;
-	}
-	public void setColortype(String colortype) {
-		this.colortype = colortype;
-	}
 	public int getOutgoodid() {
 		return outgoodid;
 	}
 	public void setOutgoodid(int outgoodid) {
 		this.outgoodid = outgoodid;
-	}
-	public int getGcolorid() {
-		return gcolorid;
-	}
-	public void setGcolorid(int gcolorid) {
-		this.gcolorid = gcolorid;
-	}
-	public int getGid() {
-		return gid;
-	}
-	public void setGid(int gid) {
-		this.gid = gid;
 	}
 	public int getUid() {
 		return uid;
@@ -122,12 +77,6 @@ public class GoodsOrderDto implements Serializable{
 	}
 	public void setCredits(int credits) {
 		this.credits = credits;
-	}
-	public String getGintroduce() {
-		return gintroduce;
-	}
-	public void setGintroduce(String gintroduce) {
-		this.gintroduce = gintroduce;
 	}
 	public String getName() {
 		return name;
@@ -165,34 +114,18 @@ public class GoodsOrderDto implements Serializable{
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public int getGoodscount() {
-		return goodscount;
-	}
-	public void setGoodscount(int goodscount) {
-		this.goodscount = goodscount;
-	}
 	public String getGodate() {
 		return godate;
 	}
 	public void setGodate(String godate) {
 		this.godate = godate;
 	}
-	public String getGbrand() {
-		return gbrand;
+	public List<GoodsOrdergoodDto> getGogoods() {
+		return gogoods;
 	}
-	public void setGbrand(String gbrand) {
-		this.gbrand = gbrand;
+	public void setGogoods(List<GoodsOrdergoodDto> gogoods) {
+		this.gogoods = gogoods;
 	}
-	
-	
-	
-
-	
-
-
-
-
-	
 	
 	
 

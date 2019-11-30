@@ -157,20 +157,21 @@
 				<div class="dingdan_show">
 				<!--未发货块-->
 					<ul id="dingdan_noput" class="row">
-						<c:forEach var="orderlist" items="${list }">
-							<li>
+						<c:forEach items="${list }" var="orderlist" >
+						<li>
+						 <c:forEach items="${orderlist.gogoods }" var="good">
 								<div class="liheadmsg" onclick="clickdb(this)">
-									<span><img src="http://${orderlist.goodspicture}"/></span>
-									<span id="dingdan_noput_name">${orderlist.gname }</span>
+									<span><img src="http://${good.goodspicture}"/></span>
+									<span id="dingdan_noput_name">${good.gname }</span>
 									<span  id="dingdan_noput_addr">用户：<span>${orderlist.uname }</span></span>
-									<span id="dingdan_noput_num">数量：<span>${orderlist.goodsnum }</span></span>
-									<span id="dingdan_noput_color">颜色：<span>${orderlist.colortype }</span></span>
+									<span id="dingdan_noput_num">数量：<span>${good.goodsnum }</span></span>
+									<span id="dingdan_noput_color">颜色：<span>${good.colortype }</span></span>
 								</div>
 								<div class="goodsdescri">
-									<p>商品编号：<span>${orderlist.gid }</span></p>
-									<p>商品品牌：<span>${orderlist.gbrand }</span></p>
-									<p>商品详情：<span>${orderlist.gintroduce }</span></p>
-									<p>商品库存：<span>${orderlist.goodscount }</span></p>
+									<p>商品编号：<span>${good.gid }</span></p>
+									<p>商品品牌：<span>${good.gbrand }</span></p>
+									<p>商品详情：<span>${good.gintroduce }</span></p>
+									<p>商品库存：<span>${good.goodscount }</span></p>
 									<p>订单提交时间：<span>${orderlist.godate }</span></p>
 									<p>
 										<span>收货人：<span>${orderlist.name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -178,9 +179,10 @@
 										<span>收货地址：<span>${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }</span></span>
 									</p>
 								</div>
-								<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}')">
-										<button class="btn btn-default">发货</button>
-								</span>
+							</c:forEach>
+							<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}')">
+									<button class="btn btn-default">发货</button>
+							</span>
 							</li>
 					 	</c:forEach>
 					</ul>
