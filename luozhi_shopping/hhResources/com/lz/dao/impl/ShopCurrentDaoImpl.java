@@ -14,7 +14,9 @@ import com.lz.pojo.Goods;
 import com.lz.pojo.GoodsColor;
 
 public class ShopCurrentDaoImpl implements ShopCurrentDao{
-
+    /**
+     * 根据商品颜色id查到这个商品的所有内容
+     */
 	@Override
 	public OrderInputGoods selectGoodsInformationByGcolorid(Connection conn,int gcolorid) {
 		OrderInputGoods oig=new OrderInputGoods();
@@ -63,6 +65,9 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 		}
 		return oig;
 	}
+	/**
+	 * 根据用户id查找到他的所有的地址
+	 */
 
 	@Override
 	public List<Address> selectUserAddressByUid(Connection conn, int uid) {

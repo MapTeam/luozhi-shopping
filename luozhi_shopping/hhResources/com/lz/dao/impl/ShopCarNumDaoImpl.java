@@ -1,5 +1,7 @@
 package com.lz.dao.impl;
-
+/**
+ * 查找库存
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,5 +1,7 @@
 package com.lz.dao.impl;
-
+/**
+ * 热门商品
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

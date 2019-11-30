@@ -15,7 +15,7 @@ import com.lz.dao.impl.LikeSelectDaoImpl;
 import com.lz.pojo.Goods;
 
 /**
- * Servlet implementation class LikeSelectServlet
+ *模糊查询搜索块的Servlet
  */
 @WebServlet("/LikeSelectServlet")
 public class LikeSelectServlet extends HttpServlet {
