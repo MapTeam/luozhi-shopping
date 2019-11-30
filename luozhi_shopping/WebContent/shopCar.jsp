@@ -288,8 +288,8 @@
     };
     //减
      if($(event.target)[0].className == 'reduce glyphicon glyphicon-minus'&&flag==false){
-    	 flag = true;
-    	 var spanDom = $(event.target).siblings('.count');
+    	flag = true;
+    	var spanDom = $(event.target).siblings('.count');
 	    var spanDomVal = parseInt(spanDom.val());
 	   // console.log($(event.target).parent().next().next().children('.gcgid').val());
 	    $.post('AddOrReduceCarGoodsServlet', {

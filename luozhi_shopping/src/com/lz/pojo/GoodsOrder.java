@@ -12,8 +12,6 @@ public class GoodsOrder implements java.io.Serializable {
     /** 订单名 */
     private String goname;
 
-    /** 商品颜色id */
-    private Integer gcolorid;
 
     /** 用户id */
     private Integer uid;
@@ -21,8 +19,6 @@ public class GoodsOrder implements java.io.Serializable {
     /** 出货单id */
     private Integer outgoodid;
 
-    /** 商品数量 */
-    private Integer goodsnum;
 
     /** 地址 */
     private Integer addressid;
@@ -92,24 +88,6 @@ public class GoodsOrder implements java.io.Serializable {
         this.goname = goname;
     }
 
-    /**
-     * 获取商品颜色id
-     * 
-     * @return 商品颜色id
-     */
-    public Integer getGcolorid() {
-        return this.gcolorid;
-    }
-
-    /**
-     * 设置商品颜色id
-     * 
-     * @param gcolorid
-     *          商品颜色id
-     */
-    public void setGcolorid(Integer gcolorid) {
-        this.gcolorid = gcolorid;
-    }
 
     /**
      * 获取用户id
@@ -149,24 +127,6 @@ public class GoodsOrder implements java.io.Serializable {
         this.outgoodid = outgoodid;
     }
 
-    /**
-     * 获取商品数量
-     * 
-     * @return 商品数量
-     */
-    public Integer getGoodsnum() {
-        return this.goodsnum;
-    }
-
-    /**
-     * 设置商品数量
-     * 
-     * @param goodsnum
-     *          商品数量
-     */
-    public void setGoodsnum(Integer goodsnum) {
-        this.goodsnum = goodsnum;
-    }
 
     /**
      * 获取地址
@@ -226,8 +186,8 @@ public class GoodsOrder implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "GoodsOrder [goid=" + goid + ", goname=" + goname + ", gcolorid=" + gcolorid + ", uid=" + uid
-				+ ", outgoodid=" + outgoodid + ", goodsnum=" + goodsnum + ", addressid=" + addressid + ", gostate="
+		return "GoodsOrder [goid=" + goid + ", goname=" + goname +  ", uid=" + uid
+				+ ", outgoodid=" + outgoodid +", addressid=" + addressid + ", gostate="
 				+ gostate + ", godate=" + godate + "]";
 	}
 

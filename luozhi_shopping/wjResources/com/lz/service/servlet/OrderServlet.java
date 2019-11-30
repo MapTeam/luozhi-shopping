@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lz.dao.registDao;
 import com.lz.dao.impl.registDaoImpl;
 import com.lz.dto.GoodsOrderDto;
+import com.lz.dto.GoodsOrdergoodDto;
 import com.lz.pojo.GoodsOrder;
 import com.lz.util.FinalType;
 
@@ -31,14 +32,19 @@ public class OrderServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		registDao dao=new registDaoImpl();
 		String sta=request.getParameter("status");
+		registDao dao=new registDaoImpl();
 		int status=Integer.parseInt(sta);
 		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(status);
+		for (int i = 0; i < list.size(); i++) {
+			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoid());
+			System.out.println(list1);
+			list.get(i).setGogoods(list1);
+		}
 //		System.out.println(list);
 //		request.setAttribute("list",list);
-		JSONArray jar=new JSONArray().fromObject(list);
-		PrintWriter pw=response.getWriter();
+		JSONArray jar = new JSONArray().fromObject(list);
+		PrintWriter pw = response.getWriter();
 		pw.write(jar.toString());
 		pw.flush();
 		pw.close();
