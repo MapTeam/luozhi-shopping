@@ -71,7 +71,7 @@ function init () {
 //订单
 function goodsList(page, callback){
     var page = page ? page : 1;
-    $.get('http://www.wjian.top/shop/api_goods.php',{
+    $.POST('http://www.wjian.top/shop/api_goods.php',{
       'pagesize':3,
       'page':page,
     }, function(result){
