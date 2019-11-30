@@ -1,5 +1,7 @@
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -11,105 +13,123 @@
 		<link rel="stylesheet" href="css/personal_order.css" />
 		<link rel="stylesheet" href="css/login.css" />
 	</head>
-
+<%
+Cookie[] cookie = request.getCookies();
+String uname = null;
+String upwd = null;
+boolean check = false;
+if(cookie!=null){
+	for(Cookie c:cookie){
+		if("uname".equals(c.getName())){
+			uname = URLDecoder.decode(c.getValue(),"UTF-8");
+			check = true;
+		}
+		if("upwd".equals(c.getName())){
+			upwd = URLDecoder.decode(c.getValue(),"UTF-8");
+		}
+	}
+}
+	pageContext.setAttribute("uname", uname);
+	pageContext.setAttribute("upwd", upwd);
+	pageContext.setAttribute("check", check);
+%>
 	<body>
 		<!--头部-->
-		<header>
+				<header>
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="home.html" class="navbar-brand">
-							<img src="img/logo.jpg " class="logo" />
-							<span id="logo-font">
+						<a href="HomeServlet" class="navbar-brand">
+							<img src="img/logo.png " class="logo"/>
+							<!--<span id="logo-font">
 								洛枳商城
-							</span>
+							</span>-->
 						</a>
 						<!--折叠按钮-->
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav">
+				        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav">
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 					    </button>
 					</div>
-
-					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-4 col-md-offset-1 col-sm-offset-1 div-from">
-						<form action="#" method="" class="">
+					
+					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
+						<form method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
 						<div class="form-heid">
 							<ul>
 								<li class="title1">热门搜索</li>
-								<li>
-									<a href="">真无线</a>
-								</li>
-								<li>
-									<a href="">潮流系列</a>
-								</li>
-								<li>
-									<a href="">乐器</a>
-								</li>
-								<li>
-									<a href="">蓝牙</a>
-								</li>
+								<li><a style="cursor: pointer;">真无线</a></li>
+								<li><a style="cursor: pointer;">潮流系列</a></li>
+								<li><a style="cursor: pointer;">乐器</a></li>
+								<li><a style="cursor: pointer;">蓝牙</a></li>
 							</ul>
 						</div>
 					</div>
-
-					<div class="col-xs-12 col-lg-4 col-md-4 col-sm-5 navbar-right">
+					
+					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li>
-									<a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a>
+								<c:if test="${userinfo!=null}">
+								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
+								</c:if>
+								<c:if test="${userinfo==null }">
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
-								</li>
+									<li class="regist-li"><a href="regist.jsp">注册</a></li>
+								</c:if>
 							</ul>
-							<div class="person">
-								<img class="avatar" src="http://p3.music.126.net/RLeBJe4D1ZzUtltxfoKDMg==/109951163250239066.jpg"><!--?param=36y36-->
-								<span class="glyphicon glyphicon-triangle-bottom downchild"></span>
-								<div class="list">
-									<ul>
-										<!--Regular list-->
-										<li>
-											<a href="personal_order.html">
-												<span class="glyphicon glyphicon-list-alt myorder"></span>
-												<span class="list-text">我的订单</span>
-											</a>
-										</li>
-
-										<li>
-											<a>
-												<span class="glyphicon glyphicon-yen coupon"></span>
-												<span class="list-text">我的优惠券</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="my_address.html">
-												<span class="glyphicon glyphicon-map-marker address"></span>
-												<span class="list-text">我的收货地址</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="home.html">
-												<span class="glyphicon glyphicon-music mainside"></span>
-												<span class="list-text">洛枳商城首页</span>
-											</a>
-										</li>
-										<hr />
-										<li>
-											<a class="exitlogin-li">
-												<span class="glyphicon glyphicon-off logout"></span>
-												<span class="list-text">退出</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
+							<c:if test="${userinfo!=null }">
+									<div class="person">
+										<img class="avatar" src="http://p3.music.126.net/RLeBJe4D1ZzUtltxfoKDMg==/109951163250239066.jpg?param=36y36">
+										<span class="glyphicon glyphicon-triangle-bottom downchild"></span>
+										<div class="list">
+											<ul>
+												<!--Regular list-->
+												<li>
+													<a href="personal_order.html">
+														<span class="glyphicon glyphicon-list-alt myorder"></span>
+														<span class="list-text">我的订单</span>
+													</a>
+												</li>
+		
+												<li>
+													<a>
+														<span class="glyphicon glyphicon-yen coupon"></span>
+														<span class="list-text">我的优惠券</span>
+													</a>
+												</li>
+		
+												<li>
+													<a>
+														<span class="glyphicon glyphicon-map-marker address"></span>
+														<span class="list-text">我的收货地址</span>
+													</a>
+												</li>
+		
+												<li>
+													<a href="HomeServlet">
+														<span class="glyphicon glyphicon-music mainside"></span>
+														<span class="list-text">洛枳商城首页</span>
+													</a>
+												</li>
+												<hr class="hr"/>
+												<li class="exitlogin-li hidd">
+													<a href="javascript:;">
+														<span class="glyphicon glyphicon-off logout"></span>
+														<span class="list-text" id="exitlogin">退出</span>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</c:if>
 						</div>
 					</div>
+					
+				</div>
 			</nav>
 		</header>
 		

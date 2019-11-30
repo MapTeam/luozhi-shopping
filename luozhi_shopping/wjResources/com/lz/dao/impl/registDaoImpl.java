@@ -192,40 +192,7 @@ public class registDaoImpl implements registDao{
 	}
 
 
-////    通过状态码查询退款订单
-//	@Override
-//	public List<GoodsBackDto> selectOrderByOrsta(int status) {
-//		Connection conn=DBConnection1.getConnection();
-//		String sql="SELECT * FROM goodsorder a,goodscolor c,goods g where gostate = ? and  a.gcolorid=c.gcolorid and c.gid=g.gid";
-//		List<GoodsBackDto> backlist=new ArrayList<GoodsBackDto>();
-//		GoodsBackDto go=null;
-//		try {
-//			PreparedStatement ps=conn.prepareStatement(sql);
-//			ps.setInt(1, status);
-//			ResultSet rs=ps.executeQuery();
-//			while (rs.next()) {
-//				go=new GoodsBackDto();
-//				go.setGoodspicture(rs.getString("goodspicture"));
-//				go.setGname(rs.getString("gname"));
-//				go.setGid(rs.getInt("gid"));
-//				go.setGoodsnum(rs.getInt("goodsnum"));
-//				go.setReason(rs.getString("reason"));
-//				go.setGoid(rs.getInt("goid"));
-//				backlist.add(go);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				if (conn!=null && !conn.isClosed()) {
-//					DBConnection1.close(conn);
-//				}
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return backlist;
-//	}
+
 
 
 //插入拒绝原因
