@@ -92,7 +92,6 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 				list.add(address);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
