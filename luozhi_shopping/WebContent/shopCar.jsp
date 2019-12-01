@@ -255,13 +255,8 @@
 				  str = str + $(this).next().val()+',';
 			  }
   		  });
-		  console.log(str);
-		  $.post('CarGoodsOrderServlet', {
-			    'str' : str,
-			},function (rs){
-				var obj = JSON.parse(rs);
-				console.log(obj);
-			});
+		  window.location.href="CarGoodsOrderServlet?str="+str;
+		  
 	  };
   });
   

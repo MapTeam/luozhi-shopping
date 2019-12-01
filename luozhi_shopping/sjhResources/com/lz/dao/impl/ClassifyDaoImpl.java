@@ -12,7 +12,10 @@ import com.lz.pojo.Goods;
 import com.lz.pojo.Type;
 
 public class ClassifyDaoImpl implements ClassifyDao {
-
+	/**
+	 * 通过category1查询type
+	 * @return
+	 */
 	@Override
 	public List<Type> selectTypeByCategory1(Connection conn,int category1) {
 		List<Type> types = new ArrayList<Type>();
@@ -33,7 +36,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
 					ps.close();
@@ -45,6 +48,10 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		return types;
 	}
 	
+	/**
+	 * 通过category1查询Goods
+	 * @return
+	 */
 	@Override
 	public List<Goods> selectGoodsByCategory1(Connection conn,int category1,int start,int size) {
 		List<Goods> goods = new ArrayList<Goods>();
@@ -88,6 +95,10 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		return goods;
 	}
 
+	/**
+	 * 通过category1查询Gbrand去重
+	 * @return
+	 */
 	@Override
 	public List<String> selectGbrandByCategory1(Connection conn,int category1) {
 		List<String> brands = new ArrayList<String>();
@@ -116,6 +127,9 @@ public class ClassifyDaoImpl implements ClassifyDao {
 	
 	/**
 	 * 根据页面显示的条数获得最大的页数
+	 * @param conn
+	 * @param pageSize
+	 * @return
 	 */
 	@Override
 	public int selectMaxPageNo(Connection conn,int category1,int pageSize) {
@@ -142,11 +156,21 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
 	}
 	
-	
+	/**
+	 * 动态sql条件查询
+	 * @param conn
+	 * @param gbrand
+	 * @param type
+	 * @param sort
+	 * @param category1
+	 * @param min
+	 * @param max
+	 * @param pageNo
+	 * @return
+	 */
 	@Override
 	public List<Goods> selectGoods(Connection conn,String gbrand,String type,String sort,String category1,String min,String max,String pageNo) {
 		List<Goods> goods = new ArrayList<Goods>();
-		//String sql = "SELECT * FROM goods WHERE gbrand ='索尼(SONY)' AND category2=101000 AND gprice>0 AND gprice<10000 ORDER BY gprice DESC LIMIT 0,20;";
 		StringBuffer sb = new StringBuffer();
 		sb.append("SELECT * FROM goods WHERE 1=1 ");
 		if(gbrand!=null&&!"".equals(gbrand)){
@@ -230,10 +254,19 @@ public class ClassifyDaoImpl implements ClassifyDao {
 		return goods;
 	}
 	
+	/**
+	 * 动态sql条件查询条数
+	 * @param conn
+	 * @param gbrand
+	 * @param type
+	 * @param category1
+	 * @param min
+	 * @param max
+	 * @return
+	 */
 	@Override
 	public int selectGoodsCount(Connection conn,String gbrand,String type,String category1,String min,String max) {
 		int count = 0;
-		//String sql = "SELECT * FROM goods WHERE gbrand ='索尼(SONY)' AND category2=101000 AND gprice>0 AND gprice<10000 ORDER BY gprice DESC LIMIT 0,20;";
 		StringBuffer sb = new StringBuffer();
 		sb.append("SELECT count(*) FROM goods WHERE 1=1 ");
 		if(gbrand!=null&&!"".equals(gbrand)){

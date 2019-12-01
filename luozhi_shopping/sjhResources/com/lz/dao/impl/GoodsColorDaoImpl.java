@@ -12,11 +12,16 @@ import com.lz.pojo.GoodsColor;
 
 public class GoodsColorDaoImpl implements GoodsColorDao {
 
+	/**
+	 * 商品查询颜色
+	 * @param conn
+	 * @param gid
+	 * @return
+	 */
 	@Override
 	public List<GoodsColor> selectColor(Connection conn,int gid) {
 		List<GoodsColor> gcolors = new ArrayList<GoodsColor>();
 		String sql = "select * from goodscolor where gid = ? ";
-		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, gid);

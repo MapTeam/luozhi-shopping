@@ -10,6 +10,13 @@ import com.lz.pojo.User;
 
 public class LoginDaoImpl implements LoginDao {
 
+	/**
+	 * 验证登录
+	 * @param conn
+	 * @param uname
+	 * @param upwd
+	 * @return
+	 */
 	@Override
 	public User login(Connection conn, String uname, String upwd) {
 		User u = null;

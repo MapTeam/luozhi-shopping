@@ -48,7 +48,7 @@ public class ShopCurrentServlet extends HttpServlet {
 				OrderInputGoods oig=dao.selectGoodsInformationByGcolorid(conn, gcolorid);
 				List<Address> addresslist =dao.selectUserAddressByUid(conn, uid);
 				DBConnection1.close(conn);
-				OrderInput oi=new OrderInput();
+				OrderInput oi = new OrderInput();
 				oi.setAddresslist(addresslist);
 				oi.setGoodscount(gcount);
 				oi.setOrderinputgoods(oig);
