@@ -210,7 +210,7 @@
 										<i class="glyphicon glyphicon-map-marker"></i>
 										<em>默认地址</em>
 									</span>
-									<a class="btn btn-b f-mgl20 f-ib f-fs12" data-toggle="modal" data-target="#myModal">修改</a>
+									<a class="btn btn-b f-mgl20 f-ib f-fs12" data-toggle="modal" data-target="#myModal" id="updateAddress">修改</a>
 								</div>
 								
 								<div class="msg">
@@ -227,7 +227,14 @@
 								<div class="myaddress">
 									<p class="txt f-thide">
 										<em>收货地址&nbsp;:&nbsp;</em>
-										<em class="promes_useraddr">${addresslist.province }${addresslist.city }${addresslist.village }${addresslist.detail }</em>
+										<em class="promes_useraddr">
+											<input type="hidden" id="AddressId" value="${addresslist.addressid }"/>
+											<input type="hidden" id="IsDefault" value="${addresslist.isdefault }"/>
+											<span class="promes_useraddr_province">${addresslist.province }</span>
+											<span class="promes_useraddr_city">${addresslist.city }</span>
+											<span class="promes_useraddr_village">${addresslist.village }</span>
+											<span class="promes_useraddr_detail">${addresslist.detail }</span>
+										</em>
 									</p>
 								</div>
 								<div class="line f-pa"></div>
@@ -320,75 +327,79 @@
 		</div>
 		
 		
-		<!-- --------------------------------------------------修改地址分割线------------------------------------------------ -->
+		<!-- --------------------------------------------------修改/新建地址分割线------------------------------------------------ -->
 		<!--点击地址添加-->
 		<div class="modal fade" id="myModal" data-backdrop="static">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header md-header">
-						<div class="modal-title" style="font-size: 16px;font-weight: bold;color:#666666;">
-						填写收货地址
+		  	
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header md-header">
+							<div class="modal-title" style="font-size: 16px;font-weight: bold;color:#666666;">
+							填写收货地址
+							</div>
+						</div>
+						<div class="modal-body">
+							<form  id="address-form">
+								<div id="updateAndadduserInformation">
+								<div><span>　收货人：</span><input type="text" id="InputName" placeholder="　　为了提高发货速度，请填写您的真实姓名" size=40 style="height: 35px;"> </input>
+								</div>
+								<div><span>手机号码：</span><input type="text" id="InputTel" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" size=40 style="height:35px;"></input>
+								</div>
+								</div>
+								<div><span>收货地区：</span></div>
+								<div>
+									<fieldset>
+										<form 　id="address-form-child"　action="#">
+											<label id="addr-show-title" for="addr-show">您选择的是：
+												<input type="text" value="" id="addr-show">
+											</label>
+											<br/>
+											<p id="choose-addr">
+											<!--省份选择-->
+											<select id="prov" class="prov" onchange="showCity(this)">
+												<option>=请选择省份=</option>
+	
+											</select>
+	
+											<!--城市选择-->
+											<select id="city" class="city" onchange="showCountry(this)">
+												<option>=请选择城市=</option>
+											</select>
+	
+											<!--县区选择-->
+											<select id="country" class="country" onchange="selecCountry(this)">
+												<option>=请选择县区=</option>
+											</select>
+											</p>
+											<p id="address-form-child-p">
+												<button type="button" class="btn met1" onClick="showAddr()" id="button-show">确定</button>
+											</p>
+											
+										</form>
+									</fieldset>
+								</div>
+	
+								<div style="margin-left: 20px;">
+									<span>详细地址：</span>
+								</div>
+								<div id="addr-sure">
+									<textarea style="height: 60px;width:470px;resize: none;max-height:120px; max-width:470px;border: none;" id="InputAddr2" placeholder="无需重复填写省市区，小于120字"></textarea>
+								</div>
+								<div id="moren-addr"><input type="checkbox"></input><span>&nbsp;设为默认地址</span></div>
+							</form>
+						</div>
+						<div class="modal-footer" id="footer_update">
+							<p id="modal-footer-btnp">
+								<button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
+							    <button type="button" class="btn btn-primary" data-dismiss="modal" style="width: 120px;">保存新地址</button>
+							</p>
+							
 						</div>
 					</div>
-					<div class="modal-body">
-						<form  id="address-form">
-							<div><span>　收货人：</span><input type="text" placeholder="　　为了提高发货速度，请填写您的真实姓名" size=40 style="height: 35px;"> </input>
-							</div>
-							<div><span>手机号码：</span><input type="text" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" size=40 style="height:35px;"></input>
-							</div>
-							<div><span>收货地区：</span></div>
-							<div>
-								<fieldset>
-									<form 　id="address-form-child"　action="#">
-										<label id="addr-show-title" for="addr-show">您选择的是：
-											<input type="text" value="" id="addr-show">
-										</label>
-										<br/>
-										<p id="choose-addr">
-										<!--省份选择-->
-										<select id="prov" class="prov" onchange="showCity(this)">
-											<option>=请选择省份=</option>
-
-										</select>
-
-										<!--城市选择-->
-										<select id="city" class="city" onchange="showCountry(this)">
-											<option>=请选择城市=</option>
-										</select>
-
-										<!--县区选择-->
-										<select id="country" class="country" onchange="selecCountry(this)">
-											<option>=请选择县区=</option>
-										</select>
-										</p>
-										<p id="address-form-child-p">
-											<button type="button" class="btn met1" onClick="showAddr()" id="button-show">确定</button>
-										</p>
-										
-									</form>
-								</fieldset>
-							</div>
-
-							<div style="margin-left: 20px;">
-								<span>详细地址：</span>
-							</div>
-							<div id="addr-sure">
-								<textarea style="height: 60px;width:470px;resize: none;max-height:120px; max-width:470px;border: none;" placeholder="无需重复填写省市区，小于120字"></textarea>
-							</div>
-							<div id="moren-addr"><input type="checkbox"></input><span>&nbsp;设为默认地址</span></div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<p id="modal-footer-btnp">
-							<button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
-						    <button type="button" class="btn btn-primary" data-dismiss="modal" style="width: 120px;">保存新地址</button>
-						</p>
-						
-					</div>
+					<!-- /.modal-content -->
 				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal -->
+				<!-- /.modal -->
+				
 		</div>
 		<!-- --------------------------------------------------提交订单分割线------------------------------------------------ -->
 		<!--点击提交订单-->
