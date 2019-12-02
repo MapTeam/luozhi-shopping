@@ -328,6 +328,7 @@ if(cookie!=null){
 				    					<input type="hidden" value="${userinfo.user.uid }" id="uid"/>
 				    					<button  style="width: 172px; height: 50px;font-size: 20px;float: left;" id="shop_current" data-toggle="modal" data-target="#buy_order">立即购买</button>
 				    		        	<button style="width: 172px; height: 50px;background: #C9302C;border: none;color: white;font-size: 20px;margin-left: 10px;" id="add_shopping_car"><span  class="glyphicon glyphicon-shopping-cart" >加入购物车</span></button>
+				    		        	<div class="jumpshopcar">+1</div>
 				    				</c:if>
 				    			</div>
 				    		</span>

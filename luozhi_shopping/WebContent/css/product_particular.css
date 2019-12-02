@@ -378,3 +378,18 @@ margin-top: 20px;
 	margin-left: 10px;
 	margin-right:10px;
 }
+
+/*点击加入购物车的样式*/
+.jumpshopcar{
+	width: 20px;
+	height: 20px;
+	position:absolute;
+	top:390px;
+	left:270px;
+	display:none;
+	color:white;
+	font-weight:15px;
+	z-index:999;
+	background: #C9302C;
+	border-radius: 50%;
+}

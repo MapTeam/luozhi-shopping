@@ -234,4 +234,26 @@ $(document).scroll(function(){
 		
 	});
 })();
-
+//取消订单
+(function() {
+	$('#cancel_buy').click(function() {
+		var addrid=$('#AddressId').val();
+		var gcolorid="";
+		var goodscount="";
+		$('.shangpingli').each(function(e) {
+			gcolorid+=$(this).children('span').children('.promes').children('#hhgcolorid').val();
+			goodscount+=$(this).children('.promes_goodsnum').text()+',';		
+		});
+		$.post("GetWaitPayServlet",{
+			'addrid':addrid,
+			'gcolorid':gcolorid,
+			'goodscount':goodscount,
+		},function(val){
+			var obj=JSON.parse(val);
+			if (obj.ifgetwaitpaysuccess==true) {
+				alert('插入成功')
+			}
+		});
+		
+	});
+})();

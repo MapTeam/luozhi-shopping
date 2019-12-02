@@ -265,12 +265,13 @@
 									<span class="number f-fl">数量</span>
 									<span class="all f-fl">小计</span>
 								</li>
-								<li class="f-cb">
+								<li class="f-cb shangpingli">
 									<span class="pic f-fl">
 										<img src="http://${oi.orderinputgoods.goodscolor.goodspicture}" alt="商品图片">
 									</span>
 									<span class="msg f-fl">
 										<div class="promes">
+											<input type="hidden" value="${oi.orderinputgoods.goodscolor.gcolorid}," id="hhgcolorid"/>
 											<p class="name f-thide promes_goodsname">${oi.orderinputgoods.goods.gname}</p>
 											<p class="attr f-thide promes_goodscolor">${oi.orderinputgoods.goodscolor.colortype}</p>
 										</div>
@@ -441,12 +442,13 @@
 									<span class="all f-fl">小计</span>
 								</li>
 								<c:forEach items="${coigs }" var="coig">
-									<li class="f-cb">
+									<li class="f-cb shangpingli">
 										<span class="pic f-fl">
 											<img src="http://${coig.goodscolor.goodspicture}" alt="商品图片">
 										</span>
 										<span class="msg f-fl">
 											<div class="promes">
+												<input type="hidden" value="${coig.goodscolor.gcolorid}," id="hhgcolorid"/>
 												<p class="name f-thide promes_goodsname">${coig.goods.gname}</p>
 												<p class="attr f-thide promes_goodscolor">${coig.goodscolor.colortype}</p>
 											</div>

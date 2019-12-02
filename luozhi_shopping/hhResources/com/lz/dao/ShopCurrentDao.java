@@ -34,4 +34,12 @@ public interface ShopCurrentDao {
 		 * @return
 		 */
 		public boolean updateDefaultByAddressId(Connection conn,int addressid);
+		/**
+		 * 通过订单名找到订单id
+		 * @param conn
+		 * @param goname
+		 * @return
+		 */
+		public int selectGoidByGoname(Connection conn,String goname);
+		
 }

@@ -397,8 +397,15 @@ $(document).scroll(function(){
 		},function(rs){
 			var obj=JSON.parse(rs);
 			if (obj.addgoodscatflag) {
-				alert("购物车添加成功");
-				$('.catfont').html(parseInt($('.catfont').text())+1);
+				$('.jumpshopcar').css('display','block');
+				$('.jumpshopcar').animate({'top':-120,'left':530,'opacity':0.5},1000,function(){
+					$('.jumpshopcar').css('opacity','1');
+					$('.jumpshopcar').css('top','390px');
+					$('.jumpshopcar').css('left','270px');
+					$('.jumpshopcar').css('display','none');
+					$('.catfont').html(parseInt($('.catfont').text())+1);
+				});
+				
 			}
 		});
 	};
