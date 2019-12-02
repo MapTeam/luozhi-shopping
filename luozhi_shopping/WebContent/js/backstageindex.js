@@ -71,7 +71,7 @@
 												</p>
 											</div>`;
 							}
-							str = str + `<span id="dingdan_noput_btn" onclick="sendclick('`+arr[i].goid+`')">
+							str = str + `<span id="dingdan_noput_btn" onclick="sendclick('`+arr[i].goid+`','`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`','`+arr[i].tel+`','`+arr[i].uid+`')">
 											<button class="btn btn-default">发货</button>
 										</span>
 										</li>`;
@@ -204,11 +204,16 @@
 })();
 
 //未发货块、
-function sendclick(orid) {
+function sendclick(orid,address,tel,uid) {
+//	alert(address);
+//	alert(tel);
 	if (confirm("是否确定发货")) {
 		$.post('SendBtnServlet',{
 			id : orid,
-			status : 1
+			status : 1,
+			address :address,
+			tel : tel,
+			uid : uid
 		},function(re){
 			var obj=JSON.parse(re);
 			if(obj){

@@ -326,4 +326,47 @@ public class registDaoImpl implements registDao{
 	}
 
 
+//生成出货单信息
+	@Override
+	public boolean insertOutGoodsOrder(Connection conn,String outgoodsname, int uid, String receiveaddress, String tel) {
+		String sql="insert into outgood(outgoodname,uid,receiveaddress,tel) values(outgoodsname,uid,receiveaddress,tel)";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1,outgoodsname );
+			ps.setInt(2, uid);
+			ps.setString(3, receiveaddress);
+			ps.setString(4, tel);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+
+//点击发货插入订单号
+	@Override
+	public boolean updateGoodOrder(Connection conn,String outgoodname, int status,int goid) {
+		String sql="update goodsorder set outgoodid=?,gostate=0 where goid=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1,outgoodname);
+			ps.setInt(2, status);
+			ps.setInt(3, goid);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+
 }

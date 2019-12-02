@@ -1,5 +1,6 @@
 package com.lz.dao;
 
+import java.sql.Connection;
 import java.util.List;
 
 import com.lz.dto.GoodsOrderDto;
@@ -15,4 +16,6 @@ public interface registDao {
 	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid);
 	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid,int status);
 	public List<GoodsOrderDto> selectUserOrderByuid(int uid);
+	public boolean insertOutGoodsOrder(Connection conn,String outgoodsname,int uid,String receiveaddress,String tel);
+	public boolean updateGoodOrder(Connection conn,String outgoodname, int status,int goid);
 }
