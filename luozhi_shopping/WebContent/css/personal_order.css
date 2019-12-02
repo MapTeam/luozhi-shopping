@@ -1,4 +1,4 @@
-/*我的订单*/
+/*鎴戠殑璁㈠崟*/
 * {
 	margin: 0px;
 	padding: 0px;
@@ -141,7 +141,7 @@ ul.m-snav-order {
 #content li.current{
 	display: block;
 }
-/*没有订单*/
+/*娌℃湁璁㈠崟*/
 .n-myorder .empty .icn {
 	display: block;
 	width: 200px;
@@ -160,7 +160,7 @@ ul.m-snav-order {
 }
 
 
-/*右边的浮动竖条*/
+/*旁边回到顶部*/
 
 .zTi-rigth {
 	width: 62px;
@@ -222,7 +222,7 @@ ul.m-snav-order {
 
 
 
-/*有订单*/
+/*鏈夎鍗�*/
 /*.n-myorder .haempty{
 	width:870px ;
 }

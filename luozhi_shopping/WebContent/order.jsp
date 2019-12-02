@@ -242,10 +242,10 @@
 								<div class="line f-pa"></div>
 								<div class="modify f-pa">
 									<p>
-										<a  class="s-fcff f-blk">更换收货地址</a>
+										<a style="cursor: pointer;" class="s-fcff f-blk" data-toggle="modal" data-target="#addDefaultAddr">更换默认地址</a>
 									</p>
 									<p>
-										<a  class="btn-b f-mgt5 f-blk" style="cursor: pointer;" data-toggle="modal" data-target="#myModal">新建地址</a>
+										<a style="cursor: pointer;" class="btn-b f-mgt5 f-blk" id="addnewAddress"  data-toggle="modal" data-target="#myModal">新建地址</a>
 									</p>
 								</div>
 							</div>
@@ -286,8 +286,8 @@
 									<span>全部优惠券(0) &gt;</span>
 									<div class="m-coupon no-used"><span>无可用优惠券</span></div>
 									<div class="protocol">
-										<input type="checkbox" class="checkbox z-checked" />
-										<span class="de">我同意<a>《云音乐商城购买协议》</a></span>
+										<input type="checkbox" class="checkbox z-checked" checked="checked"/>
+										<span class="de">我同意<a>《洛枳商城购买协议》</a></span>
 									</div>
 								</div>
 								<div class="body-r">
@@ -372,7 +372,7 @@
 				</c:if>
 				<!-- 有地址时 -->
 				<c:if test="${addresslist.size()!=0}">
-			<input type="hidden" value="true" id="judgeAddress"/>
+					<input type="hidden" value="true" id="judgeAddress"/>
 					<div class="m-address-box">
 						<div class="m-address-front">
 							<c:forEach items="${addresslist }" var="address">
@@ -417,10 +417,10 @@
 								<div class="line f-pa"></div>
 								<div class="modify f-pa">
 									<p>
-										<a  class="s-fcff f-blk">更换收货地址</a>
+										<a  class="s-fcff f-blk" style="cursor: pointer;" data-toggle="modal" data-target="#addDefaultAddr">更换默认地址</a>
 									</p>
 									<p>
-										<a  class="btn-b f-mgt5 f-blk" style="cursor: pointer;" data-toggle="modal" data-target="#myModal">新建地址</a>
+										<a  class="btn-b f-mgt5 f-blk" id="addnewAddress" style="cursor: pointer;" data-toggle="modal" data-target="#myModal">新建地址</a>
 									</p>
 								</div>
 							</div>
@@ -463,8 +463,8 @@
 									<span>全部优惠券(0) &gt;</span>
 									<div class="m-coupon no-used"><span>无可用优惠券</span></div>
 									<div class="protocol">
-										<input type="checkbox" class="checkbox z-checked" />
-										<span class="de">我同意<a>《云音乐商城购买协议》</a></span>
+										<input type="checkbox" class="checkbox z-checked" checked="checked"/>
+										<span class="de">我同意<a>《洛枳商城购买协议》</a></span>
 									</div>
 								</div>
 								<div class="body-r">
@@ -577,22 +577,127 @@
 				<!-- /.modal -->
 				
 		</div>
+		<!-- -------------------------------------------------------更改默认地址分割线-------------------------------------------------------- -->
+		<div class="modal" id="addDefaultAddr" data-backdrop="static">
+		  <!-- 从购物车  -->
+		  <c:if test="${oi==null}">
+			<div class="addDefaultAddr_display">
+				<ul>
+					<c:forEach items="${addresslist }" var="address">
+					<c:if test="${address.isdefault==1 }">
+						<li>
+						<span>${address.name }</span>
+						<span>${address.tel }</span>
+						<span>
+							<span>${address.province }</span>
+							<span>${address.city }</span>
+							<span>${address.village }</span>
+							<span>${address.detail }</span>
+						</span>
+						<span style="color:#D84C29 ;border: #EB1C27 solid 1px;margin-left: 8px">默认地址</span>
+					</li>
+					</c:if>
+					<c:if test="${address.isdefault==0 }">
+						<li>
+						<span>${address.name }</span>
+						<span>${address.tel }</span>
+						<span>
+							<span>${address.province }</span>
+							<span>${address.city }</span>
+							<span>${address.village }</span>
+							<span>${address.detail }</span>
+							<input type="hidden" value="${address.addressid }" />
+						</span>
+					</li>
+					</c:if>
+					</c:forEach>
+			    </ul>
+			    <hr/>
+				<span>
+					<button class="btn btn-danger" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+			</c:if>
+			<!-- 从商品详情  -->
+		  <c:if test="${oi!=null}">
+			<div class="addDefaultAddr_display">
+				<ul>
+					<c:forEach items="${oi.addresslist }" var="address">
+					<c:if test="${address.isdefault==1 }">
+						<li>
+						<span>${address.name }</span>
+						<span>${address.tel }</span>
+						<span>
+							<span>${address.province }</span>
+							<span>${address.city }</span>
+							<span>${address.village }</span>
+							<span>${address.detail }</span>
+							<input type="hidden" value="${address.addressid }" />
+						</span>
+						<span style="color:#D84C29 ;border: #EB1C27 solid 1px;margin-left: 8px">默认地址</span>
+					</li>
+					</c:if>
+					<c:if test="${address.isdefault==0 }">
+						<li>
+						<span>${address.name }</span>
+						<span>${address.tel }</span>
+						<span>
+							<span>${address.province }</span>
+							<span>${address.city }</span>
+							<span>${address.village }</span>
+							<span>${address.detail }</span>
+							<input type="hidden" value="${address.addressid }" />
+						</span>
+					</li>
+					</c:if>
+					</c:forEach>
+			    </ul>
+			    <hr/>
+				<span>
+					<button class="btn btn-danger" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+			</c:if>
+		</div>
 		<!-- --------------------------------------------------提交订单分割线------------------------------------------------ -->
 		<!--点击提交订单-->
 		<div class="modal" id="buy_order_sure" data-backdrop="static">
 			<div class="buy_order_sure">
-				<h1>请核对您的订单</h1>
+				<h1>请核对您的金额以及地址</h1>
 				<div>
 					
 				</div>
 				<span>
-					<button class="btn btn-success buyit">朕收了</button>
+					<button class="btn btn-success buyit" data-dismiss="modal" data-toggle="modal" data-target="#paycount">朕收了</button>
 					<button class="btn btn-danger cancelbuy" data-dismiss="modal">取消</button>
 				</span>
 			</div>
 		</div>
-		
-		
+		<!-- --------------------------------------------------支付分割线------------------------------------------------ -->
+		<div class="modal" id="paycount" data-backdrop="static">
+			<div class="pay_order_sure">
+				<h1>请输入银行卡号</h1>
+				<div>
+					卡　号：<input type="text" id="cardnum" /><br/>
+				</div>
+				<span>
+					<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>
+					<button class="btn btn-danger " id="cancel_buy" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
+		<div class="modal" id="paypass" data-backdrop="static">
+			<div class="pay_order_sure">
+				<h1>请输入银行卡密码</h1>
+				<div>
+					密　码：<input type="password" id="cardpass"/>
+				</div>
+				<span>
+					<button class="btn btn-success " id="paynow" data-dismiss="modal">确认支付</button>
+					<button class="btn btn-danger " id="cancel_buy" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
 		<!--右边浮动竖条-->
 		<div class="zTi-rigth">
 			<ul>

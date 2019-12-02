@@ -104,5 +104,53 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 		}
 		return list;
 	}
+	@Override
+	public boolean updateAllisdefault(Connection conn, int uid) {
+		String sql="UPDATE  address SET isdefault=0 WHERE uid=?";
+		PreparedStatement ps=null;		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+			int rs =ps.executeUpdate();
+			if (rs>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
+	@Override
+	public boolean updateDefaultByAddressId(Connection conn, int addressid) {
+		String sql="UPDATE  address SET isdefault=1 WHERE addressid=?";
+		PreparedStatement ps=null;		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, addressid);
+			int rs =ps.executeUpdate();
+			if (rs>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 	
 }

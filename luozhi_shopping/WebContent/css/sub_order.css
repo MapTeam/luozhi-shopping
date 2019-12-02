@@ -400,7 +400,7 @@ a.f-mgt5:hover{
 .buy_order_sure{
 	display: none;
 	width: 500px;
-	height: 380px;
+	height: 300px;
 	border-radius: 30px;
 	background: #E1E2E3;
 	position: absolute;
@@ -445,4 +445,80 @@ a.f-mgt5:hover{
 	margin-right:10px;
 	opacity: 0.8;
 }
-
+/*支付块*/
+.pay_order_sure{
+	width: 500px;
+	height: 220px;
+	border-radius: 30px;
+	background: #E1E2E3;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+}
+.pay_order_sure>h1{
+	font-size: 30px;
+	text-align: center;
+	margin-top: 40px;
+	color: #3C7A38;
+}
+.pay_order_sure>div{
+	text-align: center;
+	line-height:30px;
+	font-weight: bold;
+}
+#cardnum{
+	margin-top: 20px;
+}
+#cardpass{
+	margin-top: 20px;
+}
+#paynext{
+	margin-top: 20px;
+	width: 150px;
+	margin-left: 140px;
+	margin-right:10px;
+}
+#paynow{
+	margin-top: 20px;
+	width: 150px;
+	margin-left: 140px;
+	margin-right:10px;
+}
+#cancel_buy{
+	margin-top: 20px;
+	width: 50px;
+	margin-left: 10px;
+	margin-right:10px;
+	opacity: 0.8;
+}
+/**点击更改默认收货地址**/
+.addDefaultAddr_display{
+	padding-top:50px;
+	padding-bottom:20px;
+	width: 500px;
+	border-radius: 10px;
+	background: #FFFFFF;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+}
+.addDefaultAddr_display>ul{
+	cursor: pointer;
+}
+.addDefaultAddr_display>ul>li{
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left: 30px;
+	font-size: 13px;
+}
+.addDefaultAddr_display>ul>li:hover{
+	color:#3A669F;
+	font-weight:bold;
+	background: #D0DFEF;
+}
+.addDefaultAddr_display>span>button {
+	width: 50px;
+	margin-left: 200px;
+	margin-right:10px;
+	opacity: 0.8;
+}

@@ -1,6 +1,6 @@
 package com.lz.service.servlet;
 /**
- * 点击立即购买
+ *在商品详情 点击立即购买
  */
 import java.io.IOException;
 import java.sql.Connection;

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.dao.impl.CarGoodsOrderDaoImpl;
@@ -37,8 +38,10 @@ public class CarGoodsOrderServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession s=request.getSession();
+		UserInfo userinfo=(UserInfo) s.getAttribute("userinfo");
+		if (userinfo!=null) {
 		String str = request.getParameter("str");
-		UserInfo userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
 		if(str!=null&&!"".equals(str)&&userinfo!=null){
 			OrderInputByCar oibc = new OrderInputByCar();
 			CarGoodsOrderDaoImpl cgodao = new CarGoodsOrderDaoImpl();
@@ -49,7 +52,6 @@ public class CarGoodsOrderServlet extends HttpServlet {
 				gcgids.add(Integer.parseInt(string2));
 			}
 			List<CarOrderInputGoods> coigs = cgodao.selectOrderInputGood(conn, gcgids);
-			DBConnection1.close(conn);
 			int toalCount = 0;
 			float toalPrice = 0;
 			for (CarOrderInputGoods carOrderInputGoods : coigs) {
@@ -57,7 +59,7 @@ public class CarGoodsOrderServlet extends HttpServlet {
 				toalPrice+=(carOrderInputGoods.getGoodscount()*carOrderInputGoods.getGoods().getGprice());
 			}
 			List<Address> addresslist = cgodao.selectUserAddressByUid(conn, userinfo.getUser().getUid());
-			
+			DBConnection1.close(conn);
 			request .setAttribute("toalCount", toalCount);
 			request .setAttribute("toalPrice", toalPrice);
 			request .setAttribute("coigs", coigs);
@@ -65,6 +67,9 @@ public class CarGoodsOrderServlet extends HttpServlet {
 			request.getRequestDispatcher("order.jsp").forward(request, response);
 		} else {
 			System.out.println("传的参数有误");
+		}
+		}else {
+			response.sendRedirect("HomeServlet");
 		}
 		
 	}
