@@ -125,7 +125,7 @@
         </div>
         <c:if test="${goodscarIsNotNull==null}">
         <hr style="border-top:1px solid black">
-         <div style="position:absolute;top:50%;left:50%;">
+         <div style="margin:100px 500px">
          <div>
          <img src="img/cart1.png">
          </div>
@@ -231,6 +231,36 @@
 	   		</div>
 	   		
 	    </div>
+	    <!--底部-->
+		<footer>
+			<div class="container">
+				<div class="footer-left col-md-6">
+					<p class="footer-left-p1">
+						<a href="#">关于洛枳</a>
+						<span>|</span>
+						<a href="#">客户服务</a>
+						<span>|</span>
+						<a href="#">服务条款</a>
+						<span>|</span>
+						<a href="#">网站导航</a>
+						<span>|</span>
+						<a href="#">意见反馈</a>
+					</p>
+					<p>
+						<span>网易公司版权所有©1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
+					</p>
+				</div>
+				
+				<div class="footer-right col-md-6">
+					<ul>
+						<li><a href="#" class="a4"></a></li>
+						<li><a href="#" class="a3"></a></li>
+						<li><a href="#" class="a2"></a></li>
+						<li><a href="#" class="a1"></a></li>
+					</ul>
+				</div>
+			</div>
+		</footer>
 </body>
 </html>
 

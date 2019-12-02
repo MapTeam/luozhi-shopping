@@ -152,5 +152,30 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 		}
 		return false;
 	}
+	@Override
+	public int selectGoidByGoname(Connection conn,String goname) {
+		int goid=0;
+		String sql="select goid from goodsorder where goname=?";
+		PreparedStatement ps=null;		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, goname);
+			ResultSet rs =ps.executeQuery();
+			if (rs.next()) {
+				goid=rs.getInt("goid");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return goid;
+	}
 	
 }
