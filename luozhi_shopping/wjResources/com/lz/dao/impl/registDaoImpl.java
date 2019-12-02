@@ -16,7 +16,8 @@ import com.lz.pojo.User;
 import com.lz.util.FinalType;
 
 public class registDaoImpl implements registDao{
-
+//注册
+	
 	@Override
 	public boolean registSelectByName(String sname) {
 		Connection conn=DBConnection1.getConnection();
@@ -78,9 +79,11 @@ public class registDaoImpl implements registDao{
 		}
 		return u;
 	}
+//=================================================================
 
-
-//未发货
+	
+	//订单
+//根据状态码查询所有订单
 	@Override
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
@@ -125,7 +128,7 @@ public class registDaoImpl implements registDao{
 		}
 		return list;
 	}
-	
+	//根据商品id查询商品
 	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid) {
 		List<GoodsOrdergoodDto> list = new ArrayList<GoodsOrdergoodDto>();
 		Connection conn = DBConnection1.getConnection();
@@ -221,6 +224,105 @@ public class registDaoImpl implements registDao{
 			}
 		}
 		return false;
+	}
+
+
+//根据用户id和状态码查询用户订单
+	@Override
+	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid, int status) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=? and a.gostate=? and a.addressid=b.addressid and a.uid=u.uid";
+		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
+		GoodsOrderDto useroder=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+			ps.setInt(2, status);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				useroder=new GoodsOrderDto();
+				useroder=new GoodsOrderDto();
+				useroder.setAddressid(rs.getInt("addressid"));//
+				useroder.setGostate(rs.getInt("gostate"));//
+				useroder.setGoname(rs.getString("goname"));//
+				useroder.setUid(rs.getInt("uid"));//
+				useroder.setGodate(rs.getDate("godate").toString());//
+				useroder.setCity(rs.getString("city"));//
+				useroder.setCredits(rs.getInt("credits"));//
+				useroder.setDetail(rs.getString("detail"));//
+				useroder.setEmail(rs.getString("email"));//
+				useroder.setTel(rs.getString("tel"));//
+				useroder.setProvince(rs.getString("province"));//
+				useroder.setVillage(rs.getString("village"));//
+				useroder.setGoid(rs.getInt("goid"));
+				useroder.setName(rs.getString("name"));
+				useroder.setUname(rs.getString("uname"));
+				useroder.setReason(rs.getString("reason"));
+				list.add(useroder);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		return list;
+	}
+
+
+//通过id查询用户所有订单
+	@Override
+	public List<GoodsOrderDto> selectUserOrderByuid(int uid) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=?  and a.addressid=b.addressid and a.uid=u.uid";
+		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
+		GoodsOrderDto useroder=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				useroder=new GoodsOrderDto();
+				useroder=new GoodsOrderDto();
+				useroder.setAddressid(rs.getInt("addressid"));//
+				useroder.setGostate(rs.getInt("gostate"));//
+				useroder.setGoname(rs.getString("goname"));//
+				useroder.setUid(rs.getInt("uid"));//
+				useroder.setGodate(rs.getDate("godate").toString());//
+				useroder.setCity(rs.getString("city"));//
+				useroder.setCredits(rs.getInt("credits"));//
+				useroder.setDetail(rs.getString("detail"));//
+				useroder.setEmail(rs.getString("email"));//
+				useroder.setTel(rs.getString("tel"));//
+				useroder.setProvince(rs.getString("province"));//
+				useroder.setVillage(rs.getString("village"));//
+				useroder.setGoid(rs.getInt("goid"));
+				useroder.setName(rs.getString("name"));
+				useroder.setUname(rs.getString("uname"));
+				useroder.setReason(rs.getString("reason"));
+				list.add(useroder);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		return list;
 	}
 
 

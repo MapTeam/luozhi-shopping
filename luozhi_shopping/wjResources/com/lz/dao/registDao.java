@@ -13,4 +13,6 @@ public interface registDao {
 	public boolean selectBySoid(int soid,int status);
 	public boolean insertRefuseReasonById(String msg,int id,int status);
 	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid);
+	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid,int status);
+	public List<GoodsOrderDto> selectUserOrderByuid(int uid);
 }

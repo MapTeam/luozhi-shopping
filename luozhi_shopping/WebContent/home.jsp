@@ -91,7 +91,7 @@ if(cookie!=null){
 											<ul>
 												<!--Regular list-->
 												<li>
-													<a href="personal_order.html">
+													<a href="UserOrderServlet">
 														<span class="glyphicon glyphicon-list-alt myorder"></span>
 														<span class="list-text">我的订单</span>
 													</a>

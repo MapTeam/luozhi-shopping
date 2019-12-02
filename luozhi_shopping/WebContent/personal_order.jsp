@@ -89,7 +89,7 @@ if(cookie!=null){
 											<ul>
 												<!--Regular list-->
 												<li>
-													<a href="personal_order.html">
+													<a href="UserOrderServlet">
 														<span class="glyphicon glyphicon-list-alt myorder"></span>
 														<span class="list-text">我的订单</span>
 													</a>
@@ -162,78 +162,78 @@ if(cookie!=null){
 				<!--身体右-->
 				<div id="g-main" class="mn mn-order">
 					<div class="n-myorder" id="module-root">
-						<div>
-							<div class="m-tab">
-								<ul class="s-brdb1" id="tab">
-									<!--Regular list-->
-									<li class="active"><a href="javascript:;" title="待支付" class="z-sel">待支付</a></li>
-									
-									<li><a href="javascript:;" title="待发货">待发货</a></li>
-									
-									<li><a href="javascript:;" title="待收货">待收货</a></li>
-									
-									<li><a href="javascript:;" title="全 部">全 部</a></li>
-								</ul>
-								<!--<div id="content">-->
-									<ul id="content">
-										<li class="current">
-											<!--Regular if0-->
-											<!--<div class="empty">
-											<i class="icn"></i>
-											<p class="f-tc f-fs20 s-fc666">您当前没有待支付的订单</p>
-											</div>-->
-											<div class="empty">
-												<i class="icn"></i>
-												<p class="f-tc f-fs20 s-fc666">您当前没有代发货的订单</p>
-											</div>
-											<div class="haempty">
-												<table class="tb" >
-										        <!--标题栏-->
-										            <tr class="tr-h" style="height: 50px ">
-										                <td >商品图片</td>
-										                <td >商品详情</td>
-										                <td>金额</td>
-										                <td >数量</td>
-										                <td>小计</td>
-										                <td>操作</td>
-										            </tr>
-										        </table>
-												
-												
-												
-												
-												
-											</div>
-										</li>
-										<li>
-											<div class="empty">
-											<i class="icn"></i>
-											<p class="f-tc f-fs20 s-fc666">您当前没有代发货的订单</p>
-											</div>
-										</li>
-										<li>
-											<div class="empty">
-											<i class="icn"></i>
-											<p class="f-tc f-fs20 s-fc666">您当前没有待收获的订单</p>
-											</div>
-											
-										</li>
-										<li>
-											<div class="empty">
-											<i class="icn"></i>
-											<p class="f-tc f-fs20 s-fc666">您当前没有订单</p>
-											</div>
-											
-										</li>
+						<div class="m-tab">
+							<ul class="s-brdb1" id="tab">
+								<li class="nopayorder" class="z-sel" style="font-weight: bold;"><a href="javascript:;" title="待支付" style="color:#333">待支付</a></li>
+								<li class="sendorder"><a href="javascript:;" title="待发货">待发货</a></li>
+								<li class="sendokorder"><a href="javascript:;" title="待收货">待收货</a></li>
+								<li class="allorder"><a href="javascript:;" title="全 部">全 部</a></li>
+							</ul>
+							<%--未支付 --%>
+							<div class="current" id="nopay">
+								<c:if test="${empty list}">
+									<div class="empty">
+										<i class="icn"></i>
+										<p class="nogoodorder">您当前没有待支付的订单</p>
+									</div>
+								</c:if>
+								<c:if test="${not empty list }">
+			    					 <ul id="dingdan_nopay" class="row">
+										<c:forEach items="${list }" var="userlist" >
+											<li>
+												<div class="outgoodid">
+													<span>订单号:<span>${userlist.goid}</span></span>
+												</div>
+												 <c:forEach items="${userlist.gogoods }" var="good">
+														<div class="liheadmsg" onclick="clickdb(this)">
+															<span><img src="http://${good.goodspicture}"/></span>
+															<span id="dingdan_nopay_name">${good.gname }</span>
+															<span  id="dingdan_nopay_addr">用户：<span>${userlist.uname }</span></span>
+															<span id="dingdan_nopay_num">数量：<span>${good.goodsnum }</span></span>
+															<span id="dingdan_nopay_color">颜色：<span>${good.colortype }</span></span>
+														</div>
+												</c:forEach>
+												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}')">
+														<button class="btn btn-danger">立即付款</button>
+												</span>
+											</li>
+									 	</c:forEach>
 									</ul>
-								<!--</div>-->
+								</c:if>
+						    </div>		
+							<%--代发货 --%>
+							<div id="pay">
+								<div class="empty">
+									<i class="icn"></i>
+									<p class="nogoodorder">您当前没有代发货的订单</p>
+								</div>
+								<ul id="dingdan_pay" class="row">
+								</ul>
 							</div>
-							
-						</div>
-					</div>
-				</div>
+							<%--待收货 --%>
+							<div id="sendgood">
+								<div class="empty">
+									<i class="icn"></i>
+									<p class="nogoodorder">您当前没有待收获的订单</p>
+								</div>
+								<ul id="dingdan_send" class="row">
+								</ul>
+							</div>
+							<%--全部订单 --%>
+							<div id="allgoods">
+								<div class="empty">
+									<i class="icn"></i>
+									<p class="nogoodorder">您当前没有订单</p>
+								</div>
+								<ul id="dingdan_all" class="row">
+								</ul>
+						    </div>
+						 </div>	
+					 </div>
+				 </div>
 			</div>
 		</div>
+			
 		
 		
 		

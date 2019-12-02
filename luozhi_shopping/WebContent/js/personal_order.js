@@ -32,79 +32,240 @@ $(document).scroll(function(){
 	});
 })();
 
-var oBanner =$('#tab');
-var oTabs =$('#tab>li');
-var contents =$('#content li');
-var n =0;
-for(var i = 0;i< oTabs.length;i++)
+
+var oLi =$('#tab>li');
+var contents =$('.m-tab>div');
+//alert(contents.length)
+for(var i = 0;i< oLi.length;i++)
 {	
 	(function(x){
-		oTabs[x].onclick =function(){
-			n=x;
-			for(var j=0;j<oTabs.length;j++)
+		oLi[x].onclick =function(){
+			$('#dingdan_nopay').empty();
+			$('#dingdan_pay').empty();
+			$('#dingdan_send').empty();
+			$('#dingdan_all').empty();
+			$('.empty').empty();
+			for(var j=0;j<oLi.length;j++)
 			{
-				oTabs[j].className='';
-				
+				$(this).css('font-weight','bold').siblings('li').css('font-weight','normal');
+				$(this).children('a').css('color','#333');
+			
 			}
-			oTabs[n].className='active';
 			for(var j=0;j<contents.length;j++)
 			{
 				contents[j].className='';
 			}
-			contents[n].className='current';
+			contents[x].className='current';
+			//待支付
+			if(oLi[x].className=='nopayorder'){
+			
+				$.post('UserOrderByUidAndSta',{
+					status : 2
+				},function(re){
+					var arr = jQuery.parseJSON(re);
+					if (arr=='') {
+						$('#dingdan_nopay').css('display','none');
+						var str=`
+						<div class="empty">
+							<i class="icn"></i>
+							<p class="nogoodorder">您当前没有待支付的订单</p>
+						</div>
+						`;
+						$('#nopay').append(str);
+					}else{
+						$('#dingdan_nopay').css('display','block');
+						for(var i=0;i < arr.length;i++){
+							var str=`<li>
+										<div class="outgoodid">
+											<span>订单号:<span>${arr[i].goid}</span></span>
+										</div>`;
+							for(var j=0;j<arr[i].gogoods.length;j++){
+								
+								str = str + `<div class="liheadmsg" onclick="clickdb(this)">
+												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
+												<span id="dingdan_nopay_name">`+arr[i].gogoods[j].gname+`</span>
+												<span  id="dingdan_nopay_addr">用户：<span>${arr[i].uname }</span></span>
+												<span id="dingdan_nopay_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
+												<span id="dingdan_nopay_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+											</div>`;
+							}
+								str = str + `
+											<span id="dingdan_nopay_btn" onclick="payclick('`+arr[i].goid+`')">
+											<button class="btn btn-danger">立即付款</button>
+											</span>
+											</li>`;
+								$('#dingdan_nopay').append(str);
+						}
+						
+					}
+				});
+			}
+			
+			//待发货
+			if(oLi[x].className=='sendorder'){
+				$.post('UserOrderByUidAndSta',{
+					status : 0
+				},function(re){
+					var arr = jQuery.parseJSON(re);
+					if (arr=='') {
+						$('#dingdan_pay').css('display','none');
+						var str=`
+						<div class="empty">
+							<i class="icn"></i>
+							<p class="nogoodorder">您当前没有待发货的订单</p>
+						</div>
+						`;
+						$('#pay').append(str);
+					}else{
+						$('#dingdan_pay').css('display','block');
+						for(var i=0;i < arr.length;i++){
+							var str=`<li>
+										<div class="outgoodid">
+											<span>订单号:<span>${arr[i].goid}</span></span>
+										</div>`;
+							for(var j=0;j<arr[i].gogoods.length;j++){
+								str = str + `<div class="liheadmsg">
+												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
+												<span id="dingdan_pay_name">`+arr[i].gogoods[j].gname+`</span>
+												<span  id="dingdan_pay_addr">用户：<span>${arr[i].uname }</span></span>
+												<span id="dingdan_pay_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
+												<span id="dingdan_pay_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+											</div>`;
+							}
+								str = str + `
+								<span id="dingdan_pay_btn">
+											<span>未发货</span>
+											</span>
+											</li>`;
+								$('#dingdan_pay').append(str);
+						}
+				
+						
+					}
+				});
+			}
+			
+			//待收货
+			if(oLi[x].className=='sendokorder'){
+				$.post('UserOrderByUidAndSta',{
+					status : 1
+				},function(re){
+					var arr = jQuery.parseJSON(re);
+					if (arr=='') {
+						$('#dingdan_send').css('display','none');
+						var str=`
+						<div class="empty">
+							<i class="icn"></i>
+							<p class="nogoodorder">您当前没有待发货的订单</p>
+						</div>
+						`;
+						$('#sendgood').append(str);
+					}else{
+						$('#dingdan_send').css('display','block');
+						for(var i=0;i < arr.length;i++){
+							var str=`<li>
+										<div class="outgoodid">
+											<span>订单号:<span>${arr[i].goid}</span></span>
+										</div>`;
+							for(var j=0;j<arr[i].gogoods.length;j++){
+								str = str + `<div class="liheadmsg">
+												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
+												<span id="dingdan_send_name">`+arr[i].gogoods[j].gname+`</span>
+												<span  id="dingdan_send_addr">用户：<span>${arr[i].uname }</span></span>
+												<span id="dingdan_send_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
+												<span id="dingdan_send_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+											</div>`;
+							}
+								str = str + `<span id="dingdan_send_btn">
+											<span>已发货</span>
+											</span>
+											</li>`;
+								$('#dingdan_send').append(str);
+						}
+				
+						
+					}
+				});
+			}
+			
+			//全部订单
+			if(oLi[x].className=='allorder'){
+				$.post('UserOrderByUid',{
+				},function(re){
+					var arr = jQuery.parseJSON(re);
+					if (arr=='') {
+						$('#dingdan_all').css('display','none');
+						var str=`
+						<div class="empty">
+							<i class="icn"></i>
+							<p class="nogoodorder">您当前没有待发货的订单</p>
+						</div>
+						`;
+						$('#allgoods').append(str);
+					}else{
+						$('#dingdan_all').css('display','block');
+						for(var i=0;i < arr.length;i++){
+							var str=`<li>
+										<div class="outgoodid">
+											<span>订单号:<span>${arr[i].goid}</span></span>
+										</div>`;
+							for(var j=0;j<arr[i].gogoods.length;j++){
+								str = str + `<div class="liheadmsg">
+												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
+												<span id="dingdan_all_name">`+arr[i].gogoods[j].gname+`</span>
+												<span  id="dingdan_all_addr">用户：<span>${arr[i].uname }</span></span>
+												<span id="dingdan_all_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
+												<span id="dingdan_all_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+											</div>`;
+							}
+								str = str + `<span id="dingdan_all_btn"onclick="payclick('`+arr[i].goid+`')">`;
+								if (arr[i].gostate==0) {
+									str=str+`<span>未发货</span>
+									</span>
+									</li>`;
+								}
+								if (arr[i].gostate==1) {
+									str=str+`<span>已发货</span>
+									</span>
+									</li>`;
+								}
+								if (arr[i].gostate==2) {
+									str=str+`<a>待付款</a>
+									</span>
+									</li>`;
+								}
+										
+								$('#dingdan_all').append(str);
+						}
+				
+						
+					}
+				});
+			}
+			
+			
+			
 		}
 	})(i);
 }
-function init () {
-	$('.ontimepay .btn').click(function(){
-	confirm("您是否立即支付？");
-});
+//点击支付
+function payclick(orid) {
+	if (confirm("是否立即支付")) {
+		$.post('SendBtnServlet',{
+			id : orid,
+			status : 0
+		},function(re){
+			var obj=JSON.parse(re);
+			if(obj){
+				alert("支付成功");
+				$('#dingdan_nopay_btn').parent('li').remove();
+			}else{
+				alert("支付失败");
+			}
+		});
+	}
+	
 }
 
-
-
-
-
-
-
-
-//订单
-function goodsList(page, callback){
-    var page = page ? page : 1;
-    $.POST('http://www.wjian.top/shop/api_goods.php',{
-      'pagesize':3,
-      'page':page,
-    }, function(result){
-      var result = JSON.parse(result);
-      if(result.code != 0){
-        console.log('数据请求失败');
-        return;
-      };
-      //调用
-      callback(result);
-    }); 
-  };
-  
-  goodsList(1, function(result){
-    var goodsList = result.data;
-    for(var i = 0; i < goodsList.length; i++){
-      var str = `
-        <tr class="shoping">
-          <td class="shangpin">
-            <img class="img" src="${goodsList[i].goods_thumb}"/>
-          </td>
-          <td class="desc">
-          	<p> ${goodsList[i].goods_desc}</p>
-          </td>
-          <td class="money">${goodsList[i].price}</td>
-          <td>1</td>
-          <td class="subtotal">${goodsList[i].price}</td>
-           <td class="ontimepay"><button class="btn btn-danger">立即支付</button></td>
-        </tr>
-      `;
-      $('table').append(str);
-    };
-    init ();
-  });
 
   
