@@ -1,5 +1,7 @@
 package com.lz.service.servlet;
-
+/**
+ * 点击立即购买
+ */
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
@@ -9,12 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lz.dao.ShopCurrentDao;
 import com.lz.dao.impl.ShopCurrentDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.dto.OrderInput;
 import com.lz.dto.OrderInputGoods;
+import com.lz.dto.UserInfo;
 import com.lz.pojo.Address;
 
 @WebServlet("/ShopCurrentServlet")
@@ -26,6 +30,10 @@ public class ShopCurrentServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession s=request.getSession();
+		UserInfo userinfo=(UserInfo) s.getAttribute("userinfo");
+		if (userinfo!=null) {
+			
 			String gcid=request.getParameter("gcolorid");
 			String userid=request.getParameter("userid");
 			String goodscount=request.getParameter("goodscount");
@@ -40,7 +48,7 @@ public class ShopCurrentServlet extends HttpServlet {
 				OrderInputGoods oig=dao.selectGoodsInformationByGcolorid(conn, gcolorid);
 				List<Address> addresslist =dao.selectUserAddressByUid(conn, uid);
 				DBConnection1.close(conn);
-				OrderInput oi=new OrderInput();
+				OrderInput oi = new OrderInput();
 				oi.setAddresslist(addresslist);
 				oi.setGoodscount(gcount);
 				oi.setOrderinputgoods(oig);
@@ -49,6 +57,9 @@ public class ShopCurrentServlet extends HttpServlet {
 //				System.out.println(oig.getGoods().toString()+oig.getGoodscolor().toString());
 				
 			}
+		}else {
+			response.sendRedirect("HomeServlet");
+		}
 			
 //			System.out.println("颜色id"+gcolorid+"用户id"+userid+"选择的数量"+goodscount);
 //			

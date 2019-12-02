@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.lz.pojo.Goods;
-
+/**
+ * 分类加分页的信息
+ * @author sjh
+ *
+ */
 public class ClassifyDto implements Serializable{
 	private static final long serialVersionUID = 5960948301402180404L;
 	

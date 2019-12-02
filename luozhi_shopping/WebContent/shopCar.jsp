@@ -155,6 +155,7 @@
           <td class="shangpin">
           	<div>
           		<input type="checkbox" class="check"/>
+          		<input type="hidden" class="gcgid" value="${a.gcgid}"/>
           	</div>          
             <img class="img" src="${a.zpicture}"/>
           </td>
@@ -174,7 +175,7 @@
           </c:forEach>
         </table>
         <div class="jiesuan">
-                <div class="jiesuan-font">
+                <div class="jiesuan-font settleaccounts">
                     <a>结算</a>
                 </div>
                 <span class="jiesuan-count">0.00</span>
@@ -207,6 +208,7 @@
 					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
 					            </div>
 						    </div>
+						    <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="autologin"/>
@@ -242,11 +244,28 @@
   //点击单选        总价变
   //点击删除        当前元素tr删除 
   //点击整个表格
+  
+  
+  //结算
+  $('.settleaccounts').click(function() {
+	  if($('.jiesuan-count').text()!=0){
+		  var str ='';
+		  $('.check').each(function (i){
+			  if($(this).prop('checked')){
+				  str = str + $(this).next().val()+',';
+			  }
+  		  });
+		  window.location.href="CarGoodsOrderServlet?str="+str;
+		  
+	  };
+  });
+  
   var flag = false;
   $('table').click(function(event){
     if($(event.target)[0].className == 'check'){
     	sumAll();
     }
+    
     //全选
     if($(event.target)[0].className == 'allchecked'){
     	if($(event.target).is(':checked')){

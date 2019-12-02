@@ -4,7 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.lz.pojo.User;
-
+/**
+ * 用户登录
+ * @author sjh
+ *
+ */
 public class UserInfo implements Serializable{
 	private static final long serialVersionUID = 9060613495172250585L;
 	

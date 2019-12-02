@@ -1,7 +1,5 @@
 package com.lz.service.servlet;
-/**
- * 添加地址
- */
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -11,37 +9,54 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lz.dao.BaseDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.dto.UserInfo;
 import com.lz.pojo.Address;
 
 import net.sf.json.JSONObject;
-
-@WebServlet("/InsertAddressServlet")
-public class InsertAddressServlet extends HttpServlet {
+/**
+ * 修改地址的Servlet
+ * @author Administrator
+ *
+ */
+@WebServlet("/UpdateAddressServlet")
+public class UpdateAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public InsertAddressServlet() {
+       
+    public UpdateAddressServlet() {
         super();
     }
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//得到添加地址所需要的内容
-		String userid=request.getParameter("uid");
+		String addressid=request.getParameter("addressid");
+		String isdefault=request.getParameter("isdefault");
 		String name=request.getParameter("name");
 		String tel=request.getParameter("tel");
 		String addr1=request.getParameter("addr1");
-		String detail=request.getParameter("addr2");
-		if (userid!=null&&name!=null&&tel!=null&&addr1!=null&&detail!=null) {
+		String addr2=request.getParameter("addr2");
+//		System.out.println(addressid+"==="+isdefault+"==="+name+"==="+tel+"==="+addr1+"==="+addr2);
+		if (addressid!=null&&isdefault!=null&&tel!=null&&addr1!=null&&name!=null&&addr2!=null) {
 			String[] addr=addr1.split("-");
 			String province=addr[0];
 			String city=addr[1];
 			String village=addr[2];
-			int uid=Integer.parseInt(userid);
+			//通过session拿到用户的id
+			HttpSession session =request.getSession();
+			UserInfo info =(UserInfo) session.getAttribute("userinfo");
+			int uid=info.getUser().getUid();
+			//得到是否为默认值
+			int isdfaul=Integer.parseInt(isdefault);
+			//得到地址Id
+			int addressId=Integer.parseInt(addressid);
 			Address address=new Address();
+			address.setAddressid(addressId);
 			address.setCity(city);
-			address.setDetail(detail);
-			address.setIsdefault(1);
+			address.setDetail(addr2);
+			address.setIsdefault(isdfaul);
 			address.setName(name);
 			address.setProvince(province);
 			address.setTel(tel);
@@ -49,17 +64,19 @@ public class InsertAddressServlet extends HttpServlet {
 			address.setUid(uid);
 			BaseDao dao=new BaseDaoImpl();
 			Connection conn=DBConnection1.getConnection();
-			boolean flag=dao.insertObject(conn, address);
+			boolean flag=dao.updateObjectById(conn, address);
 			DBConnection1.close(conn);
 			PrintWriter out=response.getWriter();
 			JSONObject jo=new JSONObject();
-			jo.put("ifInsertAddrSuccess", flag);
+			jo.put("ifUpdateAddrSuccess", flag);
 			out.write(jo.toString());
 			out.flush();
 			out.close();
 		}
-//		System.out.println(uid+name+tel+province+city+village+detail);
+		
+		
 	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

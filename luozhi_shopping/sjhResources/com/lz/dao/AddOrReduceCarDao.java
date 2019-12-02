@@ -2,6 +2,8 @@ package com.lz.dao;
 
 
 public interface AddOrReduceCarDao {
-	static int ADD = 1;
-	static int REDUCE = 2;
+	//增加
+	public static int ADD = 1;
+	//移除
+	public static int REDUCE = 2;
 }

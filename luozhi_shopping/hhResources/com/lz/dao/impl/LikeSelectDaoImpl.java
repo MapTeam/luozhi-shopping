@@ -1,5 +1,7 @@
 package com.lz.dao.impl;
-
+/**
+ * 模糊查询
+ */
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

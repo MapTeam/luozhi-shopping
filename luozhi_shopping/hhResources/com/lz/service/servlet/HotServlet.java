@@ -1,5 +1,7 @@
 package com.lz.service.servlet;
-
+/**
+ * 热门商品
+ */
 import java.io.IOException;
 import java.util.List;
 

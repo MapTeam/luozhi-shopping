@@ -12,6 +12,12 @@ import com.lz.pojo.GoodsIntroduceImg;
 
 public class IntroduceDaoImpl implements IntroduceDao {
 
+	/**
+	 * 获取商品的介绍
+	 * @param conn
+	 * @param gid
+	 * @return
+	 */
 	@Override
 	public GoodsIntroduceImg selectGoodsIntroduce(Connection conn, int gid) {
 		GoodsIntroduceImg gii = new GoodsIntroduceImg();

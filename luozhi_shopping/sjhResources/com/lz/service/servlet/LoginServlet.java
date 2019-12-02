@@ -19,6 +19,7 @@ import com.lz.dao.impl.ShopCarNumDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.dto.UserInfo;
 import com.lz.pojo.User;
+import com.lz.util.Md5;
 
 import net.sf.json.JSONObject;
 /**
@@ -45,8 +46,11 @@ public class LoginServlet extends HttpServlet {
 			LoginDaoImpl ldao = new LoginDaoImpl();
 			ShopCarNumDao scndao=new ShopCarNumDaoImpl();
 			Connection conn = DBConnection1.getConnection();
-			User u = ldao.login(conn, uname, upwd);
-			int shopcarnum=scndao.selectShopCardNumDao(conn, u.getUid());
+			User u = ldao.login(conn, uname, Md5.md5(upwd));
+			int shopcarnum = 0;
+			if(u!=null){
+				shopcarnum=scndao.selectShopCardNumDao(conn, u.getUid());
+			}
 			DBConnection1.close(conn);			
 			PrintWriter out = response.getWriter();
 			if(u==null){
