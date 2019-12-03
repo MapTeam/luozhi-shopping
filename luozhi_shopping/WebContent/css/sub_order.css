@@ -484,7 +484,14 @@ a.f-mgt5:hover{
 	margin-left: 140px;
 	margin-right:10px;
 }
-#cancel_buy{
+#cancel_buy1{
+	margin-top: 20px;
+	width: 50px;
+	margin-left: 10px;
+	margin-right:10px;
+	opacity: 0.8;
+}
+#cancel_buy2{
 	margin-top: 20px;
 	width: 50px;
 	margin-left: 10px;

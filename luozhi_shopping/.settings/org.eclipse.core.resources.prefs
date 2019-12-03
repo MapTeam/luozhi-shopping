@@ -3,9 +3,13 @@ encoding//WebContent/css/backstageindex.css=UTF-8
 encoding//WebContent/css/personal_order.css=UTF-8
 encoding//WebContent/css/product_particular.css=UTF-8
 encoding//WebContent/css/shopcar.css=UTF-8
+<<<<<<< HEAD
+encoding//WebContent/css/sub_order.css=UTF-8
+=======
 encoding//src/com/bank/dto/ReturnMsg.java=UTF-8
 encoding//src/com/bank/service/Bank.java=UTF-8
 encoding//src/com/bank/service/BankService.java=UTF-8
 encoding//src/com/bank/service/BankServiceLocator.java=UTF-8
 encoding//src/com/bank/service/BankSoapBindingStub.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/MapTeam/luozhi-shopping.git
 encoding/<project>=UTF-8
