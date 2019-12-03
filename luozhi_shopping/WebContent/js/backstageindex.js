@@ -42,9 +42,9 @@
 //						console.log(typeof arr[1]);
 //						console.log(arr.length);
 						for(var i=0;i < arr.length;i++){
-							var str=`<li>
+							var str=`<li class="dingdan_li">
 							<div class="outgoodid">
-								<span>订单号:<span>${arr[i].goid}</span></span>
+								<span>订单号: <span>${arr[i].goid}</span></span>
 							</div>`;
 //							console.log(arr[i]);
 							for(var j=0;j<arr[i].gogoods.length;j++){
@@ -67,11 +67,15 @@
 												<p>
 													<span>收货人：<span>`+arr[i].name+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<span>电话号码：<span>`+arr[i].tel+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<span>收货地址：<span>`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`</span></span>
+													<span class="myaddress">收货地址：<span>`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`</span></span>
+													<span class="editaddress">收货地址：<input type="text" name="address" value="`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`"></span>
 												</p>
 											</div>`;
 							}
-							str = str + `<span id="dingdan_noput_btn" onclick="sendclick('`+arr[i].goid+`','`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`','`+arr[i].tel+`','`+arr[i].uid+`')">
+							str = str + `<span id="dingdan_update_btn">
+								<button class="btn btn-default">更改地址</button>
+							</span>
+							<span id="dingdan_noput_btn" onclick="sendclick('`+arr[i].goid+`','`+arr[i].tel+`','`+arr[i].uid+`')">
 											<button class="btn btn-default">发货</button>
 										</span>
 										</li>`;
@@ -80,7 +84,7 @@
 						$('div.goodsdescri').hide();
 						
 					});
-					
+//					,'`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`'					
 				}
 				//已发货
 				if (oLi[e].className=='sendgoodsandok') {
@@ -111,7 +115,7 @@
 												<p>
 													<span>收货人：<span>`+arr[i].name+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<span>电话号码：<span>`+arr[i].tel+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-													<span>收货地址：<span>`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`</span></span>
+													<span>收货地址：<span>`+arr[i].receiveaddress+`</span></span>
 												</p>
 											</div>`;
 							}
@@ -205,6 +209,8 @@
 
 //未发货块、
 function sendclick(orid,address,tel,uid) {
+	alert(addresswj);
+//	alert(orid);
 //	alert(address);
 //	alert(tel);
 	if (confirm("是否确定发货")) {
@@ -267,6 +273,19 @@ function sendclick(orid,address,tel,uid) {
 			}
 		}
 	};
+	
+	
+	
+	
+	//更改地址
+//	function updateclick(orid) {
+//		if (confirm("是否更改地址")) {
+////			$(that).siblings('.editaddress').css('display','block');
+////			$(that).siblings('.myaddress').css('display','none');
+//			$('.myaddress').css('display','none');
+//			$('.editaddress').css('display','block');
+//		}
+//	}
 
 //手风琴
 $('div.goodsdescri').hide();
@@ -275,6 +294,31 @@ function clickdb(that) {
 	
 };
 
+//alert($('.dingdan_li').length);
 
+var addresswj="";
+//更改地址
+$('.dingdan_li').each(function(e) {
+	$(this).children('#dingdan_update_btn').click(function(){
+		if (confirm("是否更改地址")) {
+//			$('.myaddress').css('display','none');
+//			$('.editaddress').css('display','block');
+			$(this).siblings('.goodsdescri').children('p').children('.myaddress').css('display','none');
+			$(this).siblings('.goodsdescri').children('p').children('.editaddress').css('display','block');
+//			var orid=$(this).siblings('.outgoodid').children('span').children('span').text();
+			$('.editaddress>input').focus(function(event) {
+				 this.select();
+			});
+			$('.editaddress>input').blur(function(event) {
+				var str=$(this).val();
+				$(this).parent('span').siblings('.myaddress').css('display','block');
+				$(this).parent('span').css('display','none');
+				$(this).parent('span').siblings('.myaddress').children('span').html(str);
+				addresswj=str;
+			});
+		}
+		
+	})
+})
 
 

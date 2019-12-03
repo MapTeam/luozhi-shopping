@@ -72,13 +72,31 @@ body{
 	margin-top: 20px;
 	text-align: center;
 }
-
 #dingdan_noput_btn{
+	width: 60px;
+	margin-top: -62px;
+	/*padding-left: 30px;*/
+	float:right;
+	margin-right: -20px;
+}
+#dingdan_update_btn{
 	width: 100px;
 	margin-top: -62px;
-	padding-left: 30px;
 	float:right;
+	margin-right: 25px;
 }
+
+.editaddress{
+	float:right;
+	margin-right:170px;
+	display: none;
+}
+.myaddress{
+	float:right;
+	margin-right:180px;
+	display: block;
+}
+
 /*详细信息*/
 .goodsdescri{
 	width:780px;

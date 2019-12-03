@@ -18,4 +18,6 @@ public interface registDao {
 	public List<GoodsOrderDto> selectUserOrderByuid(int uid);
 	public boolean insertOutGoodsOrder(Connection conn,String outgoodsname,int uid,String receiveaddress,String tel);
 	public boolean updateGoodOrder(Connection conn,String outgoodname, int status,int goid);
+	public List<GoodsOrderDto> selectOrderByOrSta(int status);
+	public boolean updateOutGoodAddress(int orid);
 }
