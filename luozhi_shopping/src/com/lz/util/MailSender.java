@@ -82,4 +82,58 @@ public class MailSender {
             e.printStackTrace();
         }
     }
+    
+    public static void sendFind(String to,String title,String content)
+    {
+
+        System.out.println(to);
+
+        MailSSLSocketFactory sf = null;
+        try {
+            sf = new MailSSLSocketFactory();
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
+
+        properties.put("mail.smtp.ssl.socketFactory", sf);
+        sf.setTrustAllHosts(true);
+
+        // ������֤��
+        Authenticator auth = new Authenticator() {
+            public PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(properties.getProperty("sourceEmail"), properties.getProperty("sourcePsw"));
+            }
+        };
+
+        Session session = Session.getDefaultInstance(properties,auth);
+
+        Message msg = new MimeMessage(session);
+
+        try {
+            msg.setSubject(title);
+            msg.setSentDate(new Date());
+            //������ʾ�ķ���ʱ��
+            msg.setSentDate(new Date());
+            //�����ʼ�����
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+            String d = sdf.format(date);
+            msg.setContent("<a href='http://139.155.2.182/luozhi_shopping'>LuoZhi</a>提示您: <p style='text-indent:2em'>您于"+d+" 找回luozhi账号，验证码是：<span style='color:red;font-size:20px'>"+content+"</span></p>" ,  "text/html;charset=UTF-8");
+            msg.setFrom(new InternetAddress(properties.getProperty("sourceEmail"),title,"UTF-8"));
+
+            msg.setRecipient(MimeMessage.RecipientType.BCC, new InternetAddress(to)); // ���÷��ͷ�ʽ�������
+
+            msg.saveChanges();
+
+            OutputStream out = new FileOutputStream("MyEmail.eml");
+            msg.writeTo(out);
+            out.flush();
+            out.close();
+
+            Transport.send(msg);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -448,7 +448,7 @@ a.f-mgt5:hover{
 /*支付块*/
 .pay_order_sure{
 	width: 500px;
-	height: 220px;
+	height: 300px;
 	border-radius: 30px;
 	background: #E1E2E3;
 	position: absolute;
@@ -461,9 +461,14 @@ a.f-mgt5:hover{
 	margin-top: 40px;
 	color: #3C7A38;
 }
+.pay_order_sure>p{
+	font-size: 15px;
+	text-align: center;
+	margin-top: 40px;
+}
 .pay_order_sure>div{
 	text-align: center;
-	line-height:30px;
+	line-height:50px;
 	font-weight: bold;
 }
 #cardnum{

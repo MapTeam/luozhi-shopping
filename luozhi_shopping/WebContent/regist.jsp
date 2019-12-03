@@ -225,7 +225,7 @@ if(cookie!=null){
 											<span class="input-group-addon">
 												<label>验证码：</label>
 											</span>
-											<input type="text" class="code" placeholder="请输入验证码" name="code" style="height: 33px;width: 300px"/>
+											<input type="text" class="code yzmcode" placeholder="请输入验证码" name="code" style="height: 33px;width: 300px"/>
 											<input type="button" class="codebtn" value="点击发送验证码"  style="height: 33px;width: 130px"/>
 										</div>
 										<div class="code_hidden">

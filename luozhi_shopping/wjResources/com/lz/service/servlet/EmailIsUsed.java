@@ -25,7 +25,7 @@ public class EmailIsUsed extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//查询email是否注册过
 		String mail=request.getParameter("mail");
-		System.out.println(mail);
+//		System.out.println(mail);
 		User user=new User();
 		registDao regist=new registDaoImpl();
 		User u=regist.registSelectByEmail(mail);

@@ -20,6 +20,7 @@
     var codelock=false;
 	//禁用注册按钮
 	$('#register').prop('disabled', true);
+	$('.codebtn').prop('disabled', true);
 	$('#name').focus();
 	$('#name').focus(function(event){
            this.select();
@@ -55,6 +56,11 @@
 	});
 	$('.email .mail').blur(function(){
 		mail();
+		if(emaillock){
+			$('.codebtn').prop('disabled', false);
+		}else{
+			$('.codebtn').prop('disabled', true);
+		}
 	});
 	
 	$('.email-end>li').click(function(){
@@ -180,14 +186,18 @@
 //		});
 //	});
 	
+	$('.yzmcode').focus(function() {
+		$('.code_hidden3').css('display','none');
+	});
+	
 	//点击注册  用户名和密码都要ok
 $('#register').click(function(){
-	if(''==userName){
-			$('.name_hidden3').css('display','block');
+		if(''==userName){
+				$('.name_hidden3').css('display','block');
+			}
+		if($('.yzmcode').val()==''){
+			$('.code_hidden3').css('display','block');
 		}
-//		if(''==telphone){
-//			$('.phone_hidden4').css('display','block');
-//		}
 		if(''==email){
 			$('.email_hidden3').css('display','block');
 		}
@@ -201,23 +211,23 @@ $('#register').click(function(){
 			$('.code_hidden3').css('display','block');
 		}
 	
-	if(userlock  && emaillock && pwdlock && surepwdlock && sellock && codelock){
+	if(userlock  && emaillock && pwdlock && surepwdlock && sellock){
 			$.post('registServlet',{
 				name : userName,
 				pass : password,
-				mail : email+$('.email-end>li.active').text()
+				mail : email+$('.email-end>li.active').text(),
+				code : $('.yzmcode').val()
 		    }, function(re){
 		        var obj = JSON.parse(re)
-//		        console.log(obj);      
 		      //用户名已注册
-		        if(obj.code != 0){
-		        	alert("注册失败");
-		        return;
+		        if(obj.registmsg == false){
+		        	alert(obj.msg);
+		        	return;
 		        };
 		         //注册成功跳转到登录页面
 			      alert('注册成功，点击跳转首页登录页面');
 			      //JS设置页面跳转
-			      window.location.href = 'home.jsp';
+			      window.location.href = 'HomeServlet';
 
 			    });
 	}else{
@@ -386,7 +396,27 @@ function surepass(){
 		obj.src = "ImageServlet?id="+new Date().getTime();
 	}
 
+ var f1 = true;
  //获取验证码
  $('.codebtn').click(function() {
-	
+	 if(!f1){
+		 return;
+	 }
+	 f1=false;
+	 var i = 60;
+	 var interval = setInterval(function() {
+			$('.codebtn').val(i+'秒后才能再次点击');
+			i = i - 1;
+		}, 1000);
+	setTimeout(function() {
+		clearInterval(interval);
+		f1 = true;
+		$('.codebtn').val('点击发送验证码');
+	}, 60000);
+	$.post('CreateCodeServlet', {
+		email:$('#mail').val()+$('.email-end>li.active').text()
+	}, function(re) {
+			var obj = JSON.parse(re);
+			console.log(obj);
+		});
 });

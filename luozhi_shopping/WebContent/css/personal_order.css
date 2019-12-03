@@ -131,6 +131,10 @@ ul.m-snav-order {
 
 
 /*没有订单*/
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/MapTeam/luozhi-shopping.git
 .n-myorder .empty .icn {
 	display: block;
 	width: 200px;
@@ -464,23 +468,7 @@ ul.m-snav-order {
 
 
 
-<<<<<<< HEAD
-=======
-/*鏈夎鍗�*/
-/*.n-myorder .haempty{
-	width:870px ;
-}
 
-table tr {
-	border: 1px solid black;
-	text-align: center;
-}
-
-table td {
-	border: 1px solid black;
-	width: 100px;
-}*/
->>>>>>> branch 'master' of https://github.com/MapTeam/luozhi-shopping.git
 
 
 

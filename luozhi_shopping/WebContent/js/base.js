@@ -69,9 +69,14 @@ $('.form-heid').mouseleave(function() {
 })();
 
 
+var f2 = true;
 //登录
 (function() {
 	$('#login-btn').click(function() {
+		if(!f2){
+			return;
+		}
+		f2 = false;
 		//拿到账号和密码
 		var savepassword = $('#savepassword').get(0).checked;
 		var userName = $('#username').val();
@@ -113,8 +118,8 @@ $('.form-heid').mouseleave(function() {
 //				$('.person').css('display', 'block');
 				location.reload(true);
 			}, 3000);
-			
 		});
+		f2 = true;
 	});
 })();
 
