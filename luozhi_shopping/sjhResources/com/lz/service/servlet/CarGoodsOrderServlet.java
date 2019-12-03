@@ -60,6 +60,7 @@ public class CarGoodsOrderServlet extends HttpServlet {
 			}
 			List<Address> addresslist = cgodao.selectUserAddressByUid(conn, userinfo.getUser().getUid());
 			DBConnection1.close(conn);
+		    request.setAttribute("gcgids", gcgids);
 			request .setAttribute("toalCount", toalCount);
 			request .setAttribute("toalPrice", toalPrice);
 			request .setAttribute("coigs", coigs);

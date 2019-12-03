@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -76,9 +75,7 @@ if(cookie!=null){
 							<ul class="nav navbar-nav">
 								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>
 								<li><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-								
 							</ul>
-							
 						</div>
 					</div>
 					
@@ -137,7 +134,7 @@ if(cookie!=null){
 									</div>	
 										
 									<!--手机号-->
-									<div class="phone">
+									<!--<div class="phone">
 										<div class="input-group">
 											<span class="input-group-addon">
 	                                            <span class="glyphicon glyphicon-earphone"></span>
@@ -161,7 +158,7 @@ if(cookie!=null){
 										</div>
 									</div>
 									
-									<!--验证码-->
+									<!--验证码
 									<div class="code">
 										<div class="input-group">
 											<span class="input-group-addon">
@@ -181,7 +178,7 @@ if(cookie!=null){
 											<span id="img"></span>
 											<span id="text">验证码不能为空</span>
 										</div>
-									</div>
+									</div>-->
 									
 									<!--电子邮件-->
 									<div class="email">
@@ -222,6 +219,28 @@ if(cookie!=null){
 										    <span id="text">该邮箱已注册</span>
 									    </div>
 									</div>
+									
+									<div class="code">
+										<div class="input-group">
+											<span class="input-group-addon">
+												<label>验证码：</label>
+											</span>
+											<input type="text" class="code" placeholder="请输入验证码" name="code" style="height: 33px;width: 300px"/>
+											<input type="button" class="codebtn" value="点击发送验证码"  style="height: 33px;width: 130px"/>
+										</div>
+										<div class="code_hidden">
+											<span id="img"></span>
+										</div>
+										<div class="code_hidden2">
+											<span id="img"></span>
+											<span id="text">验证码输入错误</span>
+										</div>
+										<div class="code_hidden3">
+											<span id="img"></span>
+											<span id="text">验证码不能为空</span>
+										</div>
+									</div>
+									
 									
 									<!--密码-->
 									<div class="pass">
