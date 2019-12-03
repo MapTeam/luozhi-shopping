@@ -14,8 +14,8 @@ public class Goodsordergcolor implements java.io.Serializable {
     /** 商品数量 */
     private Integer goodsnum;
 
-    /** 订单id */
-    private Integer goid;
+    /** 订单名 */
+    private String goname;
 
 
     /**
@@ -75,29 +75,20 @@ public class Goodsordergcolor implements java.io.Serializable {
         this.goodsnum = goodsnum;
     }
 
-    /**
-     * 获取订单id
-     * 
-     * @return 订单id
-     */
-    public Integer getGoid() {
-        return this.goid;
-    }
+    
 
-    /**
-     * 设置订单id
-     * 
-     * @param goid
-     *          订单id
-     */
-    public void setGoid(Integer goid) {
-        this.goid = goid;
-    }
+	public String getGoname() {
+		return goname;
+	}
+
+	public void setGoname(String goname) {
+		this.goname = goname;
+	}
 
 	@Override
 	public String toString() {
-		return "Goodsordergcolor [gogcid=" + gogcid + ", gcolorid=" + gcolorid + ", goodsnum=" + goodsnum + ", goid="
-				+ goid + "]";
+		return "Goodsordergcolor [gogcid=" + gogcid + ", gcolorid=" + gcolorid + ", goodsnum=" + goodsnum + ", goname="
+				+ goname + "]";
 	}
     
     
