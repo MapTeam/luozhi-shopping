@@ -160,11 +160,11 @@ if(cookie!=null){
 					</div>					  
 					</c:if>
 				<c:forEach items="${list}" var="s">
-					<a style="color: black" href="IntroudceServlet?gid=${s.gid }">
+					<a style="color: black" class="likeselectproduct" href="IntroudceServlet?gid=${s.gid }">
 						<div class="col-md-3" style="height: 400px">
 						<div id="product">								
 							<img src="${s.zpicture}"/>
-								<p style="font-size: 18px;font-weight: bold;text-align: center;">${s.gname}</p>
+								<p style="font-size: 16px;font-weight: bold;text-align: center;">${s.gname}</p>
 								<p style="font-size: 15px;color: #A94442;text-align: center;font-weight: bold;">¥${s.gprice}</p>
 						</div>	
 						</div>

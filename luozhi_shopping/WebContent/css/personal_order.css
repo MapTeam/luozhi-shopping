@@ -127,13 +127,11 @@ ul.m-snav-order {
 	width:870px ;
 	display: block;
 }
-<<<<<<< HEAD
+
 
 
 /*没有订单*/
-=======
-/*娌℃湁璁㈠崟*/
->>>>>>> branch 'master' of https://github.com/MapTeam/luozhi-shopping.git
+
 .n-myorder .empty .icn {
 	display: block;
 	width: 200px;
@@ -152,7 +150,6 @@ ul.m-snav-order {
 }
 
 
-<<<<<<< HEAD
 .config{
 	float:right;
 	margin-right: 40px;

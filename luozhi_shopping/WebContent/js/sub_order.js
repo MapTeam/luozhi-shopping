@@ -241,12 +241,14 @@ $(document).scroll(function(){
 	//定义一个锁
 	var flagcardnam=false;
 	var flagcardpass=false;
+	//点击取消
 	$('#cancel_buy1').click(function() {
 		gowaitpay(2);
 	});
 	$('#cancel_buy2').click(function() {
 		gowaitpay(2);
 	});
+	//点击输入框样式消失
 	$('#cardnum').focus(function() {
 		$('#cardmsg').html("");
 	});
@@ -289,20 +291,20 @@ $(document).scroll(function(){
 		var countpass= $('#cardpass').val();
 		var money=$('.promes_goodsprice').text();
 		if (""!=countpass) {
+			var text = "正在支付";
+			$('#cardpassmsg').html(text);
 			$.post("JudgeCardpasswordServlet",{
 				'countname':countname,
 				'countpass':countpass,
 				'money':money,
 			},function(val){
-				var obj=JSON.parse(val);
+			var obj=JSON.parse(val);
 			if (obj.flag) {
 				gowaitpay(0);
-				
-//				$('#iftonext').empty();
-//				var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
-//				$('#iftonext').append(str);
+				flagcardpass=false;
 			}else{
 				$('#cardpassmsg').html("   "+obj.msg);
+				flagcardpass=false;
 			}
 			});
 		}

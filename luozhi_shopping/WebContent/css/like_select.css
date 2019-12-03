@@ -115,4 +115,7 @@ center>a>input{
 	border: #CDCDCD solid 1px;
 	border-radius: 5px;
 }
-
+.likeselectproduct:hover #product{
+	background: #EEE8D8;
+	border-radius: 10px;
+}

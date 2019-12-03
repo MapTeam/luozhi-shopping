@@ -3,6 +3,7 @@ package com.lz.service.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,24 +43,39 @@ public class AddGoodcardByGoodsParticularServlet extends HttpServlet {
 			GoodscarGoods gcg=new GoodscarGoods();
 			GoodsParticularDao getgciddao=new GoodsParticularDaoImpl();
 			int gcid=getgciddao.selectGcigByUid(conn, Integer.parseInt(userid));
+			BaseDao dao =new BaseDaoImpl();
 			gcg.setGcid(gcid);
 			gcg.setGcolorid(Integer.parseInt(gcolorid));
 			gcg.setGoodsnum(Integer.parseInt(goodnum));
 			gcg.setUid(Integer.parseInt(userid));
-			BaseDao dao =new BaseDaoImpl();
 			boolean flag=dao.insertObject(conn, gcg);
-			if(flag){
-				//修改session里的购物车数量
-				UserInfo userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
-				userinfo.setShopcargoodsnum(userinfo.getShopcargoodsnum()+1);
+			try {
+				conn.setAutoCommit(false);
+				
+				if(flag){
+					//修改session里的购物车数量
+					UserInfo userinfo = (UserInfo) request.getSession().getAttribute("userinfo");
+					userinfo.setShopcargoodsnum(userinfo.getShopcargoodsnum()+1);
+				}
+				JSONObject jo=new JSONObject();
+				jo.put("addgoodscatflag",flag);
+				PrintWriter out=response.getWriter();
+				out.write(jo.toString());
+				out.flush();
+				out.close();
+				conn.commit();
+			} catch (Exception e) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				e.printStackTrace();
+			}finally {
+				DBConnection1.close(conn);
 			}
-			DBConnection1.close(conn);
-			JSONObject jo=new JSONObject();
-			jo.put("addgoodscatflag",flag);
-			PrintWriter out=response.getWriter();
-			out.write(jo.toString());
-			out.flush();
-			out.close();
+			
 			
 		}
 		

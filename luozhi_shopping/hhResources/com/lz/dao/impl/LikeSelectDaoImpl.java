@@ -20,13 +20,30 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 	public List<Goods> selectGoodsByKey(String key,int pageNo,int pageSize) {
 		List<Goods> list=new ArrayList<Goods>();
 		Connection conn=DBConnection1.getConnection();
-		String sql="select * from goods where gname like ? LIMIT ?,?";
+		StringBuffer sql=new StringBuffer();
+		sql.append("select * from goods where 1=1 ");
+		if (key!=null&&!"".equals(key)) {
+			for (int i = 0; i < key.length(); i++) {
+				sql.append(" AND gname like ?");
+			}
+		}
+		
+		sql.append(" limit ?,?");
 		PreparedStatement ps = null;
 		try {
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, "%"+key+"%");
-			ps.setInt(2, (pageNo-1)*pageSize);
-			ps.setInt(3, pageSize);
+			ps = conn.prepareStatement(sql.toString());
+			if (key!=null&&!"".equals(key)) {
+				char[] keyarr = key.toCharArray();
+				for (int i = 0; i < keyarr.length; i++) {
+					ps.setString(i+1, "%"+keyarr[i]+"%");
+				}
+				ps.setInt(keyarr.length+1, (pageNo-1)*pageSize);
+				ps.setInt(keyarr.length+2, pageSize);
+			}else {
+				ps.setInt(1, (pageNo-1)*pageSize);
+				ps.setInt(2, pageSize);
+			}
+			
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
 				Goods goods = new Goods();
