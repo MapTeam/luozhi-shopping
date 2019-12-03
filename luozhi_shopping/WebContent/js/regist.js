@@ -2,17 +2,17 @@
 (function() {
 	//声明变量
 	var userName=null;
-	var telphone=null;
+//	var telphone=null;
 	var email=null;
 	var password=null;
 	var surePassword=null;
 	var code=null;
 	var reg_user =/^[a-z0-9_]{3,20}$/;
-	var reg_phone=/^1[3456789]\d{9}$/; 
+//	var reg_phone=/^1[3456789]\d{9}$/; 
 	var reg_email=/^[a-zA-Z0-9_-]+$/;
 	var reg_pass= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/;
 	var userlock = false;
-	var tellock=false;
+//	var tellock=false;
 	var emaillock=false;
     var pwdlock = false;
     var surepwdlock=false;
@@ -33,20 +33,20 @@
 	$('#name').blur(function(event){
 		user();
 	});
-	$('#phone').focus(function(event){
-		 this.select();
-		$('.phone_hidden2').css('display','none');
-		$('.phone_hidden3').css('display','none');
-		$('.phone_hidden').css('display','block');
-		$('.phone_hidden4').css('display','none');
-	});
-	$('#phone').blur(function(){
-		tel();
-		
-	});
-	$('.code').blur(function(){
-		code=$('input.code').val();
-	});
+//	$('#phone').focus(function(event){
+//		 this.select();
+//		$('.phone_hidden2').css('display','none');
+//		$('.phone_hidden3').css('display','none');
+//		$('.phone_hidden').css('display','block');
+//		$('.phone_hidden4').css('display','none');
+//	});
+//	$('#phone').blur(function(){
+//		tel();
+//		
+//	});
+//	$('.code').blur(function(){
+//		code=$('input.code').val();
+//	});
 	$('.email .mail').focus(function(){
 		this.select();
 		$('.email_hidden2').css('display','none');
@@ -100,7 +100,7 @@
 	});
 	$('#register').mouseenter(function(){
 		user();
-		tel();
+//		tel();
 		mail();
 		pass();
 		surepass();
@@ -157,37 +157,37 @@
 	});
 	//验证码
 	
-	$('.code').blur(function() {
-		$.ajax({
-			type:"POST",
-			url:"RegistCode",
-			data:"code="+code,
-			success:function(result){
-				if(result=='msg'){
-					$('.code_hidden').css('display','block');
-					codelock=true;
-					return;
-				}else if(result=='ms'){
-					$('.code_hidden2').css('display','block');
-					codelock=false;
-					return;
-				}else{
-					$('.code_hidden').css('display','none');
-					$('.code_hidden2').css('display','none');
-					codelock=false;
-				}
-			}
-		});
-	});
+//	$('.code').blur(function() {
+//		$.ajax({
+//			type:"POST",
+//			url:"RegistCode",
+//			data:"code="+code,
+//			success:function(result){
+//				if(result=='msg'){
+//					$('.code_hidden').css('display','block');
+//					codelock=true;
+//					return;
+//				}else if(result=='ms'){
+//					$('.code_hidden2').css('display','block');
+//					codelock=false;
+//					return;
+//				}else{
+//					$('.code_hidden').css('display','none');
+//					$('.code_hidden2').css('display','none');
+//					codelock=false;
+//				}
+//			}
+//		});
+//	});
 	
 	//点击注册  用户名和密码都要ok
 $('#register').click(function(){
 	if(''==userName){
 			$('.name_hidden3').css('display','block');
 		}
-		if(''==telphone){
-			$('.phone_hidden4').css('display','block');
-		}
+//		if(''==telphone){
+//			$('.phone_hidden4').css('display','block');
+//		}
 		if(''==email){
 			$('.email_hidden3').css('display','block');
 		}
@@ -201,7 +201,7 @@ $('#register').click(function(){
 			$('.code_hidden3').css('display','block');
 		}
 	
-	if(userlock && tellock  && emaillock && pwdlock && surepwdlock && sellock && codelock){
+	if(userlock  && emaillock && pwdlock && surepwdlock && sellock && codelock){
 			$.post('registServlet',{
 				name : userName,
 				pass : password,
@@ -262,26 +262,26 @@ function user(){
          lock();
 }
 
-function tel(){
-	$('.phone_hidden').css('display','none');
-	telphone=$('#phone').val();
-	if(''!=telphone){
-			if (reg_phone.test(telphone)) {
-			$('.phone_hidden3').css('display','block');
-			tellock=true;
-			lock();
-			return;
-		}else{
-			$('.phone_hidden2').css('display','block');
-			tellock=false;
-			lock();
-			return;
-		}
-	}
-	tellock=false;
-			lock();
-			return;
-}
+//function tel(){
+//	$('.phone_hidden').css('display','none');
+//	telphone=$('#phone').val();
+//	if(''!=telphone){
+//			if (reg_phone.test(telphone)) {
+//			$('.phone_hidden3').css('display','block');
+//			tellock=true;
+//			lock();
+//			return;
+//		}else{
+//			$('.phone_hidden2').css('display','block');
+//			tellock=false;
+//			lock();
+//			return;
+//		}
+//	}
+//	tellock=false;
+//			lock();
+//			return;
+//}
 function mail(){
 	email=$('.email .mail').val();
 	if (''!=email) {
@@ -386,3 +386,7 @@ function surepass(){
 		obj.src = "ImageServlet?id="+new Date().getTime();
 	}
 
+ //获取验证码
+ $('.codebtn').click(function() {
+	
+});

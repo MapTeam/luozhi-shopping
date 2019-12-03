@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="wjResources"/>
 	<classpathentry kind="src" path="hhResources"/>
 	<classpathentry kind="src" path="sjhResources"/>
+	<classpathentry kind="src" path="resource"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
