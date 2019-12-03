@@ -251,7 +251,7 @@ $(document).scroll(function(){
 		},function(val){
 			var obj=JSON.parse(val);
 			if (obj.ifgetwaitpaysuccess==true) {
-				alert('插入成功')
+				window.location.href="LikeSelectServlet?val=";
 			}
 		});
 		
