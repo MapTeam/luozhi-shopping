@@ -198,9 +198,6 @@ $('#register').click(function(){
 		if($('.yzmcode').val()==''){
 			$('.code_hidden3').css('display','block');
 		}
-//		if(''==telphone){
-//			$('.phone_hidden4').css('display','block');
-//		}
 		if(''==email){
 			$('.email_hidden3').css('display','block');
 		}
