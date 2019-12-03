@@ -80,8 +80,6 @@ if(cookie!=null){
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
-								<!--<li class="username-li hidd"></li>
-								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
 							<c:if test="${userinfo!=null }">
 									<div class="person">

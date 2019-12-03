@@ -159,6 +159,9 @@
 					<ul id="dingdan_noput" class="row">
 						<c:forEach items="${list }" var="orderlist" >
 						<li>
+						<div class="outgoodid">
+							<span>订单号:<span>${orderlist.goid}</span></span>
+						</div>
 						 <c:forEach items="${orderlist.gogoods }" var="good">
 								<div class="liheadmsg" onclick="clickdb(this)">
 									<span><img src="http://${good.goodspicture}"/></span>

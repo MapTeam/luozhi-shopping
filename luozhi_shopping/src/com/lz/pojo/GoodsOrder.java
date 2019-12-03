@@ -17,7 +17,7 @@ public class GoodsOrder implements java.io.Serializable {
     private Integer uid;
 
     /** 出货单id */
-    private Integer outgoodid;
+    private String outgoodid;
 
 
     /** 地址 */
@@ -113,7 +113,7 @@ public class GoodsOrder implements java.io.Serializable {
      * 
      * @return 出货单id
      */
-    public int getOutgoodid() {
+    public String getOutgoodid() {
         return this.outgoodid;
     }
 
@@ -123,7 +123,7 @@ public class GoodsOrder implements java.io.Serializable {
      * @param outgoodid
      *          出货单id
      */
-    public void setOutgoodid(int outgoodid) {
+    public void setOutgoodid(String outgoodid) {
         this.outgoodid = outgoodid;
     }
 

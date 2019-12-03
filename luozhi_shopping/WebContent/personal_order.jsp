@@ -1,18 +1,18 @@
 <%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="css/base.css"/>
-<link rel="stylesheet" type="text/css" href="css/home.css"/>
-<link rel="stylesheet" type="text/css" href="css/login.css"/>
-<title>Home</title>  
-</head>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>我的订单</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/base.css" />
+		<link rel="stylesheet" href="css/personal_order.css" />
+		<link rel="stylesheet" href="css/login.css" />
+	</head>
 <%
 Cookie[] cookie = request.getCookies();
 String uname = null;
@@ -33,9 +33,9 @@ if(cookie!=null){
 	pageContext.setAttribute("upwd", upwd);
 	pageContext.setAttribute("check", check);
 %>
-<body>
-	<!--头部-->
-		<header>
+	<body>
+		<!--头部-->
+				<header>
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
@@ -54,7 +54,7 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form  method="" class="">
+						<form method="" class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
 							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
 						</form>
@@ -76,12 +76,10 @@ if(cookie!=null){
 								<li><a href="ShoppingCarServlet" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">${userinfo.shopcargoodsnum}</span></a></li>							
 								</c:if>
 								<c:if test="${userinfo==null }">
-									<li><a href="javascript:;" class="shoppingCat" data-toggle="modal" data-target='#login'><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
+									<li><a href="javascript:;" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 									<li class="regist-li"><a href="regist.jsp">注册</a></li>
 								</c:if>
-								<!--<li class="username-li hidd"></li>
-								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
 							<c:if test="${userinfo!=null }">
 									<div class="person">
@@ -137,181 +135,136 @@ if(cookie!=null){
 		
 		<!--隐藏登录后被挤的信息-->	
 		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
-		<!--轮播-->
+		<!--身体-->
 		<div class="banner">
-			<ul>
-				<li class="active">
-					<a href=""><img src="img/1.jpg"/></a>
-				</li>
-				<li>
-					<a href=""><img src="img/2.jpg"/></a>
-				</li>
-				<li>
-					<a href=""><img src="img/3.jpg"/></a>
-				</li>
-			</ul>
-			<a href="javascipt:;" class="next" id="next"><img src="img/next.png"/></a>
-			<a href="javascipt:;" class="prev" id="prev"><img src="img/prev.png"/></a>
-			<div class="number">
-				<span class="active"></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	
-		<!--tab-->
-		<div class="tab">
-			<div class="container tab-content">
-					<ul class="row">
-						<li class="col-md-3">
-							<a href="HotServlet">
-								<img src="img/host.png" />
-								<span class="">热销爆品</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ClassifyServlet?category1=1008002">
-								<img src="img/gou.png" />
-								<span class="">IP周边</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ClassifyServlet?category1=101000">
-								<img src="img/shuma.png" />
-								<span class="">数码影音</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="">
-								<img src="img/jifen.png" />
-								<div class="fadein-right">
-									<p>积分商城</p>
-									<span class="count">0</span>
-									<span class="jifen">积分</span>
-								</div>
-							</a>
-						</li>
+			<div class="container">
+				<!--导航条-->
+				<div class="m-bread">
+					<div class="block">
+						<span>
+							<a href="home.html">首页</a>
+						</span>
+						<span class="pointer"><i>></i> 
+							我的订单
+						</span>
+					</div>
+				</div>
+				<!--身体左-->
+				<div class="sd sd-order">
+					<ul class="m-snav m-snav-order">
+						<li class="z-sel"><a href="personal_order.html"><i></i><span>我的订单</span></a></li>
+						<li><a href="javaScript:;"><i></i><span>我的优惠券</span></a></li>
+						<li><a href="my_address.html"><i></i><span>我的收货地址</span></a></li>
+						<li><a target="_blank" href="javaScript:;"><i></i><span>在线客服</span></a></li>
 					</ul>
+				</div>	
+				
+				<!--身体右-->
+				<div id="g-main" class="mn mn-order">
+					<div class="n-myorder" id="module-root">
+						<div class="m-tab">
+							<ul class="s-brdb1" id="tab">
+								<li class="nopayorder" class="z-sel" style="font-weight: bold;"><a href="javascript:;" title="待支付" style="color:#333">待支付</a></li>
+								<li class="sendorder"><a href="javascript:;" title="待发货">待发货</a></li>
+								<li class="sendokorder"><a href="javascript:;" title="待收货">待收货</a></li>
+								<li class="allorder"><a href="javascript:;" title="全 部">全 部</a></li>
+							</ul>
+							<%--未支付 --%>
+							<div class="current" id="nopay">
+								<c:if test="${empty list}">
+									<div class="empty">
+										<i class="icn"></i>
+										<p class="nogoodorder">您当前没有待支付的订单</p>
+									</div>
+								</c:if>
+								<c:if test="${not empty list }">
+			    					 <ul id="dingdan_nopay" class="row">
+										<c:forEach items="${list }" var="userlist" >
+											<li>
+												<div class="outgoodid">
+													<span>订单号:<span>${userlist.goid}</span></span>
+												</div>
+												 <c:forEach items="${userlist.gogoods }" var="good">
+														<div class="liheadmsg" onclick="clickdb(this)">
+															<span><img src="http://${good.goodspicture}"/></span>
+															<span id="dingdan_nopay_name">${good.gname }</span>
+															<span  id="dingdan_nopay_addr">用户：<span>${userlist.uname }</span></span>
+															<span id="dingdan_nopay_num">数量：<span>${good.goodsnum }</span></span>
+															<span id="dingdan_nopay_color">颜色：<span>${good.colortype }</span></span>
+														</div>
+												</c:forEach>
+												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}')">
+														<button class="btn btn-danger">立即付款</button>
+												</span>
+											</li>
+									 	</c:forEach>
+									</ul>
+								</c:if>
+						    </div>		
+							<%--代发货 --%>
+							<div id="pay">
+								<div class="empty">
+									<i class="icn"></i>
+									<p class="nogoodorder">您当前没有代发货的订单</p>
+								</div>
+								<ul id="dingdan_pay" class="row">
+								</ul>
+							</div>
+							<%--待收货 --%>
+							<div id="sendgood">
+								<div class="empty">
+									<i class="icn"></i>
+									<p class="nogoodorder">您当前没有待收获的订单</p>
+								</div>
+								<ul id="dingdan_send" class="row">
+								</ul>
+							</div>
+							<%--全部订单 --%>
+							<div id="allgoods">
+								<div class="empty">
+									<i class="icn"></i>
+									<p class="nogoodorder">您当前没有订单</p>
+								</div>
+								<ul id="dingdan_all" class="row">
+								</ul>
+						    </div>
+						 </div>	
+					 </div>
+				 </div>
 			</div>
 		</div>
+			
+		
+		
+		
 		
 		<!--右边浮动竖条-->
-		<div class="zTi">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/有音乐.jpg"/>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/晚安.jpg" />
-						</a>
-					</div>
-				</div>
-				
-			</div>
-			<div class="zTi-rigth">
-					<ul>
-						<li><a href="#">查看<br/>营业执照</a></li>
-						<li>100%<br/>正品</li>
-						<li>七天无理由退货</li>
-						<li>
-							<a href="#">
-								<span class="ding-cat"></span>
-								<span class="">购物车</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="kefu"></span>
-								<span class="">客服</span>
-							</a>
-						</li>
-						<li class="totop" style="margin-top: 0px;">
-							<a href="javascript:;" class="totop-a">
-								<span class="totop-span"></span>
-							</a>
-						</li>
-					</ul>
-			</div>
+		<div class="zTi-rigth">
+			<ul>
+				<li><a href="#">查看<br/>营业执照</a></li>
+				<li>100%<br/>正品</li>
+				<li>七天无理由退货</li>
+				<li>
+					<a href="#">
+						<span class="ding-cat"></span>
+						<span class="">购物车</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="kefu"></span>
+						<span class="">客服</span>
+					</a>
+				</li>
+				<li class="totop" style="margin-top: 0px;">
+					<!--<a href="javascript:;" class="totop-a">
+						<span class="totop-span"></span>
+					</a>-->
+				</li>
+			</ul>
 		</div>
+	
 		
-		<!--推荐-->
-		<div class="recommend">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="recommend-f">
-							推荐商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="recommend-goodsList">
-					<c:forEach items="${RecommandGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p style="font-weight:bold;font-size: 17px;color: #A94442; " class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-					 <!--<div class="col-md-3">
-					     <div class="thumbnail">
-					        	<img src="${obj.data[i].goods_thumb}"/>
-						        <caption>
-						          <p class="goods-name">${obj.data[i].goods_name}</p>
-						          <p class="goods-desc">${obj.data[i].goods_desc}</p>
-						          <p>${obj.data[i].price}</p>
-						          <p><span class="glyphicon  glyphicon-star"></span>${obj.data[i].star_number}</p>
-						          <button class="btn btn-info">加入购物车</button>
-						        </caption>
-					      </div>
-				    </div>-->
-				</div>
-			</div>
-		</div>
-		
-		<!--热门商品-->
-		<div class="hot">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="hot-f">
-							热门商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="hot-goodsList">
-					<c:forEach items="${HotGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-				</div>
-				<!--加载   无更多商品-->
-      			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>
-			</div>
-		</div>
 		
 		<!--底部-->
 		<footer>
@@ -344,6 +297,9 @@ if(cookie!=null){
 			</div>
 		</footer>
 		
+		
+		
+		
 		<!--login-->
 		<div class="modal fade" id="login" data-backdrop="static">
 	        <div class="modal-dialog">
@@ -357,20 +313,19 @@ if(cookie!=null){
 		                    <div class="form-inline">
 				                <div class="form-group">
 					                <label>用户：</label>
-					                <input type="text" class="form-control user" id="username" placeholder="请输入账号" value="${pageScope.uname }"/>
+					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
 				            	</div>
 				          	</div>
 			                <div class="form-inline password">
 					            <div class="form-group">
 					                <label>密码：</label>
-					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
+					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
 					            </div>
 						    </div>
-					         <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
-					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
-					        		<span>保存密码</span>
+					        		<input type="checkbox" id="autologin"/>
+					        		<span>自动登录</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>
@@ -382,17 +337,18 @@ if(cookie!=null){
 		        
 			        <div class="modal-footer">
 				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.jsp">没有帐号？免费注册  ></a>
+				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
 			        </div>
 	        
 		    	</div>
 	   		</div>
 	    </div>
 		
+		
 	</body>
+
 </html>
-<script src="js/jquery.min.js"></script>
-<script src="js/base.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/home.js"></script>
-<script src="js/banner.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript" src="js/personal_order.js"></script>

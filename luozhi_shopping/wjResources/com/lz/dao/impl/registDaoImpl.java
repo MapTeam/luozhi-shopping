@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.lz.dao.registDao;
 import com.lz.db.DBConnection1;
-import com.lz.dto.GoodsBackDto;
 import com.lz.dto.GoodsOrderDto;
 import com.lz.dto.GoodsOrdergoodDto;
 import com.lz.pojo.GoodsOrder;
@@ -17,7 +16,8 @@ import com.lz.pojo.User;
 import com.lz.util.FinalType;
 
 public class registDaoImpl implements registDao{
-
+//注册
+	
 	@Override
 	public boolean registSelectByName(String sname) {
 		Connection conn=DBConnection1.getConnection();
@@ -79,9 +79,11 @@ public class registDaoImpl implements registDao{
 		}
 		return u;
 	}
+//=================================================================
 
-
-//未发货
+	
+	//订单
+//根据状态码查询所有订单
 	@Override
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
@@ -107,6 +109,9 @@ public class registDaoImpl implements registDao{
 				goodsorder.setProvince(rs.getString("province"));//
 				goodsorder.setVillage(rs.getString("village"));//
 				goodsorder.setGoid(rs.getInt("goid"));
+				goodsorder.setName(rs.getString("name"));
+				goodsorder.setUname(rs.getString("uname"));
+				goodsorder.setReason(rs.getString("reason"));
 				list.add(goodsorder);
 			}
 		} catch (SQLException e) {
@@ -123,7 +128,7 @@ public class registDaoImpl implements registDao{
 		}
 		return list;
 	}
-	
+	//根据商品id查询商品
 	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid) {
 		List<GoodsOrdergoodDto> list = new ArrayList<GoodsOrdergoodDto>();
 		Connection conn = DBConnection1.getConnection();
@@ -190,51 +195,19 @@ public class registDaoImpl implements registDao{
 	}
 
 
-//    通过状态码查询退款订单
-	@Override
-	public List<GoodsBackDto> selectOrderByOrsta(int status) {
-		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * FROM goodsorder a,goodscolor c,goods g where gostate = ? and  a.gcolorid=c.gcolorid and c.gid=g.gid";
-		List<GoodsBackDto> backlist=new ArrayList<GoodsBackDto>();
-		GoodsBackDto go=null;
-		try {
-			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, status);
-			ResultSet rs=ps.executeQuery();
-			while (rs.next()) {
-				go=new GoodsBackDto();
-				go.setGoodspicture(rs.getString("goodspicture"));
-				go.setGname(rs.getString("gname"));
-				go.setGid(rs.getInt("gid"));
-				go.setGoodsnum(rs.getInt("goodsnum"));
-				go.setReason(rs.getString("reason"));
-				go.setGoid(rs.getInt("goid"));
-				backlist.add(go);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (conn!=null && !conn.isClosed()) {
-					DBConnection1.close(conn);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return backlist;
-	}
+
 
 
 //插入拒绝原因
 	@Override
-	public boolean insertRefuseReasonById(String msg,int id) {
+	public boolean insertRefuseReasonById(String msg,int id,int status) {
 		Connection conn=DBConnection1.getConnection();
-		String sql="UPDATE goodsorder SET refusereason = ? WHERE goid=?";
+		String sql="UPDATE goodsorder SET refusereason = ?,gostate = ? WHERE goid=?";
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, msg);
-			ps.setInt(2, id);
+			ps.setInt(2, status);
+			ps.setInt(3, id);
 			int i=ps.executeUpdate();
 			if (i>0) {
 				return true;
@@ -250,6 +223,148 @@ public class registDaoImpl implements registDao{
 				e.printStackTrace();
 			}
 		}
+		return false;
+	}
+
+
+//根据用户id和状态码查询用户订单
+	@Override
+	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid, int status) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=? and a.gostate=? and a.addressid=b.addressid and a.uid=u.uid";
+		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
+		GoodsOrderDto useroder=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+			ps.setInt(2, status);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				useroder=new GoodsOrderDto();
+				useroder=new GoodsOrderDto();
+				useroder.setAddressid(rs.getInt("addressid"));//
+				useroder.setGostate(rs.getInt("gostate"));//
+				useroder.setGoname(rs.getString("goname"));//
+				useroder.setUid(rs.getInt("uid"));//
+				useroder.setGodate(rs.getDate("godate").toString());//
+				useroder.setCity(rs.getString("city"));//
+				useroder.setCredits(rs.getInt("credits"));//
+				useroder.setDetail(rs.getString("detail"));//
+				useroder.setEmail(rs.getString("email"));//
+				useroder.setTel(rs.getString("tel"));//
+				useroder.setProvince(rs.getString("province"));//
+				useroder.setVillage(rs.getString("village"));//
+				useroder.setGoid(rs.getInt("goid"));
+				useroder.setName(rs.getString("name"));
+				useroder.setUname(rs.getString("uname"));
+				useroder.setReason(rs.getString("reason"));
+				list.add(useroder);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		return list;
+	}
+
+
+//通过id查询用户所有订单
+	@Override
+	public List<GoodsOrderDto> selectUserOrderByuid(int uid) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=?  and a.addressid=b.addressid and a.uid=u.uid";
+		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
+		GoodsOrderDto useroder=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				useroder=new GoodsOrderDto();
+				useroder=new GoodsOrderDto();
+				useroder.setAddressid(rs.getInt("addressid"));//
+				useroder.setGostate(rs.getInt("gostate"));//
+				useroder.setGoname(rs.getString("goname"));//
+				useroder.setUid(rs.getInt("uid"));//
+				useroder.setGodate(rs.getDate("godate").toString());//
+				useroder.setCity(rs.getString("city"));//
+				useroder.setCredits(rs.getInt("credits"));//
+				useroder.setDetail(rs.getString("detail"));//
+				useroder.setEmail(rs.getString("email"));//
+				useroder.setTel(rs.getString("tel"));//
+				useroder.setProvince(rs.getString("province"));//
+				useroder.setVillage(rs.getString("village"));//
+				useroder.setGoid(rs.getInt("goid"));
+				useroder.setName(rs.getString("name"));
+				useroder.setUname(rs.getString("uname"));
+				useroder.setReason(rs.getString("reason"));
+				list.add(useroder);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		return list;
+	}
+
+
+//生成出货单信息
+	@Override
+	public boolean insertOutGoodsOrder(Connection conn,String outgoodsname, int uid, String receiveaddress, String tel) {
+		String sql="insert into outgood(outgoodname,uid,receiveaddress,tel) values(outgoodsname,uid,receiveaddress,tel)";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1,outgoodsname );
+			ps.setInt(2, uid);
+			ps.setString(3, receiveaddress);
+			ps.setString(4, tel);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+
+//点击发货插入订单号
+	@Override
+	public boolean updateGoodOrder(Connection conn,String outgoodname, int status,int goid) {
+		String sql="update goodsorder set outgoodid=?,gostate=0 where goid=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1,outgoodname);
+			ps.setInt(2, status);
+			ps.setInt(3, goid);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 

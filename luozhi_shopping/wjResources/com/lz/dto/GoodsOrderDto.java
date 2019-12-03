@@ -23,7 +23,21 @@ public class GoodsOrderDto implements Serializable{
 	private String village;//区
 	private String detail;//详细地址
 	private String godate;//订单提交时间
+	private String reason;//原因
+	private String refusereason;//拒绝原因
 	List<GoodsOrdergoodDto>  gogoods = new ArrayList<GoodsOrdergoodDto>();
+	public String getReason() {
+		return reason;
+	}
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+	public String getRefusereason() {
+		return refusereason;
+	}
+	public void setRefusereason(String refusereason) {
+		this.refusereason = refusereason;
+	}
 	public int getGoid() {
 		return goid;
 	}
@@ -126,6 +140,15 @@ public class GoodsOrderDto implements Serializable{
 	public void setGogoods(List<GoodsOrdergoodDto> gogoods) {
 		this.gogoods = gogoods;
 	}
+	@Override
+	public String toString() {
+		return "GoodsOrderDto [goid=" + goid + ", addressid=" + addressid + ", gostate=" + gostate + ", uname=" + uname
+				+ ", outgoodid=" + outgoodid + ", uid=" + uid + ", goname=" + goname + ", email=" + email + ", credits="
+				+ credits + ", name=" + name + ", tel=" + tel + ", province=" + province + ", city=" + city
+				+ ", village=" + village + ", detail=" + detail + ", godate=" + godate + ", reason=" + reason
+				+ ", refusereason=" + refusereason + ", gogoods=" + gogoods + "]";
+	}
+	
 	
 	
 

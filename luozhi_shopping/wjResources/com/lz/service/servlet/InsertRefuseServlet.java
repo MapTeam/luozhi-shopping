@@ -31,8 +31,12 @@ public class InsertRefuseServlet extends HttpServlet {
 		registDao dao =new registDaoImpl();
 		String goid=request.getParameter("id");
 		int id=Integer.parseInt(goid);
+		
+		String sta=request.getParameter("status");
+		int status=Integer.parseInt(sta);
+
 		String msg=request.getParameter("msg");
-		boolean flag=dao.insertRefuseReasonById(msg, id);
+		boolean flag=dao.insertRefuseReasonById(msg, id,status);   
 		JSONObject jo=new JSONObject().fromObject(flag);
 		PrintWriter pw=response.getWriter();
 		pw.write(jo.toString());

@@ -47,7 +47,7 @@ public class GetWaitPayServlet extends HttpServlet {
 			int addressid=Integer.parseInt(addrid);
 			String goname=SetGonameUtil.GetNewgoname(uid);
 			GoodsOrder go=new GoodsOrder();
-			go.setOutgoodid(0);
+			go.setOutgoodid("");
 			go.setReason(null);
 			go.setRefusereason(null);
 			go.setAddressid(addressid);
