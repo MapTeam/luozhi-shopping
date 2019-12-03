@@ -127,13 +127,10 @@ ul.m-snav-order {
 	width:870px ;
 	display: block;
 }
-<<<<<<< HEAD
+
 
 
 /*没有订单*/
-=======
-/*娌℃湁璁㈠崟*/
->>>>>>> branch 'master' of https://github.com/MapTeam/luozhi-shopping.git
 .n-myorder .empty .icn {
 	display: block;
 	width: 200px;
@@ -152,7 +149,6 @@ ul.m-snav-order {
 }
 
 
-<<<<<<< HEAD
 .config{
 	float:right;
 	margin-right: 40px;
@@ -165,13 +161,21 @@ ul.m-snav-order {
 #dingdan_nopay>li>.liheadmsg{
 	height: 80px;
 }
+#dingdan_nopay>li>.liheadmsg>.wjmsg{
+		height: 80px;
+}
+#dingdan_nopay>li>.liheadmsg>.wjmsg>span{
+		float: left;
+}
 #dingdan_nopay>li>.liheadmsg>span{
 	float: left;
 }
-#dingdan_nopay>li>.liheadmsg>span>img{
+
+#dingdan_nopay>li>.liheadmsg>span>a>img{
 	margin: 10px;
 	width: 60px;
 	height: 60px;
+	z-index: 9999;
 }
 #dingdan_nopay_name{
 	width: 240px;
@@ -197,12 +201,14 @@ ul.m-snav-order {
 }
 
 #dingdan_nopay_btn{
-	width: 100px;
 	margin-top: -62px;
-	padding-left: 30px;
 	float:right;
 }
-
+#dingdan_cancel_btn{
+	margin-top: -62px;
+	float:right;
+	margin-right:100px;
+}
 
 
 
@@ -215,10 +221,16 @@ ul.m-snav-order {
 #dingdan_pay>li>.liheadmsg{
 	height: 80px;
 }
+#dingdan_nopay>li>.liheadmsg>.wjmsg{
+		height: 80px;
+}
+#dingdan_nopay>li>.liheadmsg>.wjmsg>span{
+		float: left;
+}
 #dingdan_pay>li>.liheadmsg>span{
 	float: left;
 }
-#dingdan_pay>li>.liheadmsg>span>img{
+#dingdan_pay>li>.liheadmsg>span>a>img{
 	margin: 10px;
 	width: 60px;
 	height: 60px;
