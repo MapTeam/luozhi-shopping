@@ -25,6 +25,7 @@ public class GoodsOrderDto implements Serializable{
 	private String godate;//订单提交时间
 	private String reason;//原因
 	private String refusereason;//拒绝原因
+	private String receiveaddress;//最后地址
 	List<GoodsOrdergoodDto>  gogoods = new ArrayList<GoodsOrdergoodDto>();
 	public String getReason() {
 		return reason;
@@ -139,6 +140,13 @@ public class GoodsOrderDto implements Serializable{
 	}
 	public void setGogoods(List<GoodsOrdergoodDto> gogoods) {
 		this.gogoods = gogoods;
+	}
+	
+	public String getReceiveaddress() {
+		return receiveaddress;
+	}
+	public void setReceiveaddress(String receiveaddress) {
+		this.receiveaddress = receiveaddress;
 	}
 	@Override
 	public String toString() {

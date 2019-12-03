@@ -158,9 +158,9 @@
 				<!--未发货块-->
 					<ul id="dingdan_noput" class="row">
 						<c:forEach items="${list }" var="orderlist" >
-						<li>
+						<li class="dingdan_li">
 						<div class="outgoodid">
-							<span>订单号:<span>${orderlist.goid}</span></span>
+							<span>订单号:<span>${orderlist.goname}</span></span>
 						</div>
 						 <c:forEach items="${orderlist.gogoods }" var="good">
 								<div class="liheadmsg" onclick="clickdb(this)">
@@ -179,11 +179,16 @@
 									<p>
 										<span>收货人：<span>${orderlist.name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<span>电话号码：<span>${orderlist.tel }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<span>收货地址：<span>${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }</span></span>
+										 <span class="myaddress">收货地址：<span>${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }</span></span>
+										<span class="editaddress">收货地址：<input type="text" name="address" value="${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }"></span>
+										
 									</p>
 								</div>
 							</c:forEach>
-							<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}')">
+							<span id="dingdan_update_btn">
+								<button class="btn btn-default">更改地址</button>
+							</span>
+							<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}','${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }','${orderlist.tel }','${orderlist.uid }')">
 									<button class="btn btn-default">发货</button>
 							</span>
 							</li>

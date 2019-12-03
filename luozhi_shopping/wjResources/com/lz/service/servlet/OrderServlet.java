@@ -35,10 +35,15 @@ public class OrderServlet extends HttpServlet {
 		String sta=request.getParameter("status");
 		registDao dao=new registDaoImpl();
 		int status=Integer.parseInt(sta);
-		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(status);
+		List<GoodsOrderDto> list=null;
+		if (status==1) {
+			list=dao.selectOrderByOrSta(status);
+		}else {
+			list=dao.selectAllOrderByOrSta(status);
+		}
 		for (int i = 0; i < list.size(); i++) {
-			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoid());
-			System.out.println(list1);
+			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
+//			System.out.println(list1);
 			list.get(i).setGogoods(list1);
 		}
 //		System.out.println(list);

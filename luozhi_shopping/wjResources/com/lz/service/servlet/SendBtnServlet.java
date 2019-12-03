@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.lz.dao.registDao;
 import com.lz.dao.impl.registDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.util.CreateName;
 import com.lz.util.FinalType;
 
 import net.sf.json.JSONObject;
@@ -33,7 +34,13 @@ public class SendBtnServlet extends HttpServlet {
 		String address=request.getParameter("address");
 		String tel=request.getParameter("tel");
 		String ui=request.getParameter("uid");
-		if (id!=null && address!=null && tel!=null  && sta!=null) {
+//		System.out.println(id);
+//		System.out.println(sta);
+//		System.out.println(address);
+//		System.out.println(tel);
+//		System.out.println(ui);
+		//插入出货号
+		if (id!=null && address!=null && tel!=null  && sta!=null && ui!=null) {
 			int soid=Integer.parseInt(id);
 			int status=Integer.parseInt(sta);
 			int uid=Integer.parseInt(ui);
@@ -41,22 +48,41 @@ public class SendBtnServlet extends HttpServlet {
 			try {
 				conn.setAutoCommit(false);
 				registDao dao=new registDaoImpl();
-//				boolean flag1=dao.insertOutGoodsOrder(conn, outgoodsname, uid, address, tel);
-//				JSONObject jo=new JSONObject().fromObject(flag1);
-//				PrintWriter pw=response.getWriter();
-//				pw.write(jo.toString());
-//				pw.flush();
-//				pw.close();
+				String outgoodsname=CreateName.createOutGoodsId(uid);
+				boolean flag1=dao.insertOutGoodsOrder(conn, outgoodsname, uid, address, tel);
+				boolean flag2=dao.updateGoodOrder(conn, outgoodsname, status, soid);
+//				System.out.println(flag2);
+				conn.commit();
+				if (flag2 && flag1) {
+					JSONObject jo=new JSONObject().fromObject(flag1);
+					PrintWriter pw=response.getWriter();
+					pw.write(jo.toString());
+					pw.flush();
+					pw.close();
+				}
 			} catch (SQLException e) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				e.printStackTrace();
+			}finally {
+				DBConnection1.close(conn);
 			}
 			
-//			boolean flag=dao.selectBySoid(soid,status);
-//			JSONObject jo=new JSONObject().fromObject(flag);
-//			PrintWriter pw=response.getWriter();
-//			pw.write(jo.toString());
-//			pw.flush();
-//			pw.close();
+		}
+		//更改状态码
+		if (id!=null && sta!=null && address==null && tel==null && ui==null) {
+			int soid=Integer.parseInt(id);
+			int status=Integer.parseInt(sta);
+			registDao dao=new registDaoImpl();
+			boolean flag=dao.selectBySoid(soid, status);
+			JSONObject jo=new JSONObject().fromObject(flag);
+			PrintWriter pw=response.getWriter();
+			pw.write(jo.toString());
+			pw.flush();
+			pw.close();
 		}
 		
 		

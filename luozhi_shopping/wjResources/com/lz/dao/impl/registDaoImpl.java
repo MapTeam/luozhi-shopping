@@ -88,7 +88,7 @@ public class registDaoImpl implements registDao{
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * FROM goodsorder a,address b,`user` c WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid ";
+		String sql="SELECT * FROM goodsorder a,address b,`user` c WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid";
 		GoodsOrderDto goodsorder=null;
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -128,15 +128,67 @@ public class registDaoImpl implements registDao{
 		}
 		return list;
 	}
+	
+	
+	//查询已发货订单
+	@Override
+	public List<GoodsOrderDto> selectOrderByOrSta(int status) {
+		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
+		Connection conn=DBConnection1.getConnection();
+		String sql="SELECT * FROM goodsorder a,address b,`user` c,outgood  o WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid and a.outgoodid=o.outgoodname";
+		GoodsOrderDto goodsorder=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, status);
+			ResultSet rs=ps.executeQuery();
+			while (rs.next()) {
+				goodsorder=new GoodsOrderDto();
+				goodsorder.setAddressid(rs.getInt("addressid"));//
+				goodsorder.setGostate(rs.getInt("gostate"));//
+				goodsorder.setGoname(rs.getString("goname"));//
+				goodsorder.setUid(rs.getInt("uid"));//
+				goodsorder.setGodate(rs.getDate("godate").toString());//
+				goodsorder.setCity(rs.getString("city"));//
+				goodsorder.setCredits(rs.getInt("credits"));//
+				goodsorder.setDetail(rs.getString("detail"));//
+				goodsorder.setEmail(rs.getString("email"));//
+				goodsorder.setTel(rs.getString("tel"));//
+				goodsorder.setProvince(rs.getString("province"));//
+				goodsorder.setVillage(rs.getString("village"));//
+				goodsorder.setGoid(rs.getInt("goid"));
+				goodsorder.setName(rs.getString("name"));
+				goodsorder.setUname(rs.getString("uname"));
+				goodsorder.setReason(rs.getString("reason"));
+				goodsorder.setReceiveaddress(rs.getString("receiveaddress"));
+				list.add(goodsorder);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return list;
+	}
+	
+	
+	
+	
 	//根据商品id查询商品
-	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid) {
+	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(String goname) {
 		List<GoodsOrdergoodDto> list = new ArrayList<GoodsOrdergoodDto>();
 		Connection conn = DBConnection1.getConnection();
-		String sql = "SELECT * FROM goods a,goodscolor b,goodsordergcolor c WHERE c.`goid` = ? AND c.`gcolorid` = b.`gcolorid` AND b.`gid` = a.`gid`";
+		String sql = "SELECT * FROM goods a,goodscolor b,goodsordergcolor c WHERE c.`goname` = ? AND c.`gcolorid` = b.`gcolorid` AND b.`gid` = a.`gid`";
 		GoodsOrdergoodDto goodsorder = null;
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, goid);
+			ps.setString(1, goname);
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
 				goodsorder=new GoodsOrdergoodDto();
@@ -329,7 +381,7 @@ public class registDaoImpl implements registDao{
 //生成出货单信息
 	@Override
 	public boolean insertOutGoodsOrder(Connection conn,String outgoodsname, int uid, String receiveaddress, String tel) {
-		String sql="insert into outgood(outgoodname,uid,receiveaddress,tel) values(outgoodsname,uid,receiveaddress,tel)";
+		String sql="insert into outgood(outgoodname,uid,receiveaddress,tel) values(?,?,?,?)";
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1,outgoodsname );
@@ -351,7 +403,7 @@ public class registDaoImpl implements registDao{
 //点击发货插入订单号
 	@Override
 	public boolean updateGoodOrder(Connection conn,String outgoodname, int status,int goid) {
-		String sql="update goodsorder set outgoodid=?,gostate=0 where goid=?";
+		String sql="update goodsorder set outgoodid=?,gostate=? where goid=?";
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1,outgoodname);
@@ -367,6 +419,18 @@ public class registDaoImpl implements registDao{
 		
 		return false;
 	}
+
+
+
+	@Override
+	public boolean updateOutGoodAddress(int orid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
+
 
 
 }
