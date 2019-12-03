@@ -181,14 +181,14 @@ public class registDaoImpl implements registDao{
 	
 	
 	//根据商品id查询商品
-	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid) {
+	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(String goname) {
 		List<GoodsOrdergoodDto> list = new ArrayList<GoodsOrdergoodDto>();
 		Connection conn = DBConnection1.getConnection();
-		String sql = "SELECT * FROM goods a,goodscolor b,goodsordergcolor c WHERE c.`goid` = ? AND c.`gcolorid` = b.`gcolorid` AND b.`gid` = a.`gid`";
+		String sql = "SELECT * FROM goods a,goodscolor b,goodsordergcolor c WHERE c.`goname` = ? AND c.`gcolorid` = b.`gcolorid` AND b.`gid` = a.`gid`";
 		GoodsOrdergoodDto goodsorder = null;
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, goid);
+			ps.setString(1, goname);
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
 				goodsorder=new GoodsOrdergoodDto();

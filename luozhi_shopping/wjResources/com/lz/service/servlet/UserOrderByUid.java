@@ -38,7 +38,7 @@ public class UserOrderByUid extends HttpServlet {
 			List<GoodsOrderDto> list=dao.selectUserOrderByuid(uid);
 			if (list!=null) {
 				for (int i = 0; i < list.size(); i++) {
-					List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoid());
+					List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
 					list.get(i).setGogoods(list1);
 				}
 				

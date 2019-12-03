@@ -42,7 +42,7 @@ public class OrderServlet extends HttpServlet {
 			list=dao.selectAllOrderByOrSta(status);
 		}
 		for (int i = 0; i < list.size(); i++) {
-			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoid());
+			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
 //			System.out.println(list1);
 			list.get(i).setGogoods(list1);
 		}

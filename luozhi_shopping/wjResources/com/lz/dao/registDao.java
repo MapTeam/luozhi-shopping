@@ -13,7 +13,7 @@ public interface registDao {
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status);
 	public boolean selectBySoid(int soid,int status);
 	public boolean insertRefuseReasonById(String msg,int id,int status);
-	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(int goid);
+	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(String goname);
 	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid,int status);
 	public List<GoodsOrderDto> selectUserOrderByuid(int uid);
 	public boolean insertOutGoodsOrder(Connection conn,String outgoodsname,int uid,String receiveaddress,String tel);

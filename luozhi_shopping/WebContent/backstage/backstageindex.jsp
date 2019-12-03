@@ -160,7 +160,7 @@
 						<c:forEach items="${list }" var="orderlist" >
 						<li class="dingdan_li">
 						<div class="outgoodid">
-							<span>订单号:<span>${orderlist.goid}</span></span>
+							<span>订单号:<span>${orderlist.goname}</span></span>
 						</div>
 						 <c:forEach items="${orderlist.gogoods }" var="good">
 								<div class="liheadmsg" onclick="clickdb(this)">

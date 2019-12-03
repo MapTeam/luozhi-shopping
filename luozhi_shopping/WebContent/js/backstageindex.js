@@ -44,7 +44,7 @@
 						for(var i=0;i < arr.length;i++){
 							var str=`<li class="dingdan_li">
 							<div class="outgoodid">
-								<span>订单号: <span>${arr[i].goid}</span></span>
+								<span>订单号: <span>${arr[i].goname}</span></span>
 							</div>`;
 //							console.log(arr[i]);
 							for(var j=0;j<arr[i].gogoods.length;j++){
@@ -208,8 +208,8 @@
 })();
 
 //未发货块、
-function sendclick(orid,address,tel,uid) {
-	alert(addresswj);
+function sendclick(orid,tel,uid) {
+//	alert(addresswj);
 //	alert(orid);
 //	alert(address);
 //	alert(tel);
@@ -217,7 +217,7 @@ function sendclick(orid,address,tel,uid) {
 		$.post('SendBtnServlet',{
 			id : orid,
 			status : 1,
-			address :address,
+			address :addresswj,
 			tel : tel,
 			uid : uid
 		},function(re){
