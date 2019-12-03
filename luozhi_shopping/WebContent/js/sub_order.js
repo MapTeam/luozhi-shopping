@@ -234,9 +234,18 @@ $(document).scroll(function(){
 		
 	});
 })();
+
+
 //取消订单
 (function() {
-	$('#cancel_buy').click(function() {
+	$('#cancel_buy1').click(function() {
+		gowaitpay();
+	});
+	$('#cancel_buy2').click(function() {
+		gowaitpay();
+	});
+	
+	function gowaitpay(){
 		var addrid=$('#AddressId').val();
 		var gcolorid="";
 		var goodscount="";
@@ -244,16 +253,22 @@ $(document).scroll(function(){
 			gcolorid+=$(this).children('span').children('.promes').children('#hhgcolorid').val();
 			goodscount+=$(this).children('.promes_goodsnum').text()+',';		
 		});
+		var gcgid="";
+		$('.gcgid').each(function(e) {
+			gcgid+=$(this).val()+",";
+		});
+		
 		$.post("GetWaitPayServlet",{
 			'addrid':addrid,
 			'gcolorid':gcolorid,
 			'goodscount':goodscount,
+			'gcgid':gcgid,
 		},function(val){
 			var obj=JSON.parse(val);
 			if (obj.ifgetwaitpaysuccess==true) {
-				window.location.href="LikeSelectServlet?val=";
+				window.location.href="UserOrderServlet";
 			}
 		});
 		
-	});
+	}
 })();

@@ -684,7 +684,7 @@
 				</div>
 				<span>
 					<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>
-					<button class="btn btn-danger " id="cancel_buy" data-dismiss="modal">取消</button>
+					<button class="btn btn-danger " id="cancel_buy1" data-dismiss="modal">取消</button>
 				</span>
 			</div>
 		</div>
@@ -696,10 +696,18 @@
 				</div>
 				<span>
 					<button class="btn btn-success " id="paynow" data-dismiss="modal">确认支付</button>
-					<button class="btn btn-danger " id="cancel_buy" data-dismiss="modal">取消</button>
+					<button class="btn btn-danger " id="cancel_buy2" data-dismiss="modal">取消</button>
 				</span>
 			</div>
 		</div>
+		
+		
+		<!-- 得到选中的所有购物车id  -->
+		<c:if test="${gcgids!=null }">
+			<c:forEach items="${gcgids}" var="gcglist">
+				<input type="hidden" value="${gcglist}" class="gcgid">
+			</c:forEach>
+		</c:if>
 		<!--右边浮动竖条-->
 		<div class="zTi-rigth">
 			<ul>
