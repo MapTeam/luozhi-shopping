@@ -17,7 +17,7 @@ public class Test {
 //		System.out.println(bank.transferAccounts("123456", "123", "6217002990107872941", 710).getMsg());
 		boolean f = true;
 		while(f){
-			MailSender.send("@qq.com", "LuoZhi-Shopping", CreateCode.CreateVerifyCode());
+			MailSender.sendFind("851649622@qq.com", "LuoZhi-Shopping", CreateCode.CreateVerifyCode());
 		}
 	}
 

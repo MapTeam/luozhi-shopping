@@ -221,8 +221,8 @@ $('#register').click(function(){
 		        var obj = JSON.parse(re)
 		      //用户名已注册
 		        if(obj.registmsg == false){
-		        	alert("注册失败");
-		        return;
+		        	alert(obj.msg);
+		        	return;
 		        };
 		         //注册成功跳转到登录页面
 			      alert('注册成功，点击跳转首页登录页面');
