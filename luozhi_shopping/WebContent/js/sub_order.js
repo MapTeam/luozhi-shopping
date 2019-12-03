@@ -236,16 +236,79 @@ $(document).scroll(function(){
 })();
 
 
-//取消订单
+//订单操作
 (function() {
+	//定义一个锁
+	var flagcardnam=false;
+	var flagcardpass=false;
 	$('#cancel_buy1').click(function() {
-		gowaitpay();
+		gowaitpay(2);
 	});
 	$('#cancel_buy2').click(function() {
-		gowaitpay();
+		gowaitpay(2);
 	});
-	
-	function gowaitpay(){
+	$('#cardnum').focus(function() {
+		$('#cardmsg').html("");
+	});
+	$('#cardpass').focus(function() {
+		$('#cardpassmsg').html("");
+	});
+	var countname="";
+	$('#paynext').click(function() {
+		
+		if (flagcardnam==true) {
+			return;
+		}
+		countname=$('#cardnum').val();
+		flagcardnam=true;
+		
+		if (""!=countname) {
+			$.post("JudgeCardNumServlet",{
+				'countname':countname,
+				
+			},function(val){
+				var obj=JSON.parse(val);
+//				console.log(obj);
+				if (obj.flag) {
+					$('#iftonext').empty();
+					var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
+					$('#iftonext').append(str);
+				}else{
+					$('#cardmsg').html("   "+obj.msg);
+				}
+				flagcardnam=false;
+			});
+		}
+		
+	});
+	$('#paynow').click(function() {
+		if (flagcardpass==true) {
+			return;
+		}
+		flagcardpass=true;
+		var countpass= $('#cardpass').val();
+		var money=$('.promes_goodsprice').text();
+		if (""!=countpass) {
+			$.post("JudgeCardpasswordServlet",{
+				'countname':countname,
+				'countpass':countpass,
+				'money':money,
+			},function(val){
+				var obj=JSON.parse(val);
+			if (obj.flag) {
+				gowaitpay(0);
+				
+//				$('#iftonext').empty();
+//				var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
+//				$('#iftonext').append(str);
+			}else{
+				$('#cardpassmsg').html("   "+obj.msg);
+			}
+			});
+		}
+		
+	});
+	function gowaitpay(gostate){
 		var addrid=$('#AddressId').val();
 		var gcolorid="";
 		var goodscount="";
@@ -258,16 +321,36 @@ $(document).scroll(function(){
 			gcgid+=$(this).val()+",";
 		});
 		
-		$.post("GetWaitPayServlet",{
+		$.post("OderPayFromoderServlet",{
 			'addrid':addrid,
 			'gcolorid':gcolorid,
 			'goodscount':goodscount,
 			'gcgid':gcgid,
+			'gostate':gostate,
 		},function(val){
-			var obj=JSON.parse(val);
-			if (obj.ifgetwaitpaysuccess==true) {
-				window.location.href="UserOrderServlet";
+			if(gostate==2){
+				var obj=JSON.parse(val);
+				if (obj.ifgetwaitpaysuccess==true) {
+					window.location.href="UserOrderServlet";
+				}
+			}else if((gostate==0)){
+				$('.paysuccess').empty();
+				var str=`
+				<h1>支付成功<h1>
+				<p style>等待<span id="sucesstime">3</span>秒回到主页</p>
+				`;
+				$('.paysuccess').append(str);
+				var time=2;
+				var span=document.getElementById("sucesstime")
+				setInterval(function(){
+					span.innerHTML=time;
+					time--;
+					if(time<0){
+						location.href="HomeServlet";
+					}
+				},1000);
 			}
+			
 		});
 		
 	}

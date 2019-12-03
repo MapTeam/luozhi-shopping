@@ -28,12 +28,12 @@ import com.lz.util.SetGonameUtil;
 import net.sf.json.JSONObject;
 
 /**
- * 在订单中将其变成待付款状态
+ * 在订单中将其变成待付款或待发货状态
  */
-@WebServlet("/GetWaitPayServlet")
-public class GetWaitPayServlet extends HttpServlet {
+@WebServlet("/OderPayFromoderServlet")
+public class OderPayFromoderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public GetWaitPayServlet() {
+    public OderPayFromoderServlet() {
         super();
     }
 
@@ -42,10 +42,12 @@ public class GetWaitPayServlet extends HttpServlet {
 		String gcolorid=request.getParameter("gcolorid");
 		String goodscount=request.getParameter("goodscount");
 		String gcgid=request.getParameter("gcgid");
+		String gostate=request.getParameter("gostate");
 		UserInfo userinfo=(UserInfo) request.getSession().getAttribute("userinfo");
 		int uid=userinfo.getUser().getUid();
 //		System.out.println(addrid+"===="+gcolorid+"==="+goodscount);
-		if (addrid!=null&&gcolorid!=null&&goodscount!=null) {
+		if (addrid!=null&&gcolorid!=null&&goodscount!=null&&gostate!=null) {
+			int gostate1=Integer.parseInt(gostate);
 			String[] gcidarr=gcolorid.split(",");
 			String[] gcountarr=goodscount.split(",");
 			int addressid=Integer.parseInt(addrid);
@@ -58,7 +60,7 @@ public class GetWaitPayServlet extends HttpServlet {
 			go.setGodate(new Date());
 			go.setGoname(goname);
 			go.setUid(uid);
-			go.setGostate(FinalType.NOPAY);
+			go.setGostate(gostate1);
 			//将相关信息插入订单表
 			Connection conn1=DBConnection1.getConnection();
 			BaseDao basedao=new BaseDaoImpl();

@@ -306,7 +306,7 @@
 										<span class="pr f-fr"><em><i class="f-fs20" style="color: #d33a31;">¥</i><em class="promes_goodsprice">${oi.orderinputgoods.goods.gprice * oi.goodscount}</em></em></span>
 									</div>
 									<div class="m-btmlay f-mgr60">
-										<div class="f-cb">
+										<div class="f-cb hhfoot">
 											<button class="paybtn btn-r f-fr" data-dismiss="modal" data-toggle="modal" data-target="#buy_order_sure">提交订单</button>
 										</div>
 									</div>
@@ -484,7 +484,7 @@
 										<span class="pr f-fr"><em><i class="f-fs20" style="color: #d33a31;">¥</i><em class="promes_goodsprice">${toalPrice}</em></em></span>
 									</div>
 									<div class="m-btmlay f-mgr60">
-										<div class="f-cb">
+										<div class="f-cb hhfoot">
 											<button class="paybtn btn-r f-fr" data-dismiss="modal" data-toggle="modal" data-target="#buy_order_sure">提交订单</button>
 										</div>
 									</div>
@@ -681,21 +681,23 @@
 				<h1>请输入银行卡号</h1>
 				<div>
 					卡　号：<input type="text" id="cardnum" /><br/>
+					<a id="cardmsg" style="color:red;margin-left: 50px"></a><br/>
 				</div>
 				<span>
-					<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>
+					<span id="iftonext"><button class="btn btn-info " id="paynext">验证卡号</button></span>
 					<button class="btn btn-danger " id="cancel_buy1" data-dismiss="modal">取消</button>
 				</span>
 			</div>
 		</div>
 		<div class="modal" id="paypass" data-backdrop="static">
-			<div class="pay_order_sure">
+			<div class="pay_order_sure paysuccess">
 				<h1>请输入银行卡密码</h1>
 				<div>
-					密　码：<input type="password" id="cardpass"/>
+					密　码：<input type="password" id="cardpass"/><br/>
+					<a id="cardpassmsg" style="color:red;margin-left: 50px"></a><br/>
 				</div>
 				<span>
-					<button class="btn btn-success " id="paynow" data-dismiss="modal">确认支付</button>
+					<button class="btn btn-success " id="paynow">确认支付</button>
 					<button class="btn btn-danger " id="cancel_buy2" data-dismiss="modal">取消</button>
 				</span>
 			</div>
