@@ -369,14 +369,19 @@ $(document).scroll(function(){
 			clearInterval(time);
 		});	
 	};
-
+  
  //点击加入购物车 
+	//定义一个加入购物车的锁
+	var addshopcarflag=false;
 	$('#add_shopping_car').click(function(){
 		if (choosecolor==null) {
  			alert('请选择颜色');
  	}else{
 //		alert("选择的商品颜色："+choosecolor+"   选择的商品数量："+goodnum);
-		addGoodsCard();
+ 		if (addshopcarflag==false) {
+ 			addGoodsCard();
+		}
+		
  	 }
 	});
 	$('#add_shopping_car_little').click(function(){
@@ -384,12 +389,16 @@ $(document).scroll(function(){
  			alert('请选择颜色');
  	}else{
 //		alert("选择的商品颜色："+choosecolor+"   选择的商品数量："+goodnum);
-		addGoodsCard();
+ 		if (addshopcarflag==false) {
+ 			addGoodsCard();
+		}
+		
  	 }
 		
 	});
 	
 	function addGoodsCard(){
+		addshopcarflag=true;
 		$.post("AddGoodcardByGoodsParticularServlet",{
 			'gcolorid':gcolorid,
 			'userid':$('#uid').val(),
@@ -404,6 +413,7 @@ $(document).scroll(function(){
 					$('.jumpshopcar').css('left','270px');
 					$('.jumpshopcar').css('display','none');
 					$('.catfont').html(parseInt($('.catfont').text())+1);
+					addshopcarflag=false;
 				});
 				
 			}
