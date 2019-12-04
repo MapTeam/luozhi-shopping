@@ -62,7 +62,7 @@ public class HomeDaoImpl implements HomeDao {
 	@Override
 	public List<Goods> getHotGoods(Connection conn) {
 		List<Goods> hs= new ArrayList<Goods>();	
-		String sql = "SELECT * FROM goods ORDER BY hot DESC LIMIT 50,16";
+		String sql = "SELECT * FROM goods ORDER BY hot DESC LIMIT 0,16";
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);

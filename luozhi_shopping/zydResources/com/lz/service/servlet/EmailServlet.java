@@ -33,7 +33,12 @@ public class EmailServlet extends HttpServlet {
 			    if(user!=null){
 			    	MailSender sender=new MailSender();
 			    	String code=new CreateCode().CreateVerifyCode();
-			    	sender.sendFind(email, "LuoZhi", code);
+			    	new Thread(new Runnable() {
+						@Override
+						public void run() {
+							sender.sendFind(email, "LuoZhi", code);
+						}
+					}).start();
 			    	request.getSession().setAttribute("findcode", code);
 			    	request.getSession().setAttribute("email", email);
 					obj.put("msg", true);

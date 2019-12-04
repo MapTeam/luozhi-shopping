@@ -32,7 +32,11 @@ public class CreateCodeServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if(email!=null&&!"".equals(email)){
 			String code = CreateCode.CreateVerifyCode();
-			MailSender.send(email, "LuoZhi", code);
+			new Thread(new Runnable() {
+				public void run() {
+					MailSender.send(email, "LuoZhi", code);
+				}
+			}).start();
 			request.getSession().setAttribute("Registcode", code);
 			JSONObject obj = new JSONObject();
 			obj.put("RegistFlag", true);

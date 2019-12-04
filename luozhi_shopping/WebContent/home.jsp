@@ -372,7 +372,7 @@ if(cookie!=null){
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
 					        		<span>记住密码</span>
 					        	</label>
-					        	<a href="#" class="forget">忘记密码？</a>
+					        	<a href="/luozhi_shopping/resetpassword.jsp" class="forget">忘记密码？</a>
 				            </div>
 				            <div class="login_btn">
 				            	<button class="btn btn-primary" id="login-btn">登录</button>

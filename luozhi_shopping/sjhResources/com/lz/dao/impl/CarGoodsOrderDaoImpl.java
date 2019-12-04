@@ -37,11 +37,12 @@ public class CarGoodsOrderDaoImpl implements CarGoodsOrderDao {
 	public List<CarOrderInputGoods> selectOrderInputGood(Connection conn,List<Integer> gcgids) {
 		List<CarOrderInputGoods> coigs = new ArrayList<CarOrderInputGoods>();
 		StringBuffer sb = new StringBuffer();
-		sb.append("SELECT a.`goodsnum`,b.*,c.* FROM goodscargoods a,goodscolor b,goods c WHERE a.`gcolorid`=b.`gcolorid` AND b.`gid`=c.`gid` AND ( 1=2 ");
-		for (int i = 0; i < gcgids.size(); i++) {
-			sb.append("OR a.`gcgid` = ? ");
+		sb.append("(SELECT a.`goodsnum`,b.*,c.* FROM goodscargoods a,goodscolor b,goods c WHERE a.`gcolorid`=b.`gcolorid` AND b.`gid`=c.`gid` AND a.`gcgid` = ?)  ");
+		for (int i = 0; i < gcgids.size()-1; i++) {
+//			sb.append("OR a.`gcgid` = ? ");
+			sb.append(" union all (SELECT a.`goodsnum`,b.*,c.* FROM goodscargoods a,goodscolor b,goods c WHERE a.`gcolorid`=b.`gcolorid` AND b.`gid`=c.`gid` AND a.`gcgid` = ?)");
 		}
-		sb.append(")");
+//		sb.append(")");
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sb.toString());
