@@ -201,6 +201,7 @@ public class registDaoImpl implements registDao{
 				goodsorder.setGoodsnum(rs.getInt("goodsnum"));
 				goodsorder.setGoodspicture(rs.getString("goodspicture"));
 				goodsorder.setGoodscount(rs.getInt("goodscount"));//
+				goodsorder.setGprice(rs.getFloat("gprice"));
 				list.add(goodsorder);
 			}
 		} catch (SQLException e) {

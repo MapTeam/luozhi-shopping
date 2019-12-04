@@ -182,6 +182,25 @@
 (function(){
 	 var pwd=null;
 	 var flag=false;
+	 var spwd=null;
+	 $(".setensure .determine").click(function(){
+		   spwd=$(".setagain-input").val();
+		   if(!spwd.match(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$/)||spwd!==pwd)
+			   {
+		    return;
+			   }
+		   else{
+	        $.post("SetPasswordServlet",{password:spwd},
+	        	function(msg){
+	        		var obj = JSON.parse(msg);
+	        		if(obj.setpwdflag){
+	        			location.href="setsuccess.jsp";
+	        		}else{
+	        			alret("设置失败");
+	        		}
+	        	});
+	        }
+	 });
 	 $(".setnew-input").blur(function(event){
 		 if($(".setnew-input").val()==""){
 			 $(".setnew-label").show();
@@ -201,7 +220,7 @@
 		      });
 	 $(".setagain-input").blur(function(event){
 			if (flag==true) {
-				var spwd=$(".setagain-input").val();
+			    spwd=$(".setagain-input").val();
 				
 				if(pwd!=spwd){
 					$(".setagain-label").show();
@@ -211,6 +230,8 @@
 			}
 			
 		 });
+	
+	
 	})();	
 </script>
 <script>

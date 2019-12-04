@@ -326,7 +326,7 @@ if(cookie!=null){
 					<div class="modal-footer">
 						<p id="modal-footer-btnp">
 							<button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
-						    <button type="button" class="btn btn-primary primary" style="width: 120px;">保存地址</button>
+						    <button type="button" class="btn btn-primary primary"  style="width: 120px;">保存地址</button>
 						</p>
 						
 					</div>
