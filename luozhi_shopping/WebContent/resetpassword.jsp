@@ -88,7 +88,7 @@
 		<div class="upper-div">
 		<ul class="upper-list">
 		<li>
-		<div  class="upper">
+		<div  class="upper" style="background-color:#2894FF;">
 		<p class="upper-p">1</p>
 	    <p class="tip">身份验证</p>
 		</div>
@@ -115,22 +115,22 @@
 		<!-- 进展提示框 -->
 		<!-- 内容填写 -->
 		<center>
-		<!-- 验证身份的div -->
-		<div class="tiankong">
-		<div class="mail">
-         <span >邮箱:</span><input type="text"/><label class="m-label">邮箱为空或格式不正确</label>
-         </div>
-         <div class="pwd">
-         <button class="getpwd">点击获取验证码</button>
-         </div>
-         <div class="enterpwd">
-         <span>验证码:</span><input type="text">
-         </div>
-         <div class="ensure">
-         <button class="determine">确定</button>
-		</div>
-		<!-- 验证身份的div -->
-		</div>
+			<!-- 验证身份的div -->
+			<div class="tiankong">
+			<div class="mail">
+	         <span >邮箱:</span><input type="text" name = "email"/><label class="m-label">邮箱为空或格式不正确</label>
+	         </div>
+	         <div class="pwd">
+	         <button class="getpwd">点击获取验证码</button>
+	         </div>
+	         <div class="enterpwd">
+	         <span>验证码:</span><input type="text" class="enterpwd-input code">
+	         </div>
+	         <div class="ensure">
+	         <button class="determine" >确定</button>
+			</div>
+			<!-- 验证身份的div -->
+			</div>
 		</center>
 		<!-- 内容填写 -->
 		<!--login-->
@@ -183,6 +183,66 @@
 <script type="text/javascript" src="js/regist.js" ></script>
 <script type="text/javascript">
 (function(){
+	var emailFlag = false;
+	var f1=true;
+	var p=null;
+	$(".getpwd").click(function(event){
+		  var MyEmail=$(".mail input").val();
+		  if(!MyEmail.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)||MyEmail==""){
+				return;
+			}
+	     if(!f1){return;}
+	     f1=false; 
+		 var i=60;
+		 var interval=setInterval(function(){
+			  $(".getpwd").text(i+"秒后才能再次点击");
+			  i=i-1;
+		  },1000)
+		setTimeout(function(){
+			clearInterval(interval);
+			f1=true;
+			$(".getpwd").text("点击发送验证码");
+		},60000);  
+		$.ajax({
+				type:"POST",	
+				url:"EmailServlet",
+				dataType:"text",
+				data:{email:MyEmail},
+				success:function(msg){
+					var obj = JSON.parse(msg);
+					emailFlag = obj.msg;
+		//			console.log(emailFlag);
+					if(obj.msg){
+						
+					}
+				}
+				});
+	}		
+	);
+	
+	
+    $(".ensure .determine").click(function(event){
+    	var enter=$(".enterpwd-input").val();
+    	if(emailFlag){
+	    	$.ajax({
+				type:"POST",	
+				url:"yanZCodeServlet",
+				dataType:"text",
+				data:{code:$('.code').val(),email:$(".mail input").val()},
+				success:function(msg){
+					var obj = JSON.parse(msg);
+				//	console.log(111);
+				//	console.log(obj.yanZFlag);
+					if(obj.yanZFlag){
+						location.href = "setpassword.jsp";
+					}else{
+						console.log(obj.yanZMsg);
+					}
+					
+				}
+				});
+    	 }
+        });
 	 $(".mail input").blur(function(event){
 	  var email=$(".mail input").val();
 	  if(!email.match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/))
@@ -197,6 +257,4 @@
 	  }
 	 });
 	})();	
-</script>
-<script>
 </script>
