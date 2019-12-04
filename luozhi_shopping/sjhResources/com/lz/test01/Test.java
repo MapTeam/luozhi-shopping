@@ -15,10 +15,10 @@ public class Test {
 //		Bank bank = new BankProxy();
 ////		System.out.println(bank.verifyBankAccount("1234565555").getMsg());
 //		System.out.println(bank.transferAccounts("123456", "123", "6217002990107872941", 710).getMsg());
-		boolean f = true;
-		while(f){
-			MailSender.sendFind("851649622@qq.com", "LuoZhi-Shopping", CreateCode.CreateVerifyCode());
-		}
+//		boolean f = true;
+//		while(f){
+//			MailSender.sendFind("851649622@qq.com", "LuoZhi-Shopping", CreateCode.CreateVerifyCode());
+//		}
 	}
 
 }
