@@ -123,7 +123,7 @@ for(var i = 0;i< oLi.length;i++)
 								str = str+`<span id="dingdan_cancel_btn" onclick="cancelclick('`+arr[i].goid+`')">
 											<button class="btn btn-default">取消订单</button>
 											</span>
-											<span id="dingdan_nopay_btn" onclick="payclick('`+arr[i].goid+`',this)">
+											<span id="dingdan_nopay_btn" onclick="payclick('`+arr[i].goid+`',this)" data-toggle="modal" data-target='#paycount'>
 											<button class="btn btn-danger">立即付款</button>
 											</span>
 											</li>`;
@@ -242,7 +242,7 @@ for(var i = 0;i< oLi.length;i++)
 												<span id="dingdan_send_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
 											</div>`;
 							}
-								str = str + `<span id="dingdan_nopay_btn" onclick="suresh(this)"  data-toggle="modal" data-target='#paycount'>
+								str = str + `<span id="dingdan_nopay_btn" onclick="suresh(this,'`+arr[i].goid+`')">
 											<button class="btn btn-danger">确定收货</button>
 											</span>
 											</span>
@@ -338,9 +338,6 @@ for(var i = 0;i< oLi.length;i++)
 		
 	})(i);
 }
-//num=2;
-//price=3;
-//alert(num*price);
 //点击支付
 function payclick(orid,obj) {
 	var that=obj;
@@ -354,27 +351,107 @@ function payclick(orid,obj) {
 		price= parseFloat(str2);
 		sum+=num*price;
 	});
-	alert(sum);
-//	var str= $(that).siblings('.liheadmsg').children('.wjmsg').children('#dingdan_nopay_addr').children('span').text();
-//	alert(str);
-//	alert(sum);
-//	alert($('#number').val());
-//	alert(sum);
-//	if (confirm("是否立即支付")) {
-//		$.post('SendBtnServlet',{
-//			id : orid,
-//			status : 0
-//		},function(re){
-//			var obj=JSON.parse(re);
-//			if(obj){
-//				alert("支付成功");
-//				location.reload(true);
-////				$(that).parent('li').remove();
-//			}else{
-//				alert("支付失败");
-//			}
-//		});
-//	}
+	//支付块
+	if (confirm("是否立即支付")) {
+		//定义一个锁
+		var flagcardnam=false;
+		var flagcardpass=false;
+		//点击输入框样式消失
+		$('#cardnum').focus(function() {
+			$('#cardmsg').html("");
+		});
+		$('#cardpass').focus(function() {
+			$('#cardpassmsg').html("");
+		});
+		var countname="";
+		$('#paynext').click(function() {
+			
+			if (flagcardnam==true) {
+				return;
+			}
+			countname=$('#cardnum').val();
+			flagcardnam=true;
+			
+			if (""!=countname) {
+				var text = "正在验证";
+				$('#cardmsg').html(text);
+				$.post("JudgeCardNumServlet",{
+					'countname':countname,
+					
+				},function(val){
+					var obj=JSON.parse(val);
+//					console.log(obj);
+					if (obj.flag) {
+						$('#iftonext').empty();
+						var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
+						$('#iftonext').append(str);
+						$('#cardmsg').css('color','green');
+						$('#cardmsg').html("账号存在，请点击下一步");
+					}else{
+						$('#cardmsg').html("   "+obj.msg);
+					}
+					flagcardnam=false;
+				});
+			}
+			
+		});
+		$('#paynow').click(function() {
+			if (flagcardpass==true) {
+				return;
+			}
+			flagcardpass=true;
+			var countpass= $('#cardpass').val();
+			var money=$('.promes_goodsprice').text();
+			if (""!=countpass) {
+				var text = "正在支付";
+				$('#cardpassmsg').html(text);
+				$.post("JudgeCardpasswordServlet",{
+					'countname':countname,
+					'countpass':countpass,
+					'money':sum,
+				},function(val){
+				var obj=JSON.parse(val);
+				if (obj.flag) {
+					$.post('SendBtnServlet',{
+					id : orid,
+					status : 0
+				},function(re){
+					var obj=JSON.parse(re);
+					if(obj){
+//						alert("支付成功");
+//						location.reload(true);
+						$('.paysuccess').empty();
+						var str=`
+							<h2 style="font-size: 30px;text-align:center;margin-bottom:-20px;color:#3C7A38;">支付成功</h2>
+							<img style="margin-left:150px;width:200px;height:200px;" src="img/paysuccess.jpg" />
+							<p style="font-size: 20px;text-align:center;margin-top:-20px;color:#3C7A38;" class="sucesstohome">等待<span id="sucesstime">3</span>秒回到主页</p>
+							`;
+						$('.paysuccess').append(str);
+						var time=2;
+						var span=document.getElementById("sucesstime")
+						setInterval(function(){
+							span.innerHTML=time;
+							time--;
+							if(time<=0){
+								time=0;
+								location.href="HomeServlet";
+							}
+						},1000);
+					}else{
+						alert("支付失败");
+					}
+				});
+					flagcardpass=false;
+				}else{
+					$('#cardpassmsg').html("   "+obj.msg);
+					flagcardpass=false;
+				}
+				});
+			}
+			
+		});
+		
+	}
 }
 //取消订单
 function cancelclick(orid) {
@@ -440,7 +517,22 @@ function noca(that) {
 	$(that).parent('li').children('.liheadmsg').children('#reason').css('display','none');
 }
 //确定收货
-function suresh(that){
+function suresh(that,orid){
+	if (confirm("确定收货？")) {
+		$.post('SendBtnServlet',{
+			id : orid,
+			status : 7
+		},function(re){
+			var obj=JSON.parse(re);
+			if(obj){
+//				location.reload(true);
+				$(that).parent('li').remove();
+//				alert(orid);
+			}else{
+				alert("请重新操作");
+			}
+		});
+	}
 }
 
 $('div.goodsdescri').hide();
@@ -449,118 +541,3 @@ function clickdb(that) {
 	
 };
 
-
-
-//订单操作
-(function() {
-	//定义一个锁
-	var flagcardnam=false;
-	var flagcardpass=false;
-	//点击输入框样式消失
-	$('#cardnum').focus(function() {
-		$('#cardmsg').html("");
-	});
-	$('#cardpass').focus(function() {
-		$('#cardpassmsg').html("");
-	});
-	var countname="";
-	$('#paynext').click(function() {
-		
-		if (flagcardnam==true) {
-			return;
-		}
-		countname=$('#cardnum').val();
-		flagcardnam=true;
-		
-		if (""!=countname) {
-			var text = "正在验证";
-			$('#cardmsg').html(text);
-			$.post("JudgeCardNumServlet",{
-				'countname':countname,
-				
-			},function(val){
-				var obj=JSON.parse(val);
-//				console.log(obj);
-				if (obj.flag) {
-					$('#iftonext').empty();
-					var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
-					$('#iftonext').append(str);
-					$('#cardmsg').css('color','green');
-					$('#cardmsg').html("账号存在，请点击下一步");
-				}else{
-					$('#cardmsg').html("   "+obj.msg);
-				}
-				flagcardnam=false;
-			});
-		}
-		
-	});
-	$('#paynow').click(function() {
-		if (flagcardpass==true) {
-			return;
-		}
-		flagcardpass=true;
-		var countpass= $('#cardpass').val();
-		var money=$('.promes_goodsprice').text();
-		if (""!=countpass) {
-			var text = "正在支付";
-			$('#cardpassmsg').html(text);
-			$.post("JudgeCardpasswordServlet",{
-				'countname':countname,
-				'countpass':countpass,
-				'money':money,
-			},function(val){
-			var obj=JSON.parse(val);
-			if (obj.flag) {
-				gowaitpay(0);
-				flagcardpass=false;
-			}else{
-				$('#cardpassmsg').html("   "+obj.msg);
-				flagcardpass=false;
-			}
-			});
-		}
-		
-	});
-	function gowaitpay(gostate){
-		var addrid=$('#AddressId').val();
-		var gcolorid="";
-		var goodscount="";
-		$('.shangpingli').each(function(e) {
-			gcolorid+=$(this).children('span').children('.promes').children('#hhgcolorid').val();
-			goodscount+=$(this).children('.promes_goodsnum').text()+',';		
-		});
-		var gcgid="";
-		$('.gcgid').each(function(e) {
-			gcgid+=$(this).val()+",";
-		});
-		
-		$.post("OderPayFromoderServlet",{
-			'addrid':addrid,
-			'gcolorid':gcolorid,
-			'goodscount':goodscount,
-			'gcgid':gcgid,
-			'gostate':gostate,
-		},function(val){
-			if((gostate==0)){
-				$('.paysuccess').empty();
-				var str=`
-				<h1>支付成功<h1>
-				<p class="sucesstohome">等待<span id="sucesstime">3</span>秒回到主页</p>
-				`;
-				$('.paysuccess').append(str);
-				var time=2;
-				var span=document.getElementById("sucesstime")
-				setInterval(function(){
-					span.innerHTML=time;
-					time--;
-					if(time<0){
-						location.href="HomeServlet";
-					}
-				},1000);
-			}
-			
-		});
-		
-	}
-})();

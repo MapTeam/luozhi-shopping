@@ -210,7 +210,7 @@ if(cookie!=null){
 												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}')">
 													<button class="btn btn-default">取消订单</button>
 												</span>
-												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}',this)">
+												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}',this)"  data-toggle="modal" data-target='#paycount'>
 														<button class="btn btn-danger">立即付款</button>
 												</span>
 											</li>
@@ -316,7 +316,7 @@ if(cookie!=null){
 		
 		
 		
-<<<<<<< HEAD
+
 		
 		<!--login-->
 		<div class="modal fade" id="login" data-backdrop="static">
