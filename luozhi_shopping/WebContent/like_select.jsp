@@ -33,8 +33,7 @@ if(cookie!=null){
 	pageContext.setAttribute("check", check);
 %>
 	<body>
-		<!--头部-->
-		<header>
+		
 			<!--头部-->
 		<header>
 			<nav class="navbar navbar-default">
@@ -283,7 +282,7 @@ if(cookie!=null){
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
-					        		<span>保存密码</span>
+					        		<span>记住密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>

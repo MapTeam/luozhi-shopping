@@ -15,6 +15,26 @@
 		<link rel="stylesheet" type="text/css" href="css/login.css" />
 
 	</head>
+<%
+Cookie[] cookie = request.getCookies();
+String uname = null;
+String upwd = null;
+boolean check = false;
+if(cookie!=null){
+	for(Cookie c:cookie){
+		if("uname".equals(c.getName())){
+			uname = URLDecoder.decode(c.getValue(),"UTF-8");
+			check = true;
+		}
+		if("upwd".equals(c.getName())){
+			upwd = URLDecoder.decode(c.getValue(),"UTF-8");
+		}
+	}
+}
+	pageContext.setAttribute("uname", uname);
+	pageContext.setAttribute("upwd", upwd);
+	pageContext.setAttribute("check", check);
+%>
 
 	<body>
 		<!--头部-->

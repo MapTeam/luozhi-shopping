@@ -308,8 +308,8 @@ if(cookie!=null){
 					    </div>
 					</c:forEach>
 				</div>
-				<!--加载   无更多商品-->
-      			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>
+				<!--加载   无更多商品
+      			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>-->
 			</div>
 		</div>
 		
@@ -370,7 +370,7 @@ if(cookie!=null){
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
-					        		<span>保存密码</span>
+					        		<span>记住密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>

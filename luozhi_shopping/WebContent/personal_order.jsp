@@ -343,7 +343,7 @@ if(cookie!=null){
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="autologin"/>
-					        		<span>自动登录</span>
+					        		<span>记住密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>
