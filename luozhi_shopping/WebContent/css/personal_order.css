@@ -6,6 +6,7 @@
 
 a {
 	text-decoration: none;
+	color: #333;
 }
 
 li {
@@ -131,10 +132,6 @@ ul.m-snav-order {
 
 
 /*没有订单*/
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/MapTeam/luozhi-shopping.git
 .n-myorder .empty .icn {
 	display: block;
 	width: 200px;
@@ -157,6 +154,9 @@ ul.m-snav-order {
 	float:right;
 	margin-right: 40px;
 }
+
+
+
 /*未支付*/
 #dingdan_nopay>li{
 	margin-top:10px;
@@ -217,7 +217,7 @@ ul.m-snav-order {
 
 
 
-/*代发货*/
+/*待发货*/
 #dingdan_pay>li{
 	margin-top:10px;
 	border-bottom: #F0F0F0 solid 1px;
@@ -225,10 +225,10 @@ ul.m-snav-order {
 #dingdan_pay>li>.liheadmsg{
 	height: 80px;
 }
-#dingdan_nopay>li>.liheadmsg>.wjmsg{
+#dingdan_pay>li>.liheadmsg>.wjmsg{
 		height: 80px;
 }
-#dingdan_nopay>li>.liheadmsg>.wjmsg>span{
+#dingdan_pay>li>.liheadmsg>.wjmsg>span{
 		float: left;
 }
 #dingdan_pay>li>.liheadmsg>span{
@@ -257,15 +257,35 @@ ul.m-snav-order {
 	text-align: center;
 }
 #dingdan_pay_color{
-	width: 120px;
+	width: 95px;
 	margin-top: 20px;
 	text-align: center;
 }
+.wjmsg>lable{
+	float: right;
+}
+#reason{
+	display:none;
+	margin-top: -63px;
+	margin-right: 100px;
+}
+
 #dingdan_pay_btn{
-	width: 100px;
 	margin-top: -62px;
 	padding-left: 30px;
 	float:right;
+}
+#dingdan_noca_btn{
+	margin-top: -62px;
+	float:right;
+	margin-right:-30px;
+	display: none;
+}
+#dingdan_sure_btn{
+	margin-top: -62px;
+	margin-right: 30px;
+	float:right;
+	display: none;
 }
 
 
@@ -274,13 +294,14 @@ ul.m-snav-order {
 	margin-top:10px;
 	border-bottom: #F0F0F0 solid 1px;
 }
+
 #dingdan_send>li>.liheadmsg{
 	height: 80px;
 }
 #dingdan_send>li>.liheadmsg>span{
 	float: left;
 }
-#dingdan_send>li>.liheadmsg>span>img{
+#dingdan_send>li>.liheadmsg>span>a>img{
 	margin: 10px;
 	width: 60px;
 	height: 60px;
@@ -314,53 +335,9 @@ ul.m-snav-order {
 	float:right;
 }
 
+
+
 /*全部*/
-#dingdan_pay>li{
-	margin-top:10px;
-	border-bottom: #F0F0F0 solid 1px;
-}
-#dingdan_pay>li>.liheadmsg{
-	height: 80px;
-}
-#dingdan_pay>li>.liheadmsg>span{
-	float: left;
-}
-#dingdan_pay>li>.liheadmsg>span>img{
-	margin: 10px;
-	width: 60px;
-	height: 60px;
-}
-#dingdan_pay_name{
-	width: 240px;
-	margin-top: 20px;
-	line-height:20px;
-	text-align: center;
-}
-#dingdan_pay_addr{
-	width: 100px;
-	margin-top: 20px;
-	text-align: center;
-	
-}
-#dingdan_pay_num{
-	width: 80px;
-	margin-top: 20px;
-	text-align: center;
-}
-#dingdan_pay_color{
-	width: 120px;
-	margin-top: 20px;
-	text-align: center;
-}
-#dingdan_pay_btn{
-	width: 100px;
-	margin-top: -62px;
-	padding-left: 30px;
-	float:right;
-}
-
-
-/*待收货*/
 #dingdan_all>li{
 	margin-top:10px;
 	border-bottom: #F0F0F0 solid 1px;
@@ -371,7 +348,7 @@ ul.m-snav-order {
 #dingdan_all>li>.liheadmsg>span{
 	float: left;
 }
-#dingdan_all>li>.liheadmsg>span>img{
+#dingdan_all>li>.liheadmsg>span>a>img{
 	margin: 10px;
 	width: 60px;
 	height: 60px;
@@ -413,7 +390,7 @@ ul.m-snav-order {
 	height: 300px;
 	border: 1px solid #000000;
 	position: fixed;
-	right: 3%;
+	right: 1%;
 	top: 34%;
 	overflow: hidden;
 	text-align: center;
@@ -469,6 +446,64 @@ ul.m-snav-order {
 
 
 
+/*支付块*/
+.pay_order_sure{
+	width: 500px;
+	height: 300px;
+	border-radius: 30px;
+	background: #E1E2E3;
+	position: absolute;
+	top: 20%;
+	left: 30%;
+}
+.pay_order_sure>h1{
+	font-size: 30px;
+	text-align: center;
+	margin-top: 40px;
+	color: #3C7A38;
+}
+.pay_order_sure>p{
+	font-size: 15px;
+	text-align: center;
+	margin-top: 40px;
+}
+.pay_order_sure>div{
+	text-align: center;
+	line-height:50px;
+	font-weight: bold;
+}
+#cardnum{
+	margin-top: 20px;
+}
+#cardpass{
+	margin-top: 20px;
+}
+#paynext{
+	margin-top: 20px;
+	width: 150px;
+	margin-left: 140px;
+	margin-right:10px;
+}
+#paynow{
+	margin-top: 20px;
+	width: 150px;
+	margin-left: 140px;
+	margin-right:10px;
+}
+#cancel_buy1{
+	margin-top: 20px;
+	width: 50px;
+	margin-left: 10px;
+	margin-right:10px;
+	opacity: 0.8;
+}
+#cancel_buy2{
+	margin-top: 20px;
+	width: 50px;
+	margin-left: 10px;
+	margin-right:10px;
+	opacity: 0.8;
+}
 
 
 

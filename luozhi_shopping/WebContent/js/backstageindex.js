@@ -316,7 +316,7 @@ $('.dingdan_li').each(function(e) {
 			});
 		}
 		
-	})
-})
+	});
+});
 
 

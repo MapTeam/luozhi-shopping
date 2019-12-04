@@ -317,51 +317,33 @@ if(cookie!=null){
 		
 		
 		
-		
-		<!--login-->
-		<div class="modal fade" id="login" data-backdrop="static">
-	        <div class="modal-dialog">
-		        <div class="modal-content">
-			        <div class="modal-header">
-			            <div class="text-success modal-title">账号登录</div>
-			            <span class="close" data-dismiss="modal"></span>
-			        </div>
-			        <div class="modal-body">
-			            <div class="row1">
-		                    <div class="form-inline">
-				                <div class="form-group">
-					                <label>用户：</label>
-					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
-				            	</div>
-				          	</div>
-			                <div class="form-inline password">
-					            <div class="form-group">
-					                <label>密码：</label>
-					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
-					            </div>
-						    </div>
-						    <div class="auto">
-						    	<label class="lab">
-					        		<input type="checkbox" id="autologin"/>
-					        		<span>自动登录</span>
-					        	</label>
-					        	<a href="#" class="forget">忘记密码？</a>
-				            </div>
-				            <div class="login_btn">
-				            	<button class="btn btn-primary" id="login-btn">登录</button>
-				            </div>
-				        </div>
-			        </div>
-		        
-			        <div class="modal-footer">
-				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
-			        </div>
-	        
-		    	</div>
-	   		</div>
-	    </div>
-		
+		<!-- 支付 -->
+		<div class="modal" id="paycount" data-backdrop="static">
+			<div class="pay_order_sure">
+				<h1>请输入银行卡号</h1>
+				<div>
+					卡　号：<input type="text" id="cardnum" style="height: 30px" /><br/>
+					<a id="cardmsg" style="color:red;margin-left: 40px"></a><br/>
+				</div>
+				<span>
+					<span id="iftonext"><button class="btn btn-info " id="paynext">验证卡号</button></span>
+					<button class="btn btn-danger " id="cancel_buy1" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
+		<div class="modal" id="paypass" data-backdrop="static">
+			<div class="pay_order_sure paysuccess">
+				<h1>请输入银行卡密码</h1>
+				<div>
+					密　码：<input type="password" id="cardpass" style="height: 30px"/><br/>
+					<a id="cardpassmsg" style="color:red;margin-left: 40px"></a><br/>
+				</div>
+				<span>
+					<button class="btn btn-success " id="paynow">确认支付</button>
+					<button class="btn btn-danger " id="cancel_buy2" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
 		
 	</body>
 
