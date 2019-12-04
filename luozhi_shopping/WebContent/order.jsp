@@ -164,7 +164,7 @@
 									<br/>
 	
 									<!--省份选择-->
-									<select id="prov" onchange="showCity(this)" style="border:1px solid rgb(204,204,204);">
+									<select id="prov" onchange="showCity(this)" style="border:1px solid rgb(204,204,204);margin-left: 86px;">
 										<option>请选择省份</option>
 	
 									</select>
@@ -340,7 +340,7 @@
 									<br/>
 	
 									<!--省份选择-->
-									<select id="prov" onchange="showCity(this)" style="border:1px solid rgb(204,204,204);">
+									<select id="prov" onchange="showCity(this)" style="border:1px solid rgb(204,204,204);margin-left: 86px;">
 										<option>请选择省份</option>
 	
 									</select>

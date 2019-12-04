@@ -72,7 +72,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 	@Override
 	public List<Address> selectUserAddressByUid(Connection conn, int uid) {
 		List<Address> list=new ArrayList<Address>();
-		String sql="select * from address where uid=?";
+		String sql="select * from address where uid=? order by addressid desc";
 		PreparedStatement ps=null;		
 		try {
 			ps=conn.prepareStatement(sql);

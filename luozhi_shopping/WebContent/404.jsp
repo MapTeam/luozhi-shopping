@@ -9,9 +9,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
-<link rel="stylesheet" type="text/css" href="css/home.css"/>
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
-<title>Home</title>  
+<title>404</title>
 </head>
 <%
 Cookie[] cookie = request.getCookies();
@@ -33,8 +32,17 @@ if(cookie!=null){
 	pageContext.setAttribute("upwd", upwd);
 	pageContext.setAttribute("check", check);
 %>
+<style>
+	.center{
+		background: url("img/404.jpg") no-repeat;
+		background-size: cover;
+		height: 600px;
+		width: 100;
+	}
+	
+</style>
 <body>
-	<!--头部-->
+<!--头部-->
 		<header>
 			<nav class="navbar navbar-default">
 				<div class="container">
@@ -105,7 +113,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a href="MyaddressServlet">
+													<a>
 														<span class="glyphicon glyphicon-map-marker address"></span>
 														<span class="list-text">我的收货地址</span>
 													</a>
@@ -137,183 +145,12 @@ if(cookie!=null){
 		
 		<!--隐藏登录后被挤的信息-->	
 		<input id="SingletStateLoginListenerMsg" type="hidden" value="${SingletStateLoginListenerMsg }" />
-		<!--轮播-->
-		<div class="banner">
-			<ul>
-				<li class="active">
-					<a href=""><img src="img/1.jpg"/></a>
-				</li>
-				<li>
-					<a href=""><img src="img/2.jpg"/></a>
-				</li>
-				<li>
-					<a href=""><img src="img/3.jpg"/></a>
-				</li>
-			</ul>
-			<a href="javascipt:;" class="next" id="next"><img src="img/next.png"/></a>
-			<a href="javascipt:;" class="prev" id="prev"><img src="img/prev.png"/></a>
-			<div class="number">
-				<span class="active"></span>
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	
-		<!--tab-->
-		<div class="tab">
-			<div class="container tab-content">
-					<ul class="row">
-						<li class="col-md-3">
-							<a href="HotServlet">
-								<img src="img/host.png" />
-								<span class="">热销爆品</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ClassifyServlet?category1=1008002">
-								<img src="img/gou.png" />
-								<span class="">IP周边</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="ClassifyServlet?category1=101000">
-								<img src="img/shuma.png" />
-								<span class="">数码影音</span>
-							</a>
-							<em class="line"></em>
-						</li>
-						<li class="col-md-3">
-							<a href="">
-								<img src="img/jifen.png" />
-								<div class="fadein-right">
-									<p>积分商城</p>
-									<span class="count">0</span>
-									<span class="jifen">积分</span>
-								</div>
-							</a>
-						</li>
-					</ul>
-			</div>
-		</div>
 		
-		<!--右边浮动竖条-->
-		<div class="zTi">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/有音乐.jpg"/>
-						</a>
-					</div>
-					<div class="col-md-6">
-						<a href="">
-							<img src="img/晚安.jpg" />
-						</a>
-					</div>
-				</div>
-				
-			</div>
-			<div class="zTi-rigth">
-					<ul>
-						<li><a href="#">查看<br/>营业执照</a></li>
-						<li>100%<br/>正品</li>
-						<li>七天无理由退货</li>
-						<li>
-							<a href="#">
-								<span class="ding-cat"></span>
-								<span class="">购物车</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="kefu"></span>
-								<span class="">客服</span>
-							</a>
-						</li>
-						<li class="totop" style="margin-top: 0px;">
-							<a href="javascript:;" class="totop-a">
-								<span class="totop-span"></span>
-							</a>
-						</li>
-					</ul>
-			</div>
-		</div>
-		
-		<!--推荐-->
-		<div class="recommend">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="recommend-f">
-							推荐商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="recommend-goodsList">
-					<c:forEach items="${RecommandGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p style="font-weight:bold;font-size: 17px;color: #A94442; " class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-					 <!--<div class="col-md-3">
-					     <div class="thumbnail">
-					        	<img src="${obj.data[i].goods_thumb}"/>
-						        <caption>
-						          <p class="goods-name">${obj.data[i].goods_name}</p>
-						          <p class="goods-desc">${obj.data[i].goods_desc}</p>
-						          <p>${obj.data[i].price}</p>
-						          <p><span class="glyphicon  glyphicon-star"></span>${obj.data[i].star_number}</p>
-						          <button class="btn btn-info">加入购物车</button>
-						        </caption>
-					      </div>
-				    </div>-->
-				</div>
-			</div>
-		</div>
-		
-		<!--热门商品-->
-		<div class="hot">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<span class="hot-f">
-							热门商品	
-						</span>
-					</div>
-				</div>
-				<!--商品-->
-				<div class="row" id="hot-goodsList">
-					<c:forEach items="${HotGoodsList}" var="p">
-						<div class="col-md-3">
-						     <div class="thumbnail">
-						        	<a href="IntroudceServlet?gid=${p.gid }">
-								        <img src="${p.zpicture}"/>
-								        <caption>
-								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
-								        </caption>
-							        </a>
-						      </div>
-					    </div>
-					</c:forEach>
-				</div>
-				<!--加载   无更多商品-->
-      			<div id="loading" class="text-center h2 alert alert-info loading">加载更多</div>
-			</div>
-		</div>
-		
-		<!--底部-->
+		<center>
+			<div class="container center"></div>
+		</center>
+
+<!--底部-->
 		<footer>
 			<div class="container">
 				<div class="footer-left col-md-6">
@@ -388,11 +225,8 @@ if(cookie!=null){
 		    	</div>
 	   		</div>
 	    </div>
-		
-	</body>
+</body>
 </html>
 <script src="js/jquery.min.js"></script>
 <script src="js/base.js"></script>
 <script src="js/bootstrap.js"></script>
-<script src="js/home.js"></script>
-<script src="js/banner.js"></script>
