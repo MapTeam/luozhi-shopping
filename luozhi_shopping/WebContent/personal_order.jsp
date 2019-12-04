@@ -54,9 +54,9 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form method="" class="">
+						<form action="LikeSelectServlet" method="get"  class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
+							<input type="text" autocomplete="off" class="search" name="val"  placeholder="1020发烧节">
 						</form>
 						<div class="form-heid">
 							<ul>
@@ -316,6 +316,52 @@ if(cookie!=null){
 		
 		
 		
+<<<<<<< HEAD
+		
+		<!--login-->
+		<div class="modal fade" id="login" data-backdrop="static">
+	        <div class="modal-dialog">
+		        <div class="modal-content">
+			        <div class="modal-header">
+			            <div class="text-success modal-title">账号登录</div>
+			            <span class="close" data-dismiss="modal"></span>
+			        </div>
+			        <div class="modal-body">
+			            <div class="row1">
+		                    <div class="form-inline">
+				                <div class="form-group">
+					                <label>用户：</label>
+					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
+				            	</div>
+				          	</div>
+			                <div class="form-inline password">
+					            <div class="form-group">
+					                <label>密码：</label>
+					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
+					            </div>
+						    </div>
+						    <div class="auto">
+						    	<label class="lab">
+					        		<input type="checkbox" id="autologin"/>
+					        		<span>记住密码</span>
+					        	</label>
+					        	<a href="#" class="forget">忘记密码？</a>
+				            </div>
+				            <div class="login_btn">
+				            	<button class="btn btn-primary" id="login-btn">登录</button>
+				            </div>
+				        </div>
+			        </div>
+		        
+			        <div class="modal-footer">
+				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
+			        </div>
+	        
+		    	</div>
+	   		</div>
+	    </div>
+
 		<!-- 支付 -->
 		<div class="modal" id="paycount" data-backdrop="static">
 			<div class="pay_order_sure">
@@ -343,6 +389,7 @@ if(cookie!=null){
 				</span>
 			</div>
 		</div>
+
 		
 	</body>
 
