@@ -54,9 +54,9 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form  method="" class="">
+						<form action="LikeSelectServlet" method="get"  class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
+							<input type="text" autocomplete="off" class="search" name="val"  placeholder="1020发烧节">
 						</form>
 						<div class="form-heid">
 							<ul>
@@ -301,7 +301,7 @@ if(cookie!=null){
 								        <img src="${p.zpicture}"/>
 								        <caption>
 								          <p class="goods-name">${p.gname}</p>
-								          <p class="goods-price">¥${p.gprice}</p>
+								          <p style="font-weight:bold;font-size: 17px;color: #A94442; " class="goods-price">¥${p.gprice}</p>
 								        </caption>
 							        </a>
 						      </div>
