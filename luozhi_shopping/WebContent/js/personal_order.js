@@ -76,27 +76,43 @@ for(var i = 0;i< oLi.length;i++)
 						$('#dingdan_nopay').css('display','block');
 						for(var i=0;i < arr.length;i++){
 							var str=`<li>
-										<div class="outgoodid">
-											<span>订单号:<span>${arr[i].goid}</span></span>
-										</div>`;
+										<p class="outgoodid">
+											<span>订单号:<span>${arr[i].goname}</span></span>
+										</p>`;
 							for(var j=0;j<arr[i].gogoods.length;j++){
 								
-								str = str + `<div class="liheadmsg" onclick="clickdb(this)">
-												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
-												<span id="dingdan_nopay_name">`+arr[i].gogoods[j].gname+`</span>
-												<span  id="dingdan_nopay_addr">用户：<span>${arr[i].uname }</span></span>
-												<span id="dingdan_nopay_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
-												<span id="dingdan_nopay_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+								str = str + `<div class="liheadmsg">
+												<span><a href="IntroudceServlet?gid=`+arr[i].gogoods[j].gid+`"><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></a></span>
+												<div onclick="clickdb(this)" class="wjmsg">
+													<span id="dingdan_nopay_name">`+arr[i].gogoods[j].gname+`</span>
+													<span  id="dingdan_nopay_addr">用户：<span>${arr[i].uname }</span></span>
+													<span id="dingdan_nopay_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
+													<span id="dingdan_nopay_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+												</div>
+											</div>
+												<div class="goodsdescri">
+												<p>商品编号：<span>`+arr[i].gogoods[j].gid+`</span></p>
+												<p>商品品牌：<span>`+arr[i].gogoods[j].gbrand+`</span></p>
+												<p>商品详情：<span>`+arr[i].gogoods[j].gintroduce+`</span></p>
+												<p>商品库存：<span>`+arr[i].gogoods[j].goodscount+`</span></p>
+												<p>订单提交时间：<span>`+arr[i].godate+`</span></p>
+												<p>
+													<span>收货人：<span>`+arr[i].name+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>电话号码：<span>`+arr[i].tel+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>收货地址：<span>`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`</span></span>
+												</p>
 											</div>`;
 							}
-								str = str + `
-											<span id="dingdan_nopay_btn" onclick="payclick('`+arr[i].goid+`')">
+								str = str + `<span id="dingdan_cancel_btn" onclick="payclick('`+arr[i].goid+`')">
+											<button class="btn btn-default">取消订单</button>
+											</span>
+											<span id="dingdan_nopay_btn" onclick="cancelclick('`+arr[i].goid+`')">
 											<button class="btn btn-danger">立即付款</button>
 											</span>
 											</li>`;
 								$('#dingdan_nopay').append(str);
 						}
-						
+						$('div.goodsdescri').hide();
 					}
 				});
 			}
@@ -121,15 +137,29 @@ for(var i = 0;i< oLi.length;i++)
 						for(var i=0;i < arr.length;i++){
 							var str=`<li>
 										<div class="outgoodid">
-											<span>订单号:<span>${arr[i].goid}</span></span>
+											<span>订单号:<span>${arr[i].goname}</span></span>
 										</div>`;
 							for(var j=0;j<arr[i].gogoods.length;j++){
 								str = str + `<div class="liheadmsg">
-												<span><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></span>
+												<span><a href="IntroudceServlet?gid=`+arr[i].gogoods[j].gid+`"><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></a></span>
+												<div class="wjmsg" onclick="clickdb(this)">
 												<span id="dingdan_pay_name">`+arr[i].gogoods[j].gname+`</span>
 												<span  id="dingdan_pay_addr">用户：<span>${arr[i].uname }</span></span>
 												<span id="dingdan_pay_num">数量：<span>`+arr[i].gogoods[j].goodsnum+`</span></span>
 												<span id="dingdan_pay_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
+												</div>
+											</div>
+											<div class="goodsdescri">
+												<p>商品编号：<span>`+arr[i].gogoods[j].gid+`</span></p>
+												<p>商品品牌：<span>`+arr[i].gogoods[j].gbrand+`</span></p>
+												<p>商品详情：<span>`+arr[i].gogoods[j].gintroduce+`</span></p>
+												<p>商品库存：<span>`+arr[i].gogoods[j].goodscount+`</span></p>
+												<p>订单提交时间：<span>`+arr[i].godate+`</span></p>
+												<p>
+													<span>收货人：<span>`+arr[i].name+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>电话号码：<span>`+arr[i].tel+`</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span>收货地址：<span>`+arr[i].province+arr[i].city+arr[i].village+arr[i].detail+`</span></span>
+												</p>
 											</div>`;
 							}
 								str = str + `
@@ -140,7 +170,7 @@ for(var i = 0;i< oLi.length;i++)
 								$('#dingdan_pay').append(str);
 						}
 				
-						
+						$('div.goodsdescri').hide();
 					}
 				});
 			}
@@ -165,7 +195,7 @@ for(var i = 0;i< oLi.length;i++)
 						for(var i=0;i < arr.length;i++){
 							var str=`<li>
 										<div class="outgoodid">
-											<span>订单号:<span>${arr[i].goid}</span></span>
+											<span>订单号:<span>${arr[i].goname}</span></span>
 										</div>`;
 							for(var j=0;j<arr[i].gogoods.length;j++){
 								str = str + `<div class="liheadmsg">
@@ -176,8 +206,9 @@ for(var i = 0;i< oLi.length;i++)
 												<span id="dingdan_send_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
 											</div>`;
 							}
-								str = str + `<span id="dingdan_send_btn">
-											<span>已发货</span>
+								str = str + `<span id="dingdan_nopay_btn">
+											<button class="btn btn-danger">确定收货</button>
+											</span>
 											</span>
 											</li>`;
 								$('#dingdan_send').append(str);
@@ -234,6 +265,31 @@ for(var i = 0;i< oLi.length;i++)
 									</span>
 									</li>`;
 								}
+								if (arr[i].gostate==7) {
+									str=str+`<span>已取消订单</span>
+									</span>
+									</li>`;
+								}
+								if (arr[i].gostate==3) {
+									str=str+`<span>已收货</span>
+									</span>
+									</li>`;
+								}
+								if (arr[i].gostate==4) {
+									str=str+`<span>退货中</span>
+									</span>
+									</li>`;
+								}
+								if (arr[i].gostate==5) {
+									str=str+`<span>退货成功</span>
+									</span>
+									</li>`;
+								}
+								if (arr[i].gostate==6) {
+									str=str+`<span>退货失败</span>
+									</span>
+									</li>`;
+								}
 										
 								$('#dingdan_all').append(str);
 						}
@@ -266,6 +322,27 @@ function payclick(orid) {
 	}
 	
 }
+//取消订单
+function cancelclick(orid) {
+	if (confirm("小主真的不考虑下吗？")) {
+		$.post('SendBtnServlet',{
+			id : orid,
+			status : 7
+		},function(re){
+			var obj=JSON.parse(re);
+			if(obj){
+				$('#dingdan_cancel_btn').parent('li').remove();
+			}else{
+				alert("请重新操作");
+			}
+		});
+	}
+}
 
 
-  
+$('div.goodsdescri').hide();
+function clickdb(that) {
+	$(that).parent().next().slideToggle();
+	
+};
+
