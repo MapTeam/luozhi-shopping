@@ -54,9 +54,9 @@ if(cookie!=null){
 					</div>
 					
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form method="" class="">
+						<form action="LikeSelectServlet" method="get"  class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
+							<input type="text" autocomplete="off" class="search" name="val"  placeholder="1020发烧节">
 						</form>
 						<div class="form-heid">
 							<ul>
@@ -189,7 +189,7 @@ if(cookie!=null){
 															<span><a href="IntroudceServlet?gid=${good.gid }"><img src="http://${good.goodspicture }"/></a></span>
 															<div class="wjmsg" onclick="clickdb(this)">
 															<span id="dingdan_nopay_name">${good.gname }</span>
-															<span  id="dingdan_nopay_addr">用户：<span>${userlist.uname }</span></span>
+															<span  id="dingdan_nopay_addr">价格：<span>${good.gprice }</span></span>
 															<span id="dingdan_nopay_num">数量：<span>${good.goodsnum }</span></span>
 															<span id="dingdan_nopay_color">颜色：<span>${good.colortype }</span></span>
 															</div>
@@ -198,8 +198,7 @@ if(cookie!=null){
 															<p>商品编号：<span>${good.gid }</span></p>
 															<p>商品品牌：<span>${good.gbrand }</span></p>
 															<p>商品详情：<span>${good.gintroduce }</span></p>
-															<p>商品库存：<span>${good.goodscount }</span></p>
-															<p>订单提交时间：<span>${orderlist.godate }</span></p>
+															<p>订单提交时间：<span>${userlist.godate }</span></p>
 															<p>
 															 	<span>收货人：<span>${userlist.name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 																<span>电话号码：<span>${userlist.tel }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -211,7 +210,7 @@ if(cookie!=null){
 												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}')">
 													<button class="btn btn-default">取消订单</button>
 												</span>
-												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}')">
+												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}',this)"  data-toggle="modal" data-target='#paycount'>
 														<button class="btn btn-danger">立即付款</button>
 												</span>
 											</li>
@@ -317,6 +316,7 @@ if(cookie!=null){
 		
 		
 		
+
 		
 		<!--login-->
 		<div class="modal fade" id="login" data-backdrop="static">
@@ -343,7 +343,7 @@ if(cookie!=null){
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="autologin"/>
-					        		<span>自动登录</span>
+					        		<span>记住密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>
@@ -361,7 +361,35 @@ if(cookie!=null){
 		    	</div>
 	   		</div>
 	    </div>
-		
+
+		<!-- 支付 -->
+		<div class="modal" id="paycount" data-backdrop="static">
+			<div class="pay_order_sure">
+				<h1>请输入银行卡号</h1>
+				<div>
+					卡　号：<input type="text" id="cardnum" style="height: 30px" /><br/>
+					<a id="cardmsg" style="color:red;margin-left: 40px"></a><br/>
+				</div>
+				<span>
+					<span id="iftonext"><button class="btn btn-info " id="paynext">验证卡号</button></span>
+					<button class="btn btn-danger " id="cancel_buy1" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
+		<div class="modal" id="paypass" data-backdrop="static">
+			<div class="pay_order_sure paysuccess">
+				<h1>请输入银行卡密码</h1>
+				<div>
+					密　码：<input type="password" id="cardpass" style="height: 30px"/><br/>
+					<a id="cardpassmsg" style="color:red;margin-left: 40px"></a><br/>
+				</div>
+				<span>
+					<button class="btn btn-success " id="paynow">确认支付</button>
+					<button class="btn btn-danger " id="cancel_buy2" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
+
 		
 	</body>
 

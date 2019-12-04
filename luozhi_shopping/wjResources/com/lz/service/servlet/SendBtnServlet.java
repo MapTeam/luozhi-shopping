@@ -34,13 +34,15 @@ public class SendBtnServlet extends HttpServlet {
 		String address=request.getParameter("address");
 		String tel=request.getParameter("tel");
 		String ui=request.getParameter("uid");
+		String msg=request.getParameter("msg");
 //		System.out.println(id);
 //		System.out.println(sta);
 //		System.out.println(address);
 //		System.out.println(tel);
 //		System.out.println(ui);
+//		System.out.println(msg);
 		//插入出货号
-		if (id!=null && address!=null && tel!=null  && sta!=null && ui!=null) {
+		if (id!=null && address!=null && tel!=null  && sta!=null && ui!=null && msg==null) {
 			int soid=Integer.parseInt(id);
 			int status=Integer.parseInt(sta);
 //			System.out.println(ui);
@@ -74,7 +76,7 @@ public class SendBtnServlet extends HttpServlet {
 			
 		}
 		//更改状态码
-		if (id!=null && sta!=null && address==null && tel==null && ui==null) {
+		if (id!=null && sta!=null && address==null && tel==null && ui==null && msg==null) {
 			int soid=Integer.parseInt(id);
 			int status=Integer.parseInt(sta);
 			registDao dao=new registDaoImpl();
@@ -85,8 +87,19 @@ public class SendBtnServlet extends HttpServlet {
 			pw.flush();
 			pw.close();
 		}
-		
-		
+		//更改状态码和插入申请退款理由
+		if (id!=null && msg!=null && sta!=null && address==null && tel==null  && ui==null) {
+			int soid=Integer.parseInt(id);
+			int status=Integer.parseInt(sta);
+			registDao dao=new registDaoImpl();
+			boolean flag=dao.updateUserReason(status, soid, msg);
+//			System.out.println(flag);
+			JSONObject jo=new JSONObject().fromObject(flag);
+			PrintWriter pw=response.getWriter();
+			pw.write(jo.toString());
+			pw.flush();
+			pw.close();
+		}
 		
 	}
 

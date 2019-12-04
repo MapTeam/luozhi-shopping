@@ -57,9 +57,9 @@ $('.form-heid').mouseleave(function() {
 	$('.search').keyup(function(){
 		var code=event.keyCode;
 		var val=$('.search').val();
-//		console.log(val);
-		if(code==13&&val!=null){
-			window.location.href="LikeSelectServlet?val="+val;
+		if(code==13&&val!=""){
+			console.log('111');
+			window.location.href="/luozhi_shopping/LikeSelectServlet?val="+val;
 		}		
 	});
 	$('.title1').siblings('li').click(function(){	

@@ -156,7 +156,7 @@ $(document).scroll(function(){
 		var modalfooterbtnp=`
 		    <p id="modal-footer-btnp">
 				<button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
-			    <button type="button" class="btn btn-primary"  style="width: 120px;">添加新地址</button>
+			    <button type="button" class="btn btn-primary"   style="width: 120px;">添加新地址</button>
 			</p>
 		`;
 		var modalmorenaddress=`
@@ -265,6 +265,8 @@ $(document).scroll(function(){
 		flagcardnam=true;
 		
 		if (""!=countname) {
+			var text = "正在验证";
+			$('#cardmsg').html(text);
 			$.post("JudgeCardNumServlet",{
 				'countname':countname,
 				
@@ -275,6 +277,8 @@ $(document).scroll(function(){
 					$('#iftonext').empty();
 					var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
 					$('#iftonext').append(str);
+					$('#cardmsg').css('color','green');
+					$('#cardmsg').html("账号存在，请点击下一步");
 				}else{
 					$('#cardmsg').html("   "+obj.msg);
 				}
@@ -338,8 +342,9 @@ $(document).scroll(function(){
 			}else if((gostate==0)){
 				$('.paysuccess').empty();
 				var str=`
-				<h1>支付成功<h1>
-				<p style>等待<span id="sucesstime">3</span>秒回到主页</p>
+				<h2 style="font-size: 30px;text-align:center;margin-bottom:-20px;color:#3C7A38;">支付成功</h2>
+				<img style="margin-left:150px;width:200px;height:200px;" src="img/paysuccess.jpg" />
+				<p style="font-size: 20px;text-align:center;margin-top:-20px;color:#3C7A38;" class="sucesstohome">等待<span id="sucesstime">3</span>秒回到主页</p>
 				`;
 				$('.paysuccess').append(str);
 				var time=2;
@@ -347,7 +352,8 @@ $(document).scroll(function(){
 				setInterval(function(){
 					span.innerHTML=time;
 					time--;
-					if(time<0){
+					if(time<=0){
+						time=0;
 						location.href="HomeServlet";
 					}
 				},1000);

@@ -56,7 +56,7 @@ public class DeleteAddressServlet extends HttpServlet {
 				AddressDao adao=new AddressDaoImpl();
 				boolean flag1=dao.deleteObjectById(conn,address);
 				boolean flag2=false;
-				if (addr.getIsdefault()==1) {
+				if (addr.getIsdefault()!=null&&addr.getIsdefault()==1) {
 					List<Address> list =scdao.selectUserAddressByUid(conn, uid);
 					if (list.size()>0) {
 						int liaddrid=list.get(0).getAddressid();

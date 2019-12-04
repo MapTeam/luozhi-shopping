@@ -417,7 +417,8 @@ a.f-mgt5:hover{
 	text-align: center;
 	font-weight: bold;
 }
-.buy_order_sure>div>h2{
+.buy_order_sure .sucesstohome{
+	margin-top:20px;
 	font-size: 20px;
 }
 .buy_order_sure>div>h3{
@@ -461,11 +462,7 @@ a.f-mgt5:hover{
 	margin-top: 40px;
 	color: #3C7A38;
 }
-.pay_order_sure>p{
-	font-size: 15px;
-	text-align: center;
-	margin-top: 40px;
-}
+
 .pay_order_sure>div{
 	text-align: center;
 	line-height:50px;

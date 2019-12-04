@@ -15,6 +15,26 @@
 		<link rel="stylesheet" type="text/css" href="css/login.css" />
 
 	</head>
+<%
+Cookie[] cookie = request.getCookies();
+String uname = null;
+String upwd = null;
+boolean check = false;
+if(cookie!=null){
+	for(Cookie c:cookie){
+		if("uname".equals(c.getName())){
+			uname = URLDecoder.decode(c.getValue(),"UTF-8");
+			check = true;
+		}
+		if("upwd".equals(c.getName())){
+			upwd = URLDecoder.decode(c.getValue(),"UTF-8");
+		}
+	}
+}
+	pageContext.setAttribute("uname", uname);
+	pageContext.setAttribute("upwd", upwd);
+	pageContext.setAttribute("check", check);
+%>
 
 	<body>
 		<!--头部-->
@@ -37,9 +57,9 @@
 					</div>
 
 					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form method="" class="">
+						<form action="LikeSelectServlet" method="get"  class="">
 							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
+							<input type="text" autocomplete="off" class="search" name="val"  placeholder="1020发烧节">
 						</form>
 						<div class="form-heid">
 							<ul>

@@ -201,6 +201,7 @@ public class registDaoImpl implements registDao{
 				goodsorder.setGoodsnum(rs.getInt("goodsnum"));
 				goodsorder.setGoodspicture(rs.getString("goodspicture"));
 				goodsorder.setGoodscount(rs.getInt("goodscount"));//
+				goodsorder.setGprice(rs.getFloat("gprice"));
 				list.add(goodsorder);
 			}
 		} catch (SQLException e) {
@@ -420,6 +421,34 @@ public class registDaoImpl implements registDao{
 		return false;
 	}
 
+
+//插入申请退款原因
+	@Override
+	public boolean updateUserReason(int status, int goid, String msg) {
+		Connection conn=DBConnection1.getConnection();
+		String sql="update goodsorder set gostate=?, reason=? where goid=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, status);
+			ps.setString(2, msg);
+			ps.setInt(3, goid);
+			int i=ps.executeUpdate();
+			if (i>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+	}
 
 
 	

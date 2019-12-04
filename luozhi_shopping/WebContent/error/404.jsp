@@ -7,9 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-<link rel="stylesheet" type="text/css" href="css/base.css"/>
-<link rel="stylesheet" type="text/css" href="css/login.css"/>
+<link rel="stylesheet" type="text/css" href="/luozhi_shopping/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="/luozhi_shopping/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="/luozhi_shopping/css/login.css"/>
 <title>404</title>
 </head>
 <%
@@ -34,7 +34,7 @@ if(cookie!=null){
 %>
 <style>
 	.center{
-		background: url("img/404.jpg") no-repeat;
+		background: url("/luozhi_shopping/img/404.jpg") no-repeat;
 		background-size: cover;
 		height: 600px;
 		width: 100;
@@ -48,7 +48,7 @@ if(cookie!=null){
 				<div class="container">
 					<div class="navbar-head navbar-left">
 						<a href="HomeServlet" class="navbar-brand">
-							<img src="img/logo.png " class="logo"/>
+							<img src="/luozhi_shopping/img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
 							</span>-->
@@ -120,7 +120,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a href="HomeServlet">
+													<a href="/luozhi_shopping/HomeServlet">
 														<span class="glyphicon glyphicon-music mainside"></span>
 														<span class="list-text">洛枳商城首页</span>
 													</a>
@@ -207,7 +207,7 @@ if(cookie!=null){
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
-					        		<span>保存密码</span>
+					        		<span>记住密码</span>
 					        	</label>
 					        	<a href="#" class="forget">忘记密码？</a>
 				            </div>
@@ -219,7 +219,7 @@ if(cookie!=null){
 		        
 			        <div class="modal-footer">
 				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.jsp">没有帐号？免费注册  ></a>
+				        <a target="_blank" href="/luozhi_shopping/regist.jsp">没有帐号？免费注册  ></a>
 			        </div>
 	        
 		    	</div>
@@ -227,6 +227,6 @@ if(cookie!=null){
 	    </div>
 </body>
 </html>
-<script src="js/jquery.min.js"></script>
-<script src="js/base.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="/luozhi_shopping/js/jquery.min.js"></script>
+<script src="/luozhi_shopping/js/base.js"></script>
+<script src="/luozhi_shopping/js/bootstrap.js"></script>
