@@ -384,9 +384,9 @@
     					location.reload(true);
 					}
     			}
+    			deleteflag = true;
     		});
     	}
-    	deleteflag = true;
     };
     
   });
