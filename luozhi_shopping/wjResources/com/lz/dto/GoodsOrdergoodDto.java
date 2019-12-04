@@ -10,6 +10,7 @@ public class GoodsOrdergoodDto {
 	private String gbrand;//商品品牌
 	private String gintroduce;//商品详情
 	private int goodscount;//库存
+	private float gprice;
 	public String getGname() {
 		return gname;
 	}
@@ -63,6 +64,13 @@ public class GoodsOrdergoodDto {
 	}
 	public void setGoodscount(int goodscount) {
 		this.goodscount = goodscount;
+	}
+	
+	public float getGprice() {
+		return gprice;
+	}
+	public void setGprice(float gprice) {
+		this.gprice = gprice;
 	}
 	@Override
 	public String toString() {
