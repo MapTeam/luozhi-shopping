@@ -317,6 +317,7 @@ if(cookie!=null){
 		
 		
 		
+<<<<<<< HEAD
 		
 		<!--login-->
 		<div class="modal fade" id="login" data-backdrop="static">
@@ -361,7 +362,35 @@ if(cookie!=null){
 		    	</div>
 	   		</div>
 	    </div>
-		
+
+		<!-- 支付 -->
+		<div class="modal" id="paycount" data-backdrop="static">
+			<div class="pay_order_sure">
+				<h1>请输入银行卡号</h1>
+				<div>
+					卡　号：<input type="text" id="cardnum" style="height: 30px" /><br/>
+					<a id="cardmsg" style="color:red;margin-left: 40px"></a><br/>
+				</div>
+				<span>
+					<span id="iftonext"><button class="btn btn-info " id="paynext">验证卡号</button></span>
+					<button class="btn btn-danger " id="cancel_buy1" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
+		<div class="modal" id="paypass" data-backdrop="static">
+			<div class="pay_order_sure paysuccess">
+				<h1>请输入银行卡密码</h1>
+				<div>
+					密　码：<input type="password" id="cardpass" style="height: 30px"/><br/>
+					<a id="cardpassmsg" style="color:red;margin-left: 40px"></a><br/>
+				</div>
+				<span>
+					<button class="btn btn-success " id="paynow">确认支付</button>
+					<button class="btn btn-danger " id="cancel_buy2" data-dismiss="modal">取消</button>
+				</span>
+			</div>
+		</div>
+
 		
 	</body>
 

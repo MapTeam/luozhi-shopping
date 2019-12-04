@@ -265,6 +265,8 @@ $(document).scroll(function(){
 		flagcardnam=true;
 		
 		if (""!=countname) {
+			var text = "正在验证";
+			$('#cardmsg').html(text);
 			$.post("JudgeCardNumServlet",{
 				'countname':countname,
 				
@@ -275,6 +277,8 @@ $(document).scroll(function(){
 					$('#iftonext').empty();
 					var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
 					$('#iftonext').append(str);
+					$('#cardmsg').css('color','green');
+					$('#cardmsg').html("账号存在，请点击下一步");
 				}else{
 					$('#cardmsg').html("   "+obj.msg);
 				}
@@ -339,7 +343,7 @@ $(document).scroll(function(){
 				$('.paysuccess').empty();
 				var str=`
 				<h1>支付成功<h1>
-				<p style>等待<span id="sucesstime">3</span>秒回到主页</p>
+				<p class="sucesstohome">等待<span id="sucesstime">3</span>秒回到主页</p>
 				`;
 				$('.paysuccess').append(str);
 				var time=2;
