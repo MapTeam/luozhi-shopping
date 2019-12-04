@@ -181,18 +181,36 @@ if(cookie!=null){
 			    					 <ul id="dingdan_nopay" class="row">
 										<c:forEach items="${list }" var="userlist" >
 											<li>
-												<div class="outgoodid">
-													<span>订单号:<span>${userlist.goid}</span></span>
-												</div>
+												<p class="outgoodid">
+													<span>订单号:<span>${userlist.goname}</span></span>
+												</p>
 												 <c:forEach items="${userlist.gogoods }" var="good">
 														<div class="liheadmsg" onclick="clickdb(this)">
-															<span><img src="http://${good.goodspicture}"/></span>
+															<span><a href="IntroudceServlet?gid=${good.gid }"><img src="http://${good.goodspicture }"/></a></span>
+															<div class="wjmsg" onclick="clickdb(this)">
 															<span id="dingdan_nopay_name">${good.gname }</span>
 															<span  id="dingdan_nopay_addr">用户：<span>${userlist.uname }</span></span>
 															<span id="dingdan_nopay_num">数量：<span>${good.goodsnum }</span></span>
 															<span id="dingdan_nopay_color">颜色：<span>${good.colortype }</span></span>
+															</div>
+														</div>
+														<div class="goodsdescri">
+															<p>商品编号：<span>${good.gid }</span></p>
+															<p>商品品牌：<span>${good.gbrand }</span></p>
+															<p>商品详情：<span>${good.gintroduce }</span></p>
+															<p>商品库存：<span>${good.goodscount }</span></p>
+															<p>订单提交时间：<span>${orderlist.godate }</span></p>
+															<p>
+															 	<span>收货人：<span>${userlist.name }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<span>电话号码：<span>${userlist.tel }</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<span>收货地址：<span>${userlist.province }${userlist.city }${userlist.village }${userlist.detail }</span></span>
+																
+															</p>
 														</div>
 												</c:forEach>
+												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}')">
+													<button class="btn btn-default">取消订单</button>
+												</span>
 												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}')">
 														<button class="btn btn-danger">立即付款</button>
 												</span>

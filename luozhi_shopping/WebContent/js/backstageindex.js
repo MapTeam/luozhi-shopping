@@ -209,9 +209,7 @@
 
 //未发货块、
 function sendclick(orid,tel,uid) {
-//	alert(addresswj);
-//	alert(orid);
-//	alert(address);
+//	alert(uid);
 //	alert(tel);
 	if (confirm("是否确定发货")) {
 		$.post('SendBtnServlet',{

@@ -422,11 +422,7 @@ public class registDaoImpl implements registDao{
 
 
 
-	@Override
-	public boolean updateOutGoodAddress(int orid) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 
 

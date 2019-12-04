@@ -188,7 +188,7 @@
 							<span id="dingdan_update_btn">
 								<button class="btn btn-default">更改地址</button>
 							</span>
-							<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}','${orderlist.province }${orderlist.city }${orderlist.village }${orderlist.detail }','${orderlist.tel }','${orderlist.uid }')">
+							<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}','${orderlist.tel }','${orderlist.uid }')">
 									<button class="btn btn-default">发货</button>
 							</span>
 							</li>

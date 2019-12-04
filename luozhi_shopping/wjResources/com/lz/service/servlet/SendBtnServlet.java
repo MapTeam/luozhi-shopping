@@ -43,6 +43,7 @@ public class SendBtnServlet extends HttpServlet {
 		if (id!=null && address!=null && tel!=null  && sta!=null && ui!=null) {
 			int soid=Integer.parseInt(id);
 			int status=Integer.parseInt(sta);
+//			System.out.println(ui);
 			int uid=Integer.parseInt(ui);
 			Connection conn=DBConnection1.getConnection();
 			try {
