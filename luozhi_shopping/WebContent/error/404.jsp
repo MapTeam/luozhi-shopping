@@ -47,7 +47,7 @@ if(cookie!=null){
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="HomeServlet" class="navbar-brand">
+						<a href="/luozhi_shopping/HomeServlet" class="navbar-brand">
 							<img src="/luozhi_shopping/img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
