@@ -190,6 +190,7 @@
 		$('.code_hidden3').css('display','none');
 	});
 	
+	var registerFlag = true; 
 	//点击注册  用户名和密码都要ok
 $('#register').click(function(){
 		if(''==userName){
@@ -212,6 +213,10 @@ $('#register').click(function(){
 		}
 	
 	if(userlock  && emaillock && pwdlock && surepwdlock && sellock){
+		if(!registerFlag){
+			return;
+		}
+		registerFlag = false;
 			$.post('registServlet',{
 				name : userName,
 				pass : password,
@@ -231,7 +236,7 @@ $('#register').click(function(){
 			  	  });
 			      //JS设置页面跳转
 			      window.location.href = 'HomeServlet';
-
+			      registerFlag = true;
 			    });
 	}else{
 		alert("注册失败，请重新注册");
