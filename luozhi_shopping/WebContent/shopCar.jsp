@@ -363,8 +363,14 @@
 			flag = false;
 		});
     };
+    
+    var deleteflag = true;
     //删除
     if($(event.target)[0].className == 'del'){
+    	if(!deleteflag){
+    		return;
+    	}
+    	deleteflag = false;
     	if(confirm("您真的要删除吗？")){
     		$.post('CarGoodsRemoveServlet', {
     			gcgid : $(event.target).parent().siblings('.gcgid').val(),
@@ -380,6 +386,7 @@
     			}
     		});
     	}
+    	deleteflag = true;
     };
     
   });
