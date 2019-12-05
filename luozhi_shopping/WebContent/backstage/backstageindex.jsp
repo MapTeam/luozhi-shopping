@@ -30,79 +30,14 @@
 					    </button>
 					</div>
 					
-					<div class="col-md-4 col-sm-3 col-lg-3  searchbox col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-xs-offset-5 div-from">
-						<form action="#" method="" class="">
-							<span class="search-tubiao glyphicon glyphicon-search"></span>
-							<input type="txt" class="search" autocomplete="off" placeholder="1020发烧节">
-						</form>
-						<div class="form-heid">
-							<ul>
-								<li class="title1">热门搜索</li>
-								<li><a style="cursor: pointer;">真无线</a></li>
-								<li><a style="cursor: pointer;">潮流系列</a></li>
-								<li><a style="cursor: pointer;">乐器</a></li>
-								<li><a style="cursor: pointer;">蓝牙</a></li>
-							</ul>
-						</div>
-					</div>
-					
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">2</span></a></li>
-								<c:if test="${userinfo==null }">
-									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.html">注册</a></li>
+								<c:if test="${admin!=null }">
+									<li class="login-li"><a>${admin.acount }</a></li>
+									<li class="regist-li"><a href="regist.html">退出</a></li>
 								</c:if>
-								
-								<!--<li class="username-li hidd"></li>
-								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->
 							</ul>
-							<c:if test="${userinfo!=null }">
-									<div class="person">
-										<img class="avatar" src="http://p3.music.126.net/RLeBJe4D1ZzUtltxfoKDMg==/109951163250239066.jpg?param=36y36">
-										<span class="glyphicon glyphicon-triangle-bottom downchild"></span>
-										<div class="list">
-											<ul>
-												<!--Regular list-->
-												<li>
-													<a href="personal_order.html">
-														<span class="glyphicon glyphicon-list-alt myorder"></span>
-														<span class="list-text">我的订单</span>
-													</a>
-												</li>
-		
-												<li>
-													<a>
-														<span class="glyphicon glyphicon-yen coupon"></span>
-														<span class="list-text">我的优惠券</span>
-													</a>
-												</li>
-		
-												<li>
-													<a>
-														<span class="glyphicon glyphicon-map-marker address"></span>
-														<span class="list-text">我的收货地址</span>
-													</a>
-												</li>
-		
-												<li>
-													<a href="home.html">
-														<span class="glyphicon glyphicon-music mainside"></span>
-														<span class="list-text">洛枳商城首页</span>
-													</a>
-												</li>
-												<hr class="hr"/>
-												<li class="exitlogin-li hidd">
-													<a href="javascript:;">
-														<span class="glyphicon glyphicon-off logout"></span>
-														<span class="list-text" id="exitlogin">退出</span>
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</c:if>
 						</div>
 					</div>
 					
@@ -117,10 +52,7 @@
 			<div class="container">
 				<div class="row" id="top">
 					<h4>
-					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="../home.html" class="col-md-1">首页</a>
-					<span class="top_title">
-						<span style="color: #8C8C8C;left: -20px;top: 20px;" class="col-md-8">&gt;后台管理</span>
-					</span>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="../home.html" class="col-md-1">后台管理</a>
 				    </h4>
 				</div>
 				 <hr  class="row"/>
