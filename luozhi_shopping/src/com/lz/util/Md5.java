@@ -20,5 +20,8 @@ public class Md5 {
 		}
 		return pwd;
 	}
+//	public static void main(String[] args) {
+//		System.out.println(Md5.md5("123456"));
+//	}
 	
 }
