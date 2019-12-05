@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.ClassifyDao;
 import com.lz.pojo.Goods;
 import com.lz.pojo.Type;
 
 public class ClassifyDaoImpl implements ClassifyDao {
+	private static final Logger log = Logger.getLogger(ClassifyDaoImpl.class);
 	/**
 	 * 通过category1查询type
 	 * @return
@@ -36,6 +39,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -43,6 +47,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return types;
@@ -83,6 +88,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -90,6 +96,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return goods;
@@ -113,6 +120,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -120,6 +128,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return brands;
@@ -144,6 +153,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally{
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -151,6 +161,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;
@@ -242,6 +253,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -249,6 +261,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return goods;
@@ -310,6 +323,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -317,6 +331,7 @@ public class ClassifyDaoImpl implements ClassifyDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return count%20==0 ? count/20 : count/20+1;

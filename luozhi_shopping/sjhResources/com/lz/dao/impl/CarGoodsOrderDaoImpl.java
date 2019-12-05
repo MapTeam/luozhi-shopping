@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.CarGoodsOrderDao;
 import com.lz.dto.CarOrderInputGoods;
-import com.lz.dto.OrderInputGoods;
 import com.lz.pojo.Address;
 import com.lz.pojo.Goods;
 import com.lz.pojo.GoodsColor;
@@ -19,15 +20,7 @@ import com.lz.pojo.GoodsColor;
  *
  */
 public class CarGoodsOrderDaoImpl implements CarGoodsOrderDao {
-
-	/**
-	 * 移除购物车商品
-	 * @return
-	 */
-	@Override
-	public boolean removeCarGood(Connection conn) {
-		return false;
-	}
+	private static final Logger log = Logger.getLogger(CarGoodsOrderDaoImpl.class);
 
 	/**
 	 * 查询商品信息
@@ -82,6 +75,7 @@ public class CarGoodsOrderDaoImpl implements CarGoodsOrderDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -89,6 +83,7 @@ public class CarGoodsOrderDaoImpl implements CarGoodsOrderDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return coigs;
@@ -122,6 +117,7 @@ public class CarGoodsOrderDaoImpl implements CarGoodsOrderDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -129,6 +125,7 @@ public class CarGoodsOrderDaoImpl implements CarGoodsOrderDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return list;

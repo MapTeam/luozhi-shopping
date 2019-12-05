@@ -8,11 +8,6 @@ import com.lz.pojo.Address;
 
 public interface CarGoodsOrderDao {
 	/**
-	 * 移除购物车商品
-	 * @return
-	 */
-	public boolean removeCarGood(Connection conn);
-	/**
 	 * 查询所勾商品信息
 	 * @return
 	 */

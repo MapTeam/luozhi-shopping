@@ -37,6 +37,7 @@ public class SetPasswordServlet extends HttpServlet {
 			if(email!=null){
 				 registDaoImpl res = new registDaoImpl();
 				 User user = res.registSelectByEmail(email);
+				 request.getSession().removeAttribute("email");
 				 user.setUpwd(Md5.md5(pwd));
 				 if(user!=null){
 					 Connection conn = DBConnection1.getConnection();

@@ -174,9 +174,9 @@ pageContext.setAttribute("check", check);
 				<div class="row col-md-12" id="table" style="border-top: none;">
 						<span id="table_left">价格:</span>
 					    <ul class="table_center table_center3">
-					    	<li><a>0~2999<input type="hidden" value="nomal"/></a></li>
-					    	<li><a>3000~5998<input type="hidden" value="nomal"/></a></li>
-					    	<li><a>5999~8999<input type="hidden" value="nomal"/></a></li>
+					    	<li><a>0~299<input type="hidden" value="nomal"/></a></li>
+					    	<li><a>300~799<input type="hidden" value="nomal"/></a></li>
+					    	<li><a>800~1499<input type="hidden" value="nomal"/></a></li>
 					    	<span style="margin-left: 20px; line-height: 45px">
 					    		<a style="color: black;">自定义</a>
 					    		<input type="text" id="low_price" placeholder="¥"  />
@@ -282,7 +282,7 @@ pageContext.setAttribute("check", check);
 						<a href="#">意见反馈</a>
 					</p>
 					<p>
-						<span>网易公司版权所有?1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
+						<span>洛枳公司版权所有©1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
 					</p>
 				</div>
 				

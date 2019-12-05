@@ -19,10 +19,10 @@
         <property name="jdbcUrl">jdbc:mysql://139.155.2.182:3306/luozhi-shopping?characterEncoding=utf8</property>  
         <property name="user">root</property>  
         <property name="password">qwe123</property>  
-        <property name="initialPoolSize">50</property>  
+        <property name="initialPoolSize">30</property>  
         <property name="maxIdleTime">30</property>  
-        <property name="maxPoolSize">400</property>  
-        <property name="minPoolSize">50</property>  
+        <property name="maxPoolSize">300</property>  
+        <property name="minPoolSize">30</property>  
         <property name="maxStatements">200</property>  
     </named-config>  
     
