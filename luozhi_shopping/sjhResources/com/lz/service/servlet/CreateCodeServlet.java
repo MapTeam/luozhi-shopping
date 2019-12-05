@@ -37,6 +37,7 @@ public class CreateCodeServlet extends HttpServlet {
 					MailSender.send(email, "LuoZhi", code);
 				}
 			}).start();
+			request.getSession().setAttribute("Registemail", email);
 			request.getSession().setAttribute("Registcode", code);
 			JSONObject obj = new JSONObject();
 			obj.put("RegistFlag", true);

@@ -278,7 +278,7 @@ if(cookie!=null){
 							<div id="updateAndadduserInformation">
 								<div><span>　收货人：</span><input type="text" id="InputName" placeholder="　　为了提高发货速度，请填写您的真实姓名" size=40 style="height: 35px;"> </input>
 								</div>
-								<div><span>手机号码：</span><input type="text" id="InputTel" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" size=40 style="height:35px;"></input>
+								<div><span>手机号码：</span><input type="number" id="InputTel" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')" size=40 style="height:35px;"></input>
 								</div>
 								<div><span>收货地区：</span></div>
 							</div>

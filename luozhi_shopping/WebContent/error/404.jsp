@@ -86,7 +86,7 @@ if(cookie!=null){
 								<c:if test="${userinfo==null }">
 									<li><a href="javascript:;" class="shoppingCat" data-toggle="modal" data-target='#login'><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>							
 									<li class="login-li"><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
-									<li class="regist-li"><a href="regist.jsp">注册</a></li>
+									<li class="regist-li"><a href="/luozhi_shopping/regist.jsp">注册</a></li>
 								</c:if>
 								<!--<li class="username-li hidd"></li>
 								<li class="exitlogin-li hidd"><a href="#">退出登录</a></li>-->

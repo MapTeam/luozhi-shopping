@@ -49,10 +49,10 @@
 									'addr2':$('#InputAddr2').val(),
 								},function(val){
 									var obj=JSON.parse(val);
+									flag=false;
 									if (obj.ifUpdateAddrSuccess==true) {
 										alert("修改成功，已设为默认地址");
 										location.reload(true);
-										flag=false;
 									}
 								});
 							}
@@ -156,6 +156,7 @@
 					if (""!=$('#InputName').val()&&""!=$('#InputTel').val()&&""!=$('#addr-show').val()&&""!=$('#InputAddr2').val()) {
 						if (!phoneTrue.test($('#InputTel').val())) {
 							alert("电话号码格式填写错误!");
+							flag=false;
 						}else{
 							$.post("AddNewAddressServlet",{
 								'isdefault':isdefault,
@@ -169,10 +170,12 @@
 									alert("添加成功")
 									location.reload(true);
 								}
+								flag=false;
 							});
 						}
 						
 					}else{
+						flag=false;
 						alert("请将信息填写完整");
 					}
 				}

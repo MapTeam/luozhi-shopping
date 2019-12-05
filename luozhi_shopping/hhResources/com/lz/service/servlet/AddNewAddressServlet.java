@@ -3,6 +3,9 @@ package com.lz.service.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.Properties;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +41,14 @@ public class AddNewAddressServlet extends HttpServlet {
 		String addr2=request.getParameter("addr2");
 //		System.out.println(isdefault+"==="+name+"==="+tel+"==="+addr1+"==="+addr2);
 		if (isdefault!=null&&tel!=null&&addr1!=null&&name!=null&&addr2!=null) {
+			//防注入
+			Properties p = (Properties) request.getServletContext().getAttribute("zhuru");
+			Set<Entry<Object, Object>> s = p.entrySet();
+			for (Entry<Object, Object> entry : s) {
+				name=name.replace(entry.getValue().toString(), "");
+				addr1=addr1.replace(entry.getValue().toString(), "");
+				addr2=addr2.replace(entry.getValue().toString(), "");
+			}
 			//通过字符串的拆分将省市区分开
 			String[] addr=addr1.split("-");
 			String province=addr[0];

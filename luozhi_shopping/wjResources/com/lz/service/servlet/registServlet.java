@@ -48,42 +48,56 @@ public class registServlet extends HttpServlet {
 					BaseDaoImpl bdao = new BaseDaoImpl();
 					registDaoImpl rdao = new registDaoImpl();
 					JSONObject jo = new JSONObject();
-					
 					String reg_user = "^[a-z0-9_]{3,20}$";
 					String reg_email = "^[a-zA-Z0-9_-]+(@qq.com|@163.com|@sina.com|@139.com|@126.com)$";
 					String reg_pass = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";
 					if (uname.matches(reg_user)&& mail.matches(reg_email)&&pass.matches(reg_pass)) {
-						String password=Md5.md5(pass);
-						User u = new User();
-						u.setEmail(mail);
-						u.setUname(uname);
-						u.setCredits(0);
-						u.setRegistdate(new Date());
-						u.setUpicture("11");
-						u.setUpwd(password);
-						Connection conn = DBConnection1.getConnection();
-						boolean flag2 = bdao.insertObject(conn, u);
-						GoodsCar gcar = new GoodsCar(); 
-						u = rdao.registSelectByEmail(mail);
-						gcar.setUid(u.getUid());
-						boolean flag1 = bdao.insertObject(conn, gcar);
-						DBConnection1.close(conn);
-						if(flag1&&flag2) {
-							jo.put("registmsg", true);
-							jo.put("msg", "注册成功！");
-							out.write(jo.toString());
-							out.flush();
-							out.close();
-						}else {
+						String smail = (String) request.getSession().getAttribute("Registemail");
+						if(smail!=null&&smail.equals(mail)){
+							String password=Md5.md5(pass);
+							User u = new User();
+							u.setEmail(mail);
+							u.setUname(uname);
+							u.setCredits(0);
+							u.setRegistdate(new Date());
+							u.setUpicture("11");
+							u.setUpwd(password);
+							Connection conn = DBConnection1.getConnection();
+							boolean flag2 = bdao.insertObject(conn, u);
+							GoodsCar gcar = new GoodsCar(); 
+							u = rdao.registSelectByEmail(mail);
+							gcar.setUid(u.getUid());
+							boolean flag1 = bdao.insertObject(conn, gcar);
+							DBConnection1.close(conn);
+							if(flag1&&flag2) {
+								jo.put("registmsg", true);
+								jo.put("msg", "注册成功！");
+								out.write(jo.toString());
+								out.flush();
+								out.close();
+							}else {
+								jo.put("registmsg", false);
+								jo.put("msg", "数据库异常！");
+								out.write(jo.toString());
+								out.flush();
+								out.close();
+							}
+						}else{
 							jo.put("registmsg", false);
-							jo.put("msg", "数据库异常！");
+							jo.put("msg", "邮件号已更改！");
 							out.write(jo.toString());
 							out.flush();
 							out.close();
 						}
+						
 					}
 				}else{
-					response.sendRedirect("regist.jsp");
+					JSONObject obj = new JSONObject();
+					obj.put("registmsg", false);
+					obj.put("msg", "格式不正确！");
+					out.write(obj.toString());
+					out.flush();
+					out.close();
 				}
 			}else{
 				JSONObject obj = new JSONObject();
