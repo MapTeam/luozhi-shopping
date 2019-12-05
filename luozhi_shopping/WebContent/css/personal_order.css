@@ -381,7 +381,13 @@ ul.m-snav-order {
 	padding-left: 30px;
 	float:right;
 }
-
+.refusereasonsta{
+	width: 180px;
+	color:red;
+	margin-top: -62px;
+	float:right;
+	margin-right: 80px;
+}
 
 
 /*旁边回到顶部*/
