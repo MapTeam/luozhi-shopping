@@ -10,12 +10,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.LikeSelectDao;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
 
 public class LikeSelectDaoImpl implements LikeSelectDao{
-
+	private static final Logger log = Logger.getLogger(LikeSelectDaoImpl.class);
 	@Override
 	public List<Goods> selectGoodsByKey(String key,int pageNo,int pageSize) {
 		List<Goods> list=new ArrayList<Goods>();
@@ -65,6 +67,7 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally{
 			DBConnection1.close(conn);
 			try {
@@ -73,6 +76,7 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return list;
@@ -95,6 +99,7 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally{
 			DBConnection1.close(conn);
 			try {
@@ -103,6 +108,7 @@ public class LikeSelectDaoImpl implements LikeSelectDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return count%pageSize==0 ? count/pageSize : count/pageSize+1;

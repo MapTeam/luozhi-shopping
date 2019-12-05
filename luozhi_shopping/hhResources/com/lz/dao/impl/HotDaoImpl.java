@@ -9,12 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.HotDao;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
 
 public class HotDaoImpl implements HotDao{
-
+	private static final Logger log = Logger.getLogger(HotDaoImpl.class);
 	@Override
 	public List<Goods> selectHot() {
 		List<Goods> list=new ArrayList<Goods>();
@@ -44,6 +46,7 @@ public class HotDaoImpl implements HotDao{
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally{
 			DBConnection1.close(conn);
 			try {
@@ -52,6 +55,7 @@ public class HotDaoImpl implements HotDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return list;

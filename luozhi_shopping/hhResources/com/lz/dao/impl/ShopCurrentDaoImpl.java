@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.ShopCurrentDao;
 import com.lz.dto.OrderInputGoods;
 import com.lz.pojo.Address;
@@ -14,6 +16,7 @@ import com.lz.pojo.Goods;
 import com.lz.pojo.GoodsColor;
 
 public class ShopCurrentDaoImpl implements ShopCurrentDao{
+	private static final Logger log = Logger.getLogger(ShopCurrentDaoImpl.class);
     /**
      * 根据商品颜色id查到这个商品的所有内容
      */
@@ -54,6 +57,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		} finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -61,6 +65,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return oig;
@@ -93,6 +98,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -100,6 +106,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return list;
@@ -117,6 +124,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -124,6 +132,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return false;
@@ -141,6 +150,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -148,6 +158,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return false;
@@ -166,6 +177,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -173,6 +185,7 @@ public class ShopCurrentDaoImpl implements ShopCurrentDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return goid;

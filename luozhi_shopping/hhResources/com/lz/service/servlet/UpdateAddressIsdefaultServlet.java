@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.ShopCurrentDao;
 import com.lz.dao.impl.ShopCurrentDaoImpl;
 import com.lz.db.DBConnection1;
@@ -23,6 +25,7 @@ import net.sf.json.JSONObject;
  */
 @WebServlet("/UpdateAddressIsdefaultServlet")
 public class UpdateAddressIsdefaultServlet extends HttpServlet {
+	private static final Logger log = Logger.getLogger(UpdateAddressIsdefaultServlet.class);
 	private static final long serialVersionUID = 1L;
     public UpdateAddressIsdefaultServlet() {
         super();
@@ -57,8 +60,10 @@ public class UpdateAddressIsdefaultServlet extends HttpServlet {
 					conn.rollback();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
+					log.error(e);
 				}
 				e.printStackTrace();
+				log.error(e);
 			}finally {
 				DBConnection1.close(conn);
 			}

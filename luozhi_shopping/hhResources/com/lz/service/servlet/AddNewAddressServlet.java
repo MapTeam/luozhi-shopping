@@ -46,33 +46,37 @@ public class AddNewAddressServlet extends HttpServlet {
 			//通过session拿到用户的id
 			HttpSession session =request.getSession();
 			UserInfo info =(UserInfo) session.getAttribute("userinfo");
-			int uid=info.getUser().getUid();
-			//得到是否为默认值
-			int isdfaul=Integer.parseInt(isdefault);
-			Connection conn=DBConnection1.getConnection();
-			if (isdfaul==1) {
-				ShopCurrentDao updatedao=new ShopCurrentDaoImpl();
-				boolean updateflag=updatedao.updateAllisdefault(conn, uid);
-//				System.out.println(updateflag);
+			
+			if (info!=null) {
+				int uid=info.getUser().getUid();
+				//得到是否为默认值
+				int isdfaul=Integer.parseInt(isdefault);
+				Connection conn=DBConnection1.getConnection();
+				if (isdfaul==1) {
+					ShopCurrentDao updatedao=new ShopCurrentDaoImpl();
+					boolean updateflag=updatedao.updateAllisdefault(conn, uid);
+//					System.out.println(updateflag);
+				}
+				Address address=new Address();
+				address.setCity(city);
+				address.setDetail(addr2);
+				address.setIsdefault(isdfaul);
+				address.setName(name);
+				address.setProvince(province);
+				address.setTel(tel);
+				address.setVillage(village);
+				address.setUid(uid);
+				BaseDao dao=new BaseDaoImpl();
+				boolean flag=dao.insertObject(conn, address);
+				DBConnection1.close(conn);
+				PrintWriter out=response.getWriter();
+				JSONObject jo=new JSONObject();
+				jo.put("ifAddAddrSuccess", flag);
+				out.write(jo.toString());
+				out.flush();
+				out.close();
 			}
-			Address address=new Address();
-			address.setCity(city);
-			address.setDetail(addr2);
-			address.setIsdefault(isdfaul);
-			address.setName(name);
-			address.setProvince(province);
-			address.setTel(tel);
-			address.setVillage(village);
-			address.setUid(uid);
-			BaseDao dao=new BaseDaoImpl();
-			boolean flag=dao.insertObject(conn, address);
-			DBConnection1.close(conn);
-			PrintWriter out=response.getWriter();
-			JSONObject jo=new JSONObject();
-			jo.put("ifAddAddrSuccess", flag);
-			out.write(jo.toString());
-			out.flush();
-			out.close();
+			
 			
 		}
 	}

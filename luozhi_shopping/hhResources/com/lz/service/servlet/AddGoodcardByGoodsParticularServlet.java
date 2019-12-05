@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.BaseDao;
 import com.lz.dao.GoodsParticularDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.dao.impl.GoodsParticularDaoImpl;
+import com.lz.dao.impl.ShopCurrentDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.dto.UserInfo;
 import com.lz.pojo.GoodsCar;
@@ -28,6 +31,7 @@ import net.sf.json.JSONObject;
  */
 @WebServlet("/AddGoodcardByGoodsParticularServlet")
 public class AddGoodcardByGoodsParticularServlet extends HttpServlet {
+	private static final Logger log = Logger.getLogger(AddGoodcardByGoodsParticularServlet.class);
 	private static final long serialVersionUID = 1L;
     public AddGoodcardByGoodsParticularServlet() {
         super();
@@ -70,8 +74,10 @@ public class AddGoodcardByGoodsParticularServlet extends HttpServlet {
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error(e);
 				}
 				e.printStackTrace();
+				log.error(e);
 			}finally {
 				DBConnection1.close(conn);
 			}

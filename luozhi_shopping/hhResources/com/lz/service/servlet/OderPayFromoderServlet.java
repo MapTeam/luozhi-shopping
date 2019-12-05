@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.BaseDao;
 import com.lz.dao.ShopCurrentDao;
 import com.lz.dao.impl.BaseDaoImpl;
@@ -33,12 +35,14 @@ import net.sf.json.JSONObject;
  */
 @WebServlet("/OderPayFromoderServlet")
 public class OderPayFromoderServlet extends HttpServlet {
+	private static final Logger log = Logger.getLogger(OderPayFromoderServlet.class);
 	private static final long serialVersionUID = 1L;
     public OderPayFromoderServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String addrid=request.getParameter("addrid");
 		String gcolorid=request.getParameter("gcolorid");
 		String goodscount=request.getParameter("goodscount");
@@ -128,11 +132,13 @@ public class OderPayFromoderServlet extends HttpServlet {
 			conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				log.error(e);
 			}
 		}finally {
 			DBConnection1.close(conn);

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.AddressDao;
 import com.lz.dao.BaseDao;
 import com.lz.dao.ShopCurrentDao;
@@ -30,6 +32,7 @@ import net.sf.json.JSONObject;
  */
 @WebServlet("/DeleteAddressServlet")
 public class DeleteAddressServlet extends HttpServlet {
+	private static final Logger log = Logger.getLogger(DeleteAddressServlet.class);
 	private static final long serialVersionUID = 1L;
     public DeleteAddressServlet() {
         super();
@@ -93,11 +96,13 @@ public class DeleteAddressServlet extends HttpServlet {
 				conn.commit();
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 				try {
 					conn.rollback();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+					log.error(e);
 				}
 			}finally {
 				DBConnection1.close(conn);

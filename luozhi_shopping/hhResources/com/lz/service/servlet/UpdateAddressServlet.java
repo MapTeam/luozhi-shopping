@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.BaseDao;
 import com.lz.dao.ShopCurrentDao;
 import com.lz.dao.impl.BaseDaoImpl;
@@ -29,7 +31,7 @@ import net.sf.json.JSONObject;
 @WebServlet("/UpdateAddressServlet")
 public class UpdateAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final Logger log = Logger.getLogger(UpdateAddressServlet.class);   
     public UpdateAddressServlet() {
         super();
     }
@@ -86,15 +88,14 @@ public class UpdateAddressServlet extends HttpServlet {
 					conn.rollback();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
+					log.error(e);
 				}
 				e.printStackTrace();
+				log.error(e);
 			}finally {
 				DBConnection1.close(conn);
 			}
-			
 		}
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

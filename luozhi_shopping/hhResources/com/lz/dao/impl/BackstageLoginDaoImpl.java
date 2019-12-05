@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.BackstageLoginDao;
+import com.lz.db.DBConnection1;
 import com.lz.pojo.Admincount;
 
 public class BackstageLoginDaoImpl implements BackstageLoginDao{
-
+	private static final Logger log = Logger.getLogger(BackstageLoginDaoImpl.class);
 	@Override
 	public Admincount selectPasswordByuserame(Connection conn, String username) {
 		Admincount admin=null;
@@ -30,6 +33,7 @@ public class BackstageLoginDaoImpl implements BackstageLoginDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -37,6 +41,7 @@ public class BackstageLoginDaoImpl implements BackstageLoginDao{
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		
