@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- 全站编码 -->
   <filter>
     <filter-name>CharEncode</filter-name>
     <filter-class>com.lz.service.filter.CharEncode</filter-class>
@@ -17,11 +18,23 @@
     <filter-name>CharEncode</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  <!-- 后台过滤 -->
+  <filter>
+    <filter-name>LuoZhiBackFilter</filter-name>
+    <filter-class>com.lz.service.filter.LuoZhiBackFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LuoZhiBackFilter</filter-name>
+    <url-pattern>/backstage/*</url-pattern>
+  </filter-mapping>
+  <!-- 单态登录 -->
   <listener>
     <listener-class>com.lz.service.listener.SingletStateLoginListener</listener-class>
   </listener>
+  <!-- 404 -->
   <error-page>
     <error-code>404</error-code>
     <location>/error/404.jsp</location>
   </error-page>
+  
 </web-app>

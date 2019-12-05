@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 后台登录
  */
-@WebServlet("/AdminLogin")
+@WebServlet("/AdminLogin.do")
 public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public AdminLogin() {
