@@ -35,7 +35,7 @@
 							<ul class="nav navbar-nav">
 								<c:if test="${admin!=null }">
 									<li class="login-li"><a>${admin.acount }</a></li>
-									<li class="regist-li"><a href="regist.html">退出</a></li>
+									<li class="regist-li"><a href="/luozhi_shopping/AdminExitServlet">退出</a></li>
 								</c:if>
 							</ul>
 						</div>
