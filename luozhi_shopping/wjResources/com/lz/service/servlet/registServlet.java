@@ -54,6 +54,8 @@ public class registServlet extends HttpServlet {
 					if (uname.matches(reg_user)&& mail.matches(reg_email)&&pass.matches(reg_pass)) {
 						String smail = (String) request.getSession().getAttribute("Registemail");
 						if(smail!=null&&smail.equals(mail)){
+							request.getSession().removeAttribute("Registemail");
+							request.getSession().removeAttribute("Registcode");
 							String password=Md5.md5(pass);
 							User u = new User();
 							u.setEmail(mail);
@@ -63,11 +65,24 @@ public class registServlet extends HttpServlet {
 							u.setUpicture("11");
 							u.setUpwd(password);
 							Connection conn = DBConnection1.getConnection();
-							boolean flag2 = bdao.insertObject(conn, u);
-							GoodsCar gcar = new GoodsCar(); 
-							u = rdao.registSelectByEmail(mail);
-							gcar.setUid(u.getUid());
-							boolean flag1 = bdao.insertObject(conn, gcar);
+							boolean flag2 = false;
+							boolean flag1 = false;
+							try {
+								conn.setAutoCommit(false);
+								flag2 = bdao.insertObject(conn, u);
+								GoodsCar gcar = new GoodsCar(); 
+								u = rdao.registSelectByEmail(mail);
+								gcar.setUid(u.getUid());
+								flag1 = bdao.insertObject(conn, gcar);
+								conn.commit();
+							} catch (SQLException e) {
+								try {
+									conn.rollback();
+								} catch (SQLException e1) {
+									e1.printStackTrace();
+								}
+								e.printStackTrace();
+							}
 							DBConnection1.close(conn);
 							if(flag1&&flag2) {
 								jo.put("registmsg", true);
