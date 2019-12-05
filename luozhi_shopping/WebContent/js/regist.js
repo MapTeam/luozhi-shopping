@@ -196,9 +196,6 @@ $('#register').click(function(){
 		if(''==userName){
 				$('.name_hidden3').css('display','block');
 			}
-		if($('.yzmcode').val()==''){
-			$('.code_hidden3').css('display','block');
-		}
 		if(''==email){
 			$('.email_hidden3').css('display','block');
 		}
@@ -223,20 +220,21 @@ $('#register').click(function(){
 				mail : email+$('.email-end>li.active').text(),
 				code : $('.yzmcode').val()
 		    }, function(re){
-		        var obj = JSON.parse(re)
-		      //用户名已注册
+		    	
+		        var obj = JSON.parse(re);
+		        //用户名已注册
 		        if(obj.registmsg == false){
 		        	alert(obj.msg);
-		        	return;
-		        };
-		         //注册成功跳转到登录页面
-			      alert('注册成功，点击跳转首页登录页面');
-			      $.post('RemoveSingletStateLoginListenerMsgServlet', {
-			  		value:'Registcode',
-			  	  });
-			      //JS设置页面跳转
-			      window.location.href = 'HomeServlet';
-			      registerFlag = true;
+		        }else{
+		        	//注册成功跳转到登录页面
+				      alert('注册成功，点击跳转首页登录页面');
+				      $.post('RemoveSingletStateLoginListenerMsgServlet', {
+				  		value:'Registcode',
+				  	  });
+				      //JS设置页面跳转
+				      window.location.href = 'HomeServlet';
+		        }
+		        registerFlag = true;
 			    });
 	}else{
 		alert("注册失败，请重新注册");
