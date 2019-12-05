@@ -360,6 +360,7 @@ public class registDaoImpl implements registDao{
 				useroder.setName(rs.getString("name"));
 				useroder.setUname(rs.getString("uname"));
 				useroder.setReason(rs.getString("reason"));
+				useroder.setRefusereason(rs.getString("refusereason"));
 				list.add(useroder);
 				
 			}
@@ -395,6 +396,14 @@ public class registDaoImpl implements registDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return false;
@@ -416,6 +425,14 @@ public class registDaoImpl implements registDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if (conn!=null && !conn.isClosed()) {
+					DBConnection1.close(conn);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return false;

@@ -81,12 +81,7 @@ for(var i = 0;i< oLi.length;i++)
 										<p class="outgoodid">
 											<span>订单号:<span>${arr[i].goname}</span></span>
 										</p>`;
-//							$('#dingdan_nopay').append(str);
-//							console.log(str);
 							for(var j=0;j<arr[i].gogoods.length;j++){
-//								console.log(arr[i].gogoods.length);
-//								console.log('2');
-//								str=``;
 								str =str+ `<div class="liheadmsg">
 												<span><a href="IntroudceServlet?gid=`+arr[i].gogoods[j].gid+`"><img src="http://`+arr[i].gogoods[j].goodspicture+`"/></a></span>
 												<div onclick="clickdb(this)" class="wjmsg">
@@ -110,25 +105,15 @@ for(var i = 0;i< oLi.length;i++)
 											<input type="hidden" value="${arr[i].gogoods[j].gprice }" class="prices">
 											<input type="hidden" value="${arr[i].gogoods[j].goodsnum }" class="number">
 											`;
-							
-//							$('.lili').append(str);
-//							console.log(str);
-//							var str1=$('.prices').eq(j).val();
-//							var str2=$('.number').eq(j).val();
-//							num= parseInt(str1);
-//							price= parseFloat(str2);
-//							sum+=num*price;
 							}
 //							str=``;
-								str = str+`<span id="dingdan_cancel_btn" onclick="cancelclick('`+arr[i].goid+`')">
+								str = str+`<span id="dingdan_cancel_btn" onclick="cancelclick('`+arr[i].goid+`',this)">
 											<button class="btn btn-default">取消订单</button>
 											</span>
 											<span id="dingdan_nopay_btn" onclick="payclick('`+arr[i].goid+`',this)" data-toggle="modal" data-target='#paycount'>
 											<button class="btn btn-danger">立即付款</button>
 											</span>
 											</li>`;
-//								$('.lili').append(str);
-//								console.log(str);
 								$('#dingdan_nopay').append(str);
 						}
 						$('div.goodsdescri').hide();
@@ -245,7 +230,6 @@ for(var i = 0;i< oLi.length;i++)
 								str = str + `<span id="dingdan_nopay_btn" onclick="suresh(this,'`+arr[i].goid+`')">
 											<button class="btn btn-danger">确定收货</button>
 											</span>
-											</span>
 											</li>`;
 								$('#dingdan_send').append(str);
 						}
@@ -285,44 +269,53 @@ for(var i = 0;i< oLi.length;i++)
 												<span id="dingdan_all_color">颜色：<span>`+arr[i].gogoods[j].colortype+`</span></span>
 											</div>`;
 							}
-								str = str + `<span id="dingdan_all_btn"onclick="payclick('`+arr[i].goid+`')">`;
+//								str = str + `<span id="dingdan_all_btn"onclick="payclick('`+arr[i].goid+`')">`;
 								if (arr[i].gostate==0) {
-									str=str+`<span>未发货</span>
+									str=str+`<span id="dingdan_all_btn">
+									<span>未发货</span>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==1) {
-									str=str+`<span>已发货</span>
+									str=str+`<span id="dingdan_all_btn">
+									<span>已发货</span>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==2) {
-									str=str+`<a>待付款</a>
+									str=str+`<span id="dingdan_all_btn" onclick="payclick('`+arr[i].goid+`')">
+									<a>待付款</a>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==7) {
-									str=str+`<span>已取消订单</span>
+									str=str+`<span id="dingdan_all_btn">
+									<span>已取消订单</span>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==3) {
-									str=str+`<span>已收货</span>
+									str=str+`<span id="dingdan_all_btn">
+									<span>已收货</span>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==4) {
-									str=str+`<span>退货中</span>
+									str=str+`<span id="dingdan_all_btn">
+									<span>退货中</span>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==5) {
-									str=str+`<span>退货成功</span>
+									str=str+`<span id="dingdan_all_btn">
+									<span>退货成功</span>
 									</span>
 									</li>`;
 								}
 								if (arr[i].gostate==6) {
-									str=str+`<span>退货失败</span>
+									str=str+`<span class="refusereasonsta">拒绝原因：`+arr[i].refusereason+`</span>
+									<span id="dingdan_all_btn">
+									<span>退货失败</span>
 									</span>
 									</li>`;
 								}
@@ -454,7 +447,7 @@ function payclick(orid,obj) {
 	}
 }
 //取消订单
-function cancelclick(orid) {
+function cancelclick(orid,that) {
 	if (confirm("小主真的不考虑下吗？")) {
 		$.post('SendBtnServlet',{
 			id : orid,
@@ -462,9 +455,8 @@ function cancelclick(orid) {
 		},function(re){
 			var obj=JSON.parse(re);
 			if(obj){
-				location.reload(true);
-//				$(that).parent('li').remove();
-//				alert(orid);
+//				location.reload(true);
+				$(that).parent('li').remove();
 			}else{
 				alert("请重新操作");
 			}
@@ -525,9 +517,7 @@ function suresh(that,orid){
 		},function(re){
 			var obj=JSON.parse(re);
 			if(obj){
-//				location.reload(true);
 				$(that).parent('li').remove();
-//				alert(orid);
 			}else{
 				alert("请重新操作");
 			}

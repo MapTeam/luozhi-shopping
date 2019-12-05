@@ -103,7 +103,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a>
+													<a href="MyaddressServlet">
 														<span class="glyphicon glyphicon-map-marker address"></span>
 														<span class="list-text">我的收货地址</span>
 													</a>
@@ -152,9 +152,9 @@ if(cookie!=null){
 				<!--身体左-->
 				<div class="sd sd-order">
 					<ul class="m-snav m-snav-order">
-						<li class="z-sel"><a href="personal_order.html"><i></i><span>我的订单</span></a></li>
+						<li class="z-sel"><a href="UserOrderServlet"><i></i><span>我的订单</span></a></li>
 						<li><a href="javaScript:;"><i></i><span>我的优惠券</span></a></li>
-						<li><a href="my_address.html"><i></i><span>我的收货地址</span></a></li>
+						<li><a href="MyaddressServlet"><i></i><span>我的收货地址</span></a></li>
 						<li><a target="_blank" href="javaScript:;"><i></i><span>在线客服</span></a></li>
 					</ul>
 				</div>	

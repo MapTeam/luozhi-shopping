@@ -107,7 +107,7 @@ if(cookie!=null){
 										<ul>
 											<!--Regular list-->
 											<li>
-												<a href="personal_order.html">
+												<a href="UserOrderServlet">
 													<span class="glyphicon glyphicon-list-alt myorder"></span>
 													<span class="list-text">我的订单</span>
 												</a>
@@ -172,7 +172,7 @@ if(cookie!=null){
 				<div class="sd sd-order">
 					<ul class="m-snav m-snav-order">
 						<li>
-							<a href="personal_order.html"><i></i><span>我的订单</span></a>
+							<a href="UserOrderServlet"><i></i><span>我的订单</span></a>
 						</li>
 						<li>
 							<a href="javaScript:;"><i></i><span>我的优惠券</span></a>
