@@ -172,27 +172,27 @@ if(cookie!=null){
             </tr>
         <!--商品-->
           <c:forEach items="${goodscardto}" var="a">
-         <tr class="shoping">
-          <td class="shangpin">
-          	<div>
-          		<input type="checkbox" class="check"/>
-          		<input type="hidden" class="gcgid" value="${a.gcgid}"/>
-          	</div>          
-            <img class="img" src="${a.zpicture}"/>
-          </td>
-          <td class="desc">
-          	<p> ${a.gname}</p>
-          	<p style="color:#c0c0c0; "> ${a.colortype}</p>
-          </td>
-          <td class="money"><fmt:formatNumber type="number" value="${a.gprice}" pattern="0.00" maxFractionDigits="2"/></td>
-          <td>
-            <span class="add glyphicon glyphicon-plus" id="product_num_addbtn" ></span>
-            <input id="product_num_text" type="button" value="${a.goodsnum}" class="count"/>
-            <span class="reduce glyphicon glyphicon-minus" id="product_num_decbtn"></span>
-          </td>
-          <td class="subtotal"><fmt:formatNumber type="number" value="${a.gprice*a.goodsnum}" pattern="0.00" maxFractionDigits="2"/></td>
-           <td class="delete"><input type="hidden" class="gcgid" value="${a.gcgid}"/><a href="javascript:;"><img class="del" src="img/ca.png"></a></td>
-        </tr>
+	         <tr class="shoping">
+	          <td class="shangpin">
+	          	<div>
+	          		<input type="checkbox" class="check"/>
+	          		<input type="hidden" class="gcgid" value="${a.gcgid}"/>
+	          	</div>          
+	            <img class="img" src="${a.zpicture}"/>
+	          </td>
+	          <td class="desc">
+	          	<p> ${a.gname}</p>
+	          	<p style="color:#c0c0c0; "> ${a.colortype}</p>
+	          </td>
+	          <td class="money"><fmt:formatNumber type="number" value="${a.gprice}" pattern="0.00" maxFractionDigits="2"/></td>
+	          <td>
+	            <span class="add glyphicon glyphicon-plus" id="product_num_addbtn" ></span>
+	            <input id="product_num_text" type="button" value="${a.goodsnum}" class="count"/>
+	            <span class="reduce glyphicon glyphicon-minus" id="product_num_decbtn"></span>
+	          </td>
+	          <td class="subtotal"><fmt:formatNumber type="number" value="${a.gprice*a.goodsnum}" pattern="0.00" maxFractionDigits="2"/></td>
+	           <td class="delete"><input type="hidden" class="gcgid" value="${a.gcgid}"/><a href="javascript:;"><img class="del" src="img/ca.png"></a></td>
+	        </tr>
           </c:forEach>
         </table>
         <div class="jiesuan">
