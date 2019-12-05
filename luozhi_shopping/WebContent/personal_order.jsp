@@ -318,50 +318,7 @@ if(cookie!=null){
 		
 
 		
-		<!--login-->
-		<div class="modal fade" id="login" data-backdrop="static">
-	        <div class="modal-dialog">
-		        <div class="modal-content">
-			        <div class="modal-header">
-			            <div class="text-success modal-title">账号登录</div>
-			            <span class="close" data-dismiss="modal"></span>
-			        </div>
-			        <div class="modal-body">
-			            <div class="row1">
-		                    <div class="form-inline">
-				                <div class="form-group">
-					                <label>用户：</label>
-					                <input type="text" class="form-control user" id="username" placeholder="请输入账号"/>
-				            	</div>
-				          	</div>
-			                <div class="form-inline password">
-					            <div class="form-group">
-					                <label>密码：</label>
-					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码"/>
-					            </div>
-						    </div>
-						    <div class="auto">
-						    	<label class="lab">
-					        		<input type="checkbox" id="autologin"/>
-					        		<span>记住密码</span>
-					        	</label>
-					        	<a href="#" class="forget">忘记密码？</a>
-				            </div>
-				            <div class="login_btn">
-				            	<button class="btn btn-primary" id="login-btn">登录</button>
-				            </div>
-				        </div>
-			        </div>
-		        
-			        <div class="modal-footer">
-				        <button class="btn btn-danger" data-dismiss="modal">取消</button>
-				        <a target="_blank" href="regist.html">没有帐号？免费注册  ></a>
-			        </div>
-	        
-		    	</div>
-	   		</div>
-	    </div>
-
+		
 		<!-- 支付 -->
 		<div class="modal" id="paycount" data-backdrop="static">
 			<div class="pay_order_sure">

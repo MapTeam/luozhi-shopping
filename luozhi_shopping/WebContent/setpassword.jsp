@@ -42,10 +42,10 @@
 						<div class="form-heid">
 							<ul>
 								<li class="title1">热门搜索</li>
-								<li><a href="">真无线</a></li>
-								<li><a href="">潮流系列</a></li>
-								<li><a href="">乐器</a></li>
-								<li><a href="">蓝牙</a></li>
+								<li><a style="cursor: pointer;">真无线</a></li>
+								<li><a style="cursor: pointer;">潮流系列</a></li>
+								<li><a style="cursor: pointer;">乐器</a></li>
+								<li><a style="cursor: pointer;">蓝牙</a></li>
 							</ul>
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 					<div class="col-xs-12 col-lg-4 col-md-8 col-sm-8 navbar-right">
 						<div class="collapse navbar-collapse navbar-right" id="myNav">
 							<ul class="nav navbar-nav">
-								<li><a href="shopcar.html" class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>
+								<li><a  class="shoppingCat"><span class="glyphicon glyphicon-shopping-cart cat"></span> <span class="badge catfont">0</span></a></li>
 								<li><a class="login-a" data-toggle="modal" data-target='#login'>登录</a></li>
 								
 							</ul>
@@ -152,12 +152,13 @@
 					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
 					            </div>
 						    </div>
+						     <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
-					        		<span>保存密码</span>
+					        		<span>记住密码</span>
 					        	</label>
-					        	<a href="#" class="forget">忘记密码？</a>
+					        	<a href="/luozhi_shopping/resetpassword.jsp" class="forget">忘记密码？</a>
 				            </div>
 				            <div class="login_btn">
 				            	<button class="btn btn-primary" id="login-btn">登录</button>

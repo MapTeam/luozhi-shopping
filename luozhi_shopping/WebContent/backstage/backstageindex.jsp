@@ -16,7 +16,7 @@
 			<nav class="navbar navbar-default">
 				<div class="container">
 					<div class="navbar-head navbar-left">
-						<a href="HomeServlet" class="navbar-brand">
+						<a class="navbar-brand">
 							<img src="/luozhi_shopping/img/logo.png " class="logo"/>
 							<!--<span id="logo-font">
 								洛枳商城
@@ -52,7 +52,7 @@
 			<div class="container">
 				<div class="row" id="top">
 					<h4>
-					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;" href="../home.html" class="col-md-1">后台管理</a>
+					<a style="font-size: 25px;font-weight: bold;color: black;top: 16px;"  class="col-md-2">后台管理</a>
 				    </h4>
 				</div>
 				 <hr  class="row"/>

@@ -110,7 +110,7 @@ if(cookie!=null){
 										<ul>
 											<!--Regular list-->
 											<li>
-												<a href="personal_order.html">
+												<a href="UserOrderServlet">
 													<span class="glyphicon glyphicon-list-alt myorder"></span>
 													<span class="list-text">我的订单</span>
 												</a>
@@ -124,7 +124,7 @@ if(cookie!=null){
 											</li>
 
 											<li>
-												<a>
+												<a href="MyaddressServlet">
 													<span class="glyphicon glyphicon-map-marker address"></span>
 													<span class="list-text">我的收货地址</span>
 												</a>

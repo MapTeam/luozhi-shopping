@@ -32,7 +32,7 @@ public class LuoZhiBackFilter implements Filter {
 		if(admin!=null){
 			chain.doFilter(request, response);
 		}else{
-			res.sendRedirect("/luozhi_shopping/home.jsp");
+			res.sendRedirect("/luozhi_shopping/AdminLogin.do");
 		}
 	}
 

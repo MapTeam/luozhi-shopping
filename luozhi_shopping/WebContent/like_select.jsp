@@ -91,7 +91,7 @@ if(cookie!=null){
 											<ul>
 												<!--Regular list-->
 												<li>
-													<a href="personal_order.html">
+													<a href="UserOrderServlet">
 														<span class="glyphicon glyphicon-list-alt myorder"></span>
 														<span class="list-text">我的订单</span>
 													</a>
@@ -105,7 +105,7 @@ if(cookie!=null){
 												</li>
 		
 												<li>
-													<a>
+													<a href="MyaddressServlet">
 														<span class="glyphicon glyphicon-map-marker address"></span>
 														<span class="list-text">我的收货地址</span>
 													</a>
@@ -278,13 +278,13 @@ if(cookie!=null){
 					                <input type="password" class="form-control loginpass" id="pwd" placeholder="请输入密码" value="${pageScope.upwd }"/>
 					            </div>
 						    </div>
-						    <div class="loginmsg"></div>
+						     <div class="loginmsg"></div>
 						    <div class="auto">
 						    	<label class="lab">
 					        		<input type="checkbox" id="savepassword" ${pageScope.check?"checked":"" }/>
 					        		<span>记住密码</span>
 					        	</label>
-					        	<a href="#" class="forget">忘记密码？</a>
+					        	<a href="/luozhi_shopping/resetpassword.jsp" class="forget">忘记密码？</a>
 				            </div>
 				            <div class="login_btn">
 				            	<button class="btn btn-primary" id="login-btn">登录</button>
