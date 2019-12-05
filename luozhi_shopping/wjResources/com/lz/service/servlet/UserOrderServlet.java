@@ -16,7 +16,7 @@ import com.lz.dto.GoodsOrdergoodDto;
 import com.lz.dto.UserInfo;
 import com.lz.util.FinalType;
 /*
- * 用户订单
+ * 用户订单界面
  */
 @WebServlet("/UserOrderServlet")
 public class UserOrderServlet extends HttpServlet {

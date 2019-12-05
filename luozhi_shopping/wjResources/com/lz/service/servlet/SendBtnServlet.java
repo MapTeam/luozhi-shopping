@@ -18,7 +18,9 @@ import com.lz.util.CreateName;
 import com.lz.util.FinalType;
 
 import net.sf.json.JSONObject;
-
+/*
+ * 点击得到或改变的数据
+ */
 @WebServlet("/SendBtnServlet")
 public class SendBtnServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +37,7 @@ public class SendBtnServlet extends HttpServlet {
 		String tel=request.getParameter("tel");
 		String ui=request.getParameter("uid");
 		String msg=request.getParameter("msg");
+		Connection conn=DBConnection1.getConnection();
 //		System.out.println(id);
 //		System.out.println(sta);
 //		System.out.println(address);
@@ -47,7 +50,7 @@ public class SendBtnServlet extends HttpServlet {
 			int status=Integer.parseInt(sta);
 //			System.out.println(ui);
 			int uid=Integer.parseInt(ui);
-			Connection conn=DBConnection1.getConnection();
+//			Connection conn=DBConnection1.getConnection();
 			try {
 				conn.setAutoCommit(false);
 				registDao dao=new registDaoImpl();
@@ -80,7 +83,7 @@ public class SendBtnServlet extends HttpServlet {
 			int soid=Integer.parseInt(id);
 			int status=Integer.parseInt(sta);
 			registDao dao=new registDaoImpl();
-			boolean flag=dao.selectBySoid(soid, status);
+			boolean flag=dao.selectBySoid(conn,soid, status);
 			JSONObject jo=new JSONObject().fromObject(flag);
 			PrintWriter pw=response.getWriter();
 			pw.write(jo.toString());

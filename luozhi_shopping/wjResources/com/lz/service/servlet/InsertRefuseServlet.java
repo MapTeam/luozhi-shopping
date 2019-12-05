@@ -28,20 +28,24 @@ public class InsertRefuseServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		registDao dao =new registDaoImpl();
-		String goid=request.getParameter("id");
-		int id=Integer.parseInt(goid);
 		
+		String goid=request.getParameter("id");
 		String sta=request.getParameter("status");
-		int status=Integer.parseInt(sta);
-
 		String msg=request.getParameter("msg");
-		boolean flag=dao.insertRefuseReasonById(msg, id,status);   
-		JSONObject jo=new JSONObject().fromObject(flag);
-		PrintWriter pw=response.getWriter();
-		pw.write(jo.toString());
-		pw.flush();
-		pw.close();
+		if (goid!=null && sta!=null && msg!=null) {
+			int status=Integer.parseInt(sta);
+			int id=Integer.parseInt(goid);
+			registDao dao =new registDaoImpl();
+			boolean flag=dao.insertRefuseReasonById(msg, id,status);   
+			JSONObject jo=new JSONObject().fromObject(flag);
+			PrintWriter pw=response.getWriter();
+			pw.write(jo.toString());
+			pw.flush();
+			pw.close();
+		}
+		
+		
+		
 	}
 
 }

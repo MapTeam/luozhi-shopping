@@ -18,7 +18,9 @@ import com.lz.dto.GoodsOrdergoodDto;
 import com.lz.dto.UserInfo;
 
 import net.sf.json.JSONArray;
-
+/*
+ * 用户通过Ajax得到对应状态码的数据
+ */
 @WebServlet("/UserOrderByUidAndSta")
 public class UserOrderByUidAndSta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,11 +34,12 @@ public class UserOrderByUidAndSta extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	registDao dao=new registDaoImpl();
 	UserInfo ui=(UserInfo) request.getSession().getAttribute("userinfo");
 	if (ui!=null) {
 		int uid=ui.getUser().getUid();
 		String str=request.getParameter("status");
+		if (str!=null) {
+		registDao dao=new registDaoImpl();
 		int status=Integer.parseInt(str);
 		List<GoodsOrderDto> list=dao.selectUserOrderByStaAndUid(uid, status);
 		if (list!=null) {
@@ -44,13 +47,13 @@ public class UserOrderByUidAndSta extends HttpServlet {
 				List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
 				list.get(i).setGogoods(list1);
 			}
-			
 		}
 		JSONArray jarr=new JSONArray().fromObject(list);
 		PrintWriter pw=response.getWriter();
 		pw.write(jarr.toString());
 		pw.flush();
 		pw.close();
+		}
 	}else {
 		response.sendRedirect("HomeServlet");
 	}

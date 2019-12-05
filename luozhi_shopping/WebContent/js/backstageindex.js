@@ -72,10 +72,10 @@
 												</p>
 											</div>`;
 							}
-							str = str + `<span id="dingdan_update_btn">
-								<button class="btn btn-default">更改地址</button>
-							</span>
-							<span id="dingdan_noput_btn" onclick="sendclick('`+arr[i].goid+`','`+arr[i].tel+`','`+arr[i].uid+`')">
+							str = str + `<span id="dingdan_update_btn" onclick="updateaddress(this)">
+											<button class="btn btn-default">更改地址</button>
+										</span>
+										<span id="dingdan_noput_btn" onclick="sendclick(this,'`+arr[i].goid+`','`+arr[i].tel+`','`+arr[i].uid+`')">
 											<button class="btn btn-default">发货</button>
 										</span>
 										</li>`;
@@ -96,7 +96,7 @@
 						for(var i=0;i<arr.length;i++){
 							var str=`<li>
 							<div class="outgoodid">
-								<span>订单号:<span>${arr[i].goid}</span></span>
+								<span>订单号:<span>${arr[i].goname}</span></span>
 							</div>`;
 							for(var j=0;j<arr[i].gogoods.length;j++){
 								str = str + `<div class="liheadmsg" onclick="clickdb(this)">
@@ -142,7 +142,7 @@
 						for(var i=0;i<arr.length;i++){
 							var str=`<li>
 								<div class="outgoodid">
-									<span>订单号:<span>${arr[i].goid}</span></span>
+									<span>订单号:<span>${arr[i].goname}</span></span>
 								</div>`;
 								for(var j=0;j<arr[i].gogoods.length;j++){
 									str = str + `<div class="liheadmsg">
@@ -156,13 +156,13 @@
 								}
 								str = str + `
 										<div class="dingdan_waitback_reason">
-										<span id="dingdan_waitback_yes" onclick="agree('${arr[i].goid}')"><button class="btn btn-success">同意</button></span>
-										<span id="dingdan_waitback_no" onclick="refuse('${arr[i].goid}')"><button class="btn btn-danger">拒绝</button></span>
-										<span id="dingdan_waitback_no_result">
-										    <textarea style="resize: none" value placeholder="拒绝原因："></textarea>
-										</span>
+											<span id="dingdan_waitback_yes" onclick="agree(this,'${arr[i].goid}')"><button class="btn btn-success">同意</button></span>
+											<span id="dingdan_waitback_no" onclick="refuse(this,'${arr[i].goid}')"><button class="btn btn-danger">拒绝</button></span>
+											<span id="dingdan_waitback_no_result">
+										    	<textarea style="resize: none" value placeholder="拒绝原因："></textarea>
+											</span>
 										</div>
-									`;
+									</li>`;
 							
 							 	$('#dingdan_waitback').append(str);
 						}
@@ -179,7 +179,7 @@
 						for (var i = 0; i < arr.length; i++) {
 							var str=`<li>
 								<div class="outgoodid">
-									<span>订单号:<span>${arr[i].goid}</span></span>
+									<span>订单号:<span>${arr[i].goname}</span></span>
 								</div>`;
 							for(var j=0;j<arr[i].gogoods.length;j++){
 								str = str +`<div class="liheadmsg">
@@ -208,7 +208,7 @@
 })();
 
 //未发货块、
-function sendclick(orid,tel,uid) {
+function sendclick(that,orid,tel,uid) {
 //	alert(uid);
 //	alert(tel);
 	if (confirm("是否确定发货")) {
@@ -219,10 +219,11 @@ function sendclick(orid,tel,uid) {
 			tel : tel,
 			uid : uid
 		},function(re){
-			var obj=JSON.parse(re);
-			if(obj){
+//			var obj=JSON.parse(re);
+			if(re){
 				alert("发货成功");
-				$('#dingdan_noput_btn').parent('li').remove();
+				$(that).parent('li').remove();
+//				$('#dingdan_noput_btn').parent('li').remove();
 			}else{
 				alert("发货失败");
 			}
@@ -232,7 +233,7 @@ function sendclick(orid,tel,uid) {
 }
 
 //申请退货同意
-	function agree(orid){
+	function agree(that,orid){
 		if (confirm("确定同意申请？")) {
 			$.post('SendBtnServlet',{
 				id : orid,
@@ -241,7 +242,7 @@ function sendclick(orid,tel,uid) {
 				var obj=JSON.parse(re);
 				if(obj){
 					alert("退款成功！");
-					$('#dingdan_waitback_yes').parent().parent('li').remove();
+					$(that).parent('.dingdan_waitback_reason').parent('li').remove();
 				}else{
 					alert("退款失败！");
 				}
@@ -249,12 +250,12 @@ function sendclick(orid,tel,uid) {
 		}
 	};
 //  申请退货拒绝
-	function refuse(orid){
-//		alert($(this).parent('span').siblings('span').children('textarea').val());
-		if ($('#dingdan_waitback_no').siblings('span').children('textarea').val()=="") {
+	function refuse(that,orid){
+//		alert($(that).siblings('span').children('textarea').val());
+		if ($(that).siblings('span').children('textarea').val()=="") {
 			alert("请填写拒绝理由！");
 		}else {
-			var str=$('#dingdan_waitback_no').siblings('span').children('textarea').val();
+			var str=$(that).siblings('span').children('textarea').val();
 			if(confirm("确定拒绝申请？")) {
 				$.post('InsertRefuseServlet',{
 					id : orid,
@@ -263,7 +264,7 @@ function sendclick(orid,tel,uid) {
 				},function(re){
 					if (re) {
 						alert("已拒绝申请！");
-						$('#dingdan_waitback_no').parent().parent('li').remove();
+						$(that).parent('.dingdan_waitback_reason').parent('li').remove();
 					}else{
 						alert("拒绝失败！")
 					}
@@ -276,34 +277,11 @@ function sendclick(orid,tel,uid) {
 	
 	
 	//更改地址
-//	function updateclick(orid) {
-//		if (confirm("是否更改地址")) {
-////			$(that).siblings('.editaddress').css('display','block');
-////			$(that).siblings('.myaddress').css('display','none');
-//			$('.myaddress').css('display','none');
-//			$('.editaddress').css('display','block');
-//		}
-//	}
-
-//手风琴
-$('div.goodsdescri').hide();
-function clickdb(that) {
-	$(that).next().slideToggle();
-	
-};
-
-//alert($('.dingdan_li').length);
-
-var addresswj="";
-//更改地址
-$('.dingdan_li').each(function(e) {
-	$(this).children('#dingdan_update_btn').click(function(){
+	var addresswj="";
+	function updateaddress(that) {
 		if (confirm("是否更改地址")) {
-//			$('.myaddress').css('display','none');
-//			$('.editaddress').css('display','block');
-			$(this).siblings('.goodsdescri').children('p').children('.myaddress').css('display','none');
-			$(this).siblings('.goodsdescri').children('p').children('.editaddress').css('display','block');
-//			var orid=$(this).siblings('.outgoodid').children('span').children('span').text();
+			$(that).siblings('.goodsdescri').children('p').children('.myaddress').css('display','none');
+			$(that).siblings('.goodsdescri').children('p').children('.editaddress').css('display','block');
 			$('.editaddress>input').focus(function(event) {
 				 this.select();
 			});
@@ -314,9 +292,42 @@ $('.dingdan_li').each(function(e) {
 				$(this).parent('span').siblings('.myaddress').children('span').html(str);
 				addresswj=str;
 			});
+			
 		}
-		
-	});
-});
+	}
+
+//手风琴
+$('div.goodsdescri').hide();
+function clickdb(that) {
+	$(that).next().slideToggle();
+	
+};
+
+//alert($('.dingdan_li').length);
+
+//var addresswj="";
+//更改地址
+//$('.dingdan_li').each(function(e) {
+//	$(this).children('#dingdan_update_btn').click(function(){
+//		if (confirm("是否更改地址")) {
+////			$('.myaddress').css('display','none');
+////			$('.editaddress').css('display','block');
+//			$(this).siblings('.goodsdescri').children('p').children('.myaddress').css('display','none');
+//			$(this).siblings('.goodsdescri').children('p').children('.editaddress').css('display','block');
+////			var orid=$(this).siblings('.outgoodid').children('span').children('span').text();
+//			$('.editaddress>input').focus(function(event) {
+//				 this.select();
+//			});
+//			$('.editaddress>input').blur(function(event) {
+//				var str=$(this).val();
+//				$(this).parent('span').siblings('.myaddress').css('display','block');
+//				$(this).parent('span').css('display','none');
+//				$(this).parent('span').siblings('.myaddress').children('span').html(str);
+//				addresswj=str;
+//			});
+//		}
+//		
+//	});
+//});
 
 

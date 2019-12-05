@@ -207,7 +207,7 @@ if(cookie!=null){
 															</p>
 														</div>
 												</c:forEach>
-												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}')">
+												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}',this)">
 													<button class="btn btn-default">取消订单</button>
 												</span>
 												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}',this)"  data-toggle="modal" data-target='#paycount'>
@@ -299,7 +299,7 @@ if(cookie!=null){
 						<a href="#">意见反馈</a>
 					</p>
 					<p>
-						<span>网易公司版权所有©1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
+						<span>洛枳公司版权所有©1997-2019　杭州乐读科技有限公司运营：浙网文[2015] 0415-135号</span>
 					</p>
 				</div>
 				

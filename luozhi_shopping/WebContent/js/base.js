@@ -68,6 +68,15 @@ $('.form-heid').mouseleave(function() {
 	});
 })();
 
+//密码框获焦
+$('#pwd').focus(function() {
+	$('.loginmsg').hide();
+});
+
+//账号框获焦
+$('#username').focus(function() {
+	$('.loginmsg').hide();
+});
 
 var f2 = true;
 //登录
@@ -83,7 +92,8 @@ var f2 = true;
 		var pwd = $('#pwd').val();
 		//验证
 		if(userName == '' || pwd == '') {
-			alert('不能为空');
+			$('.loginmsg').show();
+			$('.loginmsg').html("账号或密码不能为空！");
 			return;
 		};
 		//请求登录
@@ -95,6 +105,7 @@ var f2 = true;
 			var obj = JSON.parse(re);
 			//分两种情况  1001失败  1000成功
 			if(obj.code == 1001) {
+				$('.loginmsg').show();
 				$('.loginmsg').html("账号或密码错误！");
 				return;
 			};

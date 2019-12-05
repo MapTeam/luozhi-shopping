@@ -88,7 +88,7 @@ public class registDaoImpl implements registDao{
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * FROM goodsorder a,address b,`user` c WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid";
+		String sql="SELECT * FROM goodsorder a,address b,`user` c WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid order by goid DESC";
 		GoodsOrderDto goodsorder=null;
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -135,7 +135,7 @@ public class registDaoImpl implements registDao{
 	public List<GoodsOrderDto> selectOrderByOrSta(int status) {
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * FROM goodsorder a,address b,`user` c,outgood  o WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid and a.outgoodid=o.outgoodname";
+		String sql="SELECT * FROM goodsorder a,address b,`user` c,outgood  o WHERE gostate = ?  AND a.addressid = b.addressid AND a.uid = c.uid and a.outgoodid=o.outgoodname order by goid DESC";
 		GoodsOrderDto goodsorder=null;
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -222,8 +222,8 @@ public class registDaoImpl implements registDao{
 
 //	更改状态码
 	@Override
-	public boolean selectBySoid(int id,int status) {
-		Connection conn=DBConnection1.getConnection();
+	public boolean selectBySoid(Connection conn,int id,int status) {
+//		Connection conn=DBConnection1.getConnection();
 		String sql="update goodsorder set gostate =? where goid=? ";
 		try {
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -284,7 +284,7 @@ public class registDaoImpl implements registDao{
 	@Override
 	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid, int status) {
 		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=? and a.gostate=? and a.addressid=b.addressid and a.uid=u.uid";
+		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=? and a.gostate=? and a.addressid=b.addressid and a.uid=u.uid order by goid DESC";
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		GoodsOrderDto useroder=null;
 		try {
@@ -334,7 +334,7 @@ public class registDaoImpl implements registDao{
 	@Override
 	public List<GoodsOrderDto> selectUserOrderByuid(int uid) {
 		Connection conn=DBConnection1.getConnection();
-		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=?  and a.addressid=b.addressid and a.uid=u.uid";
+		String sql="SELECT * FROM goodsorder a,address b,`user` u where a.uid=?  and a.addressid=b.addressid and a.uid=u.uid order by goid DESC";
 		List<GoodsOrderDto> list=new ArrayList<GoodsOrderDto>();
 		GoodsOrderDto useroder=null;
 		try {
@@ -396,16 +396,7 @@ public class registDaoImpl implements registDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (conn!=null && !conn.isClosed()) {
-					DBConnection1.close(conn);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
-		
 		return false;
 	}
 
@@ -425,14 +416,6 @@ public class registDaoImpl implements registDao{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (conn!=null && !conn.isClosed()) {
-					DBConnection1.close(conn);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 		}
 		
 		return false;

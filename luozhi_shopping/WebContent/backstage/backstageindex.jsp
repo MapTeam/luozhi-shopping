@@ -185,10 +185,10 @@
 									</p>
 								</div>
 							</c:forEach>
-							<span id="dingdan_update_btn">
+							<span id="dingdan_update_btn" onclick="updateaddress(this,'${orderlist.goid}')">
 								<button class="btn btn-default">更改地址</button>
 							</span>
-							<span id="dingdan_noput_btn" onclick="sendclick('${orderlist.goid}','${orderlist.tel }','${orderlist.uid }')">
+							<span id="dingdan_noput_btn" onclick="sendclick(this,'${orderlist.goid}','${orderlist.tel }','${orderlist.uid }')">
 									<button class="btn btn-default">发货</button>
 							</span>
 							</li>

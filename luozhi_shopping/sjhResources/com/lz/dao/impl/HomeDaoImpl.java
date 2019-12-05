@@ -7,13 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.HomeDao;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.Goods;
 
 public class HomeDaoImpl implements HomeDao {
-
-
+	private static final Logger log = Logger.getLogger(HomeDaoImpl.class);
+	/**
+	 * 查询goods 从start到num
+	 */
 	@Override
 	public List<Goods> getHomeGoods(Connection conn,int start,int num) {
 		if(num==0){
@@ -47,6 +51,7 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -54,11 +59,14 @@ public class HomeDaoImpl implements HomeDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return gs;
 	}
-
+	/**
+	 * 查询goods 16条 hot 排序
+	 */
 	@Override
 	public List<Goods> getHotGoods(Connection conn) {
 		List<Goods> hs= new ArrayList<Goods>();	
@@ -87,6 +95,7 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -94,12 +103,15 @@ public class HomeDaoImpl implements HomeDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return hs;
 		
 	}
-
+	/**
+	 * 查询goods随机20条
+	 */
 	@Override
 	public List<Goods> getRecommandGoods(Connection conn) {
 		List<Goods> res = new ArrayList<Goods>();
@@ -128,6 +140,7 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -135,12 +148,15 @@ public class HomeDaoImpl implements HomeDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return res;
 
 	}
-
+	/**
+	 * 查询IP周边goods
+	 */
 	@Override
 	public List<Goods> getIpGoods(Connection conn) {
 		List<Goods> Is = new ArrayList<Goods>();
@@ -169,6 +185,7 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -176,11 +193,14 @@ public class HomeDaoImpl implements HomeDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return Is;
 	}
-
+	/**
+	 * 查询数码goods
+	 */
 	@Override
 	public List<Goods> getShuMaGoods(Connection conn) {
 		List<Goods> sms = new ArrayList<Goods>();
@@ -209,6 +229,7 @@ public class HomeDaoImpl implements HomeDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -216,6 +237,7 @@ public class HomeDaoImpl implements HomeDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return sms;

@@ -19,6 +19,9 @@ import com.lz.util.FinalType;
 
 import net.sf.json.JSONArray;
 
+/*
+ * 通过Ajax请求后台数据
+ */
 @WebServlet("/OrderServlet")
 public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,26 +36,38 @@ public class OrderServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sta=request.getParameter("status");
-		registDao dao=new registDaoImpl();
-		int status=Integer.parseInt(sta);
-		List<GoodsOrderDto> list=null;
-		if (status==1) {
-			list=dao.selectOrderByOrSta(status);
-		}else {
-			list=dao.selectAllOrderByOrSta(status);
+		if (sta!=null) {
+			int status=Integer.parseInt(sta);
+			registDao dao=new registDaoImpl();
+			List<GoodsOrderDto> list=null;
+			if (status==1) {
+				list=dao.selectOrderByOrSta(status);
+			}else {
+				list=dao.selectAllOrderByOrSta(status);
+			}
+			if (list!=null) {
+				for (int i = 0; i < list.size(); i++) {
+					List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
+//					System.out.println(list1);
+					list.get(i).setGogoods(list1);
+				}
+			}
+				JSONArray jar = new JSONArray().fromObject(list);
+				PrintWriter pw = response.getWriter();
+				pw.write(jar.toString());
+				pw.flush();
+				pw.close();
+			
+			
 		}
-		for (int i = 0; i < list.size(); i++) {
-			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
-//			System.out.println(list1);
-			list.get(i).setGogoods(list1);
-		}
+		
+		
+		
+		
+		
 //		System.out.println(list);
 //		request.setAttribute("list",list);
-		JSONArray jar = new JSONArray().fromObject(list);
-		PrintWriter pw = response.getWriter();
-		pw.write(jar.toString());
-		pw.flush();
-		pw.close();
+		
 //		request.getRequestDispatcher("backstage/backstageindex.jsp").forward(request, response);
 	}
 
