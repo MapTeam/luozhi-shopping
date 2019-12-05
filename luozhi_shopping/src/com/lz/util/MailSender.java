@@ -4,6 +4,9 @@ import com.sun.mail.util.MailSSLSocketFactory;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
+import org.apache.log4j.Logger;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -13,6 +16,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class MailSender {
+	private static final Logger log = Logger.getLogger(MailSender.class);
     private static Properties properties = new Properties();
     static{
         try {
@@ -20,6 +24,7 @@ public class MailSender {
             properties.load(MailSender.class.getResourceAsStream("/email.properties"));
         } catch (IOException e) {
             e.printStackTrace();
+            log.error(e);
         }
     }
 
@@ -39,6 +44,7 @@ public class MailSender {
             sf = new MailSSLSocketFactory();
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
+            log.error(e);
         }
 
         properties.put("mail.smtp.ssl.socketFactory", sf);
@@ -80,6 +86,7 @@ public class MailSender {
 
         } catch (Exception e) {
             e.printStackTrace();
+            log.error(e);
         }
     }
     
@@ -93,6 +100,7 @@ public class MailSender {
             sf = new MailSSLSocketFactory();
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
+            log.error(e);
         }
 
         properties.put("mail.smtp.ssl.socketFactory", sf);
@@ -134,6 +142,7 @@ public class MailSender {
 
         } catch (Exception e) {
             e.printStackTrace();
+            log.error(e);
         }
     }
 }

@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.IntroduceDao;
+import com.lz.db.DBConnection1;
 import com.lz.pojo.GoodsIntroduceImg;
 
 public class IntroduceDaoImpl implements IntroduceDao {
-
+	private static final Logger log = Logger.getLogger(IntroduceDaoImpl.class);
 	/**
 	 * 获取商品的介绍
 	 * @param conn
@@ -34,6 +37,7 @@ public class IntroduceDaoImpl implements IntroduceDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&ps.isClosed()){
@@ -41,6 +45,7 @@ public class IntroduceDaoImpl implements IntroduceDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return gii;

@@ -10,11 +10,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.BaseDao;
+import com.lz.db.DBConnection1;
 import com.lz.pojo.User;
 
 public class BaseDaoImpl implements BaseDao {
-
+	private static final Logger log = Logger.getLogger(BaseDaoImpl.class);
 	@Override
 	public boolean insertObject(Connection conn, Object obj) {
 		boolean flag = false;
@@ -33,6 +36,7 @@ public class BaseDaoImpl implements BaseDao {
 					methods.add(c.getMethod(m, null));
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 				sb.append(f[i].getName());
 				if(i<f.length-1){
@@ -59,6 +63,7 @@ public class BaseDaoImpl implements BaseDao {
 					ps.setObject(i+1, methods.get(i).invoke(obj, null));
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				} 
 			}
 			int fl = ps.executeUpdate();
@@ -67,6 +72,7 @@ public class BaseDaoImpl implements BaseDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&!ps.isClosed()){
@@ -74,6 +80,7 @@ public class BaseDaoImpl implements BaseDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return flag;
@@ -95,6 +102,7 @@ public class BaseDaoImpl implements BaseDao {
 			m = c.getMethod(mt, null);
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}
 		
 		sb.append(field+"=?");
@@ -106,6 +114,7 @@ public class BaseDaoImpl implements BaseDao {
 				ps.setObject(1, m.invoke(obj, null));
 			} catch (Exception e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 			int fl = ps.executeUpdate();
 			if(fl>0){
@@ -113,6 +122,7 @@ public class BaseDaoImpl implements BaseDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&!ps.isClosed()){
@@ -120,6 +130,7 @@ public class BaseDaoImpl implements BaseDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return flag;
@@ -143,6 +154,7 @@ public class BaseDaoImpl implements BaseDao {
 					methods.add(c.getMethod(m, null));
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 				sb.append(f[i].getName()+"=?");
 				if(i<f.length-1){
@@ -157,6 +169,7 @@ public class BaseDaoImpl implements BaseDao {
 			methods.add(c.getMethod(m, null));
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}
 		
 		PreparedStatement ps = null;
@@ -167,6 +180,7 @@ public class BaseDaoImpl implements BaseDao {
 					ps.setObject(i+1, methods.get(i).invoke(obj, null));
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				} 
 			}
 			int fl = ps.executeUpdate();
@@ -175,6 +189,7 @@ public class BaseDaoImpl implements BaseDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&!ps.isClosed()){
@@ -182,6 +197,7 @@ public class BaseDaoImpl implements BaseDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return flag;
@@ -206,6 +222,7 @@ public class BaseDaoImpl implements BaseDao {
 					setmethods.add(c.getMethod(m1, f[i].getType()));
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 			}
 		}
@@ -223,10 +240,12 @@ public class BaseDaoImpl implements BaseDao {
 					objs.add(obj);
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&!ps.isClosed()){
@@ -234,6 +253,7 @@ public class BaseDaoImpl implements BaseDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return objs;
@@ -259,6 +279,7 @@ public class BaseDaoImpl implements BaseDao {
 			getid = c.getMethod(m, null);
 		} catch (Exception e) {
 			e.printStackTrace();
+			log.error(e);
 		}
 		//获取set方法
 		for (int i = 0;i<f.length;i++) {
@@ -269,6 +290,7 @@ public class BaseDaoImpl implements BaseDao {
 					setmethods.add(c.getMethod(m1, f[i].getType()));
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 			}
 		}
@@ -280,6 +302,7 @@ public class BaseDaoImpl implements BaseDao {
 				ps.setObject(1, getid.invoke(obj, null));
 			} catch (Exception e1) {
 				e1.printStackTrace();
+				log.error(e1);
 			} 
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
@@ -290,10 +313,12 @@ public class BaseDaoImpl implements BaseDao {
 					}
 				} catch (Exception e) {
 					e.printStackTrace();
+					log.error(e);
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
 		}finally {
 			try {
 				if(ps!=null&&!ps.isClosed()){
@@ -301,6 +326,7 @@ public class BaseDaoImpl implements BaseDao {
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
+				log.error(e);
 			}
 		}
 		return retureObj;

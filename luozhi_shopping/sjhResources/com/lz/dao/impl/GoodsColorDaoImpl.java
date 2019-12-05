@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.lz.dao.GoodsColorDao;
 import com.lz.pojo.GoodsColor;
 
 public class GoodsColorDaoImpl implements GoodsColorDao {
-
+	private static final Logger log = Logger.getLogger(GoodsColorDaoImpl.class);
 	/**
 	 * 商品查询颜色
 	 * @param conn
@@ -22,8 +24,9 @@ public class GoodsColorDaoImpl implements GoodsColorDao {
 	public List<GoodsColor> selectColor(Connection conn,int gid) {
 		List<GoodsColor> gcolors = new ArrayList<GoodsColor>();
 		String sql = "select * from goodscolor where gid = ? ";
+		PreparedStatement ps = null;
 		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setInt(1, gid);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
@@ -37,6 +40,16 @@ public class GoodsColorDaoImpl implements GoodsColorDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			log.error(e);
+		}finally {
+			try {
+				if(ps!=null&&ps.isClosed()){
+					ps.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				log.error(e);
+			}
 		}
 		return gcolors;
 	}
