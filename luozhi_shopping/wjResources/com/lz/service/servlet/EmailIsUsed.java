@@ -26,25 +26,28 @@ public class EmailIsUsed extends HttpServlet {
 		//查询email是否注册过
 		String mail=request.getParameter("mail");
 //		System.out.println(mail);
-		User user=new User();
-		registDao regist=new registDaoImpl();
-		User u=regist.registSelectByEmail(mail);
-		JSONObject jo=new JSONObject();
-		PrintWriter pw=response.getWriter();
-		
-		if (u!=null) {
-			
-			jo.put("registed", true);
-			pw.write(jo.toString());
-			pw.flush();
-			pw.close();
-			return;
-		}else {
-			jo.put("registed", false);
-			pw.write(jo.toString());
-			pw.flush();
-			pw.close();
+		if (mail!=null) {
+			User user=new User();
+			registDao regist=new registDaoImpl();
+			User u=regist.registSelectByEmail(mail);
+			JSONObject jo=new JSONObject();
+			PrintWriter pw=response.getWriter();
+			if (u!=null) {
+				jo.put("registed", true);
+				pw.write(jo.toString());
+				pw.flush();
+				pw.close();
+				return;
+			}else {
+				jo.put("registed", false);
+				pw.write(jo.toString());
+				pw.flush();
+				pw.close();
+			}
 		}
+		
+		
+	
 		
 	}
 

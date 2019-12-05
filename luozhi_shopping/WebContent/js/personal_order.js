@@ -258,7 +258,7 @@ for(var i = 0;i< oLi.length;i++)
 						for(var i=0;i < arr.length;i++){
 							var str=`<li>
 										<div class="outgoodid">
-											<span>订单号:<span>${arr[i].goid}</span></span>
+											<span>订单号:<span>${arr[i].goname}</span></span>
 										</div>`;
 							for(var j=0;j<arr[i].gogoods.length;j++){
 								str = str + `<div class="liheadmsg">

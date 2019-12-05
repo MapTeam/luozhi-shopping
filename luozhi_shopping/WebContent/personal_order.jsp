@@ -207,7 +207,7 @@ if(cookie!=null){
 															</p>
 														</div>
 												</c:forEach>
-												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}')">
+												<span id="dingdan_cancel_btn" onclick="cancelclick('${userlist.goid}',this)">
 													<button class="btn btn-default">取消订单</button>
 												</span>
 												<span id="dingdan_nopay_btn" onclick="payclick('${userlist.goid}',this)"  data-toggle="modal" data-target='#paycount'>

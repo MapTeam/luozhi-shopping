@@ -11,7 +11,7 @@ public interface registDao {
 	public boolean registSelectByName(String name);
 	public User registSelectByEmail(String email);
 	public List<GoodsOrderDto> selectAllOrderByOrSta(int status);
-	public boolean selectBySoid(int soid,int status);
+	public boolean selectBySoid(Connection conn,int soid,int status);
 	public boolean insertRefuseReasonById(String msg,int id,int status);
 	public List<GoodsOrdergoodDto> selectAllGoodsByOrSta(String goname);
 	public List<GoodsOrderDto> selectUserOrderByStaAndUid(int uid,int status);

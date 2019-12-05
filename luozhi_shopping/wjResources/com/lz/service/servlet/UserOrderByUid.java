@@ -18,6 +18,9 @@ import com.lz.dto.UserInfo;
 
 import net.sf.json.JSONArray;
 
+/*
+ * 用户通过Ajax得到数据
+ */
 @WebServlet("/UserOrderByUid")
 public class UserOrderByUid extends HttpServlet {
 	private static final long serialVersionUID = 1L;

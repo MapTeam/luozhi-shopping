@@ -14,7 +14,9 @@ import com.lz.dao.impl.registDaoImpl;
 import com.lz.dto.GoodsOrderDto;
 import com.lz.dto.GoodsOrdergoodDto;
 import com.lz.util.FinalType;
-
+/*
+ * el表达式得到后台数据的界面，最初的界面
+ */
 
 @WebServlet("/OrderGoodServlet")
 public class OrderGoodServlet extends HttpServlet {
@@ -32,18 +34,21 @@ public class OrderGoodServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		registDao dao=new registDaoImpl();
 		List<GoodsOrderDto> list=dao.selectAllOrderByOrSta(FinalType.NOSHIPPED);
-		for (int i = 0; i < list.size(); i++) {
-//			System.out.println(list.get(i).getGoid());
-			List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
-//			System.out.println(list1);
-			list.get(i).setGogoods(list1);
+		if (list!=null) {
+			for (int i = 0; i < list.size(); i++) {
+//				System.out.println(list.get(i).getGoid());
+				List<GoodsOrdergoodDto> list1 = dao.selectAllGoodsByOrSta(list.get(i).getGoname());
+//				System.out.println(list1);
+				list.get(i).setGogoods(list1);
+			}
 		}
-			
-//		System.out.println(list);
 		request.setAttribute("list",list);
+//		System.out.println(list);
 		request.getRequestDispatcher("backstage/backstageindex.jsp").forward(request, response);
+		
 	}
 
 }
