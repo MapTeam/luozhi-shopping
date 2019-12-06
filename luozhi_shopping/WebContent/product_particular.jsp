@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="css/base.css"/>
 <link rel="stylesheet" href="css/product_particular.css" />
 <link rel="stylesheet" type="text/css" href="css/login.css"/>
+<link rel="stylesheet" href="css/animate.css" />
 </head>
 <%
 Cookie[] cookie = request.getCookies();
@@ -194,10 +195,10 @@ if(cookie!=null){
 			</div>
 		</section>
 		<!--图片价格快-->
-		<section>
+		<section >
 			<div class="container">
 				<div class="row" id="product_banner">
-				<div class="col-md-5 center" id="product_picture">
+				<div class="col-md-5 center row animated bounceInLeft"  id="product_picture">
 					<div class="row">
 						<div id="product_big_picture">
 							<img src=""/>
@@ -228,7 +229,7 @@ if(cookie!=null){
 				<div id="margnify_show"></div>
 				
 				
-				<div class="col-md-7 col-sm-7" id="product_content">					  				    
+				<div class="col-md-7 col-sm-7 animated bounceInRight" id="product_content">					  				    
 				    <ul class="product_content_title">
 						 <li><h3>${goods.gname}</h3></li>
 						<li><p id="product_content_slogan">${goods.gintroduce}</p></li>
@@ -341,7 +342,7 @@ if(cookie!=null){
 			</div>
 		</section>
 		<!-- 图片介绍块 -->
-		<section style="margin-top: 50px;">
+		<section style="margin-top: 50px;" class="animated fadeIn wow" data-wow-delay="2s">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8" id="particular_picture">
@@ -490,5 +491,6 @@ if(cookie!=null){
 </html>
 <script  src="js/jquery.min.js" ></script>
 <script  src="js/bootstrap.js" ></script>
+<script src="js/wow.min.js" ></script>
 <script src="js/base.js"></script>
 <script src="js/product_particular.js" ></script>
