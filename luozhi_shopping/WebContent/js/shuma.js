@@ -62,7 +62,7 @@ var flag=false;
 		flag=false;
 	});
 	$('#low_price').keyup(function(){
-		var code=/[^\d.]/g;
+		var code=/[^\d]/g;
 		if(code.test($(this).val())==true){
 			$('#low_price').val(low);
 		}else{
@@ -84,7 +84,7 @@ var flag=false;
 	});
 	
 	$('#big_price').keyup(function(){
-		var code=/[^\d.]/g;
+		var code=/[^\d]/g;
 		if(code.test($(this).val())==true){
 			$('#big_price').val(big);
 		}else{
@@ -98,6 +98,7 @@ var flag=false;
  	     }
 	});
 	$('#price_ok').click(function() {
+		
 		if (''!=$('#low_price').val()&&''!=$('#big_price').val()) {
 			if (parseInt(big)<parseInt(low)){
  	     		$('#big_price').val(low);
@@ -163,30 +164,33 @@ var flag=false;
 		select(1);
 	});
 })();
-//跳转页面输入框限制
-(function() {
-	var num=1;
-	$('#tiaozhuaninput').keyup(function() {
-		var code=/[^\d.]/g;
-		if(code.test($(this).val())==true){
-			$('#tiaozhuaninput').val(num);
-		}else{	
-			num=$('#tiaozhuaninput').val();		
-//			alert(num);
-			var max=$('#maxpage').text();
-			if (parseInt(num)>parseInt(max)) {
-				$('#tiaozhuaninput').val(max);
-				num=max;
-			}	
-		}
-		if(event.keyCode==13){
-			select(num);
-		};
-	});
+
+//
+//(function() {
+//	var num=1;
+//	$('#tiaozhuaninput').keyup(function() {
+//		var code=/[^\d.]/g;
+//		
+//		if(code.test($(this).val())==true){
+//			$('#tiaozhuaninput').val(num);
+//		}else{
+//			num=parseInt($('#tiaozhuaninput').val());		
+//			$('#tiaozhuaninput').val(num);
+//			
+//			var max=$('#maxpage').text();
+//			if (parseInt(num)>parseInt(max)) {
+//				$('#tiaozhuaninput').val(max);
+//				num=max;
+//			}	
+//		}
+//		if(event.keyCode==13){
+//			select(num);
+//		};
+//	});
 //	$('#tiaozhuaninput').blur(function() {
 //		window.location.href="LikeSelectServlet?pageNo="+num+"&pageSize="+20+"&val="+$('#selecttitle').text();
 //	});
-})();
+//})();
 
 
 function select(pageNo) {
@@ -284,8 +288,9 @@ function select(pageNo) {
 		    $('#product').empty();
 		    $('#product').append(str);
 		    	var num=1;
+		    	//跳转页面输入框限制
 		    	$('#tiaozhuaninput').keyup(function() {
-		    		var code=/[^\d.]/g;
+		    		var code=/[^\d]/g;
 		    		if(code.test($(this).val())==true){
 		    			$('#tiaozhuaninput').val(num);
 		    		}else{	
@@ -298,7 +303,7 @@ function select(pageNo) {
 		    			}	
 		    		}
 		    		if(event.keyCode==13){
-		    			select(num);
+		    			select(parseInt(num));
 		    		};
 		    	});
 		}

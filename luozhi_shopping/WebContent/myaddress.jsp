@@ -161,7 +161,7 @@ if(cookie!=null){
 				<div class="m-bread">
 					<div class="block">
 						<span>
-							<a href="home.html">首页</a>
+							<a href="HomeServlet">首页</a>
 						</span>
 						<span class="pointer"><i>></i> 
 							我的收货地址
@@ -178,7 +178,7 @@ if(cookie!=null){
 							<a href="javaScript:;"><i></i><span>我的优惠券</span></a>
 						</li>
 						<li class="z-sel">
-							<a href="my_address.html"><i></i><span>我的收货地址</span></a>
+							<a href="MyaddressServlet"><i></i><span>我的收货地址</span></a>
 						</li>
 						<li>
 							<a target="_blank" href="javaScript:;"><i></i><span>在线客服</span></a>

@@ -3,6 +3,9 @@ package com.lz.service.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
+import java.util.Properties;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +30,12 @@ public class LikeSelectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LikeSelectDao dao=new LikeSelectDaoImpl();
 		String key=request.getParameter("val");
+		//防注入
+		Properties p = (Properties) request.getServletContext().getAttribute("zhuru");
+		Set<Entry<Object, Object>> s = p.entrySet();
+		for (Entry<Object, Object> entry : s) {
+			key=key.replace(entry.getValue().toString(), "");
+		}
 		//定义pageNo为变量，pageSize为变量
 		int pageSize = 20;
 		String size = request.getParameter("pageSize");

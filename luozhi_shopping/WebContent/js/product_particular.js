@@ -152,12 +152,13 @@ var kucuncount=500;
  //输入框
  $('#product_num_text').keyup(function(event){ 
 // 	    var num=/[0-9]/;
- 	     var code=/[^\d.]/g;;
+ 	     var code=/[^\d]/g;
+// 	    $(this).val().replace(/\./g,'');
 // 	     console.log(code);
  	     if (code.test($(this).val())==false) {
  	     	x=parseInt($('#product_num_text').val());
  	     }else{
- 	     	$('#product_num_text').val(x);
+ 	     	$('#product_num_text').val(parseInt(x));
  	     }
  	     
    	    if (x>1&&x<kucuncount) {

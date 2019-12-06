@@ -379,12 +379,15 @@ function payclick(orid,obj) {
 						var str=`<button class="btn btn-success " id="paynext" data-dismiss="modal" data-toggle="modal" data-target="#paypass">下一步</button>`;
 						$('#iftonext').append(str);
 						$('#cardmsg').css('color','green');
-						$('#cardmsg').html("账号存在，请点击下一步");
+						$('#cardmsg').html("账号验证成功，请点击下一步");
 					}else{
 						$('#cardmsg').html("   "+obj.msg);
 					}
 					flagcardnam=false;
 				});
+			}else{
+				$('#cardmsg').html("账号不能为空");
+				flagcardnam=false;
 			}
 			
 		});
@@ -440,6 +443,9 @@ function payclick(orid,obj) {
 					flagcardpass=false;
 				}
 				});
+			}else{
+				$('#cardmsg').html("密码不能为空");
+				flagcardnam=false;
 			}
 			
 		});

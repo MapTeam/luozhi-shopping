@@ -23,7 +23,7 @@ $(document).scroll(function(){
 (function() {
 	var num=1;
 	$('#tiaozhuaninput').keyup(function() {
-		var code=/[^\d.]/g;
+		var code=/[^\d]/g;
 		if(code.test($(this).val())==true){
 			$('#tiaozhuaninput').val(num);
 		}else{	
@@ -36,7 +36,7 @@ $(document).scroll(function(){
 			}	
 		}
 		if(event.keyCode==13){
-			window.location.href="LikeSelectServlet?pageNo="+num+"&pageSize="+20+"&val="+$('#selecttitle').text();
+			window.location.href="LikeSelectServlet?pageNo="+parseInt(num);+"&pageSize="+20+"&val="+$('#selecttitle').text();
 		};
 	});
 //	$('#tiaozhuaninput').blur(function() {

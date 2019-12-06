@@ -179,8 +179,8 @@ pageContext.setAttribute("check", check);
 					    	<li><a>800~1499<input type="hidden" value="nomal"/></a></li>
 					    	<span style="margin-left: 20px; line-height: 45px">
 					    		<a style="color: black;">自定义</a>
-					    		<input type="text" id="low_price" placeholder="¥"  />
-					    		<input type="text" id="big_price" placeholder="¥"  />
+					    		<input type="text" id="low_price" maxlength="6" placeholder="¥"  />
+					    		<input type="text" id="big_price" maxlength="6" placeholder="¥"  />
 					    		<input type="button" id="price_ok" value="确定"/>
 					    	</span>
 					    		
