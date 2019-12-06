@@ -142,7 +142,7 @@ if(cookie!=null){
 				<div class="m-bread">
 					<div class="block">
 						<span>
-							<a href="home.html">首页</a>
+							<a href="HomeServlet">首页</a>
 						</span>
 						<span class="pointer"><i>></i> 
 							我的订单

@@ -479,7 +479,7 @@ if(cookie!=null){
 	    <div class="modal" id="buy_order" data-backdrop="static">
 			<div class="buy_order_show">
 				<h1>您真的要购买吗？</h1>
-				<p style="color: #FFCE44;"><span class="glyphicon glyphicon-question-sign"></span></p>
+				<p style="color: #FFCE44;margin-bottom: 40px;"><span class="glyphicon glyphicon-question-sign"></span></p>
 				<span>
 					<button class="btn btn-success yes" data-dismiss="modal">是</button>
 					<button class="btn btn-danger no" data-dismiss="modal">否</button>

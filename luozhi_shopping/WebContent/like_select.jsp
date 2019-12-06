@@ -153,7 +153,7 @@ if(cookie!=null){
 		</section>
 		<section  style="margin-top: 30px;">
 			<div class="container">
-					<c:if test="${likemsg eq 0}">
+					<c:if test="${list.size() == 0}">
 					<div style="height: 300px; width: 100%">
 						<img style="margin-left: 500px" src="https://s2.music.126.net/store/web/img/nofind.png?4bcb36ed1265fe7b408c5bfbb850cbc8">
 					</div>					  
@@ -172,7 +172,7 @@ if(cookie!=null){
 					
 			</div>
 		</section>
-		<c:if test="${msg != 0}">
+		<c:if test="${list.size() != 0}">
 			<section style="margin-top: 80px">
 				<div class="row">
 					<center>

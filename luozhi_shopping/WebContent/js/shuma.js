@@ -300,9 +300,14 @@ function select(pageNo) {
 		    			if (parseInt(num)>parseInt(max)) {
 		    				$('#tiaozhuaninput').val(max);
 		    				num=max;
-		    			}	
+		    			}
+		    			if (parseInt(num)==0) {
+		    				num=1;
+		    				$('#tiaozhuaninput').val(1);
+						}
 		    		}
 		    		if(event.keyCode==13){
+		    			
 		    			select(parseInt(num));
 		    		};
 		    	});

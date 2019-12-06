@@ -420,7 +420,7 @@ function payclick(orid,obj) {
 						var str=`
 							<h2 style="font-size: 30px;text-align:center;margin-bottom:-20px;color:#3C7A38;">支付成功</h2>
 							<img style="margin-left:150px;width:200px;height:200px;" src="img/paysuccess.jpg" />
-							<p style="font-size: 20px;text-align:center;margin-top:-20px;color:#3C7A38;" class="sucesstohome">等待<span id="sucesstime">3</span>秒回到主页</p>
+							<p style="font-size: 20px;text-align:center;margin-top:-20px;color:#3C7A38;" class="sucesstohome">等待<span id="sucesstime">3</span>秒回到主页订单中心</p>
 							`;
 						$('.paysuccess').append(str);
 						var time=2;
@@ -430,7 +430,7 @@ function payclick(orid,obj) {
 							time--;
 							if(time<=0){
 								time=0;
-								location.href="HomeServlet";
+								location.href="UserOrderServlet";
 							}
 						},1000);
 					}else{
