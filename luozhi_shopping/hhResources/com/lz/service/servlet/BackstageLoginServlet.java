@@ -41,12 +41,9 @@ public class BackstageLoginServlet extends HttpServlet {
 				request.getSession().setAttribute("admin", admin);
 				response.sendRedirect("OrderGoodServlet");
 			}else {
-				response.sendRedirect("AdminLogin");
+				response.sendRedirect("AdminLogin.do");
 			}
 		}
-		
-		
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

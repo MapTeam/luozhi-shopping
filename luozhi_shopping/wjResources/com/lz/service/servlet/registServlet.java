@@ -67,22 +67,11 @@ public class registServlet extends HttpServlet {
 							Connection conn = DBConnection1.getConnection();
 							boolean flag2 = false;
 							boolean flag1 = false;
-							try {
-								conn.setAutoCommit(false);
-								flag2 = bdao.insertObject(conn, u);
-								GoodsCar gcar = new GoodsCar(); 
-								u = rdao.registSelectByEmail(mail);
-								gcar.setUid(u.getUid());
-								flag1 = bdao.insertObject(conn, gcar);
-								conn.commit();
-							} catch (SQLException e) {
-								try {
-									conn.rollback();
-								} catch (SQLException e1) {
-									e1.printStackTrace();
-								}
-								e.printStackTrace();
-							}
+							flag2 = bdao.insertObject(conn, u);
+							GoodsCar gcar = new GoodsCar(); 
+							u = rdao.registSelectByEmail(mail);
+							gcar.setUid(u.getUid());
+							flag1 = bdao.insertObject(conn, gcar);
 							DBConnection1.close(conn);
 							if(flag1&&flag2) {
 								jo.put("registmsg", true);

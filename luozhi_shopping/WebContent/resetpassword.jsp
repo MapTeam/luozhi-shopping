@@ -237,7 +237,7 @@
 					if(obj.yanZFlag){
 						location.href = "setpassword.jsp";
 					}else{
-						alret(obj.yanZMsg);
+						alert(obj.yanZMsg);
 					}
 					
 				}
