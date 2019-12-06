@@ -1,0 +1,19 @@
+﻿
+body {
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Nova Flat', cursive, 'Times New Roman', 'Arial', 'Helvetica', 'sans-serif';
+    background-color: #F0F0F0;
+color: gray;
+}
+.pad-top {
+    padding-top:60px;
+}
+.text-center {
+    text-align:center;
+}
+#error-link {
+    font-size:150px;
+    padding:10px;
+}
+.bigfont {
+    font-size:70px;
+}
