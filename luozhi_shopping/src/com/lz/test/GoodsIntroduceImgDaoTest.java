@@ -8,45 +8,42 @@ import org.junit.Test;
 import com.lz.dao.BaseDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.pojo.GoodsIntroduceImg;
 import com.lz.pojo.Type;
 
-public class TypeDaoTest {
+public class GoodsIntroduceImgDaoTest {
 	BaseDao dao=new BaseDaoImpl();
 	@Test
 	public void insert(){
-		Type t=new Type();
-		t.setCategory1(4);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		GoodsIntroduceImg gii=new GoodsIntroduceImg();
+		gii.setGid(123564);
+		gii.setIntroduceImgs("1324");
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.insertObject(conn, t));
+		System.out.println(dao.insertObject(conn, gii));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void delete(){
-		Type t=new Type();
-		t.setTid(9420604);
+		GoodsIntroduceImg gii=new GoodsIntroduceImg();
+		gii.setGiid(2935);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.deleteObjectById(conn, t));
+		System.out.println(dao.deleteObjectById(conn, gii));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void update(){
-		Type t=new Type();
-		t.setTid(9420604);
-		t.setCategory1(10);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		GoodsIntroduceImg gii=new GoodsIntroduceImg();
+		gii.setGiid(2934);
+		gii.setGid(123564);
+		gii.setIntroduceImgs("9999");
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.updateObjectById(conn, t));
+		System.out.println(dao.updateObjectById(conn, gii));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void selectAll(){		
 		Connection conn=DBConnection1.getConnection();
-		List<Object> list=dao.selectAllObject(conn,Type.class);
+		List<Object> list=dao.selectAllObject(conn,GoodsIntroduceImg.class);
 		DBConnection1.close(conn);
 		for (Object object : list) {
 			System.out.println(object.toString());
@@ -54,10 +51,10 @@ public class TypeDaoTest {
 	}
 	@Test
 	public void selectById(){
-		Type t=new Type();
-		t.setTid(9420604);
+		GoodsIntroduceImg gii=new GoodsIntroduceImg();
+		gii.setGiid(2920);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.selectObjectById(conn, t));
+		System.out.println(dao.selectObjectById(conn, gii));
 		DBConnection1.close(conn);
 	}
 }

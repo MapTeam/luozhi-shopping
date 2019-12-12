@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="WIN" name="com.lz.test.AdmincountDaoTest" skipped="0" tests="5" time="7.424" timestamp="2019-12-09T15:56:56">
+  <properties>
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.USERDOMAIN_ROAMINGPROFILE" value="WIN" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/E:/eclipse/plugins/org.eclipse.pde.build_3.9.200.v20160204-0642/templates/" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="env.PROMPT" value="$P$G" />
+    <property name="env.DriverData" value="C:\Windows\System32\Drivers\DriverData" />
+    <property name="os.name" value="Windows 10" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre1.8.0_211\lib\resources.jar;C:\Program Files\Java\jre1.8.0_211\lib\rt.jar;C:\Program Files\Java\jre1.8.0_211\lib\sunrsasign.jar;C:\Program Files\Java\jre1.8.0_211\lib\jsse.jar;C:\Program Files\Java\jre1.8.0_211\lib\jce.jar;C:\Program Files\Java\jre1.8.0_211\lib\charsets.jar;C:\Program Files\Java\jre1.8.0_211\lib\jfr.jar;C:\Program Files\Java\jre1.8.0_211\classes" />
+    <property name="env.COMPUTERNAME" value="WIN" />
+    <property name="env.CommonProgramW6432" value="C:\Program Files\Common Files" />
+    <property name="env.ALLUSERSPROFILE" value="C:\ProgramData" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="ant.home" value="E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327" />
+    <property name="java.runtime.version" value="1.8.0_211-b12" />
+    <property name="env.HOMEPATH" value="\Users\Administrator" />
+    <property name="user.name" value="sjh" />
+    <property name="ant.file.luozhi_shopping" value="D:\luozhi\luozhi_shopping\build.xml" />
+    <property name="user.language" value="zh" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre1.8.0_211\bin" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="ant.project.name" value="luozhi_shopping" />
+    <property name="java.version" value="1.8.0_211" />
+    <property name="env.PROCESSOR_IDENTIFIER" value="Intel64 Family 6 Model 94 Stepping 3, GenuineIntel" />
+    <property name="user.timezone" value="" />
+    <property name="env.asl.log" value="Destination=file" />
+    <property name="env.TEMP" value="C:\Users\ADMINI~1\AppData\Local\Temp" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre1.8.0_211\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="env.HOMEDRIVE" value="C:" />
+    <property name="sun.jnu.encoding" value="GBK" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="ECLIPSE_HOME" value="E:/eclipse/" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="52.0" />
+    <property name="user.country" value="CN" />
+    <property name="java.home" value="C:\Program Files\Java\jre1.8.0_211" />
+    <property name="env.PSModulePath" value="C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules" />
+    <property name="env.APPDATA" value="C:\Users\Administrator\AppData\Roaming" />
+    <property name="env.PUBLIC" value="C:\Users\Public" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.ComSpec" value="C:\WINDOWS\system32\cmd.exe" />
+    <property name="env.OS" value="Windows_NT" />
+    <property name="env.CommonProgramFiles" value="C:\Program Files\Common Files" />
+    <property name="ant.file" value="D:\luozhi\luozhi_shopping\build.xml" />
+    <property name="os.version" value="10.0" />
+    <property name="env.ProgramW6432" value="C:\Program Files" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="25.211-b12" />
+    <property name="user.variant" value="" />
+    <property name="env.USERPROFILE" value="C:\Users\Administrator" />
+    <property name="ant.library.dir" value="E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327\lib" />
+    <property name="junit.output.dir" value="junit" />
+    <property name="env.JAVA_HOME" value="D:\Program Files\Java\jdk1.8.0_201" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="env.TMP" value="C:\Users\ADMINI~1\AppData\Local\Temp" />
+    <property name="env.FPS_BROWSER_USER_PROFILE_STRING" value="Default" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="ant.file.type.luozhi_shopping" value="file" />
+    <property name="user.script" value="" />
+    <property name="eclipse.pdebuild.scripts" value="/E:/eclipse/plugins/org.eclipse.pde.build_3.9.200.v20160204-0642/scripts/" />
+    <property name="user.home" value="C:\Users\Administrator" />
+    <property name="target" value="1.8" />
+    <property name="env.ProgramData" value="C:\ProgramData" />
+    <property name="env.SESSIONNAME" value="Console" />
+    <property name="env.ProgramFiles(x86)" value="C:\Program Files (x86)" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="java.library.path" value="C:\Program Files\Java\jre1.8.0_211\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/Java/jre1.8.0_211/bin/server;C:/Program Files/Java/jre1.8.0_211/bin;C:/Program Files/Java/jre1.8.0_211/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;E:\Python27;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;D:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-tomcat-8.0.53\bin;D:\Program Files\Git\cmd;%ANT_HOME%\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;E:\eclipse;;." />
+    <property name="env.NUMBER_OF_PROCESSORS" value="4" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.9.6 compiled on June 29 2015" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.lz.test.AdmincountDaoTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\luozhi\luozhi_shopping\junit\TEST-com.lz.test.AdmincountDaoTest.xml crashfile=D:\luozhi\luozhi_shopping\junitvmwatcher1528225450113256419.properties propsfile=D:\luozhi\luozhi_shopping\junit2845543297758886354.properties" />
+    <property name="java.class.path" value="D:\luozhi\luozhi_shopping\build\classes;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\activation-1.1.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\axis.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\c3p0-0.9.5.2.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\cloud-mysql-connector-java-5.1.7-bin.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\commons-beanutils.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\commons-collections.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\commons-discovery-0.2.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\commons-lang-2.4.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\commons-logging.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\ezmorph-1.0.4.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\javax.mail-1.4.5.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\jaxrpc.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\json-lib-2.2.1-jdk15.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\jstl.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\log4j-1.2.8.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\mchange-commons-java-0.2.11.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\saaj.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\standard.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\wsdl4j.jar;D:\luozhi\luozhi_shopping\WebContent\WEB-INF\lib\xom-1.1.jar;E:\eclipse\plugins\org.junit_4.12.0.v201504281640\junit.jar;E:\eclipse\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;D:\apache-tomcat-8.0.53\lib\annotations-api.jar;D:\apache-tomcat-8.0.53\lib\catalina-ant.jar;D:\apache-tomcat-8.0.53\lib\catalina-ha.jar;D:\apache-tomcat-8.0.53\lib\catalina-storeconfig.jar;D:\apache-tomcat-8.0.53\lib\catalina-tribes.jar;D:\apache-tomcat-8.0.53\lib\catalina.jar;D:\apache-tomcat-8.0.53\lib\ecj-4.6.3.jar;D:\apache-tomcat-8.0.53\lib\el-api.jar;D:\apache-tomcat-8.0.53\lib\jasper-el.jar;D:\apache-tomcat-8.0.53\lib\jasper.jar;D:\apache-tomcat-8.0.53\lib\jsp-api.jar;D:\apache-tomcat-8.0.53\lib\servlet-api.jar;D:\apache-tomcat-8.0.53\lib\tomcat-api.jar;D:\apache-tomcat-8.0.53\lib\tomcat-coyote.jar;D:\apache-tomcat-8.0.53\lib\tomcat-dbcp.jar;D:\apache-tomcat-8.0.53\lib\tomcat-i18n-es.jar;D:\apache-tomcat-8.0.53\lib\tomcat-i18n-fr.jar;D:\apache-tomcat-8.0.53\lib\tomcat-i18n-ja.jar;D:\apache-tomcat-8.0.53\lib\tomcat-jdbc.jar;D:\apache-tomcat-8.0.53\lib\tomcat-jni.jar;D:\apache-tomcat-8.0.53\lib\tomcat-util-scan.jar;D:\apache-tomcat-8.0.53\lib\tomcat-util.jar;D:\apache-tomcat-8.0.53\lib\tomcat-websocket.jar;D:\apache-tomcat-8.0.53\lib\websocket-api.jar;E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-launcher.jar;E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant.jar;E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-junit.jar;E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant-junit4.jar" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="env.LOGONSERVER" value="\\WIN" />
+    <property name="env.windir" value="C:\WINDOWS" />
+    <property name="java.vm.specification.version" value="1.8" />
+    <property name="env.PROCESSOR_ARCHITECTURE" value="AMD64" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="env.OneDrive" value="C:\Users\Administrator\OneDrive" />
+    <property name="env.ProgramFiles" value="C:\Program Files" />
+    <property name="env.ANT_HOME" value="E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327" />
+    <property name="env.PROCESSOR_REVISION" value="5e03" />
+    <property name="eclipse.pdebuild.home" value="/E:/eclipse/plugins/org.eclipse.pde.build_3.9.200.v20160204-0642/./" />
+    <property name="java.io.tmpdir" value="C:\Users\ADMINI~1\AppData\Local\Temp\" />
+    <property name="env.CommonProgramFiles(x86)" value="C:\Program Files (x86)\Common Files" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="env.SystemRoot" value="C:\WINDOWS" />
+    <property name="env.FPS_BROWSER_APP_PROFILE_STRING" value="Internet Explorer" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre1.8.0_211\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
+    <property name="env.LOCALAPPDATA" value="C:\Users\Administrator\AppData\Local" />
+    <property name="user.dir" value="D:\luozhi\luozhi_shopping" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC" />
+    <property name="env.Path" value="C:/Program Files/Java/jre1.8.0_211/bin/server;C:/Program Files/Java/jre1.8.0_211/bin;C:/Program Files/Java/jre1.8.0_211/lib/amd64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\MySQL\MySQL Server 5.5\bin;E:\Python27;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;D:\Program Files\Java\jdk1.8.0_201\bin;D:\apache-tomcat-8.0.53\bin;D:\Program Files\Git\cmd;%ANT_HOME%\bin;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;E:\eclipse;" />
+    <property name="basedir" value="D:\luozhi\luozhi_shopping" />
+    <property name="ant.java.version" value="1.8" />
+    <property name="ant.core.lib" value="E:\eclipse\plugins\org.apache.ant_1.9.6.v201510161327\lib\ant.jar" />
+    <property name="env.USERNAME" value="sjh" />
+    <property name="source" value="1.8" />
+    <property name="env.SystemDrive" value="C:" />
+    <property name="file.encoding" value="GBK" />
+    <property name="env.VS100COMNTOOLS" value="C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\Tools\" />
+    <property name="env.USERDOMAIN" value="WIN" />
+    <property name="java.specification.version" value="1.8" />
+    <property name="ant.project.invoked-targets" value="build,AddressDaoTest.deleteAddressById,AddressDaoTest.insertAddress,AddressDaoTest.insertUser,AddressDaoTest.selectAddressById,AddressDaoTest.selectAllAddress,AddressDaoTest.updateAddressById,GoodsOrderDaoTest.deleteGoodsOrderById,GoodsOrderDaoTest.insertGoodsOrder,GoodsOrderDaoTest.selectAllGoodsOrder,GoodsOrderDaoTest.selectGoodsOrderById,GoodsOrderDaoTest.updateGoodsOrderById,OutgoodDaoTest.deleteTypeById,OutgoodDaoTest.insertOutgood,OutgoodDaoTest.insertType,OutgoodDaoTest.selectAllOutgood,OutgoodDaoTest.selectOutgoodById,OutgoodDaoTest.updateOutgoodById,TypeDaoTest.delete,TypeDaoTest.deleteTypeById,TypeDaoTest.insert,TypeDaoTest.insertType,TypeDaoTest.selectAll,TypeDaoTest.selectAllType,TypeDaoTest.selectById,TypeDaoTest.selectTypeById,TypeDaoTest.update,TypeDaoTest.updateTypeById,UserDaoTest.deleteUserById,UserDaoTest.insertUser,UserDaoTest.selectAllUser,UserDaoTest.selectUserById,UserDaoTest.updateUserById,UserDaoTest.insert,UserDaoTest.delete,OutgoodDaoTest.insert,OutgoodDaoTest.selectAll,OutgoodDaoTest.selectById,OutgoodDaoTest.update,OutgoodDaoTest.delete,AddressDaoTest.selectById,AddressDaoTest.selectAll,AddressDaoTest.update,AddressDaoTest.insert,AddressDaoTest.delete,AdmincountDaoTest.selectAll,AdmincountDaoTest.selectById,AdmincountDaoTest.insert,AdmincountDaoTest.delete,AdmincountDaoTest.update,GoodsDaoTest.insert,GoodsDaoTest.selectById,GoodsDaoTest.selectAll,GoodsDaoTest.update,GoodsDaoTest.delete,GoodsIntroduceImgDaoTest.insert,GoodsIntroduceImgDaoTest.update,GoodsIntroduceImgDaoTest.selectById,GoodsCarDaoTest.insert,GoodsCarDaoTest.selectById,junitreport" />
+    <property name="env.PROCESSOR_LEVEL" value="6" />
+  </properties>
+  <testcase classname="com.lz.test.AdmincountDaoTest" name="selectAll" time="7.052" />
+  <testcase classname="com.lz.test.AdmincountDaoTest" name="selectById" time="0.055" />
+  <testcase classname="com.lz.test.AdmincountDaoTest" name="delete" time="0.056" />
+  <testcase classname="com.lz.test.AdmincountDaoTest" name="insert" time="0.075" />
+  <testcase classname="com.lz.test.AdmincountDaoTest" name="update" time="0.072" />
+  <system-out><![CDATA[Admincount [aid=1, acount=admin, apwd=ffffffe1affffffdc3949ffffffba59ffffffabffffffbe56ffffffe057fffffff2fffffff883e, cuml=1]
+Admincount [aid=2, acount=admin0002, apwd=123456, cuml=2]
+Admincount [aid=5, acount=admin001, apwd=123456, cuml=2]
+Admincount [aid=6, acount=admin001, apwd=123456, cuml=2]
+Admincount [aid=7, acount=admin001, apwd=123456, cuml=2]
+Admincount [aid=1, acount=admin, apwd=ffffffe1affffffdc3949ffffffba59ffffffabffffffbe56ffffffe057fffffff2fffffff883e, cuml=1]
+false
+true
+true
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

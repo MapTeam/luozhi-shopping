@@ -10,27 +10,27 @@ import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.db.DBConnection1;
 import com.lz.pojo.User;
 
-public class test {
+public class UserDaoTest {
 	BaseDaoImpl dao = new BaseDaoImpl();
 	
 	@Test
-	public void f(){
+	public void insert(){
 		User u = new User();
 		u.setUpicture("123");
 		u.setUpwd("123");
 		u.setUname("111");
 		u.setRegistdate(new Date());
 		u.setEmail("123.com");
-//		u.setGcid(11);
+		u.setCredits(0);
 		Connection conn =  DBConnection1.getConnection();
 		System.out.println(dao.insertObject(conn, u)); 
 		DBConnection1.close(conn);
 	}
 	
 	@Test
-	public void f1(){
+	public void delete(){
 		User u = new User();
-		u.setUid(6);
+		u.setUid(22);
 //		u.setUpicture("123");
 //		u.setUpwd("123");
 //		u.setUname("111");
@@ -42,22 +42,21 @@ public class test {
 		DBConnection1.close(conn);
 	}
 	@Test
-	public void f2(){
+	public void update(){
 		User u = new User();
-		u.setUid(2);
+		u.setUid(22);
 		u.setUpicture("你好");
 		u.setUpwd("789");
 		u.setUname("胡辉");
 		u.setRegistdate(new Date());
 		u.setEmail("456789.com");
-//		u.setGcid(11);
 		Connection conn =  DBConnection1.getConnection();
 		System.out.println(dao.updateObjectById(conn, u)); 
 		DBConnection1.close(conn);
 	}
 	
 	@Test
-	public void f3(){
+	public void selectAll(){
 		User u = new User();
 		Connection conn =  DBConnection1.getConnection();
 		List<Object> objs = dao.selectAllObject(conn, u.getClass()); 
@@ -69,7 +68,7 @@ public class test {
 	
 	
 	@Test
-	public void f4(){
+	public void select(){
 		User u = new User();
 		u.setUid(5);
 		Connection conn =  DBConnection1.getConnection();

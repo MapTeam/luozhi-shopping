@@ -8,45 +8,40 @@ import org.junit.Test;
 import com.lz.dao.BaseDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.pojo.GoodsCar;
 import com.lz.pojo.Type;
 
-public class TypeDaoTest {
+public class GoodsCarDaoTest {
 	BaseDao dao=new BaseDaoImpl();
 	@Test
 	public void insert(){
-		Type t=new Type();
-		t.setCategory1(4);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		GoodsCar gc=new GoodsCar();
+		gc.setUid(2);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.insertObject(conn, t));
+		System.out.println(dao.insertObject(conn, gc));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void delete(){
-		Type t=new Type();
-		t.setTid(9420604);
+		GoodsCar gc=new GoodsCar();
+		gc.setGcid(16);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.deleteObjectById(conn, t));
+		System.out.println(dao.deleteObjectById(conn, gc));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void update(){
-		Type t=new Type();
-		t.setTid(9420604);
-		t.setCategory1(10);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		GoodsCar gc=new GoodsCar();
+		gc.setGcid(16);
+		gc.setUid(5);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.updateObjectById(conn, t));
+		System.out.println(dao.updateObjectById(conn, gc));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void selectAll(){		
 		Connection conn=DBConnection1.getConnection();
-		List<Object> list=dao.selectAllObject(conn,Type.class);
+		List<Object> list=dao.selectAllObject(conn,GoodsCar.class);
 		DBConnection1.close(conn);
 		for (Object object : list) {
 			System.out.println(object.toString());
@@ -54,10 +49,10 @@ public class TypeDaoTest {
 	}
 	@Test
 	public void selectById(){
-		Type t=new Type();
-		t.setTid(9420604);
+		GoodsCar gc=new GoodsCar();
+		gc.setGcid(16);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.selectObjectById(conn, t));
+		System.out.println(dao.selectObjectById(conn, gc));
 		DBConnection1.close(conn);
 	}
 }

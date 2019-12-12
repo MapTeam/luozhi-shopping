@@ -1,0 +1,6 @@
+2019-12-09 22:38:38,964 ERROR [com.lz.dao.impl.BaseDaoImpl] - <com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Column 'credits' cannot be null>
+2019-12-09 22:52:31,895 ERROR [com.lz.dao.impl.BaseDaoImpl] - <java.sql.SQLException: Field 'tel' doesn't have a default value>
+2019-12-09 22:53:51,230 ERROR [com.lz.dao.impl.BaseDaoImpl] - <java.sql.SQLException: Field 'tel' doesn't have a default value>
+2019-12-09 23:17:38,361 ERROR [com.lz.dao.impl.BaseDaoImpl] - <java.lang.IllegalArgumentException: argument type mismatch>
+2019-12-09 23:19:31,081 ERROR [com.lz.dao.impl.BaseDaoImpl] - <java.lang.IllegalArgumentException: argument type mismatch>
+2019-12-09 23:21:02,591 ERROR [com.lz.dao.impl.BaseDaoImpl] - <java.lang.IllegalArgumentException: argument type mismatch>

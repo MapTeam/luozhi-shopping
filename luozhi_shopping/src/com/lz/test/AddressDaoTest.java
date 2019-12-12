@@ -8,45 +8,54 @@ import org.junit.Test;
 import com.lz.dao.BaseDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.db.DBConnection1;
+import com.lz.pojo.Address;
 import com.lz.pojo.Type;
 
-public class TypeDaoTest {
+public class AddressDaoTest {
 	BaseDao dao=new BaseDaoImpl();
 	@Test
 	public void insert(){
-		Type t=new Type();
-		t.setCategory1(4);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		Address a=new Address();
+		a.setCity("cc");
+		a.setDetail("132");
+		a.setIsdefault(1);
+		a.setName("456");
+		a.setProvince("hh");
+		a.setTel("456789");
+		a.setUid(456);
+		a.setVillage("yg");
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.insertObject(conn, t));
+		System.out.println(dao.insertObject(conn, a));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void delete(){
-		Type t=new Type();
-		t.setTid(9420604);
+		Address a=new Address();
+		a.setAddressid(25);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.deleteObjectById(conn, t));
+		System.out.println(dao.deleteObjectById(conn, a));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void update(){
-		Type t=new Type();
-		t.setTid(9420604);
-		t.setCategory1(10);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		Address a=new Address();
+		a.setAddressid(26);
+		a.setCity("aaa");
+		a.setDetail("132");
+		a.setIsdefault(1);
+		a.setName("aaaa");
+		a.setProvince("aaa");
+		a.setTel("aaaaa");
+		a.setUid(456);
+		a.setVillage("a");
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.updateObjectById(conn, t));
+		System.out.println(dao.updateObjectById(conn, a));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void selectAll(){		
 		Connection conn=DBConnection1.getConnection();
-		List<Object> list=dao.selectAllObject(conn,Type.class);
+		List<Object> list=dao.selectAllObject(conn,Address.class);
 		DBConnection1.close(conn);
 		for (Object object : list) {
 			System.out.println(object.toString());
@@ -54,10 +63,10 @@ public class TypeDaoTest {
 	}
 	@Test
 	public void selectById(){
-		Type t=new Type();
-		t.setTid(9420604);
+		Address a=new Address();
+		a.setAddressid(5);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.selectObjectById(conn, t));
+		System.out.println(dao.selectObjectById(conn, a));
 		DBConnection1.close(conn);
 	}
 }

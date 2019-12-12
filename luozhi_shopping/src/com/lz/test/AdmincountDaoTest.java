@@ -8,45 +8,44 @@ import org.junit.Test;
 import com.lz.dao.BaseDao;
 import com.lz.dao.impl.BaseDaoImpl;
 import com.lz.db.DBConnection1;
-import com.lz.pojo.Type;
+import com.lz.pojo.Address;
+import com.lz.pojo.Admincount;
 
-public class TypeDaoTest {
+public class AdmincountDaoTest {
 	BaseDao dao=new BaseDaoImpl();
 	@Test
 	public void insert(){
-		Type t=new Type();
-		t.setCategory1(4);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		Admincount a=new Admincount();
+		a.setAcount("admin001");
+		a.setApwd("123456");
+		a.setCuml(2);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.insertObject(conn, t));
+		System.out.println(dao.insertObject(conn, a));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void delete(){
-		Type t=new Type();
-		t.setTid(9420604);
+		Admincount a=new Admincount();
+		a.setAid(4);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.deleteObjectById(conn, t));
+		System.out.println(dao.deleteObjectById(conn, a));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void update(){
-		Type t=new Type();
-		t.setTid(9420604);
-		t.setCategory1(10);
-		t.setCategory2(5);
-		t.setTname("沈嘉豪");
-		t.setTtid(8);
+		Admincount a=new Admincount();
+		a.setAid(2);
+		a.setAcount("admin0002");
+		a.setApwd("123456");
+		a.setCuml(2);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.updateObjectById(conn, t));
+		System.out.println(dao.updateObjectById(conn, a));
 		DBConnection1.close(conn);
 	}
 	@Test
 	public void selectAll(){		
 		Connection conn=DBConnection1.getConnection();
-		List<Object> list=dao.selectAllObject(conn,Type.class);
+		List<Object> list=dao.selectAllObject(conn,Admincount.class);
 		DBConnection1.close(conn);
 		for (Object object : list) {
 			System.out.println(object.toString());
@@ -54,10 +53,10 @@ public class TypeDaoTest {
 	}
 	@Test
 	public void selectById(){
-		Type t=new Type();
-		t.setTid(9420604);
+		Admincount a=new Admincount();
+		a.setAid(1);
 		Connection conn=DBConnection1.getConnection();
-		System.out.println(dao.selectObjectById(conn, t));
+		System.out.println(dao.selectObjectById(conn, a));
 		DBConnection1.close(conn);
 	}
 }

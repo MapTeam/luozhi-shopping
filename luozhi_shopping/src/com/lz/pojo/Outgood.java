@@ -19,7 +19,29 @@ public class Outgood implements java.io.Serializable {
     /** 物流信息 */
     private String logistics;
 
+    /** 电话 */
+    private String tel;
 
+    /**
+     * 获取电话
+     * 
+     * @return 电话
+     */
+    public String getTel() {
+        return this.tel;
+    }
+
+    /**
+     * 设置电话
+     * 
+     * @param tel
+     *          电话
+     */
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+    
+    
     /**
      * 获取出货单id
      * 
